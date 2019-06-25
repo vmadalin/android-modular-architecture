@@ -6,6 +6,7 @@ buildscript { scriptHandler ->
     dependencies {
         classpath "com.android.tools.build:gradle:$toolsBuildVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        //classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -13,6 +14,7 @@ buildscript { scriptHandler ->
 
 plugins {
   id 'com.diffplug.gradle.spotless' version '3.14.0'
+  id 'io.gitlab.arturbosch.detekt' version '1.0.0-RC15'
 }
 
 subprojects {
@@ -24,8 +26,18 @@ subprojects {
   spotless {
     kotlin {
       target '**/*.kt'
-      ktlint(ktlintVersion)
-      licenseHeaderFile project.rootProject.file('COPYRIGHT')
+      licenseHeaderFile rootProject.file('COPYRIGHT')
+    }
+  }
+
+  detekt {
+    toolVersion = '1.0.0-RC15'
+    input = files('src/main/java')
+    config = files('default-detekt-config.yml')
+    reports {
+      xml {
+        enabled = true
+      }
     }
   }
 }
