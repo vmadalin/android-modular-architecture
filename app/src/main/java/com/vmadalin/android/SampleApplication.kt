@@ -1,0 +1,24 @@
+package com.vmadalin.android
+
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
+import dagger.android.DispatchingAndroidInjector
+import timber.log.Timber
+import javax.inject.Inject
+
+class SampleApplication : DaggerApplication() {
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<DaggerApplication>
+
+    override fun onCreate() {
+        super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication>? = dispatchingAndroidInjector
+
+
+}

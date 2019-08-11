@@ -3,10 +3,12 @@
 buildscript { scriptHandler ->
     apply from: 'repositories.gradle', to: scriptHandler
     apply from: 'dependencies.gradle'
+    apply from: 'versions.gradle'
     dependencies {
-        classpath "com.android.tools.build:gradle:$toolsBuildVersion"
+        classpath "com.android.tools.build:gradle:${toolsBuildVersion}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        //classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -30,6 +32,7 @@ subprojects {
     }
   }
 
+  apply plugin: 'io.gitlab.arturbosch.detekt'
   detekt {
     toolVersion = '1.0.0-RC15'
     input = files('src/main/java')

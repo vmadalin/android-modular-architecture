@@ -2,23 +2,56 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.vmadalin.android"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  compileSdkVersion buildVersions.compileSdk
+  defaultConfig {
+    applicationId "com.vmadalin.android"
+    minSdkVersion buildVersions.minSdk
+    targetSdkVersion buildVersions.targetSdk
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    debug {
+      applicationIdSuffix '.debug'
+      versionNameSuffix '-DEBUG'
+      try {
+        buildConfigField("String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\"")
+        buildConfigField("String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel_public_key")}\"")
+        buildConfigField("String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel_private_key")}\"")
+      } catch (ignored) {
+        throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
+      }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+      try {
+        buildConfigField("String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\"")
+        buildConfigField("String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel_public_key")}\"")
+        buildConfigField("String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel_private_key")}\"")
+      } catch (ignored) {
+        throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
+      }
     }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  dataBinding {
+    enabled = true
+  }
+  androidExtensions {
+    experimental = true
+  }
+  lintOptions {
+    disable 'GoogleAppIndexingWarning'
+  }
+  buildToolsVersion = '28.0.3'
 }
 
 dependencies {
@@ -26,4 +59,14 @@ dependencies {
   projectDependencies.each { _, url -> implementation url }
   testImplementationDependencies.each { _, url -> testImplementation url }
   androidTestImplementationDependencies.each { _, url -> androidTestImplementation url }
+}
+
+def getLocalProperty(String propertyName) {
+  Properties properties = new Properties()
+  properties.load(project.rootProject.file('local.properties').newDataInputStream())
+  String property = properties.getProperty(propertyName)
+  if (property == null) {
+    throw new Exception("Not defined property")
+  }
+  return property
 }
