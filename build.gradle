@@ -1,9 +1,9 @@
 buildscript { scriptHandler ->
     apply from: 'repositories.gradle', to: scriptHandler
     apply from: 'dependencies.gradle'
-    apply from: 'versions.gradle'
+    apply from: 'tasks.gradle'
     dependencies {
-        classpath "com.android.tools.build:gradle:${toolsBuildVersion}"
+        classpath "com.android.tools.build:gradle:$toolsBuildVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgVersion"
@@ -19,12 +19,9 @@ plugins {
 subprojects {
   buildscript {
     apply from: rootProject.file('repositories.gradle')
+    apply from: rootProject.file('versions.gradle')
     apply from: rootProject.file('ktlint.gradle')
     apply from: rootProject.file('detekt.gradle')
     apply from: rootProject.file('spotless.gradle')
   }
-}
-
-task codeAnalysis(type: GradleBuild) {
-  tasks = ["detekt", "ktlint", "lintDebug", "testDebugUnitTest"]
 }
