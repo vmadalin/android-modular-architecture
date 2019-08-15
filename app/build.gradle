@@ -50,6 +50,8 @@ android {
   }
   lintOptions {
     disable 'GoogleAppIndexingWarning'
+    checkAllWarnings true
+    warningsAsErrors true
   }
   buildToolsVersion = '28.0.3'
 }
