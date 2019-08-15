@@ -1,8 +1,8 @@
 #!/bin/sh
 echo "Running static analysis..."
-
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 OUTPUT="/tmp/analysis-result"
-./gradlew app:detekt app:ktlint app:lintDebug --daemon > ${OUTPUT}
+./gradlew detekt ktlint lintDebug --daemon > ${OUTPUT}
 EXIT_CODE=$?
 
 if [[ ${EXIT_CODE} -ne 0 ]]; then
@@ -14,8 +14,8 @@ if [[ ${EXIT_CODE} -ne 0 ]]; then
     echo "*********************************************"
     exit ${EXIT_CODE}
 else
+    rm ${OUTPUT}
     echo "*********************************************"
     echo "      Static analysis no problems found      "
     echo "*********************************************"
-    rm ${OUTPUT}
 fi

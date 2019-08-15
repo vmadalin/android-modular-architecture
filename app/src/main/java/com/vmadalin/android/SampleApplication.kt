@@ -3,8 +3,8 @@ package com.vmadalin.android
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class SampleApplication : DaggerApplication() {
 
@@ -19,6 +19,4 @@ class SampleApplication : DaggerApplication() {
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication>? = dispatchingAndroidInjector
-
-
 }

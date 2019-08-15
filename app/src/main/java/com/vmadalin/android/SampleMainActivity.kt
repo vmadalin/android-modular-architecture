@@ -21,8 +21,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.math.BigInteger
-import java.security.MessageDigest
 
 class SampleMainActivity : DaggerAppCompatActivity() {
 
