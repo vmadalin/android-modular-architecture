@@ -2,7 +2,7 @@
 # https://circleci.com/docs/2.0/language-android
 version: 2.1
 orbs:
-  codecov: codecov/codecov@1.7.1
+  codecov: codecov/codecov@1.0.5
 jobs:
   build:
     working_directory: ~/kotlin-sample-app
