@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'jacoco-android'
 
 android {
   buildToolsVersion = '28.0.3'
@@ -19,9 +20,11 @@ android {
     debug {
       applicationIdSuffix '.debug'
       versionNameSuffix '-DEBUG'
+      testCoverageEnabled true
     }
     release {
       minifyEnabled false
+      testCoverageEnabled true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
@@ -49,6 +52,20 @@ android {
     checkAllWarnings true
     warningsAsErrors true
   }
+  testOptions {
+    unitTests.returnDefaultValues = true
+    unitTests.all {
+      jacoco {
+        includeNoLocationClasses = true
+      }
+    }
+  }
+}
+
+jacocoAndroidUnitTestReport {
+  csv.enabled false
+  html.enabled true
+  xml.enabled true
 }
 
 dependencies {

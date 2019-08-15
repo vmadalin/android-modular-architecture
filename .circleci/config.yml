@@ -1,6 +1,8 @@
 # CircleCI configuration file
 # https://circleci.com/docs/2.0/language-android
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.7.1
 jobs:
   build:
     working_directory: ~/kotlin-sample-app
@@ -11,8 +13,8 @@ jobs:
       JVM_OPTS: -Xmx4g
     steps:
       - checkout
-      - run: echo "marvel_public_key=$marvel_public_key" >> local.properties
-      - run: echo "marvel_private_key=$marvel_private_key" >> local.properties
+      - run: echo "marvel_public_key=$MARVEL_PUBLIC_KEY" >> local.properties
+      - run: echo "marvel_private_key=$MARVEL_PRIVATE_KEY" >> local.properties
       - restore_cache:
           key: gradle-{{ checksum "build.gradle" }}
       - run:
@@ -25,8 +27,16 @@ jobs:
           name: Run Lint
           command: ./gradlew lintDebug
       - run:
+          name: Run Spotless
+          command: ./gradlew spotlessKotlinCheck
+      - run:
           name: Run Unit Tests
           command: ./gradlew testDebugUnitTest
+      - run:
+          name: Generate Code Coverage
+          command: ./gradlew jacocoTestReport
+      - codecov/upload:
+          flags: unittest
       - save_cache:
           paths:
             - ~/.gradle

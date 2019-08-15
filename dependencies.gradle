@@ -21,6 +21,7 @@ ext {
   retrofitVersion = '2.6.1'
   loggingVersion = '3.13.1'
   glideVersion = '4.9.0'
+  jacocoVersion ='0.1.4'
 
   //Tests UI,Unit
   extjUnitVersion = '1.1.0'
