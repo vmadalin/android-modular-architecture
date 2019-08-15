@@ -1,0 +1,9 @@
+task codeAnalysis(type: GradleBuild) {
+  tasks = ["detekt", "ktlint", "lintDebug", "testDebugUnitTest"]
+}
+
+task copyGitHooks(type: Copy) {
+    description = "Copies the pre-commit to the .git folder."
+    from "${rootDir}/scripts/pre-commit.sh"
+    into "${rootDir}/.git/hooks"
+}
