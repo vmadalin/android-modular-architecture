@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import com.vmadalin.android.network.responses.BaseResponse
 import com.vmadalin.android.network.responses.CharacterResponse
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MarvelService {
@@ -17,5 +16,5 @@ interface MarvelService {
         @Query("hash") hash: String,
         @Nullable @Query("offset") offset: Int,
         @Nullable @Query("limit") limit: Int
-    ) : LiveData<BaseResponse<CharacterResponse>>
+    ): LiveData<BaseResponse<CharacterResponse>>
 }
