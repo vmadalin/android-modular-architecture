@@ -11,6 +11,8 @@ jobs:
       JVM_OPTS: -Xmx4g
     steps:
       - checkout
+      - run: echo "marvel_public_key=$marvel_public_key" >> local.properties
+      - run: echo "marvel_private_key=$marvel_private_key" >> local.properties
       - restore_cache:
           key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
       - run:

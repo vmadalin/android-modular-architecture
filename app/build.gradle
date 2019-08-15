@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
+  buildToolsVersion = '28.0.3'
   compileSdkVersion buildVersions.compileSdk
   defaultConfig {
     applicationId "com.vmadalin.android"
@@ -18,24 +19,19 @@ android {
     debug {
       applicationIdSuffix '.debug'
       versionNameSuffix '-DEBUG'
-      try {
-        buildConfigField("String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\"")
-        buildConfigField("String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel_public_key")}\"")
-        buildConfigField("String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel_private_key")}\"")
-      } catch (ignored) {
-        throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
-      }
     }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-      try {
-        buildConfigField("String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\"")
-        buildConfigField("String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel_public_key")}\"")
-        buildConfigField("String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel_private_key")}\"")
-      } catch (ignored) {
-        throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
-      }
+    }
+  }
+  buildTypes.each {
+    try {
+      it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
+      it.buildConfigField "String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel_public_key")}\""
+      it.buildConfigField "String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel_private_key")}\""
+    } catch (ignored) {
+      throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
     }
   }
   compileOptions {
@@ -53,7 +49,6 @@ android {
     checkAllWarnings true
     warningsAsErrors true
   }
-  buildToolsVersion = '28.0.3'
 }
 
 dependencies {
