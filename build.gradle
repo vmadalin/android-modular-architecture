@@ -2,19 +2,18 @@ buildscript { scriptHandler ->
     apply from: 'repositories.gradle', to: scriptHandler
     apply from: 'dependencies.gradle'
     apply from: 'tasks.gradle'
-    dependencies {
+  dependencies {
         classpath "com.android.tools.build:gradle:$toolsBuildVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgVersion"
         classpath "com.dicedmelon.gradle:jacoco-android:$jacocoVersion"
-    }
+        classpath "com.github.ben-manes:gradle-versions-plugin:$dependencyVersion"
+  }
 }
 
 plugins {
-  id 'com.diffplug.gradle.spotless' version '3.14.0'
+  id 'com.diffplug.gradle.spotless' version '3.24.1'
   id 'io.gitlab.arturbosch.detekt' version '1.0.0'
-  id 'com.github.ben-manes.versions' version '0.21.0'
 }
 
 subprojects {
@@ -24,5 +23,6 @@ subprojects {
     apply from: rootProject.file('ktlint.gradle')
     apply from: rootProject.file('detekt.gradle')
     apply from: rootProject.file('spotless.gradle')
+    apply from: rootProject.file('dependency-updates.gradle')
   }
 }

@@ -37,7 +37,7 @@ jobs:
           command: ./gradlew jacocoTestReport
       - run:
           name: Generate Dependency Updates
-          command: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
+          command: ./gradlew dependencyUpdates -Drevision=release
       - store_artifacts:
           path: build/dependencyUpdates
       - codecov/upload:
