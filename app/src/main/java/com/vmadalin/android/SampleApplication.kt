@@ -16,13 +16,16 @@
 
 package com.vmadalin.android
 
+import android.app.Application
+import com.crashlytics.android.Crashlytics
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
+import io.fabric.sdk.android.Fabric
 import javax.inject.Inject
 import timber.log.Timber
 
-class SampleApplication : DaggerApplication() {
+class SampleApplication : Application() {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<DaggerApplication>
@@ -32,7 +35,10 @@ class SampleApplication : DaggerApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        if (BuildConfig.ENABLE_CRASHLYTICS) {
+           Fabric.with(this, Crashlytics())
+        }
     }
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication>? = dispatchingAndroidInjector
+    //override fun applicationInjector(): AndroidInjector<out DaggerApplication>? = dispatchingAndroidInjector
 }

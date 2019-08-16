@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'jacoco-android'
+apply plugin: 'io.fabric'
 
 android {
   buildToolsVersion = '28.0.3'
@@ -15,24 +16,30 @@ android {
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    manifestPlaceholders = [fabricApiKey:getLocalProperty("fabric.key")]
   }
   buildTypes {
     debug {
       applicationIdSuffix '.debug'
       versionNameSuffix '-DEBUG'
       testCoverageEnabled true
+
+      //ext.enableCrashlytics = true
+      buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
     }
     release {
-      minifyEnabled false
-      testCoverageEnabled true
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+
     }
   }
   buildTypes.each {
     try {
       it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
-      it.buildConfigField "String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel_public_key")}\""
-      it.buildConfigField "String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel_private_key")}\""
+      it.buildConfigField "String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel.key.public")}\""
+      it.buildConfigField "String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel.key.private")}\""
     } catch (ignored) {
       throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
     }

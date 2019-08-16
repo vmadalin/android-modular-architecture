@@ -23,6 +23,8 @@ ext {
   glideVersion = '4.9.0'
   jacocoVersion = '0.1.4'
   dependencyVersion = '0.22.0'
+  fabricVersion = '1.31.0'
+  crashlyticsVersion = '2.10.1'
 
   //Tests UI,Unit
   extjUnitVersion = '1.1.1'
@@ -56,7 +58,8 @@ ext {
     retrofitConverter  : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
     retrofitAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
     logging            : "com.squareup.okhttp3:logging-interceptor:$loggingVersion",
-    glide              : "com.github.bumptech.glide:glide:$glideVersion"
+    glide              : "com.github.bumptech.glide:glide:$glideVersion",
+    crashlytics        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
   ]
 
   kaptDependencies = [

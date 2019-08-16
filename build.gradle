@@ -8,6 +8,7 @@ buildscript { scriptHandler ->
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgVersion"
         classpath "com.dicedmelon.gradle:jacoco-android:$jacocoVersion"
         classpath "com.github.ben-manes:gradle-versions-plugin:$dependencyVersion"
+        classpath "io.fabric.tools:gradle:$fabricVersion"
   }
 }
 
