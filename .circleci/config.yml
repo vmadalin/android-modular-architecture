@@ -35,6 +35,11 @@ jobs:
       - run:
           name: Generate Code Coverage
           command: ./gradlew jacocoTestReport
+      - run:
+          name: Generate Dependency Updates
+          command: ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=json
+      - store_artifacts:
+          path: build/dependencyUpdates
       - codecov/upload:
           flags: unittest
       - save_cache:
