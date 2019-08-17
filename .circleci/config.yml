@@ -14,6 +14,7 @@ jobs:
     steps:
       - checkout
       - run: echo "fabric.key=$FABRIC_KEY" >> local.properties
+      - run: echo "fabric.secret=$FABRIC_SECRET" >> local.properties
       - run: echo "marvel.key.public=$MARVEL_KEY_PUBLIC" >> local.properties
       - run: echo "marvel.key.private=$MARVEL_KEY_PRIVATE" >> local.properties
       - restore_cache:
