@@ -9,6 +9,7 @@ buildscript { scriptHandler ->
         classpath "com.dicedmelon.gradle:jacoco-android:$jacocoVersion"
         classpath "com.github.ben-manes:gradle-versions-plugin:$dependencyVersion"
         classpath "io.fabric.tools:gradle:$fabricVersion"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokkaVersion"
   }
 }
 
@@ -25,5 +26,6 @@ subprojects {
     apply from: rootProject.file('detekt.gradle')
     apply from: rootProject.file('spotless.gradle')
     apply from: rootProject.file('dependency-updates.gradle')
+    apply from: rootProject.file('dokka.gradle')
   }
 }
