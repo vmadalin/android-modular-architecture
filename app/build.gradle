@@ -25,23 +25,24 @@ android {
       versionNameSuffix '-DEBUG'
       testCoverageEnabled true
 
-      //ext.enableCrashlytics = true
-      buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
+      ext.enableCrashlytics = false
+      buildConfigField "boolean", "ENABLE_CRASHLYTICS", "false"
     }
     release {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-
+      ext.enableCrashlytics = true
+      buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
     }
   }
   buildTypes.each {
     try {
       it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
-      it.buildConfigField "String", "MARVEL_PUBLIC_KEY", "\"${getLocalProperty("marvel.key.public")}\""
-      it.buildConfigField "String", "MARVEL_PRIVATE_KEY", "\"${getLocalProperty("marvel.key.private")}\""
+      it.buildConfigField "String", "MARVEL_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
+      it.buildConfigField "String", "MARVEL_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
     } catch (ignored) {
-      throw new InvalidUserDataException("You should define 'marvel_public_key' and 'marvel_private_key' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
+      throw new InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
     }
   }
   compileOptions {
