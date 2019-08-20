@@ -16,7 +16,7 @@ ext {
   rxAndroidVersion = '2.1.1'
   daggerVersion = '2.24'
   timberVersion = '4.7.1'
-  leakcanaryVersion = '1.6.3'
+  leakcanaryVersion = '2.0-beta-2'
   databindingVersion = '3.1.4'
   retrofitVersion = '2.6.1'
   loggingVersion = '4.1.0'
@@ -37,6 +37,12 @@ ext {
   runnerVersion = '1.2.0'
   rulesVersion = '1.2.0'
 
+  kaptDependencies = [
+    dagger       : "com.google.dagger:dagger-compiler:$daggerVersion",
+    daggerAndroid: "com.google.dagger:dagger-android-processor:$daggerVersion",
+    databinding  : "com.android.databinding:compiler:$databindingVersion"
+  ]
+
   projectDependencies = [
     kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
     cardView           : "com.android.support:cardview-v7:$appSupportVersion",
@@ -54,7 +60,6 @@ ext {
     rxKotlin           : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
     rxAndroid          : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
     timber             : "com.jakewharton.timber:timber:$timberVersion",
-    leakcanary         : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
     retrofit           : "com.squareup.retrofit2:retrofit:$retrofitVersion",
     retrofitConverter  : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
     retrofitAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
@@ -63,10 +68,8 @@ ext {
     crashlytics        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
   ]
 
-  kaptDependencies = [
-    dagger       : "com.google.dagger:dagger-compiler:$daggerVersion",
-    daggerAndroid: "com.google.dagger:dagger-android-processor:$daggerVersion",
-    databinding  : "com.android.databinding:compiler:$databindingVersion"
+  debugDependencies = [
+    leakcanary: "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
   ]
 
   testImplementationDependencies = [
@@ -77,10 +80,11 @@ ext {
   ]
 
   androidTestImplementationDependencies = [
-    mockito : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion",
-    junit   : "androidx.test.ext:junit:$extjUnitVersion",
-    espresso: "androidx.test.espresso:espresso-core:$espressoVersion",
-    runner  : "androidx.test:runner:$runnerVersion",
-    rules   : "androidx.test:rules:$rulesVersion"
+    leakcanary: "com.squareup.leakcanary:leakcanary-android-instrumentation:$leakcanaryVersion",
+    mockito   : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion",
+    junit     : "androidx.test.ext:junit:$extjUnitVersion",
+    espresso  : "androidx.test.espresso:espresso-core:$espressoVersion",
+    runner    : "androidx.test:runner:$runnerVersion",
+    rules     : "androidx.test:rules:$rulesVersion"
   ]
 }
