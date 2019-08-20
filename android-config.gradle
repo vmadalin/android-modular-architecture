@@ -1,0 +1,13 @@
+ext {
+  androidConfig = [
+    applicationId : 'com.vmadalin.android',
+
+    compileSdkVersion : 28,
+    targetSdkVersion  : 28,
+    minSdkVersion     : 21,
+    buildToolsVersion : '28.0.3',
+
+    versionCode: 1,
+    versionName: '1.0'
+  ]
+}

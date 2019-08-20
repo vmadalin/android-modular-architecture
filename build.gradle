@@ -21,7 +21,7 @@ plugins {
 subprojects {
   buildscript {
     apply from: rootProject.file('repositories.gradle')
-    apply from: rootProject.file('versions.gradle')
+    apply from: rootProject.file('android-config.gradle')
     apply from: rootProject.file('ktlint.gradle')
     apply from: rootProject.file('detekt.gradle')
     apply from: rootProject.file('spotless.gradle')

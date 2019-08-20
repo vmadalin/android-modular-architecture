@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.ui.characterslist
+package com.vmadalin.dynamicfeatures.characterslist.ui
 
 import androidx.lifecycle.ViewModel
 

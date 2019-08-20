@@ -7,103 +7,104 @@ apply plugin: 'jacoco-android'
 apply plugin: 'io.fabric'
 
 android {
-  buildToolsVersion = '28.0.3'
-  compileSdkVersion buildVersions.compileSdk
-  defaultConfig {
-    applicationId "com.vmadalin.android"
-    minSdkVersion buildVersions.minSdk
-    targetSdkVersion buildVersions.targetSdk
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArgument "listener", "leakcanary.FailTestOnLeakRunListener"
-  }
-  buildTypes {
-    debug {
-      applicationIdSuffix '.debug'
-      versionNameSuffix '-DEBUG'
-      testCoverageEnabled true
+    buildToolsVersion = androidConfig.buildToolsVersion
+    compileSdkVersion androidConfig.compileSdkVersion
+    defaultConfig {
+        applicationId androidConfig.applicationId
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "listener", "leakcanary.FailTestOnLeakRunListener"
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+            testCoverageEnabled true
 
-      ext.enableCrashlytics = false
-      buildConfigField "boolean", "ENABLE_CRASHLYTICS", "false"
-    }
-    release {
-      minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            ext.enableCrashlytics = false
+            buildConfigField "boolean", "ENABLE_CRASHLYTICS", "false"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-      ext.enableCrashlytics = true
-      buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
+            ext.enableCrashlytics = true
+            buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
+        }
     }
-  }
-  buildTypes.each {
-    try {
-      it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
-      it.buildConfigField "String", "MARVEL_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
-      it.buildConfigField "String", "MARVEL_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
-    } catch (ignored) {
-      throw new InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
+    buildTypes.each {
+        try {
+            it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
+            it.buildConfigField "String", "MARVEL_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
+            it.buildConfigField "String", "MARVEL_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
+        } catch (ignored) {
+            throw new InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
+        }
     }
-  }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
-  dataBinding {
-    enabled = true
-  }
-  androidExtensions {
-    experimental = true
-  }
-  lintOptions {
-    disable 'GoogleAppIndexingWarning'
-    checkAllWarnings true
-    warningsAsErrors true
-  }
-  testOptions {
-    unitTests.returnDefaultValues = true
-    unitTests.all {
-      jacoco {
-        includeNoLocationClasses = true
-      }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
-  }
+    dataBinding {
+        enabled = true
+    }
+    androidExtensions {
+        experimental = true
+    }
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        checkAllWarnings true
+        warningsAsErrors true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
+  dynamicFeatures = [":features:characterslist", ":features:characterdetail"]
 }
 
 jacocoAndroidUnitTestReport {
-  csv.enabled false
-  html.enabled true
-  xml.enabled true
+    csv.enabled false
+    html.enabled true
+    xml.enabled true
 }
 
 afterEvaluate {
-  initCrashlyticsPropertiesIfNeeded()
+    initCrashlyticsPropertiesIfNeeded()
 }
 
 dependencies {
-  kaptDependencies.each { _, url -> kapt url }
-  projectDependencies.each { _, url -> implementation url }
-  debugDependencies.each { _, url -> debugImplementation url }
-  testImplementationDependencies.each { _, url -> testImplementation url }
-  androidTestImplementationDependencies.each { _, url -> androidTestImplementation url }
+    kaptDependencies.each { _, url -> kapt url }
+    projectDependencies.each { _, url -> implementation url }
+    debugDependencies.each { _, url -> debugImplementation url }
+    testImplementationDependencies.each { _, url -> testImplementation url }
+    androidTestImplementationDependencies.each { _, url -> androidTestImplementation url }
 }
 
 def getLocalProperty(String propertyName) {
-  Properties properties = new Properties()
-  properties.load(project.rootProject.file('local.properties').newDataInputStream())
-  String property = properties.getProperty(propertyName)
-  if (property == null) {
-    throw new Exception("Not defined property")
-  }
-  return property
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    String property = properties.getProperty(propertyName)
+    if (property == null) {
+        throw new Exception("Not defined property")
+    }
+    return property
 }
 
 def initCrashlyticsPropertiesIfNeeded() {
-  def propertiesFile = file('fabric.properties')
-  if (!propertiesFile.exists()) {
-    def commentMessage = "This is autogenerated crashlytics property from system environment to prevent key to be committed to source control."
-    ant.propertyfile(file: "fabric.properties", comment: commentMessage) {
-      entry(key: "apiSecret", value: getLocalProperty("fabric.secret"))
-      entry(key: "apiKey", value: getLocalProperty("fabric.key"))
+    def propertiesFile = file('fabric.properties')
+    if (!propertiesFile.exists()) {
+        def commentMessage = "This is autogenerated crashlytics property from system environment to prevent key to be committed to source control."
+        ant.propertyfile(file: "fabric.properties", comment: commentMessage) {
+            entry(key: "apiSecret", value: getLocalProperty("fabric.secret"))
+            entry(key: "apiKey", value: getLocalProperty("fabric.key"))
+        }
     }
-  }
 }
