@@ -1,0 +1,8 @@
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedResources" >
+
+    <!--Dynamic module titles-->
+    <string name="feature_characterslist">Characters List</string>
+    <string name="feature_characterdetail">Character Detail</string>
+</resources>

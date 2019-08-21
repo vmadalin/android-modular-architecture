@@ -3,7 +3,7 @@
 
     <dist:module
         dist:instant="true"
-        dist:title="@string/title_characterdetail">
+        dist:title="@string/feature_characterdetail">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>

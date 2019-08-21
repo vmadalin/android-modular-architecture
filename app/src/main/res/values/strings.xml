@@ -1,8 +1,4 @@
 <resources>
     <!--Application name-->
     <string name="app_name">KotlinSampleApp</string>
-
-    <!--Dynamic module titles-->
-    <string name="title_characterslist">Characters List</string>
-    <string name="title_characterdetail">Character Detail</string>
 </resources>
