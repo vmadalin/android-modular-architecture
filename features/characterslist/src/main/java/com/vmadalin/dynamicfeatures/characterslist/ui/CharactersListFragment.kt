@@ -20,11 +20,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
 import com.vmadalin.dynamicfeatures.characterslist.R
-import dagger.android.support.DaggerFragment
 
-class CharactersListFragment : DaggerFragment() {
+class CharactersListFragment : Fragment() {
 
     companion object {
         fun newInstance() = CharactersListFragment()
@@ -42,6 +41,6 @@ class CharactersListFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CharactersListViewModel::class.java)
+        // viewModel = ViewModelProviders.of(this).get(CharactersListViewModel::class.java)
     }
 }

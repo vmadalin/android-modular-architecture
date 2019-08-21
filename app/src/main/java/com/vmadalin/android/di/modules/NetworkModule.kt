@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.di
+package com.vmadalin.android.di.modules
 
 import com.vmadalin.android.BuildConfig
 import com.vmadalin.android.di.scopes.AppScope
@@ -27,8 +27,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class NetworkModule {
 
-    @Provides
     @AppScope
+    @Provides
     fun provideMarvelService(): MarvelService {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.MARVEL_BASE_URL)

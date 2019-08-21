@@ -26,6 +26,7 @@ ext {
   fabricVersion = '1.31.0'
   crashlyticsVersion = '2.10.1'
   dokkaVersion = '0.9.18'
+  playCoreVersion = '1.6.1'
 
   //Tests UI,Unit
   extjUnitVersion = '1.1.1'
@@ -65,7 +66,8 @@ ext {
     retrofitAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
     logging            : "com.squareup.okhttp3:logging-interceptor:$loggingVersion",
     glide              : "com.github.bumptech.glide:glide:$glideVersion",
-    crashlytics        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
+    crashlytics        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",
+    playCore           : "com.google.android.play:core:${playCoreVersion}"
   ]
 
   debugDependencies = [
