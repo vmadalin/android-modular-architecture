@@ -14,14 +14,8 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.base
+package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
-import androidx.lifecycle.ViewModelProvider
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import com.vmadalin.android.base.BaseFragment
 
-abstract class BaseFragment : DaggerFragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-}
+class CharactersFavoriteFragment : BaseFragment()

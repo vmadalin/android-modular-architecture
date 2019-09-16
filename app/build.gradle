@@ -67,7 +67,7 @@ android {
             includeAndroidResources = true
         }
     }
-    dynamicFeatures = [":features:characterslist", ":features:characterdetail"]
+    dynamicFeatures = [":features:characters_list", ":features:characters_favorites"]
 }
 
 junitJacoco {

@@ -1,0 +1,12 @@
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.vmadalin.dynamicfeatures.characterdetail">
+
+    <dist:module
+        dist:instant="true"
+        dist:title="@string/feature_characters_favorite">
+        <dist:delivery>
+            <dist:install-time />
+        </dist:delivery>
+        <dist:fusing dist:include="false" />
+    </dist:module>
+</manifest>

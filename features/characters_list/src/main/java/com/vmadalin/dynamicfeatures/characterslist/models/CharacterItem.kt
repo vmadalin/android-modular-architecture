@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.base
+package com.vmadalin.dynamicfeatures.characterslist.models
 
-import androidx.lifecycle.ViewModelProvider
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
-
-abstract class BaseFragment : DaggerFragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-}
+data class CharacterItem(
+    var id: Long,
+    var name: String,
+    var description: String,
+    var imageUrl: String
+)

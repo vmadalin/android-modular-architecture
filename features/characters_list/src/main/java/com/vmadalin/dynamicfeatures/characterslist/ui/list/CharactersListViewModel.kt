@@ -14,14 +14,27 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.base
+package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
-import androidx.lifecycle.ViewModelProvider
-import dagger.android.support.DaggerFragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
 import javax.inject.Inject
 
-abstract class BaseFragment : DaggerFragment() {
+class CharactersListViewModel
+@Inject constructor() :
+    ViewModel() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val _charactersList = MutableLiveData<List<CharacterItem>>()
+    val charactersList: LiveData<List<CharacterItem>>
+        get() = _charactersList
+
+    fun loadCharactersList() {
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        // subscription.dispose()
+    }
 }

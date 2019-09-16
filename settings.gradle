@@ -1,5 +1,5 @@
 include ':app',
-        ':features:characterslist',
-        ':features:characterdetail'
+        ':features:characters_list',
+        ':features:characters_favorites'
 
 rootProject.name = 'kotlin-sample-app'

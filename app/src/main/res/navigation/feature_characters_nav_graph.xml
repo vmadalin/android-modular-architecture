@@ -5,7 +5,7 @@
     app:startDestination="@+id/charactersListFragment">
     <fragment
         android:id="@+id/charactersListFragment"
-        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.CharactersListFragment"
+        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment"
         android:label="CharactersListFragment">
         <action
             android:id="@+id/action_charactersListFragment_to_characterDetailFragment"
@@ -13,7 +13,12 @@
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="com.vmadalin.dynamicfeatures.characterdetail.ui.CharacterDetailFragment"
+        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment"
+        android:label="CharacterDetailFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/charactersFavoriteFragment"
+        android:name="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteFragment"
         android:label="CharacterDetailFragment">
     </fragment>
 </navigation>
