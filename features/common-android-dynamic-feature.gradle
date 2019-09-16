@@ -17,6 +17,12 @@ android {
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8
   }
+  dataBinding {
+    enabled = true
+  }
+  androidExtensions {
+    experimental = true
+  }
 }
 
 dependencies {

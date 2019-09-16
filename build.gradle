@@ -6,7 +6,7 @@ buildscript { scriptHandler ->
         classpath "com.android.tools.build:gradle:$toolsBuildVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgVersion"
-        classpath "com.dicedmelon.gradle:jacoco-android:$jacocoVersion"
+        classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:$jacocoVersion"
         classpath "com.github.ben-manes:gradle-versions-plugin:$dependencyVersion"
         classpath "io.fabric.tools:gradle:$fabricVersion"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokkaVersion"
@@ -18,7 +18,7 @@ plugins {
   id 'io.gitlab.arturbosch.detekt' version '1.0.0'
 }
 
-subprojects {
+allprojects {
   buildscript {
     apply from: rootProject.file('repositories.gradle')
     apply from: rootProject.file('android-config.gradle')

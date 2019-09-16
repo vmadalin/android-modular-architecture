@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
-apply plugin: 'jacoco-android'
+apply plugin: 'com.vanniktech.android.junit.jacoco'
 apply plugin: 'io.fabric'
 
 android {
@@ -49,7 +49,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-      jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_1_8
     }
     dataBinding {
         enabled = true
@@ -63,20 +63,16 @@ android {
         //warningsAsErrors true
     }
     testOptions {
-        unitTests.returnDefaultValues = true
-        unitTests.all {
-            jacoco {
-                includeNoLocationClasses = true
-            }
+        unitTests {
+            includeAndroidResources = true
         }
     }
-  dynamicFeatures = [":features:characterslist", ":features:characterdetail"]
+    dynamicFeatures = [":features:characterslist", ":features:characterdetail"]
 }
 
-jacocoAndroidUnitTestReport {
-    csv.enabled false
-    html.enabled true
-    xml.enabled true
+junitJacoco {
+    jacocoVersion = '0.8.4'
+    includeNoLocationClasses = true
 }
 
 afterEvaluate {

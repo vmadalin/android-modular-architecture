@@ -22,7 +22,7 @@ ext {
   retrofitVersion = '2.6.1'
   loggingVersion = '4.1.0'
   glideVersion = '4.9.0'
-  jacocoVersion = '0.1.4'
+  jacocoVersion = '0.15.0'
   dependencyVersion = '0.22.0'
   fabricVersion = '1.31.0'
   crashlyticsVersion = '2.10.1'
