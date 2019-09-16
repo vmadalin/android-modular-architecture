@@ -36,7 +36,7 @@ jobs:
           command: ./gradlew testDebugUnitTest
       - run:
           name: Generate Code Coverage
-          command: ./gradlew jacocoTestReport
+          command: ./gradlew jacocoTestReportRelease
       - run:
           name: Generate Dependency Updates
           command: ./gradlew dependencyUpdates -Drevision=release
