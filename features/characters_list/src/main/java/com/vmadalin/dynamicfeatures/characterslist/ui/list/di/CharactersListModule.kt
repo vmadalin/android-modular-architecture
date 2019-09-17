@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.base
+package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 
-import androidx.lifecycle.ViewModelProvider
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import com.vmadalin.core.extensions.viewModel
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
+import dagger.Module
+import dagger.Provides
 
-abstract class BaseFragment : DaggerFragment() {
+@Module
+class CharactersListModule(private val fragment: CharactersListFragment) {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Provides
+    fun providesCharactersListViewModel(): CharactersListViewModel {
+        return fragment.viewModel { CharactersListViewModel() }
+    }
 }

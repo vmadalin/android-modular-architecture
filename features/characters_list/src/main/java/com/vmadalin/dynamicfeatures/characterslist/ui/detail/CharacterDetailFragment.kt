@@ -21,10 +21,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.dynamicfeatures.characterslist.R
-import dagger.android.support.DaggerFragment
 
-class CharacterDetailFragment : DaggerFragment() {
+class CharacterDetailFragment : BaseFragment() {
+
+    override fun onInitDependencyInjection() {
+    }
 
     companion object {
         fun newInstance() =

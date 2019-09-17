@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.di
+package com.vmadalin.core.extensions
 
-import javax.inject.Scope
+import android.view.View
 
-/**
- * Scope for the entire app runtime.
- */
-@Scope
-@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-annotation class AppScope
+fun View.setGone(hide: Boolean) {
+    visibility = if (hide) View.GONE else View.VISIBLE
+}
+
+fun View.setInvisible(hide: Boolean) {
+    visibility = if (hide) View.INVISIBLE else View.VISIBLE
+}

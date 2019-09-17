@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.di
+package com.vmadalin.android.di
 
+import android.app.Application
 import android.content.Context
-import com.vmadalin.core.di.modules.ContextModule
-import com.vmadalin.core.di.modules.NetworkModule
-import dagger.Component
+import com.vmadalin.android.SampleApp
+import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
-/**
- * Core component that all module's components depend on.
- */
-@Singleton
-@Component(modules = [ContextModule::class, NetworkModule::class])
-interface CoreComponent {
+@Module
+class AppModule {
 
-    fun context(): Context
+    @Provides
+    @Singleton
+    fun provideApplication(sampleApp: SampleApp) = sampleApp as Application
+
+    @Provides
+    @Singleton
+    fun provideApplicationContext(sampleApp: SampleApp) = sampleApp as Context
 }

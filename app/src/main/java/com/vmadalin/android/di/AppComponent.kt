@@ -16,22 +16,13 @@
 
 package com.vmadalin.android.di
 
-import com.vmadalin.android.SampleApp
 import com.vmadalin.core.di.CoreComponent
-import dagger.BindsInstance
+import com.vmadalin.core.di.scopes.AppScope
 import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
 
 @AppScope
 @Component(
-    modules = [AndroidSupportInjectionModule::class],
+    modules = [AppModule::class],
     dependencies = [CoreComponent::class]
 )
-interface AppComponent : AndroidInjector<SampleApp> {
-
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance app: SampleApp, core: CoreComponent): AppComponent
-    }
-}
+interface AppComponent

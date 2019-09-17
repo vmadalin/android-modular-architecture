@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.di
+package com.vmadalin.core.di.scopes
 
-import android.content.Context
-import com.vmadalin.core.di.modules.ContextModule
-import com.vmadalin.core.di.modules.NetworkModule
-import dagger.Component
-import javax.inject.Singleton
+import javax.inject.Scope
 
 /**
- * Core component that all module's components depend on.
+ * Scope for the entire app runtime.
  */
-@Singleton
-@Component(modules = [ContextModule::class, NetworkModule::class])
-interface CoreComponent {
-
-    fun context(): Context
-}
+@Scope
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+annotation class AppScope

@@ -20,35 +20,44 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.vmadalin.core.base.BaseFragment
+import com.vmadalin.android.SampleApp.Companion.coreComponent
+import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
+import com.vmadalin.dynamicfeatures.characterslist.di.DaggerCharactersComponent
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
+import javax.inject.Inject
 
 class CharactersListFragment : BaseFragment() {
 
-    private val charactersListViewModel by viewModels<CharactersListViewModel> {
-        viewModelFactory
-    }
+    @Inject
+    lateinit var viewModel: CharactersListViewModel
 
-    private var charactersListAdapter: CharactersListAdapter? = null
+    private lateinit var adapter: CharactersListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        charactersListAdapter =
-            CharactersListAdapter(CharacterClickListener {
-            })
-        charactersListViewModel.charactersList.observe(
+        adapter = CharactersListAdapter(CharacterClickListener {})
+        viewModel.charactersList.observe(
             viewLifecycleOwner,
             Observer { charactersList ->
-                charactersListAdapter?.submitList(charactersList)
+                adapter.submitList(charactersList)
         })
 
         val binding = FragmentCharactersListBinding.inflate(inflater, container, false)
-        binding.charactersList.adapter = charactersListAdapter
+        binding.charactersList.adapter = adapter
         return binding.root
+    }
+
+    override fun onInitDependencyInjection() {
+        DaggerCharactersComponent
+            .builder()
+            .coreComponent(coreComponent(requireContext()))
+            .charactersListModule(CharactersListModule(this))
+            .build()
+            .inject(this)
     }
 }

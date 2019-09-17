@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.di
+package com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
 
-import android.content.Context
-import com.vmadalin.core.di.modules.ContextModule
-import com.vmadalin.core.di.modules.NetworkModule
-import dagger.Component
-import javax.inject.Singleton
+import com.vmadalin.core.extensions.viewModel
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
+import dagger.Module
+import dagger.Provides
 
-/**
- * Core component that all module's components depend on.
- */
-@Singleton
-@Component(modules = [ContextModule::class, NetworkModule::class])
-interface CoreComponent {
+@Module
+class CharactersDetailModule(private val fragment: CharacterDetailFragment) {
 
-    fun context(): Context
+    @Provides
+    fun providesCharacterDetailViewModel(): CharacterDetailViewModel {
+        return fragment.viewModel { CharacterDetailViewModel() }
+    }
 }

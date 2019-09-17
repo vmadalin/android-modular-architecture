@@ -19,9 +19,9 @@ package com.vmadalin.core.di.modules
 import com.vmadalin.core.network.MarvelService
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 class NetworkModule {

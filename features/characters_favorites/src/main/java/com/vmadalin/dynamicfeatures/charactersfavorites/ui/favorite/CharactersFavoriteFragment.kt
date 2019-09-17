@@ -16,6 +16,10 @@
 
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
-import com.vmadalin.core.base.BaseFragment
+import com.vmadalin.core.ui.base.BaseFragment
 
-class CharactersFavoriteFragment : BaseFragment()
+class CharactersFavoriteFragment : BaseFragment() {
+
+    override fun onInitDependencyInjection() {
+    }
+}

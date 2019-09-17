@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.characterslist.utils
+package com.vmadalin.core.ui.base
 
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
+import android.content.Context
+import androidx.fragment.app.Fragment
 
-@BindingAdapter("imageUrl")
-fun setImageUrl(imageView: ImageView, url: String) {
-    Glide
-        .with(imageView.context)
-        .load(url)
-        .into(imageView)
+abstract class BaseFragment : Fragment() {
+
+    abstract fun onInitDependencyInjection()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onInitDependencyInjection()
+        requireActivity()
+    }
 }
