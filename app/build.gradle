@@ -67,7 +67,11 @@ android {
             includeAndroidResources = true
         }
     }
-    dynamicFeatures = [":features:characters_list", ":features:characters_favorites"]
+    dynamicFeatures = [
+        ":features:characters_list",
+        ":features:characters_favorites",
+        ":features:dashboard"
+    ]
 }
 
 junitJacoco {
@@ -80,6 +84,8 @@ afterEvaluate {
 }
 
 dependencies {
+    implementation project(':core')
+
     kaptDependencies.each { _, url -> kapt url }
     projectDependencies.each { _, url -> implementation url }
     debugDependencies.each { _, url -> debugImplementation url }

@@ -1,0 +1,1 @@
+apply from: "$rootDir/common-android-library.gradle"

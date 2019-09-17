@@ -14,24 +14,10 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.di
+package com.vmadalin.core.network.responses
 
-import com.vmadalin.android.SampleApp
-import com.vmadalin.core.di.CoreComponent
-import dagger.BindsInstance
-import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
-
-@AppScope
-@Component(
-    modules = [AndroidSupportInjectionModule::class],
-    dependencies = [CoreComponent::class]
+data class BaseResponse<T>(
+    var code: Int,
+    var status: String,
+    var data: DataResponse<T>
 )
-interface AppComponent : AndroidInjector<SampleApp> {
-
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance app: SampleApp, core: CoreComponent): AppComponent
-    }
-}

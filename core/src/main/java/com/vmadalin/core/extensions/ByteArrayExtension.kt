@@ -14,24 +14,8 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.di
+package com.vmadalin.core.extensions
 
-import com.vmadalin.android.SampleApp
-import com.vmadalin.core.di.CoreComponent
-import dagger.BindsInstance
-import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
-
-@AppScope
-@Component(
-    modules = [AndroidSupportInjectionModule::class],
-    dependencies = [CoreComponent::class]
-)
-interface AppComponent : AndroidInjector<SampleApp> {
-
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance app: SampleApp, core: CoreComponent): AppComponent
-    }
+fun ByteArray.toHex(): String {
+    return joinToString("") { "%02x".format(it) }
 }

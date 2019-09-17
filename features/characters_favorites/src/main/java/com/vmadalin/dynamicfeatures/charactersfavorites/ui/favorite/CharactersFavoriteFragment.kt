@@ -16,6 +16,6 @@
 
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
-import com.vmadalin.android.base.BaseFragment
+import com.vmadalin.core.base.BaseFragment
 
 class CharactersFavoriteFragment : BaseFragment()

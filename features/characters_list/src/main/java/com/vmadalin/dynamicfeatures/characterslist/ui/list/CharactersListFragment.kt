@@ -22,7 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.vmadalin.android.base.BaseFragment
+import com.vmadalin.core.base.BaseFragment
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 
 class CharactersListFragment : BaseFragment() {

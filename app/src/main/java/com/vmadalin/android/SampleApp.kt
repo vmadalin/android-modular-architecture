@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.crashlytics.android.Crashlytics
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.vmadalin.android.di.DaggerAppComponent
+import com.vmadalin.core.di.CoreComponent
+import com.vmadalin.core.di.DaggerCoreComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
@@ -47,7 +49,8 @@ class SampleApp : DaggerApplication() {
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(this)
+        val coreComponent = DaggerCoreComponent.factory().create(this)
+        return DaggerAppComponent.factory().create(this, coreComponent)
     }
 
     /**

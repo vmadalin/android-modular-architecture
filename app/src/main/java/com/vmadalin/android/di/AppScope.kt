@@ -16,22 +16,11 @@
 
 package com.vmadalin.android.di
 
-import com.vmadalin.android.SampleApp
-import com.vmadalin.core.di.CoreComponent
-import dagger.BindsInstance
-import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
+import javax.inject.Scope
 
-@AppScope
-@Component(
-    modules = [AndroidSupportInjectionModule::class],
-    dependencies = [CoreComponent::class]
-)
-interface AppComponent : AndroidInjector<SampleApp> {
-
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance app: SampleApp, core: CoreComponent): AppComponent
-    }
-}
+/**
+ * Scope for the entire app runtime.
+ */
+@Scope
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+annotation class AppScope

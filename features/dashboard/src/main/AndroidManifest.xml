@@ -1,9 +1,9 @@
 <manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.vmadalin.dynamicfeatures.characterslist">
+    package="com.vmadalin.dynamicfeature.dashboard">
 
     <dist:module
         dist:instant="true"
-        dist:title="@string/feature_characters_list">
+        dist:title="@string/feature_dashboard">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>

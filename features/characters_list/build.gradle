@@ -1,1 +1,1 @@
-apply from: "$rootDir/features/common-android-dynamic-feature.gradle"
+apply from: "$rootDir/common-android-dynamic-feature.gradle"

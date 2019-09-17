@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dashboard_menu_list">List</string>
+    <string name="dashboard_menu_favorites">Favorites</string>
+</resources>

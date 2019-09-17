@@ -14,24 +14,25 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.di
+package com.vmadalin.core.di.modules
 
-import com.vmadalin.android.SampleApp
-import com.vmadalin.core.di.CoreComponent
-import dagger.BindsInstance
-import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
+import com.vmadalin.core.network.MarvelService
+import dagger.Module
+import dagger.Provides
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-@AppScope
-@Component(
-    modules = [AndroidSupportInjectionModule::class],
-    dependencies = [CoreComponent::class]
-)
-interface AppComponent : AndroidInjector<SampleApp> {
+@Module
+class NetworkModule {
 
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance app: SampleApp, core: CoreComponent): AppComponent
+    @Singleton
+    @Provides
+    fun provideMarvelService(): MarvelService {
+        return Retrofit.Builder()
+            // TODO .baseUrl(BuildConfig.MARVEL_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(MarvelService::class.java)
     }
 }

@@ -1,4 +1,6 @@
 include ':app',
+        ':core',
+        ':features:dashboard',
         ':features:characters_list',
         ':features:characters_favorites'
 

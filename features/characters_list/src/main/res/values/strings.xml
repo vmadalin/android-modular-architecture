@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="character_image_content_description">Image of the selected character</string>
-
 </resources>

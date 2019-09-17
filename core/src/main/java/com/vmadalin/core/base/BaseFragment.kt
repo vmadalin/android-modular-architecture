@@ -14,24 +14,14 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.di
+package com.vmadalin.core.base
 
-import com.vmadalin.android.SampleApp
-import com.vmadalin.core.di.CoreComponent
-import dagger.BindsInstance
-import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
+import androidx.lifecycle.ViewModelProvider
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-@AppScope
-@Component(
-    modules = [AndroidSupportInjectionModule::class],
-    dependencies = [CoreComponent::class]
-)
-interface AppComponent : AndroidInjector<SampleApp> {
+abstract class BaseFragment : DaggerFragment() {
 
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance app: SampleApp, core: CoreComponent): AppComponent
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 }
