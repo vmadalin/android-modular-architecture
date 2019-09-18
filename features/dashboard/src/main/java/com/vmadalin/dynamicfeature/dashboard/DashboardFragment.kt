@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.vmadalin.core.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
@@ -19,10 +21,16 @@ class DashboardFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupBottomNavigation(view)
     }
 
     override fun onInitDependencyInjection() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    }
+
+    private fun setupBottomNavigation(view: View) {
+        val navController = view.findNavController()
+        bottom_navigation.setupWithNavController(navController)
     }
 
 }

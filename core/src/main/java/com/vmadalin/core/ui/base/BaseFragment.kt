@@ -26,6 +26,5 @@ abstract class BaseFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onInitDependencyInjection()
-        requireActivity()
     }
 }

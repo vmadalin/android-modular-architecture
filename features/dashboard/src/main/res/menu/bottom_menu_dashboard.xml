@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_characters_list"
+        android:id="@+id/navigation_characters_list_graph"
         android:icon="@drawable/ic_list"
-        android:title="@string/dashboard_menu_list"
-        android:enabled="true"
-        app:showAsAction="ifRoom" />
+        android:title="@string/dashboard_menu_list" />
     <item
-        android:id="@+id/item_characters_favorites"
+        android:id="@+id/navigation_characters_favorites_graph"
         android:icon="@drawable/ic_favorites"
-        android:title="@string/dashboard_menu_favorites"
-        android:enabled="true"
-        app:showAsAction="ifRoom" />
+        android:title="@string/dashboard_menu_favorites" />
 </menu>
