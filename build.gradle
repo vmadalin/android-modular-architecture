@@ -5,6 +5,7 @@ buildscript { scriptHandler ->
   dependencies {
         classpath "com.android.tools.build:gradle:$toolsBuildVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgVersion"
         classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:$jacocoVersion"
         classpath "com.github.ben-manes:gradle-versions-plugin:$dependencyVersion"

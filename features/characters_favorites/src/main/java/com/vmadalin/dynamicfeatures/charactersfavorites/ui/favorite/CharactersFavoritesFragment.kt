@@ -39,5 +39,4 @@ class CharactersFavoritesFragment : BaseFragment() {
 
     override fun onInitDependencyInjection() {
     }
-
 }

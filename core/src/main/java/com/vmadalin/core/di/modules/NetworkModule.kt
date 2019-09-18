@@ -16,10 +16,13 @@
 
 package com.vmadalin.core.di.modules
 
+import com.vmadalin.core.BuildConfig
 import com.vmadalin.core.network.MarvelService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -30,9 +33,21 @@ class NetworkModule {
     @Provides
     fun provideMarvelService(): MarvelService {
         return Retrofit.Builder()
-            // TODO .baseUrl(BuildConfig.MARVEL_BASE_URL)
+            .baseUrl(BuildConfig.MARVEL_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MarvelService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHttpClient(): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+        val clientBuilder = OkHttpClient.Builder()
+        if (BuildConfig.DEBUG) {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            clientBuilder.addInterceptor(httpLoggingInterceptor)
+        }
+        return clientBuilder.build()
     }
 }

@@ -2,9 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'kotlin-allopen'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'com.vanniktech.android.junit.jacoco'
 apply plugin: 'io.fabric'
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'com.vmadalin.core.annotations.OpenClass'
+}
 
 android {
     buildToolsVersion = androidConfig.buildToolsVersion
@@ -33,15 +39,6 @@ android {
 
             ext.enableCrashlytics = true
             buildConfigField "boolean", "ENABLE_CRASHLYTICS", "true"
-        }
-    }
-    buildTypes.each {
-        try {
-            it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
-            it.buildConfigField "String", "MARVEL_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
-            it.buildConfigField "String", "MARVEL_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
-        } catch (ignored) {
-            throw new InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
         }
     }
     compileOptions {
@@ -91,16 +88,6 @@ dependencies {
     debugDependencies.each { _, url -> debugImplementation url }
     testImplementationDependencies.each { _, url -> testImplementation url }
     androidTestImplementationDependencies.each { _, url -> androidTestImplementation url }
-}
-
-def getLocalProperty(String propertyName) {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    String property = properties.getProperty(propertyName)
-    if (property == null) {
-        throw new Exception("Not defined property")
-    }
-    return property
 }
 
 def initCrashlyticsPropertiesIfNeeded() {
