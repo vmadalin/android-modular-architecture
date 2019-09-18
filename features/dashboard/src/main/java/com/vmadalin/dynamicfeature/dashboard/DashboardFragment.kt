@@ -1,9 +1,11 @@
 package com.vmadalin.dynamicfeature.dashboard
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.vmadalin.core.ui.base.BaseFragment
@@ -21,15 +23,15 @@ class DashboardFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupBottomNavigation(view)
+        setupBottomNavigation()
     }
 
     override fun onInitDependencyInjection() {
 
     }
 
-    private fun setupBottomNavigation(view: View) {
-        val navController = view.findNavController()
+    private fun setupBottomNavigation() {
+        val navController = findNavController(requireActivity(), R.id.nav_host_fragment)
         bottom_navigation.setupWithNavController(navController)
     }
 
