@@ -41,7 +41,6 @@ ext {
 
   kaptDependencies = [
     dagger       : "com.google.dagger:dagger-compiler:$daggerVersion",
-    daggerAndroid: "com.google.dagger:dagger-android-processor:$daggerVersion",
     databinding  : "com.android.databinding:compiler:$databindingVersion"
   ]
 
@@ -58,8 +57,6 @@ ext {
     fragmentKtx        : "androidx.fragment:fragment-ktx:$fragmentKtxVersion",
     constraintLayout   : "androidx.constraintlayout:constraintlayout:$contraintLayoutVersion",
     dagger             : "com.google.dagger:dagger:$daggerVersion",
-    daggerAndroid      : "com.google.dagger:dagger-android:$daggerVersion",
-    daggerSupport      : "com.google.dagger:dagger-android-support:$daggerVersion",
     rxKotlin           : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
     rxAndroid          : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
     timber             : "com.jakewharton.timber:timber:$timberVersion",

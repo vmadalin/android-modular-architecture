@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_characters_list_graph"
+    app:startDestination="@+id/characters_list_fragment">
+    <fragment
+        android:id="@+id/characters_list_fragment"
+        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment"
+        android:label="CharactersListFragment">
+        <action
+            android:id="@+id/action_charactersListFragment_to_character_detail_fragment"
+            app:destination="@id/character_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/character_detail_fragment"
+        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment"
+        android:label="CharacterDetailFragment">
+    </fragment>
+</navigation>

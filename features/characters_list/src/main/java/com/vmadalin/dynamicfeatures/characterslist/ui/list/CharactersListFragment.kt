@@ -48,7 +48,7 @@ class CharactersListFragment : BaseFragment() {
         })
 
         val binding = FragmentCharactersListBinding.inflate(inflater, container, false)
-        binding.charactersList.adapter = adapter
+        //binding.charactersList.adapter = adapter
         return binding.root
     }
 

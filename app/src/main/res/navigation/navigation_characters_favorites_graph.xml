@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_characters_favorites_graph"
+    app:startDestination="@+id/characters_favorites_fragment">
+    <fragment
+        android:id="@+id/characters_favorites_fragment"
+        android:name="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoritesFragment"
+        android:label="CharactersFavoriteFragment">
+    </fragment>
+</navigation>
