@@ -1,0 +1,9 @@
+ext.getLocalProperty = { propertyName ->
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    String property = properties.getProperty(propertyName)
+    if (property == null) {
+        throw new Exception("Not defined property")
+    }
+    return property
+}

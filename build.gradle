@@ -21,6 +21,7 @@ plugins {
 
 allprojects {
   buildscript {
+    apply from: rootProject.file('helper.gradle')
     apply from: rootProject.file('repositories.gradle')
     apply from: rootProject.file('android-config.gradle')
     apply from: rootProject.file('ktlint.gradle')
