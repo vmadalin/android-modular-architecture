@@ -19,15 +19,15 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
 import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
 
 class CharactersListAdapter(private val clickListener: CharacterClickListener) :
-    ListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(
+    PagedListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(
         CharacterDiffCallback()
     ) {
 
@@ -44,7 +44,7 @@ class CharactersListAdapter(private val clickListener: CharacterClickListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(clickListener, getItem(position))
+        getItem(position)?.let { holder.bind(clickListener, it) }
     }
 
     class ViewHolder(val binding: ListItemCharacterBinding) :

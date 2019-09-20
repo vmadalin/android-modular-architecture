@@ -19,6 +19,8 @@ package com.vmadalin.core.di
 import android.content.Context
 import com.vmadalin.core.di.modules.ContextModule
 import com.vmadalin.core.di.modules.NetworkModule
+import com.vmadalin.core.network.repositiories.MarvelRepository
+import com.vmadalin.core.network.services.MarvelService
 import dagger.Component
 import javax.inject.Singleton
 
@@ -30,4 +32,7 @@ import javax.inject.Singleton
 interface CoreComponent {
 
     fun context(): Context
+
+    fun marvelService(): MarvelService
+    fun marvelRepository(): MarvelRepository
 }

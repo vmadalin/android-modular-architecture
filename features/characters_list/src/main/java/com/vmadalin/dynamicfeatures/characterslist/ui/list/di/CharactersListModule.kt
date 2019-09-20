@@ -16,17 +16,36 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 
+import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
+import com.vmadalin.core.network.repositiories.MarvelRepository
+import com.vmadalin.dynamicfeatures.characterslist.data.CharactersPageDataSource
+import com.vmadalin.dynamicfeatures.characterslist.data.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 @Module
 class CharactersListModule(private val fragment: CharactersListFragment) {
 
+    @FeatureScope
     @Provides
-    fun providesCharactersListViewModel(): CharactersListViewModel {
-        return fragment.viewModel { CharactersListViewModel() }
+    fun providesCharactersListViewModel(dataFactory: CharactersPageDataSourceFactory): CharactersListViewModel {
+        return fragment.viewModel { CharactersListViewModel(CoroutineScope(Dispatchers.IO), dataFactory) }
+    }
+
+    @FeatureScope
+    @Provides
+    fun providesCharactersPageDataSourceFactory(dataSource: CharactersPageDataSource): CharactersPageDataSourceFactory {
+        return CharactersPageDataSourceFactory(dataSource)
+    }
+
+    @FeatureScope
+    @Provides
+    fun providesCharactersPageDataSource(repository: MarvelRepository): CharactersPageDataSource {
+        return CharactersPageDataSource(CoroutineScope(Dispatchers.IO), repository)
     }
 }

@@ -3,7 +3,7 @@ apply from: "$rootDir/common-android-library.gradle"
 android {
     buildTypes.each {
         try {
-            it.buildConfigField "String", "MARVEL_BASE_URL", "\"http://gateway.marvel.com\""
+            it.buildConfigField "String", "MARVEL_BASE_URL", "\"https://gateway.marvel.com\""
             it.buildConfigField "String", "MARVEL_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
             it.buildConfigField "String", "MARVEL_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
         } catch (ignored) {

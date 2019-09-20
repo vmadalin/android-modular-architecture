@@ -17,9 +17,9 @@
 package com.vmadalin.core.network.responses
 
 data class CharacterResponse(
-    var id: Int,
+    var id: Long,
     var name: String,
     var description: String,
     var thumbnail: CharacterThumbnailResponse,
-    var urls: CharacterUrlResponse
+    var urls: List<CharacterUrlResponse>
 )

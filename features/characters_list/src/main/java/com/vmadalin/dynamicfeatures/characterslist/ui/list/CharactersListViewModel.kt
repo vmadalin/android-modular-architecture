@@ -18,23 +18,40 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.vmadalin.dynamicfeatures.characterslist.data.CharactersPageDataSourceFactory
+import com.vmadalin.dynamicfeatures.characterslist.data.PAGE_INIT_ELEMENTS
+import com.vmadalin.dynamicfeatures.characterslist.data.PAGE_MAX_ELEMENTS
 import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.cancel
 import javax.inject.Inject
 
 class CharactersListViewModel
-@Inject constructor() :
-    ViewModel() {
+@Inject constructor(
+    private val coroutineScope: CoroutineScope,
+    private val dataSourceFactory: CharactersPageDataSourceFactory
+) : ViewModel() {
 
-    private val _charactersList = MutableLiveData<List<CharacterItem>>()
-    val charactersList: LiveData<List<CharacterItem>>
-        get() = _charactersList
+    //private var _charactersList = MutableLiveData<PagedList<CharacterItem>?>()
+    var charactersList: LiveData<PagedList<CharacterItem>?>
+        //get() = _charactersList
 
-    fun loadCharactersList() {
+    init {
+        val config = PagedList.Config.Builder()
+            .setInitialLoadSizeHint(PAGE_INIT_ELEMENTS)
+            .setPageSize(PAGE_MAX_ELEMENTS)
+            .setEnablePlaceholders(false)
+            .build()
+
+        charactersList = LivePagedListBuilder(dataSourceFactory, config).build()
     }
 
     override fun onCleared() {
         super.onCleared()
-        // subscription.dispose()
+        coroutineScope.cancel()
     }
 }

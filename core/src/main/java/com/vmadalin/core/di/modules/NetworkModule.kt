@@ -17,7 +17,8 @@
 package com.vmadalin.core.di.modules
 
 import com.vmadalin.core.BuildConfig
-import com.vmadalin.core.network.MarvelService
+import com.vmadalin.core.network.repositiories.MarvelRepository
+import com.vmadalin.core.network.services.MarvelService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -31,6 +32,18 @@ class NetworkModule {
 
     @Singleton
     @Provides
+    fun provideHttpClient(): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+        val clientBuilder = OkHttpClient.Builder()
+        if (BuildConfig.DEBUG) {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            clientBuilder.addInterceptor(httpLoggingInterceptor)
+        }
+        return clientBuilder.build()
+    }
+
+    @Singleton
+    @Provides
     fun provideMarvelService(): MarvelService {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.MARVEL_BASE_URL)
@@ -41,13 +54,8 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(): OkHttpClient {
-        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-        val clientBuilder = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            clientBuilder.addInterceptor(httpLoggingInterceptor)
-        }
-        return clientBuilder.build()
+    fun provideMarvelRepository(service: MarvelService): MarvelRepository {
+        return MarvelRepository(service)
     }
+
 }

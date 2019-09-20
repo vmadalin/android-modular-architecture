@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.network
+package com.vmadalin.core.network.services
 
-import androidx.annotation.Nullable
 import androidx.lifecycle.LiveData
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
@@ -26,11 +25,11 @@ import retrofit2.http.Query
 interface MarvelService {
 
     @GET("/v1/public/characters")
-    fun getCharacters(
+    suspend fun getCharacters(
         @Query("apikey") apiKey: String,
-        @Query("ts") timestamp: String,
         @Query("hash") hash: String,
-        @Nullable @Query("offset") offset: Int,
-        @Nullable @Query("limit") limit: Int
-    ): LiveData<BaseResponse<CharacterResponse>>
+        @Query("ts") timestamp: String,
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int
+    ): BaseResponse<CharacterResponse>
 }
