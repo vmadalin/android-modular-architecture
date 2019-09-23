@@ -1,0 +1,6 @@
+<resources>
+    <style name="CustomProgressDialog" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+</resources>

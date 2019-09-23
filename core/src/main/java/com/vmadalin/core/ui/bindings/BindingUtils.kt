@@ -30,6 +30,7 @@ fun setImageUrl(imageView: ImageView, url: String) {
         .with(imageView.context)
         .load(url)
         .transition(withCrossFade())
+        .centerCrop()
         .into(imageView)
 }
 

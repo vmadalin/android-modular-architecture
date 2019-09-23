@@ -46,6 +46,6 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
     @FeatureScope
     @Provides
     fun providesCharactersPageDataSource(repository: MarvelRepository): CharactersPageDataSource {
-        return CharactersPageDataSource(CoroutineScope(Dispatchers.IO), repository)
+        return CharactersPageDataSource(repository)
     }
 }

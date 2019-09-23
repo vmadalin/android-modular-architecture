@@ -24,8 +24,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
+import com.vmadalin.core.ui.customviews.ProgressBarDialog
+import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
+import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.di.DaggerCharactersComponent
+import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
 import timber.log.Timber
 import javax.inject.Inject
@@ -53,13 +57,15 @@ class CharactersListFragment : BaseFragment() {
     ): View {
         adapter = CharactersListAdapter(CharacterClickListener {})
         val binding = FragmentCharactersListBinding.inflate(inflater, container, false)
+        binding.charactersList.addItemDecoration(RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding))
         binding.charactersList.adapter = adapter
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.charactersList.observe(this) {
+
+        viewModel.charactersList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
     }

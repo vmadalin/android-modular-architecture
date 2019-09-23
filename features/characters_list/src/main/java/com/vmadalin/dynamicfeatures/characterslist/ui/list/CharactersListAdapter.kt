@@ -18,36 +18,24 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
 import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
 
 class CharactersListAdapter(private val clickListener: CharacterClickListener) :
-    PagedListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(
-        CharacterDiffCallback()
-    ) {
+    ListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(CharacterDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view: ListItemCharacterBinding = DataBindingUtil.inflate(
-            layoutInflater,
-            R.layout.list_item_character,
-            parent,
-            false)
-        return ViewHolder(
-            view
-        )
+        return ViewHolder(ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(clickListener, it) }
     }
 
-    class ViewHolder(val binding: ListItemCharacterBinding) :
+    class ViewHolder(private val binding: ListItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: CharacterClickListener, item: CharacterItem) {
             binding.clickListener = clickListener
@@ -55,15 +43,15 @@ class CharactersListAdapter(private val clickListener: CharacterClickListener) :
             binding.executePendingBindings()
         }
     }
-}
 
-class CharacterDiffCallback : DiffUtil.ItemCallback<CharacterItem>() {
-    override fun areItemsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean {
-        return oldItem.id == newItem.id
-    }
+    companion object CharacterDiffCallback : DiffUtil.ItemCallback<CharacterItem>() {
+        override fun areItemsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    override fun areContentsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean {
+            return oldItem == newItem
+        }
     }
 }
 

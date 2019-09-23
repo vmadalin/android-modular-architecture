@@ -2,4 +2,8 @@
 <resources>
     <dimen name="character_app_bar_height">200dp</dimen>
     <dimen name="character_container_padding">15dp</dimen>
+
+    <dimen name="character_list_item_size">150dp</dimen>
+    <dimen name="character_list_item_padding">10dp</dimen>
+    <dimen name="character_list_item_text_padding">15dp</dimen>
 </resources>

@@ -37,17 +37,11 @@ class CharactersListViewModel
 ) : ViewModel() {
 
     //private var _charactersList = MutableLiveData<PagedList<CharacterItem>?>()
-    var charactersList: LiveData<PagedList<CharacterItem>?>
+    var charactersList: LiveData<PagedList<CharacterItem>>
         //get() = _charactersList
 
     init {
-        val config = PagedList.Config.Builder()
-            .setInitialLoadSizeHint(PAGE_INIT_ELEMENTS)
-            .setPageSize(PAGE_MAX_ELEMENTS)
-            .setEnablePlaceholders(false)
-            .build()
-
-        charactersList = LivePagedListBuilder(dataSourceFactory, config).build()
+        charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
     }
 
     override fun onCleared() {
