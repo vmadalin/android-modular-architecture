@@ -20,18 +20,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
-import com.vmadalin.core.ui.customviews.ProgressBarDialog
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.di.DaggerCharactersComponent
-import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
-import timber.log.Timber
 import javax.inject.Inject
 
 class CharactersListFragment : BaseFragment() {
@@ -55,7 +52,11 @@ class CharactersListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        adapter = CharactersListAdapter(CharacterClickListener {})
+        adapter = CharactersListAdapter(CharacterClickListener { characterId ->
+            findNavController().navigate(
+                CharactersListFragmentDirections.actionCharactersListFragmentToCharacterDetailFragment(characterId)
+            )
+        })
         val binding = FragmentCharactersListBinding.inflate(inflater, container, false)
         binding.charactersList.addItemDecoration(RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding))
         binding.charactersList.adapter = adapter

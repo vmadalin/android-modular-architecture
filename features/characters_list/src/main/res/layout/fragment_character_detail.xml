@@ -35,9 +35,9 @@
                     android:contentDescription="@string/character_image_content_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
+                    app:imageUrl="@{character.imageUrl}"
                     app:layout_collapseMode="parallax"
                     tools:src="@tools:sample/avatars" />
-                    <!-- app:imageUrl="@{character.imageUrl}"-->
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
