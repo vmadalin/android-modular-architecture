@@ -20,8 +20,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
+import com.vmadalin.core.ui.customviews.ProgressBarDialog
+import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
@@ -33,6 +37,9 @@ class CharacterDetailFragment : BaseFragment() {
     lateinit var viewModel: CharacterDetailViewModel
 
     private lateinit var viewBinding: FragmentCharacterDetailBinding
+    private lateinit var viewDialog: ProgressBarDialog
+
+    private val args: CharacterDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +52,21 @@ class CharacterDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.loadCharacterDetail()
+        viewDialog = ProgressBarDialog(requireContext())
+        viewModel.state.observe(viewLifecycleOwner, Observer { viewState ->
+            when(viewState) {
+                is CharacterDetailViewState.Loading -> {
+                    viewDialog.show(R.string.character_detail_dialog_loading_text)
+                }
+                is CharacterDetailViewState.Success -> {
+                    viewDialog.dismiss()
+                }
+                is CharacterDetailViewState.Error -> {
+                    viewDialog.dismissWithErrorMessage(R.string.character_detail_dialog_error_text)
+                }
+            }
+        })
+        viewModel.loadCharacterDetail(args.characterId)
     }
 
     override fun onInitDependencyInjection() {
@@ -58,7 +79,7 @@ class CharacterDetailFragment : BaseFragment() {
     }
 
     override fun onInitDataBinding() {
-        //viewBinding.viewModel = viewModel
+        viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = viewLifecycleOwner
     }
 

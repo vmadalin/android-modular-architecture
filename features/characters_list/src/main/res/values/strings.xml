@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="character_detail_dialog_loading_text">Loading detail…</string>
+    <string name="character_detail_dialog_error_text">Error on obtain detail, please try later.</string>
+
     <string name="character_image_content_description">Image of the selected character</string>
 </resources>

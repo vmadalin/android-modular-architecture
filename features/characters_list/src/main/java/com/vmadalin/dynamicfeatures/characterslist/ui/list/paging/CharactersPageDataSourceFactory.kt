@@ -1,12 +1,11 @@
-package com.vmadalin.dynamicfeatures.characterslist.data
+package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.DataSource
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
-import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.Executors
 import javax.inject.Inject

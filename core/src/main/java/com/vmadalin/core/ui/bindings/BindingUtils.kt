@@ -25,7 +25,7 @@ import com.vmadalin.core.extensions.setGone
 import com.vmadalin.core.extensions.setInvisible
 
 @BindingAdapter("imageUrl")
-fun setImageUrl(imageView: ImageView, url: String) {
+fun setImageUrl(imageView: ImageView, url: String?) {
     Glide
         .with(imageView.context)
         .load(url)

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.characterslist.models
+package com.vmadalin.dynamicfeatures.characterslist.ui.list.model
 
 data class CharacterItem(
     var id: Long,

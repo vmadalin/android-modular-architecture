@@ -17,15 +17,11 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.vmadalin.dynamicfeatures.characterslist.data.CharactersPageDataSourceFactory
-import com.vmadalin.dynamicfeatures.characterslist.data.PAGE_INIT_ELEMENTS
-import com.vmadalin.dynamicfeatures.characterslist.data.PAGE_MAX_ELEMENTS
-import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEMENTS
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import javax.inject.Inject

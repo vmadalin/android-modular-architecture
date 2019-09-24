@@ -16,12 +16,55 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.vmadalin.core.network.repositiories.MarvelRepository
+import com.vmadalin.core.network.responses.BaseResponse
+import com.vmadalin.core.network.responses.CharacterResponse
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetail
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CharacterDetailViewModel : ViewModel() {
+class CharacterDetailViewModel @Inject constructor(
+    private val marvelRepository: MarvelRepository,
+    private val coroutineScope: CoroutineScope
+) : ViewModel() {
 
+    private val _state = MutableLiveData<CharacterDetailViewState>()
+    val state: LiveData<CharacterDetailViewState>
+        get() = _state
 
-    fun loadCharacterDetail() {
+    override fun onCleared() {
+        super.onCleared()
+        coroutineScope.cancel()
+    }
 
+    fun loadCharacterDetail(characterId: Long) {
+        _state.postValue(CharacterDetailViewState.Loading)
+        coroutineScope.launch {
+            try {
+                val result = marvelRepository.getCharacter(characterId)
+                val detail = transform(result)
+                _state.postValue(CharacterDetailViewState.Success(detail))
+            } catch (e: Exception) {
+                _state.postValue(CharacterDetailViewState.Error(e))
+            }
+        }
+    }
+
+    private fun transform(response: BaseResponse<CharacterResponse>): CharacterDetail {
+        val characterResponse = response.data.results.first()
+        return CharacterDetail(
+            id = characterResponse.id,
+            name = characterResponse.name,
+            description = characterResponse.description,
+            imageUrl = (characterResponse.thumbnail.path + "." + characterResponse.thumbnail.extension).replace(
+                "http",
+                "https"
+            )
+        )
     }
 }

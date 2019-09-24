@@ -5,7 +5,7 @@
     <data>
         <variable
             name="character"
-            type="com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem" />
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem" />
 
         <variable
             name="clickListener"

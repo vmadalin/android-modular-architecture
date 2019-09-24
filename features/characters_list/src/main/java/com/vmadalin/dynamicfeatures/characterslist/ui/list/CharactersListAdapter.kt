@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
-import com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 
 class CharactersListAdapter(private val clickListener: CharacterClickListener) :
     ListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(CharacterDiffCallback) {

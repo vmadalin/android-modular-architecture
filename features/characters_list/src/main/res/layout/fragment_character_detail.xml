@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="character"
-            type="com.vmadalin.dynamicfeatures.characterslist.models.CharacterItem" />
+            name="viewModel"
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -27,7 +27,7 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{character.name}">
+                app:title="@{viewModel.state.data().name}">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                     android:contentDescription="@string/character_image_content_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{character.imageUrl}"
+                    app:imageUrl="@{viewModel.state.data().imageUrl}"
                     app:layout_collapseMode="parallax"
                     tools:src="@tools:sample/avatars" />
 
@@ -62,7 +62,7 @@
                     style="?android:attr/textAppearanceLarge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{character.name}"
+                    android:text="@{viewModel.state.data().name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -76,7 +76,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/character_name"
-                    app:text="@{character.description}"
+                    app:text="@{viewModel.state.data().description}"
                     tools:text="Character description" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

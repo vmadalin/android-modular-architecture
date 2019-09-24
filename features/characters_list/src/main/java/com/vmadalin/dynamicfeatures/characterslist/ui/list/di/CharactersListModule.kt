@@ -19,8 +19,8 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
-import com.vmadalin.dynamicfeatures.characterslist.data.CharactersPageDataSource
-import com.vmadalin.dynamicfeatures.characterslist.data.CharactersPageDataSourceFactory
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
 import dagger.Module
@@ -40,12 +40,16 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
     @FeatureScope
     @Provides
     fun providesCharactersPageDataSourceFactory(dataSource: CharactersPageDataSource): CharactersPageDataSourceFactory {
-        return CharactersPageDataSourceFactory(dataSource)
+        return CharactersPageDataSourceFactory(
+            dataSource
+        )
     }
 
     @FeatureScope
     @Provides
     fun providesCharactersPageDataSource(repository: MarvelRepository): CharactersPageDataSource {
-        return CharactersPageDataSource(repository)
+        return CharactersPageDataSource(
+            repository
+        )
     }
 }

@@ -16,17 +16,24 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
 
+import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
+import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 @Module
 class CharacterDetailModule(private val fragment: CharacterDetailFragment) {
 
+    @FeatureScope
     @Provides
-    fun providesCharacterDetailViewModel(): CharacterDetailViewModel {
-        return fragment.viewModel { CharacterDetailViewModel() }
+    fun providesCharacterDetailViewModel(repository: MarvelRepository): CharacterDetailViewModel {
+        return fragment.viewModel {
+            CharacterDetailViewModel(repository, CoroutineScope(Dispatchers.IO))
+        }
     }
 }
