@@ -27,8 +27,8 @@ import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
-import com.vmadalin.dynamicfeatures.characterslist.di.DaggerCharactersComponent
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersListComponent
 import javax.inject.Inject
 
 class CharactersListFragment : BaseFragment() {
@@ -36,10 +36,27 @@ class CharactersListFragment : BaseFragment() {
     @Inject
     lateinit var viewModel: CharactersListViewModel
 
-    private lateinit var adapter: CharactersListAdapter
+    private lateinit var viewBinding: FragmentCharactersListBinding
+    private lateinit var viewAdapter: CharactersListAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        viewBinding = FragmentCharactersListBinding.inflate(inflater, container, false)
+        return viewBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.charactersList.observe(viewLifecycleOwner) {
+            viewAdapter.submitList(it)
+        }
+    }
 
     override fun onInitDependencyInjection() {
-        DaggerCharactersComponent
+        DaggerCharactersListComponent
             .builder()
             .coreComponent(coreComponent(requireContext()))
             .charactersListModule(CharactersListModule(this))
@@ -47,27 +64,15 @@ class CharactersListFragment : BaseFragment() {
             .inject(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        adapter = CharactersListAdapter(CharacterClickListener { characterId ->
+    override fun onInitDataBinding() {
+        viewAdapter = CharactersListAdapter(CharacterClickListener { characterId ->
             findNavController().navigate(
                 CharactersListFragmentDirections.actionCharactersListFragmentToCharacterDetailFragment(characterId)
             )
         })
-        val binding = FragmentCharactersListBinding.inflate(inflater, container, false)
-        binding.charactersList.addItemDecoration(RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding))
-        binding.charactersList.adapter = adapter
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.charactersList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
+        viewBinding.charactersList.addItemDecoration(RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding))
+        viewBinding.charactersList.adapter = viewAdapter
+        viewBinding.lifecycleOwner = viewLifecycleOwner
     }
 }

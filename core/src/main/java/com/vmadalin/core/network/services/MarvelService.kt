@@ -16,13 +16,21 @@
 
 package com.vmadalin.core.network.services
 
-import androidx.lifecycle.LiveData
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MarvelService {
+
+    @GET("/v1/public/characters/{id}")
+    suspend fun getCharacter(
+        @Path("id") id: Long,
+        @Query("apikey") apiKey: String,
+        @Query("hash") hash: String,
+        @Query("ts") timestamp: String
+    ): BaseResponse<CharacterResponse>
 
     @GET("/v1/public/characters")
     suspend fun getCharacters(
@@ -32,4 +40,5 @@ interface MarvelService {
         @Query("offset") offset: Int,
         @Query("limit") limit: Int
     ): BaseResponse<CharacterResponse>
+
 }

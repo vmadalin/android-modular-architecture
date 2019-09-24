@@ -23,7 +23,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class CharactersDetailModule(private val fragment: CharacterDetailFragment) {
+class CharacterDetailModule(private val fragment: CharacterDetailFragment) {
 
     @Provides
     fun providesCharacterDetailViewModel(): CharacterDetailViewModel {

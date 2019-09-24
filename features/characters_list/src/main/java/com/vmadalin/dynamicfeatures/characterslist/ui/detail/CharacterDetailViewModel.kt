@@ -18,4 +18,10 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
 import androidx.lifecycle.ViewModel
 
-class CharacterDetailViewModel : ViewModel()
+class CharacterDetailViewModel : ViewModel() {
+
+
+    fun loadCharacterDetail() {
+
+    }
+}

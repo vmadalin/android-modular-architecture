@@ -20,32 +20,46 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
-import com.vmadalin.dynamicfeatures.characterslist.R
+import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
+import javax.inject.Inject
 
 class CharacterDetailFragment : BaseFragment() {
 
-    override fun onInitDependencyInjection() {
-    }
+    @Inject
+    lateinit var viewModel: CharacterDetailViewModel
 
-    companion object {
-        fun newInstance() =
-            CharacterDetailFragment()
-    }
-
-    private lateinit var viewModel: CharacterDetailViewModel
+    private lateinit var viewBinding: FragmentCharacterDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_character_detail, container, false)
+        viewBinding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
+        return viewBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CharacterDetailViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.loadCharacterDetail()
     }
+
+    override fun onInitDependencyInjection() {
+        DaggerCharacterDetailComponent
+            .builder()
+            .coreComponent(coreComponent(requireContext()))
+            .characterDetailModule(CharacterDetailModule(this))
+            .build()
+            .inject(this)
+    }
+
+    override fun onInitDataBinding() {
+        //viewBinding.viewModel = viewModel
+        viewBinding.lifecycleOwner = viewLifecycleOwner
+    }
+
 }

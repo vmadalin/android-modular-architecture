@@ -17,14 +17,22 @@
 package com.vmadalin.core.ui.base
 
 import android.content.Context
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment() {
 
     abstract fun onInitDependencyInjection()
+    abstract fun onInitDataBinding()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onInitDependencyInjection()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onInitDataBinding()
     }
 }
