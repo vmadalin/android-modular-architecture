@@ -1,4 +1,6 @@
 <resources>
     <!--Application name-->
     <string name="app_name">KotlinSampleApp</string>
+
+    <string name="menu_theme">Toggle Theme</string>
 </resources>

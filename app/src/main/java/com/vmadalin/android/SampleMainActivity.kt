@@ -16,15 +16,28 @@
 
 package com.vmadalin.android
 
+import android.app.ActivityOptions
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.CheckBox
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.appcompat.widget.TooltipCompat
+import androidx.core.graphics.ColorUtils
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.vmadalin.android.utils.ThemeUtils
 import com.vmadalin.core.extensions.setGone
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.delay
 
 class SampleMainActivity : AppCompatActivity() {
 
@@ -44,6 +57,28 @@ class SampleMainActivity : AppCompatActivity() {
         setupToolbar()
         setupBottomNavigation()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+
+        menu.findItem(R.id.menu_theme).actionView.apply {
+            if (this is AppCompatCheckBox) {
+                setButtonDrawable(R.drawable.asl_theme)
+                isChecked = ThemeUtils.isDarkTheme(this@SampleMainActivity)
+                setOnCheckedChangeListener { _, isChecked ->
+                    postDelayed( {
+                        AppCompatDelegate.setDefaultNightMode(if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
+                        delegate.applyDayNight()
+                    }, 1000L)
+                }
+            }
+        }
+        return true
+    }
+
+    // ============================================================================================
+    //  Private methods
+    // ============================================================================================
 
     private fun setupToolbar() {
         setSupportActionBar(toolbar)

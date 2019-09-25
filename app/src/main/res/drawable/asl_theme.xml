@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/night"
+        android:state_checked="true"
+        android:drawable="@drawable/ic_theme_night" />
+
+    <item
+        android:id="@+id/day"
+        android:drawable="@drawable/ic_theme_day" />
+
+    <transition
+        android:fromId="@id/night"
+        android:toId="@id/day"
+        android:drawable="@drawable/avd_theme_night_to_day" />
+
+    <transition
+        android:fromId="@id/day"
+        android:toId="@id/night"
+        android:drawable="@drawable/avd_theme_day_to_night" />
+
+</animated-selector>
