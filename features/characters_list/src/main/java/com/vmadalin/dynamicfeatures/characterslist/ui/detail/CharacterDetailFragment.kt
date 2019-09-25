@@ -21,6 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
@@ -29,6 +30,7 @@ import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
+import kotlinx.android.synthetic.main.fragment_character_detail.*
 import javax.inject.Inject
 
 class CharacterDetailFragment : BaseFragment() {
@@ -67,6 +69,10 @@ class CharacterDetailFragment : BaseFragment() {
             }
         })
         viewModel.loadCharacterDetail(args.characterId)
+
+        toolbar.setNavigationOnClickListener {
+            it.findNavController().navigateUp()
+        }
     }
 
     override fun onInitDependencyInjection() {

@@ -6,6 +6,7 @@ ext {
   ktlintVersion = '0.31.0'
   moshiVersion = '1.8.0'
   detektVersion = '1.0.0'
+  swipeRecycleViewVersion = '0.4.1'
   recycleViewVersion = '1.1.0-alpha06'
   appSupportVersion = '28.0.0'
   appCompatVersion = '1.0.2'
@@ -50,6 +51,7 @@ ext {
     coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
     coroutinesAndroid  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
     cardView           : "com.android.support:cardview-v7:$appSupportVersion",
+    swipeRecycleView   : "com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:$swipeRecycleViewVersion",
     recycleView        : "androidx.recyclerview:recyclerview:$recycleViewVersion",
     navigationFragment : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
     navigationUI       : "androidx.navigation:navigation-ui-ktx:$navigationVersion",

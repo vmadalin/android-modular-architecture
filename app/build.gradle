@@ -67,7 +67,6 @@ android {
     dynamicFeatures = [
         ":features:characters_list",
         ":features:characters_favorites",
-        ":features:dashboard"
     ]
 }
 

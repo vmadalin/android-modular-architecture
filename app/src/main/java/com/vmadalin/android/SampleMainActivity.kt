@@ -18,11 +18,42 @@ package com.vmadalin.android
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.vmadalin.core.extensions.setGone
+import kotlinx.android.synthetic.main.activity_main.*
 
 class SampleMainActivity : AppCompatActivity() {
+
+    private val navController: NavController by lazy { findNavController(R.id.nav_host_fragment) }
+    private val navigationFragmentsId = setOf(
+        R.id.characters_list_fragment,
+        R.id.characters_favorites_fragment
+    )
+    private val appBarConfiguration: AppBarConfiguration by lazy {
+        AppBarConfiguration.Builder(navigationFragmentsId).build()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setupToolbar()
+        setupBottomNavigation()
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    private fun setupBottomNavigation() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottom_navigation.setGone(!navigationFragmentsId.contains(destination.id))
+        }
+        bottom_navigation.setupWithNavController(navController)
     }
 }

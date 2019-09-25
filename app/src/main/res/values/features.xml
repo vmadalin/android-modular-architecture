@@ -3,7 +3,6 @@
     tools:ignore="UnusedResources" >
 
     <!--Dynamic module titles-->
-    <string name="feature_dashboard">Dashboard</string>
     <string name="feature_characters_list">Characters List</string>
     <string name="feature_characters_favorite">Characters Favorite</string>
 </resources>

@@ -1,1 +1,0 @@
-apply from: "$rootDir/common-android-dynamic-feature.gradle"

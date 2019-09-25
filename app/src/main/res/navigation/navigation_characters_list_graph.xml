@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_characters_list_graph"
-    app:startDestination="@+id/characters_list_fragment">
+    app:startDestination="@+id/characters_list_fragment"
+    tools:ignore="UnusedNavigation">
     <fragment
         android:id="@+id/characters_list_fragment"
         android:name="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment"
-        android:label="CharactersListFragment">
+        android:label="Characters">
         <action
             android:id="@+id/action_charactersListFragment_to_character_detail_fragment"
-            app:destination="@+id/character_detail_fragment" />
+            app:destination="@+id/character_detail_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/characters_list_fragment"/>
     </fragment>
     <fragment
         android:id="@+id/character_detail_fragment"
         android:name="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment"
-        android:label="CharacterDetailFragment">
+        android:label="Detail">
         <argument
-            android:name="characterId"
+            android:name="character_id"
             app:argType="long" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="sample://detail/{character_id}"/>
     </fragment>
 </navigation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="character_app_bar_height">200dp</dimen>
+    <dimen name="character_app_bar_height">300dp</dimen>
     <dimen name="character_container_padding">15dp</dimen>
 
     <dimen name="character_list_item_size">150dp</dimen>
