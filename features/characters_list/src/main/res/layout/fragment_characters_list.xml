@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:theme="@style/AppTheme.BackgroundStyle"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
+            app:spanCount="@integer/characters_list_spans"
             tools:listitem="@layout/list_item_character" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
