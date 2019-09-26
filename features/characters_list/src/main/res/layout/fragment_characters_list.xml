@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SampleMainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/characters_list"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@style/AppTheme.BackgroundStyle"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/list_item_character" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/characters_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/AppTheme.BackgroundStyle"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/list_item_character" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </layout>

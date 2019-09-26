@@ -40,6 +40,10 @@ class CharactersListViewModel
         charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
     }
 
+    fun refreshCharactersList() {
+        charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
+    }
+
     override fun onCleared() {
         super.onCleared()
         coroutineScope.cancel()

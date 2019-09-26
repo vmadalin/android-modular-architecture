@@ -37,7 +37,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.vmadalin.android.utils.ThemeUtils
 import com.vmadalin.core.extensions.setGone
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.delay
 
 class SampleMainActivity : AppCompatActivity() {
 
@@ -87,7 +86,13 @@ class SampleMainActivity : AppCompatActivity() {
 
     private fun setupBottomNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            bottom_navigation.setGone(!navigationFragmentsId.contains(destination.id))
+            if (navigationFragmentsId.contains(destination.id)) {
+                bottom_navigation.setGone(false)
+                app_bar_layout.setGone(false)
+            } else {
+                bottom_navigation.setGone(true)
+                app_bar_layout.setGone(true)
+            }
         }
         bottom_navigation.setupWithNavController(navController)
     }

@@ -31,6 +31,7 @@ dependencies {
     implementation project(':core')
     kaptDependencies.each { _, url -> kapt url }
     projectDependencies.each { _, url -> implementation url }
+    annotationProcessorDependencies.each { _, url -> annotationProcessor url }
     testImplementationDependencies.each { _, url -> testImplementation url }
     androidTestImplementationDependencies.each { _, url -> androidTestImplementation url }
 }

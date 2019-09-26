@@ -51,6 +51,9 @@ class CharactersListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.charactersList.observe(viewLifecycleOwner) {
+            if (viewBinding.swipeRefresh.isRefreshing) {
+                viewBinding.swipeRefresh.isRefreshing = false
+            }
             viewAdapter.submitList(it)
         }
     }
@@ -74,5 +77,8 @@ class CharactersListFragment : BaseFragment() {
         viewBinding.charactersList.addItemDecoration(RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding))
         viewBinding.charactersList.adapter = viewAdapter
         viewBinding.lifecycleOwner = viewLifecycleOwner
+        viewBinding.swipeRefresh.setOnRefreshListener {
+            viewModel.refreshCharactersList()
+        }
     }
 }

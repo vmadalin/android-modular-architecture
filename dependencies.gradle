@@ -78,6 +78,10 @@ ext {
     leakcanary: "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
   ]
 
+  annotationProcessorDependencies = [
+    glide: "com.github.bumptech.glide:compiler:$glideVersion",
+  ]
+
   testImplementationDependencies = [
     junit       : "junit:junit:$jUnitVersion",
     mockito     : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion",
