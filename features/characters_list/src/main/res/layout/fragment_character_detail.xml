@@ -16,8 +16,9 @@
         tools:ignore="MergeRootFrame">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/character_app_bar_height"
+            android:layout_height="@dimen/character_detail_app_bar_height"
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -58,40 +59,52 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingBottom="0dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            style="@style/AppTheme.BackgroundStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="@dimen/character_container_padding"
-                android:paddingTop="@dimen/character_container_padding"
-                android:paddingEnd="@dimen/character_container_padding">
+                android:paddingStart="@dimen/character_detail_container_padding"
+                android:paddingTop="@dimen/character_detail_container_padding"
+                android:paddingEnd="@dimen/character_detail_container_padding">
 
                 <TextView
                     android:id="@+id/character_name"
-                    style="?android:attr/textAppearanceLarge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.state.data().name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Character name" />
+                    tools:text="Character name"
+                    style="@style/TextAppearance.Title" />
 
                 <TextView
                     android:id="@+id/character_description"
-                    style="?android:attr/textAppearanceMedium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.state.data().description}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/character_name"
-                    app:text="@{viewModel.state.data().description}"
-                    tools:text="Character description" />
+                    tools:text="Character description"
+                    style="@style/TextAppearance.Body" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_favorite_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/character_detail_floating_button_margin"
+            android:tint="@color/primary"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="bottom|end"
+            app:srcCompat="@drawable/ic_favorites"
+            style="@style/Widget.MaterialComponents.FloatingActionButton" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
