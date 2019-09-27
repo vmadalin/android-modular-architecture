@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="placeholders">
+        <item>#eeeeee</item>
+        <item>#e0e0e0</item>
+        <item>#aeaeae</item>
+        <item>#bdbdbd</item>
+        <item>#cfcfcf</item>
+        <item>#8d8d8d</item>
+        <item>#9e9e9e</item>
+        <item>#707070</item>
+        <item>#757575</item>
+        <item>#616161</item>
+    </string-array>
+</resources>

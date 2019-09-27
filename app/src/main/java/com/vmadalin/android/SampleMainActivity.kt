@@ -16,19 +16,11 @@
 
 package com.vmadalin.android
 
-import android.app.ActivityOptions
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.CheckBox
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatCheckBox
-import androidx.appcompat.widget.TooltipCompat
-import androidx.core.graphics.ColorUtils
-import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration

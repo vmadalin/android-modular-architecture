@@ -16,20 +16,28 @@
 
 package com.vmadalin.core.ui.bindings
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.vmadalin.core.R
 import com.vmadalin.core.extensions.setGone
 import com.vmadalin.core.extensions.setInvisible
+import kotlin.random.Random
+
 
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: ImageView, url: String?) {
+    val placeHolders = imageView.context.resources.getStringArray(R.array.placeholders)
+    val placeholderColor = placeHolders[Random.nextInt(placeHolders.size)]
     Glide
         .with(imageView.context)
         .load(url)
         .transition(withCrossFade())
+        .placeholder(ColorDrawable(Color.parseColor(placeholderColor)))
         .centerCrop()
         .into(imageView)
 }
