@@ -57,8 +57,13 @@ class SampleMainActivity : AppCompatActivity() {
                 setButtonDrawable(R.drawable.asl_theme)
                 isChecked = ThemeUtils.isDarkTheme(this@SampleMainActivity)
                 setOnCheckedChangeListener { _, isChecked ->
-                    postDelayed( {
-                        AppCompatDelegate.setDefaultNightMode(if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
+                    postDelayed({
+                        AppCompatDelegate.setDefaultNightMode(
+                            if (isChecked)
+                                AppCompatDelegate.MODE_NIGHT_YES
+                            else
+                                AppCompatDelegate.MODE_NIGHT_NO
+                        )
                         delegate.applyDayNight()
                     }, 1000L)
                 }

@@ -40,5 +40,4 @@ interface MarvelService {
         @Query("offset") offset: Int,
         @Query("limit") limit: Int
     ): BaseResponse<CharacterResponse>
-
 }

@@ -70,11 +70,14 @@ class CharactersListFragment : BaseFragment() {
     override fun onInitDataBinding() {
         viewAdapter = CharactersListAdapter(CharacterClickListener { characterId ->
             findNavController().navigate(
-                CharactersListFragmentDirections.actionCharactersListFragmentToCharacterDetailFragment(characterId)
+                CharactersListFragmentDirections
+                    .actionCharactersListFragmentToCharacterDetailFragment(characterId)
             )
         })
 
-        viewBinding.charactersList.addItemDecoration(RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding))
+        viewBinding.charactersList.addItemDecoration(
+            RecyclerViewItemDecoration(resources, R.dimen.character_list_item_padding)
+        )
         viewBinding.charactersList.adapter = viewAdapter
         viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.swipeRefresh.setOnRefreshListener {

@@ -19,12 +19,12 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEMENTS
-import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
-import javax.inject.Inject
 
 class CharactersListViewModel
 @Inject constructor(
@@ -32,9 +32,9 @@ class CharactersListViewModel
     private val dataSourceFactory: CharactersPageDataSourceFactory
 ) : ViewModel() {
 
-    //private var _charactersList = MutableLiveData<PagedList<CharacterItem>?>()
+    // private var _charactersList = MutableLiveData<PagedList<CharacterItem>?>()
     var charactersList: LiveData<PagedList<CharacterItem>>
-        //get() = _charactersList
+        // get() = _charactersList
 
     init {
         charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)

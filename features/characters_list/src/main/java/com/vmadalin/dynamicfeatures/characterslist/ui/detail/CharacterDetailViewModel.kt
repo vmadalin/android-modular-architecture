@@ -23,10 +23,10 @@ import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetail
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class CharacterDetailViewModel @Inject constructor(
     private val marvelRepository: MarvelRepository,
@@ -61,7 +61,8 @@ class CharacterDetailViewModel @Inject constructor(
             id = characterResponse.id,
             name = characterResponse.name,
             description = characterResponse.description,
-            imageUrl = (characterResponse.thumbnail.path + "." + characterResponse.thumbnail.extension).replace(
+            imageUrl = (characterResponse.thumbnail.path +
+                "." + characterResponse.thumbnail.extension).replace(
                 "http",
                 "https"
             )

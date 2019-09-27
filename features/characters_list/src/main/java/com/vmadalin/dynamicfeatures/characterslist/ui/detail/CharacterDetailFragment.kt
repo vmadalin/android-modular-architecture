@@ -30,8 +30,8 @@ import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
-import kotlinx.android.synthetic.main.fragment_character_detail.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_character_detail.*
 
 class CharacterDetailFragment : BaseFragment() {
 
@@ -56,7 +56,7 @@ class CharacterDetailFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewDialog = ProgressBarDialog(requireContext())
         viewModel.state.observe(viewLifecycleOwner, Observer { viewState ->
-            when(viewState) {
+            when (viewState) {
                 is CharacterDetailViewState.Loading -> {
                     viewDialog.show(R.string.character_detail_dialog_loading_text)
                 }
@@ -88,5 +88,4 @@ class CharacterDetailFragment : BaseFragment() {
         viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = viewLifecycleOwner
     }
-
 }

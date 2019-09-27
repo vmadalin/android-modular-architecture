@@ -57,5 +57,4 @@ class NetworkModule {
     fun provideMarvelRepository(service: MarvelService): MarvelRepository {
         return MarvelRepository(service)
     }
-
 }

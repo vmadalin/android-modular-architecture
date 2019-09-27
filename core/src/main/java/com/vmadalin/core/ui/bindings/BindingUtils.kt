@@ -28,7 +28,6 @@ import com.vmadalin.core.extensions.setGone
 import com.vmadalin.core.extensions.setInvisible
 import kotlin.random.Random
 
-
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: ImageView, url: String?) {
     val placeHolders = imageView.context.resources.getStringArray(R.array.placeholders)

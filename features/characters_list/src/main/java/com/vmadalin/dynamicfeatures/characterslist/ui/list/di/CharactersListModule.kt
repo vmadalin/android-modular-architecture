@@ -19,10 +19,10 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
-import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource
-import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineScope
@@ -33,13 +33,19 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
 
     @FeatureScope
     @Provides
-    fun providesCharactersListViewModel(dataFactory: CharactersPageDataSourceFactory): CharactersListViewModel {
-        return fragment.viewModel { CharactersListViewModel(CoroutineScope(Dispatchers.IO), dataFactory) }
+    fun providesCharactersListViewModel(
+        dataFactory: CharactersPageDataSourceFactory
+    ): CharactersListViewModel {
+        return fragment.viewModel {
+            CharactersListViewModel(CoroutineScope(Dispatchers.IO), dataFactory)
+        }
     }
 
     @FeatureScope
     @Provides
-    fun providesCharactersPageDataSourceFactory(dataSource: CharactersPageDataSource): CharactersPageDataSourceFactory {
+    fun providesCharactersPageDataSourceFactory(
+        dataSource: CharactersPageDataSource
+    ): CharactersPageDataSourceFactory {
         return CharactersPageDataSourceFactory(
             dataSource
         )
@@ -47,7 +53,9 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
 
     @FeatureScope
     @Provides
-    fun providesCharactersPageDataSource(repository: MarvelRepository): CharactersPageDataSource {
+    fun providesCharactersPageDataSource(
+        repository: MarvelRepository
+    ): CharactersPageDataSource {
         return CharactersPageDataSource(
             repository
         )
