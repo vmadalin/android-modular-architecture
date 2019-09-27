@@ -13,7 +13,7 @@
             type="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharacterClickListener" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="@{() -> clickListener.onClick(character)}"
@@ -30,6 +30,7 @@
                 android:id="@+id/character_image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/character_list_item_size"
+                android:scaleType="centerCrop"
                 app:imageUrl="@{character.imageUrl}"
                 app:layout_constraintBottom_toTopOf="@+id/character_name"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +52,6 @@
                 style="@style/TextAppearance.CardTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

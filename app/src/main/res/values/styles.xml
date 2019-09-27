@@ -6,15 +6,12 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
-    <style name="AppTheme.BarStyle">
-        <item name="android:background">@color/primary</item>
-    </style>
-
     <style name="AppTheme.BackgroundStyle">
         <item name="android:background">@color/primaryLight</item>
     </style>
 
     <style name="AppTheme.SurfaceStyle">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
         <item name="android:background">@color/primary</item>
     </style>
 

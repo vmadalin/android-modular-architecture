@@ -18,14 +18,14 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 
 class CharactersListAdapter(private val clickListener: CharacterClickListener) :
-    ListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(CharacterDiffCallback) {
+    PagedListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(CharacterDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context)))
