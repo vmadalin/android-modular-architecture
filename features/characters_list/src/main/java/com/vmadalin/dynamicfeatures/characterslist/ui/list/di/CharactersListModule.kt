@@ -57,7 +57,8 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
         repository: MarvelRepository
     ): CharactersPageDataSource {
         return CharactersPageDataSource(
-            repository
+            repository,
+            CoroutineScope(Dispatchers.IO)
         )
     }
 }

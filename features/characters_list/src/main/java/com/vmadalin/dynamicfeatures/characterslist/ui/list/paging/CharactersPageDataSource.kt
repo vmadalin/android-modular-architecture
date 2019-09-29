@@ -16,58 +16,55 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
-import androidx.paging.PageLoadType
-import androidx.paging.PagedSource
+import android.util.Log
+import androidx.paging.PageKeyedDataSource
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 const val PAGE_INIT_ELEMENTS = 0
 const val PAGE_MAX_ELEMENTS = 50
 
 class CharactersPageDataSource @Inject constructor(
-    private val repository: MarvelRepository
-) : PagedSource<Int, CharacterItem>() {
+    private val repository: MarvelRepository,
+    private val scope: CoroutineScope
+) : PageKeyedDataSource<Int, CharacterItem>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterItem> =
-        when (params.loadType) {
-            PageLoadType.REFRESH -> loadInitial(params)
-            PageLoadType.START -> loadBefore()
-            PageLoadType.END -> loadAfter(params)
+    override fun loadInitial(
+        params: LoadInitialParams<Int>,
+        callback: LoadInitialCallback<Int, CharacterItem>
+    ) {
+        scope.launch {
+            val response = repository.getCharacters(
+                PAGE_INIT_ELEMENTS,
+                PAGE_MAX_ELEMENTS
+            )
+            val data = getCharacterItems(response)
+            callback.onResult(data, null, PAGE_MAX_ELEMENTS)
         }
-
-    private suspend fun loadInitial(params: LoadParams<Int>): LoadResult<Int, CharacterItem> {
-        val response = repository.getCharacters(
-            PAGE_INIT_ELEMENTS,
-            PAGE_MAX_ELEMENTS
-        )
-        val data = getCharacterItems(response)
-        return LoadResult(
-            data = data,
-            nextKey = response.data.offset + PAGE_MAX_ELEMENTS,
-            prevKey = response.data.offset - PAGE_MAX_ELEMENTS
-        )
     }
 
-    private fun loadBefore(): LoadResult<Int, CharacterItem> {
-        throw NotImplementedError()
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
+        scope.launch( CoroutineExceptionHandler { _, throwable ->
+
+        }) {
+            val response = repository.getCharacters(
+                params.key,
+                PAGE_MAX_ELEMENTS
+            )
+            val data = getCharacterItems(response)
+            callback.onResult(data, params.key + PAGE_MAX_ELEMENTS)
+        }
     }
 
-    private suspend fun loadAfter(params: LoadParams<Int>): LoadResult<Int, CharacterItem> {
-        val response = repository.getCharacters(
-            PAGE_INIT_ELEMENTS,
-            PAGE_MAX_ELEMENTS
-        )
-        val data = getCharacterItems(response)
-        return LoadResult(
-            data = data,
-            nextKey = response.data.offset + PAGE_MAX_ELEMENTS,
-            prevKey = response.data.offset - PAGE_MAX_ELEMENTS
-        )
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
+
     }
 
     private fun getCharacterItems(response: BaseResponse<CharacterResponse>): List<CharacterItem> {
@@ -84,7 +81,4 @@ class CharactersPageDataSource @Inject constructor(
         }
     }
 
-    private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
-        Timber.e("An error happened: ${e.message}")
-    }
 }

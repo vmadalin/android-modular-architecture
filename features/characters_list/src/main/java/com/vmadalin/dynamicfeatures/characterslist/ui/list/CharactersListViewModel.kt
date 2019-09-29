@@ -18,6 +18,7 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
@@ -37,11 +38,11 @@ class CharactersListViewModel
         // get() = _charactersList
 
     init {
-        charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
+        charactersList = LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
     }
 
     fun refreshCharactersList() {
-        charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
+        //charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
     }
 
     override fun onCleared() {
