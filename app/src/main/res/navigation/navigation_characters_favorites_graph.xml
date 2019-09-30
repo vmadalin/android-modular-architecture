@@ -7,7 +7,7 @@
     tools:ignore="UnusedNavigation">
     <fragment
         android:id="@+id/characters_favorites_fragment"
-        android:name="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoritesFragment"
+        android:name="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteFragment"
         android:label="Favorites">
     </fragment>
 </navigation>

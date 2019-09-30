@@ -7,11 +7,11 @@ class CharacterFavoriteRepository @Inject constructor(
     private val characterFavoriteDao: CharacterFavoriteDao
 ) {
 
-    fun getCharacterFavorite(characterFavoriteId: Long): LiveData<CharacterFavorite> {
+    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite {
         return characterFavoriteDao.getCharacterFavorite(characterFavoriteId)
     }
 
-    fun getAllCharactersFavorite(): LiveData<List<CharacterFavorite>> {
+    suspend fun getAllCharactersFavorite(): List<CharacterFavorite> {
         return characterFavoriteDao.getAllCharactersFavorite()
     }
 

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="characters_favorite_list_empty_text">Your favorite characters list is empty</string>
+</resources>

@@ -42,7 +42,7 @@ fun setImageUrl(imageView: ImageView, url: String?) {
 }
 
 @BindingAdapter("visibleOrGone")
-fun setGone(view: View, hide: Boolean) = view.setGone(hide)
+fun setGone(view: View, show: Boolean) = view.setGone(!show)
 
 @BindingAdapter("visible")
-fun setInvisible(view: View, hide: Boolean) = view.setInvisible(hide)
+fun setInvisible(view: View, show: Boolean) = view.setInvisible(!show)
