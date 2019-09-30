@@ -16,6 +16,7 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
 
+import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
@@ -31,9 +32,15 @@ class CharacterDetailModule(private val fragment: CharacterDetailFragment) {
 
     @FeatureScope
     @Provides
-    fun providesCharacterDetailViewModel(repository: MarvelRepository): CharacterDetailViewModel {
+    fun providesCharacterDetailViewModel(
+        repository: MarvelRepository,
+        characterFavoriteRepository: CharacterFavoriteRepository
+    ): CharacterDetailViewModel {
         return fragment.viewModel {
-            CharacterDetailViewModel(repository, CoroutineScope(Dispatchers.IO))
+            CharacterDetailViewModel(
+                marvelRepository = repository,
+                characterFavoriteRepository = characterFavoriteRepository,
+                coroutineScope = CoroutineScope(Dispatchers.IO))
         }
     }
 }

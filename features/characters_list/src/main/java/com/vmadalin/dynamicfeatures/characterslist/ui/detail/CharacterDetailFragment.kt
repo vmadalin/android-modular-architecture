@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.customviews.ProgressBarDialog
@@ -87,5 +88,13 @@ class CharacterDetailFragment : BaseFragment() {
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = viewLifecycleOwner
+        viewBinding.addFavoriteButton.setOnClickListener {
+            viewModel.addCharacterDetailToFavorite()
+            Snackbar.make(
+                requireView(),
+                R.string.character_detail_added_to_favorite_message,
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 }

@@ -3,9 +3,13 @@ apply from: "$rootDir/common-android-library.gradle"
 android {
     buildTypes.each {
         try {
-            it.buildConfigField "String", "MARVEL_BASE_URL", "\"https://gateway.marvel.com\""
-            it.buildConfigField "String", "MARVEL_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
-            it.buildConfigField "String", "MARVEL_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
+            it.buildConfigField "String", "MARVEL_API_BASE_URL", "\"https://gateway.marvel.com\""
+            it.buildConfigField "String", "MARVEL_API_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\""
+            it.buildConfigField "String", "MARVEL_API_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\""
+
+            it.buildConfigField "boolean", "MARVEL_DATABASE_EXPORT_SCHEMA", "false"
+            it.buildConfigField "String", "MARVEL_DATABASE_NAME", "\"characters-db\""
+            it.buildConfigField "int", "MARVEL_DATABASE_VERSION", "1"
         } catch (ignored) {
             throw new InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
         }

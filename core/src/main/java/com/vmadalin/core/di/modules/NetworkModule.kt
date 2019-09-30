@@ -46,7 +46,7 @@ class NetworkModule {
     @Provides
     fun provideMarvelService(): MarvelService {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.MARVEL_BASE_URL)
+            .baseUrl(BuildConfig.MARVEL_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MarvelService::class.java)

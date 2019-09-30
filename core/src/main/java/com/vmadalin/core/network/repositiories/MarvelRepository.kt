@@ -22,8 +22,8 @@ import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.core.network.services.MarvelService
 
-private const val API_PUBLIC_KEY = BuildConfig.MARVEL_KEY_PUBLIC
-private const val API_PRIVATE_KEY = BuildConfig.MARVEL_KEY_PRIVATE
+private const val API_PUBLIC_KEY = BuildConfig.MARVEL_API_KEY_PUBLIC
+private const val API_PRIVATE_KEY = BuildConfig.MARVEL_API_KEY_PRIVATE
 private const val HASH_FORMAT = "%s%s%s"
 
 class MarvelRepository

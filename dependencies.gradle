@@ -13,6 +13,7 @@ ext {
   navigationVersion = '2.0.0'
   navigationSafeArgVersion = '2.1.0-beta02'
   pagingVersion = '2.1.0'
+  roomVersion = '2.2.0-rc01'
   coreKtxVersion = '1.0.2'
   fragmentKtxVersion = '1.2.0-alpha02'
   lifecycleVersion = '2.0.0'
@@ -43,7 +44,9 @@ ext {
 
   kaptDependencies = [
     dagger       : "com.google.dagger:dagger-compiler:$daggerVersion",
-    databinding  : "com.android.databinding:compiler:$databindingVersion"
+    databinding  : "com.android.databinding:compiler:$databindingVersion",
+    glide        : "com.github.bumptech.glide:compiler:$glideVersion",
+    room         : "androidx.room:room-compiler:$roomVersion"
   ]
 
   projectDependencies = [
@@ -52,6 +55,8 @@ ext {
     coroutinesAndroid  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
     cardView           : "com.android.support:cardview-v7:$appSupportVersion",
     swipeRecycleView   : "com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:$swipeRecycleViewVersion",
+    room               : "androidx.room:room-runtime:$roomVersion",
+    roomKtx            : "androidx.room:room-ktx:$roomVersion",
     recycleView        : "androidx.recyclerview:recyclerview:$recycleViewVersion",
     navigationFragment : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
     navigationUI       : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
@@ -78,15 +83,12 @@ ext {
     leakcanary: "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
   ]
 
-  annotationProcessorDependencies = [
-    glide: "com.github.bumptech.glide:compiler:$glideVersion",
-  ]
-
   testImplementationDependencies = [
     junit       : "junit:junit:$jUnitVersion",
     mockito     : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion",
     assertj     : "org.assertj:assertj-core:$assertJVersion",
-    roboelectric: "org.robolectric:robolectric:$roboelectricVersion"
+    roboelectric: "org.robolectric:robolectric:$roboelectricVersion",
+    room        : "androidx.room:room-testing:$roomVersion"
   ]
 
   androidTestImplementationDependencies = [

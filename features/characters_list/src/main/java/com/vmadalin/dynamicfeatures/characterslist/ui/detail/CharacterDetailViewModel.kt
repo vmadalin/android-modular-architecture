@@ -19,6 +19,7 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
@@ -30,6 +31,7 @@ import kotlinx.coroutines.launch
 
 class CharacterDetailViewModel @Inject constructor(
     private val marvelRepository: MarvelRepository,
+    private val characterFavoriteRepository: CharacterFavoriteRepository,
     private val coroutineScope: CoroutineScope
 ) : ViewModel() {
 
@@ -51,6 +53,18 @@ class CharacterDetailViewModel @Inject constructor(
                 _state.postValue(CharacterDetailViewState.Success(detail))
             } catch (e: Exception) {
                 _state.postValue(CharacterDetailViewState.Error(e))
+            }
+        }
+    }
+
+    fun addCharacterDetailToFavorite() {
+        state.value?.data()?.let {
+            coroutineScope.launch {
+                characterFavoriteRepository.insertCharacterFavorite(
+                    id = it.id,
+                    name = it.name,
+                    imageUrl = it.imageUrl
+                )
             }
         }
     }
