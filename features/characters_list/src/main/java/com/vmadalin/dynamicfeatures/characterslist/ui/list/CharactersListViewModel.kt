@@ -42,7 +42,7 @@ class CharactersListViewModel
     }
 
     fun refreshCharactersList() {
-        //charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
+        // charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
     }
 
     override fun onCleared() {

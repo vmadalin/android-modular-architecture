@@ -79,7 +79,6 @@ class CharactersFavoriteFragment : BaseFragment() {
                 resources, R.dimen.character_favorite_list_item_padding
             ))
 
-
             ItemTouchHelper(CharactersFavoriteTouchHelper {
                 viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])
             }).attachToRecyclerView(this)

@@ -16,7 +16,6 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
-import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.responses.BaseResponse
@@ -26,7 +25,6 @@ import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 const val PAGE_INIT_ELEMENTS = 0
 const val PAGE_MAX_ELEMENTS = 50
@@ -51,8 +49,7 @@ class CharactersPageDataSource @Inject constructor(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
-        scope.launch( CoroutineExceptionHandler { _, throwable ->
-
+        scope.launch(CoroutineExceptionHandler { _, throwable ->
         }) {
             val response = repository.getCharacters(
                 params.key,
@@ -64,7 +61,6 @@ class CharactersPageDataSource @Inject constructor(
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
-
     }
 
     private fun getCharacterItems(response: BaseResponse<CharacterResponse>): List<CharacterItem> {
@@ -80,5 +76,4 @@ class CharactersPageDataSource @Inject constructor(
             )
         }
     }
-
 }

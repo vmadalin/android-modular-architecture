@@ -28,7 +28,10 @@ class CharactersFavoriteAdapter :
     ListAdapter<CharacterFavorite, CharactersFavoriteAdapter.ViewHolder>(CharacterDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ListItemCharacterFavoriteBinding.inflate(LayoutInflater.from(parent.context)))
+        return ViewHolder(
+            ListItemCharacterFavoriteBinding
+                .inflate(LayoutInflater.from(parent.context))
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -48,12 +51,14 @@ class CharactersFavoriteAdapter :
     }
 
     companion object CharacterDiffCallback : DiffUtil.ItemCallback<CharacterFavorite>() {
-        override fun areItemsTheSame(oldItem: CharacterFavorite, newItem: CharacterFavorite): Boolean {
-            return oldItem.id == newItem.id
-        }
+        override fun areItemsTheSame(
+            oldItem: CharacterFavorite,
+            newItem: CharacterFavorite
+        ) = oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: CharacterFavorite, newItem: CharacterFavorite): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(
+            oldItem: CharacterFavorite,
+            newItem: CharacterFavorite
+        ) = oldItem == newItem
     }
 }

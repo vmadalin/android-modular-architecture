@@ -23,7 +23,7 @@ import javax.inject.Inject
 class CharactersPageDataSourceFactory
 @Inject constructor(
     private val charactersPageDataSource: CharactersPageDataSource
-): DataSource.Factory<Int, CharacterItem>(){
+) : DataSource.Factory<Int, CharacterItem>() {
 
     override fun create(): DataSource<Int, CharacterItem> {
         return charactersPageDataSource
