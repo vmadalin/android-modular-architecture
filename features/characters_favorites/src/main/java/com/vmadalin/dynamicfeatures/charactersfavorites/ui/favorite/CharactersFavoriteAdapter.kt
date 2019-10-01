@@ -32,8 +32,12 @@ class CharactersFavoriteAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
+
+    override fun getItemId(position: Int): Long = position.toLong()
 
     class ViewHolder(private val binding: ListItemCharacterFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {

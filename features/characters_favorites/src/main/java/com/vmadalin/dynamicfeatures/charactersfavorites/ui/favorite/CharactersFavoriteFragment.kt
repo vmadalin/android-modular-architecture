@@ -21,6 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.vmadalin.android.SampleApp
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
@@ -72,9 +73,16 @@ class CharactersFavoriteFragment : BaseFragment() {
         viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = viewLifecycleOwner
 
-        viewBinding.charactersFavoriteList.adapter = viewAdapter
-        viewBinding.charactersFavoriteList.addItemDecoration(
-            RecyclerViewItemDecoration(resources, R.dimen.character_favorite_list_item_padding)
-        )
+        viewBinding.charactersFavoriteList.apply {
+            adapter = viewAdapter
+            addItemDecoration(RecyclerViewItemDecoration(
+                resources, R.dimen.character_favorite_list_item_padding
+            ))
+
+
+            ItemTouchHelper(CharactersFavoriteTouchHelper {
+                viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])
+            }).attachToRecyclerView(this)
+        }
     }
 }
