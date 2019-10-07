@@ -3,4 +3,6 @@
     <string name="app_name">KotlinSampleApp</string>
 
     <string name="menu_theme">Toggle Theme</string>
+    <string name="app_menu_characters">Characters</string>
+    <string name="app_menu_favorites">Favorites</string>
 </resources>

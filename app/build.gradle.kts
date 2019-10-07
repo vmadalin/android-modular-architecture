@@ -11,12 +11,16 @@ plugins {
     id(BuildPlugins.FABRIC)
 }
 
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation("com.vmadalin.core.annotations.OpenClass")
+}
+
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
         applicationId = AndroidConfig.APPLICATION_ID
-
         minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
         targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
         buildToolsVersion(AndroidConfig.BUILD_TOOLS_VERSION)
@@ -24,27 +28,29 @@ android {
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
 
-        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunnerArguments = AndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS
     }
 
     buildTypes {
         getByName(BuildType.RELEASE) {
+            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
-            proguardFiles("proguard-android.txt", "proguard-rules.pro")
+            isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
+
+            buildConfigField("boolean", "ENABLE_CRASHLYTICS", BuildTypeRelease.isCrashlyticsEnabled.toString())
         }
 
         getByName(BuildType.DEBUG) {
+            applicationIdSuffix = BuildTypeDebug.applicationIdSuffix
+            versionNameSuffix = BuildTypeDebug.versionNameSuffix
+
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
-        }
+            isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
 
-        testOptions {
-            unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
-        }
-
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            buildConfigField("boolean", "ENABLE_CRASHLYTICS", BuildTypeDebug.isCrashlyticsEnabled.toString())
         }
     }
 
@@ -53,9 +59,12 @@ android {
         BuildModules.Features.CHARACTERS_FAVORITES
     )
 
-    lintOptions {
-        // By default lint does not check test sources, but setting this option means that lint will nto even parse them
-        isIgnoreTestSources = true
+    dataBinding {
+        isEnabled = true
+    }
+
+    androidExtensions {
+        isExperimental = true
     }
 
     compileOptions {
@@ -69,10 +78,49 @@ android {
         val options = this as? KotlinJvmOptions
         options?.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    lintOptions {
+        disable("GoogleAppIndexingWarning")
+        isCheckAllWarnings = true
+        //isWarningsAsErrors = true
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+    }
 }
 
-androidExtensions { isExperimental = true }
+junitJacoco {
+    jacocoVersion = BuildDependencies.JACOCO
+    includeNoLocationClasses = true
+}
+
+afterEvaluate {
+    createFabricProperties(this)
+}
 
 dependencies {
+    implementation(project(BuildModules.CORE))
 
+    implementation(Dependencies.KOTLIN)
+    implementation(Dependencies.APPCOMPAT)
+    implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.LIFECYCLE_EXTENSIONS)
+    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+    implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
+    implementation(Dependencies.FRAGMENT_KTX)
+    implementation(Dependencies.CONSTRAIN_LAYOUT)
+    implementation(Dependencies.TIMBER)
+    implementation(Dependencies.DAGGER)
+    implementation(Dependencies.LOGGING)
+    implementation(Dependencies.CRASHLYTICS)
+    implementation(Dependencies.PLAY_CORE)
+
+    kapt(AnnotationProcessorsDependencies.DAGGER)
+    kapt(AnnotationProcessorsDependencies.DATABINDING)
+
+    addTestsDependencies()
 }

@@ -6,6 +6,7 @@ buildscript {
         jcenter()
         mavenCentral()
         maven("https://maven.fabric.io/public")
+        maven("https://plugins.gradle.org/m2/")
     }
 
     dependencies {
@@ -30,4 +31,9 @@ allprojects {
         google()
         jcenter()
     }
+}
+
+// JVM target applied to all Kotlin tasks across all sub-projects
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }

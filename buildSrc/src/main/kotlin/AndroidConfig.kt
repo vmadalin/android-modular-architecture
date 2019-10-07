@@ -9,26 +9,39 @@ object AndroidConfig {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
 
-    const val TEST_INSTRUMENTATION_RUNNER = "android.support.test.runner.AndroidJUnitRunner"
     const val SUPPORT_LIBRARY_VECTOR_DRAWABLES = true
+
+    const val TEST_INSTRUMENTATION_RUNNER = "android.support.test.runner.AndroidJUnitRunner"
+    val TEST_INSTRUMENTATION_RUNNER_ARGUMENTS = mapOf(
+        "leakcanary.FailTestOnLeakRunListener" to "listener"
+    )
 }
 
 interface BuildType {
 
     companion object {
+        const val DEBUG = "debug"
         const val RELEASE = "release"
-        const val DEBUG = "release"
     }
 
     val isMinifyEnabled: Boolean
+    val isCrashlyticsEnabled: Boolean
+    val isTestCoverageEnabled: Boolean
 }
 
 object BuildTypeDebug : BuildType {
+    override val isCrashlyticsEnabled = false
     override val isMinifyEnabled = false
+    override val isTestCoverageEnabled = true
+
+    val applicationIdSuffix = ".debug"
+    val versionNameSuffix = "-DEBUG"
 }
 
 object BuildTypeRelease : BuildType {
-    override val isMinifyEnabled = false
+    override val isCrashlyticsEnabled = true
+    override val isMinifyEnabled = true
+    override val isTestCoverageEnabled = false
 }
 
 object TestOptions {
