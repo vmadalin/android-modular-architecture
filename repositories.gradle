@@ -1,7 +1,0 @@
-repositories {
-  google()
-  jcenter()
-  mavenCentral()
-  maven { url 'https://maven.fabric.io/public' }
-  maven { url 'https://ci.android.com/builds/submitted/5837096/androidx_snapshot/latest/repository' }
-}

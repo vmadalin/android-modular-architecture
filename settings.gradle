@@ -1,6 +1,0 @@
-include ':app',
-        ':core',
-        ':features:characters_list',
-        ':features:characters_favorites'
-
-rootProject.name = 'kotlin-sample-app'

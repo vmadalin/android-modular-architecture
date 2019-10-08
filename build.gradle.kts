@@ -1,13 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
-    repositories {
-        google()
-        jcenter()
-        mavenCentral()
-        maven("https://maven.fabric.io/public")
-        maven("https://plugins.gradle.org/m2/")
-    }
+    repositories.applyDefault()
 
     dependencies {
         classpath(BuildDependencies.GRADLE_ANDROID)
@@ -27,10 +21,14 @@ plugins {
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
+    repositories.applyDefault()
+
+//    apply(from = "detekt.gradle.kts")
+//    apply(from = "dokka.gradle.kts")
+//    apply(from = "git-hooks.gradle.kts")
+//    apply(from = "ktlint.gradle.kts")
+//    apply(from = "spotless.gradle.kts")
+//    apply(from = "update-dependencies.gradle.kts")
 }
 
 // JVM target applied to all Kotlin tasks across all sub-projects

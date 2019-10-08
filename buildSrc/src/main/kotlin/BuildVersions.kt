@@ -6,6 +6,7 @@ object BuildDependenciesVersions {
     const val JACOCO = "0.15.0"
     const val FABRIC = "1.31.0"
     const val DOKKA = "0.9.18"
+    const val KTLINT = "0.34.2"
 }
 
 object BuildPluginsVersions {
