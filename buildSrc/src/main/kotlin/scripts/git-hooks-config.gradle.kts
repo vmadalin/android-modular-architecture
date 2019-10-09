@@ -1,7 +1,3 @@
-afterEvaluate {
-    tasks["clean"].dependsOn(tasks.named("installGitHooks"))
-}
-
 tasks {
     register<Copy>("copyGitHooks") {
         description = "Copies the git hooks from scripts/git-hooks to the .git folder."
@@ -25,5 +21,9 @@ tasks {
         doLast {
             logger.info("Git hooks installed successfully.")
         }
+    }
+
+    afterEvaluate {
+        tasks["clean"].dependsOn(tasks.named("installGitHooks"))
     }
 }

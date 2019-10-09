@@ -7,6 +7,13 @@ plugins {
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.JACOCO)
     id(BuildPlugins.FABRIC)
+
+    id("detekt-config")
+    id("dokka-config")
+    id("git-hooks-config")
+    id("ktlint-config")
+    id("spotless-config")
+    id("update-dependencies-config")
 }
 
 allOpen {

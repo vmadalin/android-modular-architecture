@@ -1,11 +1,7 @@
-val ktlint by configurations.creating
+val ktlint: Configuration by configurations.creating
 
 dependencies {
     ktlint(BuildDependencies.KTLINT)
-}
-
-tasks.named("check") {
-    dependsOn(ktlint)
 }
 
 tasks {
@@ -23,5 +19,9 @@ tasks {
         classpath = ktlint
         main = "com.vmadalin.android.SampleApp"
         args("--android", "-F", "src/**/*.kt")
+    }
+
+    named("check") {
+        dependsOn(ktlint)
     }
 }
