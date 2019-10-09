@@ -1,8 +1,25 @@
+/*
+ * Copyright 2019 vmadalin.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
 
 apply<SpotlessPlugin>()
 
+@Suppress("INACCESSIBLE_TYPE")
 configure<SpotlessExtension> {
     format("misc") {
         target(
@@ -10,7 +27,12 @@ configure<SpotlessExtension> {
                 mapOf(
                     "dir" to ".",
                     "include" to listOf("**/*.md", "**/.gitignore", "**/*.yaml", "**/*.yml"),
-                    "exclude" to listOf(".gradle/**", ".gradle-cache/**", "**/tools/**", "**/build/**")
+                    "exclude" to listOf(
+                        ".gradle/**",
+                        ".gradle-cache/**",
+                        "**/tools/**",
+                        "**/build/**"
+                    )
                 )
             )
         )
@@ -27,14 +49,30 @@ configure<SpotlessExtension> {
     }
 
     kotlin {
-        target("**/*.kt")
-        licenseHeaderFile(rootProject.file("COPYRIGHT"))
+        target(
+            fileTree(
+                mapOf(
+                    "dir" to ".",
+                    "include" to listOf("**/*.kt"),
+                    "exclude" to listOf("**/build/**")
+                )
+            )
+        )
+        licenseHeaderFile(
+            rootProject.file("COPYRIGHT"),
+            "^(package|object|import)"
+        )
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
     }
 
     kotlinGradle {
         target("**/*.gradle.kts", "*.gradle.kts")
-        ktlint("0.33.0").userData(mapOf("indent_size" to "4", "continuation_indent_size" to "4"))
-        licenseHeaderFile(rootProject.file("COPYRIGHT"), "import|tasks|apply|plugins|include")
+        licenseHeaderFile(
+            rootProject.file("COPYRIGHT"),
+            "import|tasks|apply|plugins|include|val"
+        )
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
