@@ -30,17 +30,30 @@ repositories {
     gradlePluginPortal()
 }
 
+apply(from = "build-dependencies.gradle.kts")
+
+val gradleAndroid: String by extra
+val gradleVersions: String by extra
+val kotlin: String by extra
+val kotlinAllOpen: String by extra
+val navigation: String by extra
+val jacoco: String by extra
+val fabric: String by extra
+val dokka: String by extra
+val ktlint: String by extra
+val detekt: String by extra
+val spotless: String by extra
 
 dependencies {
-    implementation("com.android.tools.build:gradle:3.4.2")
-    implementation("org.jetbrains.kotlin:kotlin-allopen:1.3.50")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
-    implementation("com.github.ben-manes:gradle-versions-plugin:0.22.0")
-    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0-beta02")
-    implementation("com.vanniktech:gradle-android-junit-jacoco-plugin:0.15.0")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.0.1")
-    implementation("org.jetbrains.dokka:dokka-gradle-plugin:0.9.18")
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:3.24.1")
-    implementation("io.fabric.tools:gradle:1.31.0")
-    implementation("com.pinterest:ktlint:0.34.2")
+    implementation(gradleAndroid)
+    implementation(gradleVersions)
+    implementation(kotlin)
+    implementation(kotlinAllOpen)
+    implementation(navigation)
+    implementation(jacoco)
+    implementation(fabric)
+    implementation(dokka)
+    implementation(ktlint)
+    implementation(detekt)
+    implementation(spotless)
 }

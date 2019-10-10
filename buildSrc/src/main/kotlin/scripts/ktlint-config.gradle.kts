@@ -16,10 +16,6 @@
 
 val ktlint: Configuration by configurations.creating
 
-dependencies {
-    ktlint(BuildDependencies.KTLINT)
-}
-
 tasks {
     register<JavaExec>("ktlint") {
         group = "verification"

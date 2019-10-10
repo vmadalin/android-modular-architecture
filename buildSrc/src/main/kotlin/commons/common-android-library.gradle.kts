@@ -16,6 +16,7 @@
 
 import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
+import extensions.addTestsDependencies
 
 plugins {
     id("com.android.library")

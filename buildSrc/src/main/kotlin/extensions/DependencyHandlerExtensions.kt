@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package extensions
+
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
 import org.gradle.api.artifacts.Dependency
