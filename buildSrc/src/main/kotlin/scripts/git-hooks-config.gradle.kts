@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import utils.isLinuxOrMacOs
+
 tasks {
     register<Copy>("copyGitHooks") {
         description = "Copies the git hooks from scripts/git-hooks to the .git folder."

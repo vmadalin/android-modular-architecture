@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import extensions.applyDefault
+
 plugins.apply("git-hooks-config")
 plugins.apply("update-dependencies-config")
 

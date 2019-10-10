@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package dependencies
+
 object AnnotationProcessorsDependencies {
     const val DAGGER = "com.google.dagger:dagger-compiler:${DependenciesVersions.DAGGER}"
     const val DATABINDING = "com.android.databinding:compiler:${DependenciesVersions.DATABINDING}"

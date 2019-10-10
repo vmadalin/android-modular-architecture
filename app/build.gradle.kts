@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import utils.createFabricProperties
+import dependencies.Dependencies
+import dependencies.DebugDependencies
+import dependencies.AnnotationProcessorsDependencies
+
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package dependencies
+
 object Dependencies {
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependenciesVersions.KOTLIN}"
     const val APPCOMPAT = "androidx.appcompat:appcompat:${DependenciesVersions.APPCOMPAT}"

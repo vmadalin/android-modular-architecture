@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package dependencies
+
 object TestAndroidDependencies {
     const val LEAKCANARY = "com.squareup.leakcanary:leakcanary-android-instrumentation:${DependenciesVersions.LEAKCANARY}"
     const val MOCKITO = "com.nhaarman.mockitokotlin2:mockito-kotlin:${DependenciesVersions.MOCKITO}"

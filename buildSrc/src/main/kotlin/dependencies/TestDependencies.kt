@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package dependencies
+
 object TestDependencies {
     const val JUNIT = "junit:junit:${DependenciesVersions.JUNIT}"
     const val MOCKITO = "com.nhaarman.mockitokotlin2:mockito-kotlin:${DependenciesVersions.MOCKITO}"

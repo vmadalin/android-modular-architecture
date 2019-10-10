@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import dependencies.Dependencies
+import dependencies.AnnotationProcessorsDependencies
+
 plugins {
     id("com.android.library")
     id("kotlin-android")

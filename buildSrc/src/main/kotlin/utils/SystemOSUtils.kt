@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package utils
+
 import java.util.Locale
 
 fun isLinuxOrMacOs(): Boolean {

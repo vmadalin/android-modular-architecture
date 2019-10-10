@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package utils
+
 import org.gradle.api.Project
 import java.util.Properties
 

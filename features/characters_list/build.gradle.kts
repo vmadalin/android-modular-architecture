@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import dependencies.Dependencies
+
 plugins {
     id("common-android-dynamic-feature")
 }

@@ -1,3 +1,5 @@
+import extensions.getLocalProperty
+
 /*
  * Copyright 2019 vmadalin.com
  *
