@@ -18,7 +18,7 @@ import org.gradle.api.Project
 import java.io.File
 import java.lang.Exception
 
-private const val FABRIC_PROPERTIES_FILE_NAME = "fabric.properties"
+private const val FABRIC_PROPERTIES_FILE_NAME = "app/fabric.properties"
 private const val FABRIC_API_KEY_PROPERTY_NAME = "fabric.key"
 private const val FABRIC_API_SECRET_PROPERTY_NAME = "fabric.secret"
 
