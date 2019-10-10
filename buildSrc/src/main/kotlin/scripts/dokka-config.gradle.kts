@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
+import org.jetbrains.dokka.gradle.DokkaPlugin
 import org.jetbrains.dokka.gradle.DokkaTask
 
-apply(plugin = "org.jetbrains.dokka")
+apply<DokkaPlugin>()
 
-tasks.withType<DokkaTask> {
-    outputFormat = "html"
-    outputDirectory = "$buildDir/javadoc"
+tasks {
+    withType<DokkaTask> {
+        outputFormat = "html"
+        outputDirectory = "$buildDir/javadoc"
 
-    reportUndocumented = true
-    skipEmptyPackages = true
+        reportUndocumented = true
+        skipEmptyPackages = true
+    }
 }

@@ -36,8 +36,4 @@ tasks {
         main = "com.pinterest.ktlint.Main"
         args("--android", "-F", "src/**/*.kt")
     }
-
-//    named("check") {
-//        dependsOn(ktlint)
-//    }
 }
