@@ -30,6 +30,10 @@ repositories {
     gradlePluginPortal()
 }
 
+kotlinDslPluginOptions {
+    experimentalWarning.set(false)
+}
+
 apply(from = "build-dependencies.gradle.kts")
 
 val gradleAndroid: String by extra

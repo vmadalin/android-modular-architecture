@@ -24,9 +24,6 @@ object BuildPlugins {
     const val KOTLIN_KAPT = "kotlin-kapt"
     const val KOTLIN_ALLOPEN = "kotlin-allopen"
 
-    const val COMMON_ANDROID_LIBRARY = "common-android-library"
-    const val COMMON_ANDROID_DYNAMIC_FEATURE = "common-android-dynamic-feature"
-
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
     const val SPOTLESS = "com.diffplug.gradle.spotless"
     const val DETEKT = "io.gitlab.arturbosch.detekt"
@@ -40,8 +37,6 @@ extra["pluginAndroidLibrary"] = BuildPlugins.ANDROID_LIBRARY
 extra["pluginKotlinAndroid"] = BuildPlugins.KOTLIN_ANDROID
 extra["pluginKotlinAndroidExtensions"] = BuildPlugins.KOTLIN_ANDROID_EXTENSIONS
 extra["pluginKapt"] = BuildPlugins.KOTLIN_KAPT
-extra["pluginCommonAndroidLibrary"] = BuildPlugins.COMMON_ANDROID_LIBRARY
-extra["pluginCommonAndroidDynamicFeature"] = BuildPlugins.COMMON_ANDROID_DYNAMIC_FEATURE
 extra["pluginNavigationSafeArgs"] = BuildPlugins.NAVIGATION_SAFE_ARGS
 extra["pluginSpotless"] = BuildPlugins.SPOTLESS
 extra["pluginDetekt"] = BuildPlugins.DETEKT

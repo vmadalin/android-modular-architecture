@@ -18,7 +18,7 @@ jobs:
       - run: echo "marvel.key.public=$MARVEL_KEY_PUBLIC" >> local.properties
       - run: echo "marvel.key.private=$MARVEL_KEY_PRIVATE" >> local.properties
       - restore_cache:
-          key: gradle-{{ checksum "build.gradle" }}
+          key: gradle-{{ checksum "build.gradle.kts" }}
       - run:
           name: Run Detekt
           command: ./gradlew detekt
@@ -47,4 +47,4 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: gradle-{{ checksum "build.gradle" }}
+          key: gradle-{{ checksum "build.gradle.kts" }}
