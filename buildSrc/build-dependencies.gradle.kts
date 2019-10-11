@@ -15,7 +15,7 @@
  */
 
 object BuildVersions {
-    const val GRADLE_ANDROID = "3.4.2"
+    const val GRADLE_ANDROID = "3.5.1"
     const val GRADLE_VERSIONS = "0.22.0"
     const val KOTLIN = "1.3.50"
     const val NAVIGATION = "2.1.0-beta02"

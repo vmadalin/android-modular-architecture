@@ -15,8 +15,8 @@
  */
 
 object DependenciesVersions {
-    const val KOTLIN = "1.3.41"
-    const val APPCOMPAT = "1.0.2"
+    const val KOTLIN = "1.3.50"
+    const val APPCOMPAT = "1.1.0"
     const val MATERIAL = "1.1.0-beta01"
     const val COROUTINES = "1.3.2"
     const val ROOM = "2.2.0"
