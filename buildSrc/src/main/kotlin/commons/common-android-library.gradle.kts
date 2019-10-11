@@ -17,6 +17,8 @@
 import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.addTestsDependencies
+import extensions.implementation
+import extensions.kapt
 
 plugins {
     id("com.android.library")
