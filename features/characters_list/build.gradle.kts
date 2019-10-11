@@ -21,12 +21,12 @@ import extensions.implementation
 import extensions.kapt
 
 plugins {
-    id("com.android.dynamic-feature")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-allopen")
-    id("kotlin-kapt")
-    id("androidx.navigation.safeargs.kotlin")
+    id(BuildPlugins.ANDROID_DYNAMIC_FEATURE)
+    id(BuildPlugins.KOTLIN_ANDROID)
+    id(BuildPlugins.KOTLIN_ANDROID_EXTENSIONS)
+    id(BuildPlugins.KOTLIN_KAPT)
+    id(BuildPlugins.KOTLIN_ALLOPEN)
+    id(BuildPlugins.NAVIGATION_SAFE_ARGS)
 }
 
 android {

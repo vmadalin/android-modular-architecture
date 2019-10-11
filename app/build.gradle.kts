@@ -24,14 +24,14 @@ import extensions.debugImplementation
 import extensions.kapt
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-kapt")
-    id("kotlin-allopen")
-    id("androidx.navigation.safeargs.kotlin")
-    id("com.vanniktech.android.junit.jacoco")
-    id("io.fabric")
+    id(BuildPlugins.ANDROID_APPLICATION)
+    id(BuildPlugins.KOTLIN_ANDROID)
+    id(BuildPlugins.KOTLIN_ANDROID_EXTENSIONS)
+    id(BuildPlugins.KOTLIN_KAPT)
+    id(BuildPlugins.KOTLIN_ALLOPEN)
+    id(BuildPlugins.NAVIGATION_SAFE_ARGS)
+    id(BuildPlugins.JACOCO)
+    id(BuildPlugins.FABRIC)
 }
 
 allOpen {
@@ -107,7 +107,7 @@ android {
 
     testOptions {
         unitTests.isIncludeAndroidResources = true
-        unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
+        unitTests.isReturnDefaultValues = true
     }
 }
 

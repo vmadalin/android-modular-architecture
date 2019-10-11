@@ -59,7 +59,3 @@ object BuildTypeRelease : BuildType {
     override val isMinifyEnabled = true
     override val isTestCoverageEnabled = false
 }
-
-object TestOptions {
-    const val IS_RETURN_DEFAULT_VALUES = true
-}

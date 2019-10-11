@@ -30,15 +30,3 @@ object BuildPlugins {
     const val JACOCO = "com.vanniktech.android.junit.jacoco"
     const val FABRIC = "io.fabric"
 }
-
-extra["pluginAndroidApplication"] = BuildPlugins.ANDROID_APPLICATION
-extra["pluginAndroidDynamicFeature"] = BuildPlugins.ANDROID_DYNAMIC_FEATURE
-extra["pluginAndroidLibrary"] = BuildPlugins.ANDROID_LIBRARY
-extra["pluginKotlinAndroid"] = BuildPlugins.KOTLIN_ANDROID
-extra["pluginKotlinAndroidExtensions"] = BuildPlugins.KOTLIN_ANDROID_EXTENSIONS
-extra["pluginKapt"] = BuildPlugins.KOTLIN_KAPT
-extra["pluginNavigationSafeArgs"] = BuildPlugins.NAVIGATION_SAFE_ARGS
-extra["pluginSpotless"] = BuildPlugins.SPOTLESS
-extra["pluginDetekt"] = BuildPlugins.DETEKT
-extra["pluginJacoco"] = BuildPlugins.JACOCO
-extra["pluginFabric"] = BuildPlugins.FABRIC
