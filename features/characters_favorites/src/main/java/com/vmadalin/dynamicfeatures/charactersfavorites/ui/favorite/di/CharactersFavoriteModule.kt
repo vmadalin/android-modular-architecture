@@ -19,9 +19,9 @@ package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
-import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteAdapter
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteFragment
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteViewModel
+import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteAdapter
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineScope
