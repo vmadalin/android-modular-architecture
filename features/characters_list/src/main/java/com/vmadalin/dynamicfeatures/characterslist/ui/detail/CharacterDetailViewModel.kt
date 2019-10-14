@@ -65,8 +65,6 @@ class CharacterDetailViewModel @Inject constructor(
                     name = it.name,
                     imageUrl = it.imageUrl
                 )
-
-                characterFavoriteRepository.getAllCharactersFavorite()
             }
         }
     }

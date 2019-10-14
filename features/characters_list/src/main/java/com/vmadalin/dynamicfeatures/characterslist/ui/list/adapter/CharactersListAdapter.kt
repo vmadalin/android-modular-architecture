@@ -14,28 +14,32 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.characterslist.ui.list
+package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
+import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharactersBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 
 class CharactersListAdapter(private val clickListener: CharacterClickListener) :
-    PagedListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(CharacterDiffCallback) {
+    PagedListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(
+        CharacterDiffCallback
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context)))
+        return ViewHolder(
+            ListItemCharactersBinding.inflate(LayoutInflater.from(parent.context))
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(clickListener, it) }
     }
 
-    class ViewHolder(private val binding: ListItemCharacterBinding) :
+    class ViewHolder(private val binding: ListItemCharactersBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: CharacterClickListener, item: CharacterItem) {
             binding.clickListener = clickListener

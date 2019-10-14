@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SampleMainActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel" />
+    </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/characters_list"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:theme="@style/AppTheme.BackgroundStyle"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="@integer/characters_list_spans"
-            tools:listitem="@layout/list_item_character" />
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/include_list"
+                layout="@layout/view_characters_list"
+                bind:viewState="@{viewModel.state}"/>
+
+            <include
+                android:id="@+id/include_list_empty"
+                layout="@layout/view_characters_list_empty"
+                bind:viewState="@{viewModel.state}"/>
+
+            <include
+                android:id="@+id/include_list_error"
+                layout="@layout/view_characters_list_error"
+                bind:viewState="@{viewModel.state}"/>
+
+            <include
+                android:id="@+id/include_list_loading"
+                layout="@layout/view_characters_list_loading"
+                bind:viewState="@{viewModel.state}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
 </layout>

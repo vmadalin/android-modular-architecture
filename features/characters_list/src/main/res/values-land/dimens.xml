@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="character_list_item_size">100dp</dimen>
-    <dimen name="character_list_item_text_padding">5dp</dimen>
+    <!--Characters List-->
+    <dimen name="characters_list_item_size">100dp</dimen>
+    <dimen name="characters_list_item_text_padding">5dp</dimen>
 
+    <!--Character Detail-->
     <dimen name="character_detail_app_bar_height">200dp</dimen>
 </resources>

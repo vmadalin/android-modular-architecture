@@ -32,7 +32,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/character_image_content_description"
+                    android:contentDescription="@string/character_detail_image_content_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{viewModel.state.data().imageUrl}"

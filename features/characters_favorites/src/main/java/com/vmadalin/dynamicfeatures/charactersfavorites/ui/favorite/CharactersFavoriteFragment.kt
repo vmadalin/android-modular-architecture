@@ -74,12 +74,11 @@ class CharactersFavoriteFragment : BaseFragment() {
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = viewLifecycleOwner
-
         viewBinding.includeList.charactersFavoriteList.apply {
             adapter = viewAdapter
-            addItemDecoration(RecyclerViewItemDecoration(
-                resources, R.dimen.characters_favorite_list_item_padding
-            ))
+            addItemDecoration(
+                RecyclerViewItemDecoration(resources, R.dimen.characters_favorite_list_item_padding)
+            )
 
             ItemTouchHelper(CharactersFavoriteTouchHelper {
                 viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])

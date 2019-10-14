@@ -17,6 +17,7 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -26,6 +27,7 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEME
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 class CharactersListViewModel
 @Inject constructor(
@@ -33,12 +35,24 @@ class CharactersListViewModel
     private val dataSourceFactory: CharactersPageDataSourceFactory
 ) : ViewModel() {
 
-    // private var _charactersList = MutableLiveData<PagedList<CharacterItem>?>()
-    var charactersList: LiveData<PagedList<CharacterItem>>
-        // get() = _charactersList
+    private val _state = MutableLiveData<CharactersListViewState>()
+    val state: LiveData<CharactersListViewState>
+        get() = _state
 
     init {
-        charactersList = LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
+        getAllCharacters()
+    }
+
+    fun getAllCharacters() {
+        _state.postValue(CharactersListViewState.Loading)
+        coroutineScope.launch {
+            val charactersList = LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
+            if(charactersList.value.isNullOrEmpty()) {
+                _state.postValue(CharactersListViewState.Empty)
+            } else {
+                _state.postValue(CharactersListViewState.Listed(charactersList.value))
+            }
+        }
     }
 
     fun refreshCharactersList() {

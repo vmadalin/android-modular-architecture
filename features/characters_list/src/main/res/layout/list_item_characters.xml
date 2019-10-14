@@ -10,15 +10,15 @@
 
         <variable
             name="clickListener"
-            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharacterClickListener" />
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="@{() -> clickListener.onClick(character)}"
-        app:cardCornerRadius="@dimen/character_list_item_corner_radius"
-        app:cardElevation="@dimen/character_list_item_elevation"
+        app:cardCornerRadius="@dimen/characters_list_item_corner_radius"
+        app:cardElevation="@dimen/characters_list_item_elevation"
         app:cardBackgroundColor="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
             <ImageView
                 android:id="@+id/character_image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/character_list_item_size"
+                android:layout_height="@dimen/characters_list_item_size"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{character.imageUrl}"
                 app:layout_constraintBottom_toTopOf="@+id/character_name"
@@ -42,7 +42,7 @@
                 android:id="@+id/character_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/character_list_item_text_padding"
+                android:padding="@dimen/characters_list_item_text_padding"
                 android:text="@{character.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

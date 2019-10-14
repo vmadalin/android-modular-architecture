@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Characters List-->
+    <string name="characters_list_empty_text">Empty characters list</string>
+    <string name="characters_list_error_text">Ups.. an error occurred on obtain characters list, please swipe down to try again</string>
+
+    <!--Character Detail-->
     <string name="character_detail_dialog_loading_text">Loading detail…</string>
     <string name="character_detail_dialog_error_text">Error on obtain detail, please try later.</string>
     <string name="character_detail_added_to_favorite_message">Added to your favorite list</string>
-
-    <string name="character_image_content_description">Image of the selected character</string>
+    <string name="character_detail_image_content_description">Image of the selected character</string>
 </resources>
