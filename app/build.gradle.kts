@@ -22,6 +22,7 @@ import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.debugImplementation
 import extensions.kapt
+import extensions.buildConfigBooleanField
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
@@ -63,17 +64,16 @@ android {
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
 
-            buildConfigField("boolean", "ENABLE_CRASHLYTICS", BuildTypeRelease.isCrashlyticsEnabled.toString())
+            buildConfigBooleanField("ENABLE_CRASHLYTICS", BuildTypeRelease.isCrashlyticsEnabled)
         }
 
         getByName(BuildType.DEBUG) {
             applicationIdSuffix = BuildTypeDebug.applicationIdSuffix
             versionNameSuffix = BuildTypeDebug.versionNameSuffix
-
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
 
-            buildConfigField("boolean", "ENABLE_CRASHLYTICS", BuildTypeDebug.isCrashlyticsEnabled.toString())
+            buildConfigBooleanField( "ENABLE_CRASHLYTICS", BuildTypeDebug.isCrashlyticsEnabled)
         }
     }
 

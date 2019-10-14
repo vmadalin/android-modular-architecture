@@ -20,6 +20,9 @@ import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.kapt
 import extensions.getLocalProperty
+import extensions.buildConfigBooleanField
+import extensions.buildConfigIntField
+import extensions.buildConfigStringField
 
 plugins {
     id(BuildPlugins.ANDROID_LIBRARY)
@@ -39,13 +42,13 @@ android {
 
     buildTypes.forEach {
         try {
-            it.buildConfigField("String", "MARVEL_API_BASE_URL", "\"https://gateway.marvel.com\"")
-            it.buildConfigField("String", "MARVEL_API_KEY_PUBLIC", "\"${getLocalProperty("marvel.key.public")}\"")
-            it.buildConfigField("String", "MARVEL_API_KEY_PRIVATE", "\"${getLocalProperty("marvel.key.private")}\"")
+            it.buildConfigStringField("MARVEL_API_BASE_URL", "https://gateway.marvel.com")
+            it.buildConfigStringField("MARVEL_API_KEY_PUBLIC", getLocalProperty("marvel.key.public"))
+            it.buildConfigStringField("MARVEL_API_KEY_PRIVATE", getLocalProperty("marvel.key.private"))
 
-            it.buildConfigField("boolean", "MARVEL_DATABASE_EXPORT_SCHEMA", "false")
-            it.buildConfigField("String", "MARVEL_DATABASE_NAME", "\"characters-db\"")
-            it.buildConfigField("int", "MARVEL_DATABASE_VERSION", "1")
+            it.buildConfigBooleanField("MARVEL_DATABASE_EXPORT_SCHEMA", false)
+            it.buildConfigStringField("MARVEL_DATABASE_NAME", "characters-db")
+            it.buildConfigIntField("MARVEL_DATABASE_VERSION", 1)
         } catch (ignored: Exception) {
             throw InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
         }
