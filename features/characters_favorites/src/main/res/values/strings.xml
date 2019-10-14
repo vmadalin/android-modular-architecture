@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="characters_favorite_list_empty_text">Your favorite characters list is empty</string>
+    <string name="characters_favorite_list_item_image_content_description">Image of the current character list</string>
 </resources>

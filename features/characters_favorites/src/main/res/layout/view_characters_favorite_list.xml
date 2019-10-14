@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteViewState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:visibleOrGone="@{viewState.listed}">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/characters_favorite_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/AppTheme.BackgroundStyle"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="@integer/characters_favorite_list_spans"
+            tools:listitem="@layout/list_item_characters_favorite" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

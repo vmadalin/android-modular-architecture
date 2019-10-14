@@ -24,7 +24,6 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class CharactersFavoriteViewModel @Inject constructor(

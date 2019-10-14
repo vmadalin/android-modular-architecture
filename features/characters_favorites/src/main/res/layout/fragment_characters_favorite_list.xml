@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/AppTheme.BackgroundStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include_list"
+            layout="@layout/view_characters_favorite_list"
+            bind:viewState="@{viewModel.state}"/>
+
+        <include
+            android:id="@+id/include_list_empty"
+            layout="@layout/view_characters_favorite_list_empty"
+            bind:viewState="@{viewModel.state}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

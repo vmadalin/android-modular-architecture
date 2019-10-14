@@ -26,9 +26,11 @@ import com.vmadalin.android.SampleApp
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
 import com.vmadalin.dynamicfeatures.characterdetail.R
-import com.vmadalin.dynamicfeatures.characterdetail.databinding.FragmentCharactersFavoritesListBinding
-import com.vmadalin.dynamicfeatures.charactersfavorites.ui.di.CharactersFavoriteModule
-import com.vmadalin.dynamicfeatures.charactersfavorites.ui.di.DaggerCharactersFavoriteComponent
+import com.vmadalin.dynamicfeatures.characterdetail.databinding.FragmentCharactersFavoriteListBinding
+import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteAdapter
+import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteTouchHelper
+import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.CharactersFavoriteModule
+import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.DaggerCharactersFavoriteComponent
 import javax.inject.Inject
 
 class CharactersFavoriteFragment : BaseFragment() {
@@ -38,14 +40,14 @@ class CharactersFavoriteFragment : BaseFragment() {
     @Inject
     lateinit var viewAdapter: CharactersFavoriteAdapter
 
-    private lateinit var viewBinding: FragmentCharactersFavoritesListBinding
+    private lateinit var viewBinding: FragmentCharactersFavoriteListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = FragmentCharactersFavoritesListBinding.inflate(inflater, container, false)
+        viewBinding = FragmentCharactersFavoriteListBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
 
@@ -73,10 +75,10 @@ class CharactersFavoriteFragment : BaseFragment() {
         viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = viewLifecycleOwner
 
-        viewBinding.charactersFavoriteList.apply {
+        viewBinding.includeList.charactersFavoriteList.apply {
             adapter = viewAdapter
             addItemDecoration(RecyclerViewItemDecoration(
-                resources, R.dimen.character_favorite_list_item_padding
+                resources, R.dimen.characters_favorite_list_item_padding
             ))
 
             ItemTouchHelper(CharactersFavoriteTouchHelper {

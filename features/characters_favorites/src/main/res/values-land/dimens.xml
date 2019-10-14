@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="character_favorite_list_item_size">100dp</dimen>
-    <dimen name="character_favorite_list_item_text_padding">5dp</dimen>
+    <dimen name="characters_favorite_list_item_size">100dp</dimen>
+    <dimen name="characters_favorite_list_item_text_padding">5dp</dimen>
 </resources>
