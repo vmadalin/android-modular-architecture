@@ -71,7 +71,7 @@ configure<SpotlessExtension> {
         target("**/*.gradle.kts", "*.gradle.kts")
         licenseHeaderFile(
             rootProject.file("COPYRIGHT"),
-            "import|tasks|apply|plugins|include|val"
+            "import|tasks|apply|plugins|include|val|object"
         )
         trimTrailingWhitespace()
         indentWithSpaces()

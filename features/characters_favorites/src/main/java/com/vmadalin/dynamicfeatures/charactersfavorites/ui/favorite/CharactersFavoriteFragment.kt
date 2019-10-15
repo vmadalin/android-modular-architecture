@@ -60,6 +60,7 @@ class CharactersFavoriteFragment : BaseFragment() {
                 }
             }
         })
+        viewModel.getAllFavoriteCharacters()
     }
 
     override fun onInitDependencyInjection() {

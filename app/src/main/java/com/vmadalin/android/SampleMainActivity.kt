@@ -21,32 +21,44 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.vmadalin.android.utils.ThemeUtils
 import com.vmadalin.core.extensions.setGone
+import com.vmadalin.core.extensions.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
 class SampleMainActivity : AppCompatActivity() {
 
-    private val navController: NavController by lazy { findNavController(R.id.nav_host_fragment) }
-    private val navigationFragmentsId = setOf(
+    private var currentNavController: LiveData<NavController>? = null
+    private val navFragmentsIds = setOf(
         R.id.characters_list_fragment,
         R.id.characters_favorites_fragment
     )
-    private val appBarConfiguration: AppBarConfiguration by lazy {
-        AppBarConfiguration.Builder(navigationFragmentsId).build()
-    }
+    private val navGraphIds = listOf(
+        R.navigation.navigation_characters_list_graph,
+        R.navigation.navigation_characters_favorites_graph
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setupToolbar()
-        setupBottomNavigation()
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        setupBottomNavigationBar()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return currentNavController?.value?.navigateUp() ?: false
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,19 +90,28 @@ class SampleMainActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         setSupportActionBar(toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    private fun setupBottomNavigation() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (navigationFragmentsId.contains(destination.id)) {
-                bottom_navigation.setGone(false)
-                app_bar_layout.setGone(false)
-            } else {
-                bottom_navigation.setGone(true)
-                app_bar_layout.setGone(true)
+    private fun setupBottomNavigationBar() {
+        val navController = bottom_navigation.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = supportFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = intent
+        )
+
+        navController.observe(this, Observer {
+            it.addOnDestinationChangedListener { _, destination, _ ->
+                if (navFragmentsIds.contains(destination.id)) {
+                    bottom_navigation.setGone(false)
+                    app_bar_layout.setGone(false)
+                } else {
+                    bottom_navigation.setGone(true)
+                    app_bar_layout.setGone(true)
+                }
             }
-        }
-        bottom_navigation.setupWithNavController(navController)
+            setupActionBarWithNavController(it)
+        })
+        currentNavController = navController
     }
 }

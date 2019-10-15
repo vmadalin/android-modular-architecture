@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.extensions
+package com.vmadalin.core.extensions
 
 import android.content.Intent
 import android.util.SparseArray
@@ -26,12 +26,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.vmadalin.android.R
+import com.vmadalin.core.R
 
 /**
- * Manages the various graphs needed for a [BottomNavigationView].
- *
- * This sample is a workaround until the Navigation Component supports multiple back stacks.
+ * This is a workaround until the Navigation Component supports multiple back stacks.
+ * Issue tracking: https://issuetracker.google.com/issues/127932815
  */
 fun BottomNavigationView.setupWithNavController(
     navGraphIds: List<Int>,
@@ -235,16 +234,6 @@ private fun obtainNavHostFragment(
         .add(containerId, navHostFragment, fragmentTag)
         .commitNow()
     return navHostFragment
-}
-
-private fun FragmentManager.isOnBackStack(backStackName: String): Boolean {
-    val backStackCount = backStackEntryCount
-    for (index in 0 until backStackCount) {
-        if (getBackStackEntryAt(index).name == backStackName) {
-            return true
-        }
-    }
-    return false
 }
 
 private fun getFragmentTag(index: Int) = "bottomNavigation#$index"

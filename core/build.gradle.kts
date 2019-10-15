@@ -86,6 +86,8 @@ dependencies {
     implementation(Dependencies.RECYCLE_VIEW)
     implementation(Dependencies.DAGGER)
     implementation(Dependencies.TIMBER)
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
     implementation(Dependencies.RETROFIT)
     implementation(Dependencies.RETROFIT_CONVERTER)
     implementation(Dependencies.LOGGING)

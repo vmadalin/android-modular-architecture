@@ -35,10 +35,6 @@ class CharactersFavoriteViewModel @Inject constructor(
     val state: LiveData<CharactersFavoriteViewState>
         get() = _state
 
-    init {
-        getAllFavoriteCharacters()
-    }
-
     fun getAllFavoriteCharacters() {
         coroutineScope.launch {
             val charactersFavorite = characterFavoriteRepository.getAllCharactersFavorite()
