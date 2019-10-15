@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-object BuildModules {
-    const val APP = ":app"
-    const val CORE = ":core"
+package com.vmadalin.dynamicfeatures.home.ui
 
-    object Features {
-        const val HOME = ":features:home"
-        const val CHARACTERS_LIST = ":features:characters_list"
-        const val CHARACTERS_FAVORITES = ":features:characters_favorites"
-    }
+sealed class HomeViewState {
+
+    object FullScreen : HomeViewState()
+    object NavigationScreen: HomeViewState()
+
+    fun isFullScreen() = this is FullScreen
+    fun isNavigationScreen() = this is NavigationScreen
 }

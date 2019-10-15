@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-object BuildModules {
-    const val APP = ":app"
-    const val CORE = ":core"
+package com.vmadalin.dynamicfeatures.home.ui.di
 
-    object Features {
-        const val HOME = ":features:home"
-        const val CHARACTERS_LIST = ":features:characters_list"
-        const val CHARACTERS_FAVORITES = ":features:characters_favorites"
-    }
+import com.vmadalin.core.di.CoreComponent
+import com.vmadalin.core.di.scopes.FeatureScope
+import com.vmadalin.dynamicfeatures.home.ui.HomeFragment
+import dagger.Component
+
+@FeatureScope
+@Component(
+    modules = [HomeModule::class],
+    dependencies = [CoreComponent::class])
+interface HomeComponent {
+
+    fun inject(homeFragment: HomeFragment)
 }

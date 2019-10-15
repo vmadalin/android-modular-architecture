@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/menu_theme"
-        android:title="@string/menu_theme"
+        android:title="@string/home_toolbar_theme"
         app:showAsAction="always"
         app:actionViewClass="androidx.appcompat.widget.AppCompatCheckBox" />
 

@@ -58,7 +58,7 @@ android {
 dependencies {
     implementation(project(BuildModules.APP))
     implementation(project(BuildModules.CORE))
-    implementation(project(BuildModules.Features.DASHBOARD))
+    implementation(project(BuildModules.Features.HOME))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)

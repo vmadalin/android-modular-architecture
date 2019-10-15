@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_app_graph"
-    app:startDestination="@id/dashboard_fragment">
+    app:startDestination="@id/home_fragment">
     <fragment
-        android:id="@+id/dashboard_fragment"
-        android:name="com.vmadalin.dynamicfeatures.dashboard.ui.DashboardFragmentt"
-        android:label="DashboardFragment">
+        android:id="@+id/home_fragment"
+        android:name="com.vmadalin.dynamicfeatures.home.ui.HomeFragment"
+        android:label="HomeFragment">
     </fragment>
 </navigation>

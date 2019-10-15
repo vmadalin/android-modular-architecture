@@ -14,13 +14,23 @@
  * limitations under the License.
  */
 
-object BuildModules {
-    const val APP = ":app"
-    const val CORE = ":core"
+package com.vmadalin.dynamicfeatures.home.ui.di
 
-    object Features {
-        const val HOME = ":features:home"
-        const val CHARACTERS_LIST = ":features:characters_list"
-        const val CHARACTERS_FAVORITES = ":features:characters_favorites"
+import com.vmadalin.core.di.scopes.FeatureScope
+import com.vmadalin.core.extensions.viewModel
+import com.vmadalin.dynamicfeatures.home.ui.HomeFragment
+import com.vmadalin.dynamicfeatures.home.ui.HomeViewModel
+import dagger.Module
+import dagger.Provides
+
+@Module
+class HomeModule(private val fragment: HomeFragment) {
+
+    @Provides
+    @FeatureScope
+    fun providesHomeViewModel(): HomeViewModel {
+        return fragment.viewModel {
+            HomeViewModel()
+        }
     }
 }

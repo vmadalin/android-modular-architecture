@@ -19,7 +19,9 @@ package com.vmadalin.core.ui.base
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import java.lang.Exception
 
 abstract class BaseFragment : Fragment() {
 
@@ -34,5 +36,14 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onInitDataBinding()
+    }
+
+    fun requireCompatActivity(): AppCompatActivity {
+        val activity = requireActivity()
+        if (activity is AppCompatActivity) {
+            return activity
+        } else {
+            throw Exception("Main activity should extend from 'AppCompatActivity'")
+        }
     }
 }

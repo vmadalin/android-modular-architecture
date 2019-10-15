@@ -1,0 +1,8 @@
+<resources>
+    <!--Home Tab Items-->
+    <string name="home_tab_characters">Characters</string>
+    <string name="home_tab_favorites">Favorites</string>
+
+    <!--Home ToolBar Items-->
+    <string name="home_toolbar_theme">Toggle Theme</string>
+</resources>

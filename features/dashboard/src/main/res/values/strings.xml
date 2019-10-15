@@ -1,7 +1,0 @@
-<resources>
-    <!--Dashboard Menu-->
-    <string name="dashboard_menu_characters">Characters</string>
-    <string name="dashboard_menu_favorites">Favorites</string>
-
-    <string name="menu_theme">Toggle Theme</string>
-</resources>
