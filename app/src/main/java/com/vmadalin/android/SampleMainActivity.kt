@@ -17,101 +17,12 @@
 package com.vmadalin.android
 
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.AppCompatCheckBox
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.navigation.NavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.vmadalin.android.utils.ThemeUtils
-import com.vmadalin.core.extensions.setGone
-import com.vmadalin.core.extensions.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
 
 class SampleMainActivity : AppCompatActivity() {
-
-    private var currentNavController: LiveData<NavController>? = null
-    private val navFragmentsIds = setOf(
-        R.id.characters_list_fragment,
-        R.id.characters_favorites_fragment
-    )
-    private val navGraphIds = listOf(
-        R.navigation.navigation_characters_list_graph,
-        R.navigation.navigation_characters_favorites_graph
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setupToolbar()
-        if (savedInstanceState == null) {
-            setupBottomNavigationBar()
-        }
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        setupBottomNavigationBar()
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
-
-        menu.findItem(R.id.menu_theme).actionView.apply {
-            if (this is AppCompatCheckBox) {
-                setButtonDrawable(R.drawable.asl_theme)
-                isChecked = ThemeUtils.isDarkTheme(this@SampleMainActivity)
-                setOnCheckedChangeListener { _, isChecked ->
-                    postDelayed({
-                        AppCompatDelegate.setDefaultNightMode(
-                            if (isChecked)
-                                AppCompatDelegate.MODE_NIGHT_YES
-                            else
-                                AppCompatDelegate.MODE_NIGHT_NO
-                        )
-                        delegate.applyDayNight()
-                    }, 1000L)
-                }
-            }
-        }
-        return true
-    }
-
-    // ============================================================================================
-    //  Private methods
-    // ============================================================================================
-
-    private fun setupToolbar() {
-        setSupportActionBar(toolbar)
-    }
-
-    private fun setupBottomNavigationBar() {
-        val navController = bottom_navigation.setupWithNavController(
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.nav_host_container,
-            intent = intent
-        )
-
-        navController.observe(this, Observer {
-            it.addOnDestinationChangedListener { _, destination, _ ->
-                if (navFragmentsIds.contains(destination.id)) {
-                    bottom_navigation.setGone(false)
-                    app_bar_layout.setGone(false)
-                } else {
-                    bottom_navigation.setGone(true)
-                    app_bar_layout.setGone(true)
-                }
-            }
-            setupActionBarWithNavController(it)
-        })
-        currentNavController = navController
     }
 }

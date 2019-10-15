@@ -7,7 +7,4 @@
 
     <color name="textHeadline">#f1f1f1</color>
     <color name="textBody">#d3d3d3</color>
-
-    <color name="itemMenuChecked">#aaaaaa</color>
-    <color name="itemMenuUnchecked">#ffffff</color>
 </resources>

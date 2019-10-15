@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
-import com.vmadalin.dynamicfeatures.characterdetail.databinding.ListItemCharactersFavoriteBinding
+import com.vmadalin.dynamicfeatures.charactersfavorites.databinding.ListItemCharactersFavoriteBinding
 
 class CharactersFavoriteAdapter :
     ListAdapter<CharacterFavorite, CharactersFavoriteAdapter.ViewHolder>(

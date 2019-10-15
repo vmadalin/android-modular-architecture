@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="itemMenuChecked">#9d9d9d</color>
+    <color name="itemMenuUnchecked">#1b1b1b</color>
+</resources>

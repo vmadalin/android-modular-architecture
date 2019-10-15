@@ -19,6 +19,7 @@ object BuildModules {
     const val CORE = ":core"
 
     object Features {
+        const val DASHBOARD = ":features:dashboard"
         const val CHARACTERS_LIST = ":features:characters_list"
         const val CHARACTERS_FAVORITES = ":features:characters_favorites"
     }

@@ -58,7 +58,6 @@ android {
 dependencies {
     implementation(project(BuildModules.APP))
     implementation(project(BuildModules.CORE))
-    implementation(project(BuildModules.Features.DASHBOARD))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)
@@ -76,8 +75,6 @@ dependencies {
     implementation(Dependencies.TIMBER)
     implementation(Dependencies.LOGGING)
     implementation(Dependencies.GLIDE)
-    implementation(Dependencies.SWIPE_REFRESH_LAYOUT)
-    implementation(Dependencies.PAGING)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
     kapt(AnnotationProcessorsDependencies.DATABINDING)

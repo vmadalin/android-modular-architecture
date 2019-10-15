@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.android.utils
+package com.vmadalin.core.ui.utils
 
 import android.content.Context
 import android.content.res.Configuration
