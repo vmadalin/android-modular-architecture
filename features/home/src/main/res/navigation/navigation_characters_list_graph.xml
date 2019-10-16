@@ -20,8 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/character_detail_fragment"
-        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment"
-        android:label="Detail">
+        android:name="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment">
         <argument
             android:name="character_id"
             app:argType="long" />

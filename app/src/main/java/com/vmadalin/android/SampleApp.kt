@@ -28,10 +28,32 @@ import io.fabric.sdk.android.Fabric
 import kotlin.random.Random
 import timber.log.Timber
 
+/**
+ * Base class for maintaining global application state.
+ */
 class SampleApp : Application() {
 
     lateinit var coreComponent: CoreComponent
 
+    companion object {
+
+        /**
+         * Obtain core dagger component
+         *
+         * @param context application context
+         */
+        @JvmStatic
+        fun coreComponent(context: Context) =
+            (context.applicationContext as SampleApp).coreComponent
+    }
+
+    override fun getApplicationContext(): SampleApp {
+        return this
+    }
+
+    /**
+     * Override application onCreate
+     */
     override fun onCreate() {
         super.onCreate()
         initTimber()
@@ -40,11 +62,23 @@ class SampleApp : Application() {
         initDependencyInjection()
     }
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
+    /**
+     * Override application attachBaseContext
+     *
+     * @param context application context
+     */
+    override fun attachBaseContext(context: Context) {
+        super.attachBaseContext(context)
         SplitCompat.install(this)
     }
 
+    // ============================================================================================
+    //  Private methods
+    // ============================================================================================
+
+    /**
+     * Initialize dependency injection component
+     */
     private fun initDependencyInjection() {
         coreComponent = DaggerCoreComponent
             .builder()
@@ -53,7 +87,7 @@ class SampleApp : Application() {
     }
 
     /**
-     * Initialize log library Timber
+     * Initialize log library Timber only on debug build
      */
     private fun initTimber() {
         if (BuildConfig.DEBUG) {
@@ -62,10 +96,10 @@ class SampleApp : Application() {
     }
 
     /**
-     * Initialize crash report library Fabric
+     * Initialize crash report library Fabric on non debug build
      */
     private fun initFabric() {
-        if (BuildConfig.ENABLE_CRASHLYTICS) {
+        if (!BuildConfig.DEBUG) {
             Fabric.with(this, Crashlytics())
         }
     }
@@ -81,11 +115,5 @@ class SampleApp : Application() {
             }
             AppCompatDelegate.setDefaultNightMode(nightMode)
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun coreComponent(context: Context) =
-            (context.applicationContext as SampleApp).coreComponent
     }
 }

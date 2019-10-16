@@ -24,6 +24,7 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.vmadalin.android.SampleApp
 import com.vmadalin.core.extensions.setupWithNavController
@@ -58,13 +59,11 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         Handler().postDelayed({
-            requireActivity().runOnUiThread {
-                setupToolbar()
-                if (savedInstanceState == null) {
-                    setupBottomNavigationBar()
-                }
-            }
+             if (savedInstanceState == null) {
+                 setupBottomNavigationBar()
+             }
         }, 1000)
     }
 
@@ -110,6 +109,7 @@ class HomeFragment : BaseFragment() {
     // ============================================================================================
 
     private fun setupToolbar() {
+        setHasOptionsMenu(true)
         requireCompatActivity().setSupportActionBar(viewBinding.toolbar)
     }
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Primary colors-->
     <color name="primary">#ffffff</color>
     <color name="primaryDark">#f3f3f3f3</color>
     <color name="primaryLight">#ffffff</color>
     <color name="accent">#111111</color>
 
+    <!--Text colors-->
     <color name="textHeadline">#1f1f1f</color>
     <color name="textBody">#4f4f4f</color>
 </resources>

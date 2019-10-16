@@ -17,11 +17,9 @@
 import utils.createFabricProperties
 import dependencies.Dependencies
 import dependencies.DebugDependencies
-import dependencies.AnnotationProcessorsDependencies
 import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.debugImplementation
-import extensions.kapt
 import extensions.buildConfigBooleanField
 
 plugins {
@@ -126,23 +124,14 @@ dependencies {
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)
     implementation(Dependencies.MATERIAL)
-    implementation(Dependencies.LIFECYCLE_EXTENSIONS)
-    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.NAVIGATION_FRAGMENT)
-    implementation(Dependencies.NAVIGATION_UI)
-    implementation(Dependencies.FRAGMENT_KTX)
     implementation(Dependencies.CONSTRAIN_LAYOUT)
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
     implementation(Dependencies.TIMBER)
-    implementation(Dependencies.DAGGER)
     implementation(Dependencies.LOGGING)
     implementation(Dependencies.CRASHLYTICS)
     implementation(Dependencies.PLAY_CORE)
 
     debugImplementation(DebugDependencies.LEAKCANARY)
-
-    kapt(AnnotationProcessorsDependencies.DAGGER)
-    kapt(AnnotationProcessorsDependencies.DATABINDING)
 
     addTestsDependencies()
 }

@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Themes-->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
@@ -15,6 +17,7 @@
         <item name="android:background">@color/primary</item>
     </style>
 
+    <!--Text appearances-->
     <style name="TextAppearance.Title" parent="@style/TextAppearance.MaterialComponents.Headline6">
         <item name="android:textColor">@color/textHeadline</item>
     </style>

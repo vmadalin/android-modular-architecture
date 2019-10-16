@@ -19,8 +19,16 @@ package com.vmadalin.android
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Base activity class that use the support library action bar features.
+ */
 class SampleMainActivity : AppCompatActivity() {
 
+    /**
+     * Override activity onCreate
+     *
+     * @param savedInstanceState mapping from String keys to various Parcelable values.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
