@@ -1,4 +1,5 @@
 # Built application files
+*.aab
 *.apk
 *.ap_
 
@@ -66,3 +67,6 @@ fastlane/readme.md
 
 # Fabric
 Fabric.properties
+
+# Keystore
+*.keystore

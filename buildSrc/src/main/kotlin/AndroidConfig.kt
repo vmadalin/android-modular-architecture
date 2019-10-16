@@ -32,30 +32,3 @@ object AndroidConfig {
         "leakcanary.FailTestOnLeakRunListener" to "listener"
     )
 }
-
-interface BuildType {
-
-    companion object {
-        const val DEBUG = "debug"
-        const val RELEASE = "release"
-    }
-
-    val isMinifyEnabled: Boolean
-    val isCrashlyticsEnabled: Boolean
-    val isTestCoverageEnabled: Boolean
-}
-
-object BuildTypeDebug : BuildType {
-    override val isCrashlyticsEnabled = false
-    override val isMinifyEnabled = false
-    override val isTestCoverageEnabled = true
-
-    val applicationIdSuffix = ".debug"
-    val versionNameSuffix = "-DEBUG"
-}
-
-object BuildTypeRelease : BuildType {
-    override val isCrashlyticsEnabled = true
-    override val isMinifyEnabled = true
-    override val isTestCoverageEnabled = false
-}

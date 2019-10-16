@@ -17,10 +17,7 @@
 import utils.createFabricProperties
 import dependencies.Dependencies
 import dependencies.DebugDependencies
-import extensions.addTestsDependencies
-import extensions.implementation
-import extensions.debugImplementation
-import extensions.buildConfigBooleanField
+import extensions.*
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
@@ -55,13 +52,22 @@ android {
         testInstrumentationRunnerArguments = AndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS
     }
 
+    signingConfigs {
+        create(BuildType.RELEASE) {
+            keyAlias = getLocalProperty("signing.key.alias")
+            keyPassword = getLocalProperty("signing.key.password")
+            storeFile = file(getLocalProperty("signing.store.file"))
+            storePassword = getLocalProperty("signing.store.password")
+        }
+    }
+
     buildTypes {
         getByName(BuildType.RELEASE) {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName(name)
 
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
-
             buildConfigBooleanField("ENABLE_CRASHLYTICS", BuildTypeRelease.isCrashlyticsEnabled)
         }
 
