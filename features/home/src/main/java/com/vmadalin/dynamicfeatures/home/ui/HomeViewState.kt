@@ -19,7 +19,7 @@ package com.vmadalin.dynamicfeatures.home.ui
 sealed class HomeViewState {
 
     object FullScreen : HomeViewState()
-    object NavigationScreen: HomeViewState()
+    object NavigationScreen : HomeViewState()
 
     fun isFullScreen() = this is FullScreen
     fun isNavigationScreen() = this is NavigationScreen

@@ -18,13 +18,14 @@ package com.vmadalin.dynamicfeatures.home.ui
 
 import android.os.Bundle
 import android.os.Handler
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatCheckBox
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.vmadalin.android.SampleApp
 import com.vmadalin.core.extensions.setupWithNavController
@@ -61,9 +62,9 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
         Handler().postDelayed({
-             if (savedInstanceState == null) {
-                 setupBottomNavigationBar()
-             }
+            if (savedInstanceState == null) {
+                setupBottomNavigationBar()
+            }
         }, 1000)
     }
 
