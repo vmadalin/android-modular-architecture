@@ -37,7 +37,6 @@ allOpen {
 
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
-
     defaultConfig {
         applicationId = AndroidConfig.APPLICATION_ID
         minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
@@ -79,6 +78,13 @@ android {
 
             buildConfigBooleanField( "ENABLE_CRASHLYTICS", BuildTypeDebug.isCrashlyticsEnabled)
         }
+    }
+
+    flavorDimensions(ProductDimensions.ENVIRONMENT)
+    productFlavors {
+        ProductFlavorDevelop.appCreate(this)
+        ProductFlavorQA.appCreate(this)
+        ProductFlavorProduction.appCreate(this)
     }
 
     dynamicFeatures = mutableSetOf(

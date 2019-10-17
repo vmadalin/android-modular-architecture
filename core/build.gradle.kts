@@ -70,6 +70,13 @@ android {
     androidExtensions {
         isExperimental = true
     }
+
+    flavorDimensions(ProductDimensions.ENVIRONMENT)
+    productFlavors {
+        ProductFlavorDevelop.libraryCreate(this)
+        ProductFlavorQA.libraryCreate(this)
+        ProductFlavorProduction.libraryCreate(this)
+    }
 }
 
 dependencies {

@@ -53,6 +53,13 @@ android {
     androidExtensions {
         isExperimental = true
     }
+
+    flavorDimensions(ProductDimensions.ENVIRONMENT)
+    productFlavors {
+        ProductFlavorDevelop.appCreate(this)
+        ProductFlavorQA.appCreate(this)
+        ProductFlavorProduction.appCreate(this)
+    }
 }
 
 dependencies {
