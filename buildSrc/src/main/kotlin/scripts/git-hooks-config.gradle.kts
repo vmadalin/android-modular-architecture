@@ -19,6 +19,7 @@ import utils.isLinuxOrMacOs
 tasks {
     register<Copy>("copyGitHooks") {
         description = "Copies the git hooks from scripts/git-hooks to the .git folder."
+        group = "git hooks"
         from("$rootDir/scripts/git-hooks/") {
             include("**/*.sh")
             rename("(.*).sh", "$1")
@@ -39,6 +40,12 @@ tasks {
         doLast {
             logger.info("Git hooks installed successfully.")
         }
+    }
+
+    register<Delete>("deleteGitHooks") {
+        description = "Delete the pre-commit git hooks."
+        group = "git hooks"
+        delete(fileTree(".git/hooks/"))
     }
 
     afterEvaluate {
