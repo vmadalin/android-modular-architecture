@@ -47,10 +47,6 @@ class SampleApp : Application() {
             (context.applicationContext as SampleApp).coreComponent
     }
 
-    override fun getApplicationContext(): SampleApp {
-        return this
-    }
-
     /**
      * Override application onCreate
      */
