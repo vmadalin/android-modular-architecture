@@ -33,11 +33,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+    compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
+        minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
+        targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
     }
 
     buildTypes.forEach {
@@ -71,7 +71,7 @@ android {
         isExperimental = true
     }
 
-    flavorDimensions(ProductDimensions.ENVIRONMENT)
+    flavorDimensions(BuildProductDimensions.ENVIRONMENT)
     productFlavors {
         ProductFlavorDevelop.libraryCreate(this)
         ProductFlavorQA.libraryCreate(this)

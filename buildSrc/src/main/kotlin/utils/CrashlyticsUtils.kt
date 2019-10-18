@@ -16,7 +16,6 @@
 
 package utils
 
-import org.gradle.api.InvalidUserDataException
 import org.gradle.api.Project
 import java.io.File
 import java.lang.Exception
@@ -26,6 +25,12 @@ private const val FABRIC_PROPERTIES_FILE_NAME = "app/fabric.properties"
 private const val FABRIC_API_KEY_PROPERTY_NAME = "fabric.key"
 private const val FABRIC_API_SECRET_PROPERTY_NAME = "fabric.secret"
 
+/**
+ * Util to create `fabric.properties` file using the declared values on
+ * `$projectRoot/local.properties` by the following key names: `fabric.key` and `fabric.secret`.
+ *
+ * @param project the project reference
+ */
 fun createFabricProperties(project: Project) {
     try {
         val fabricPropertiesFile = File(FABRIC_PROPERTIES_FILE_NAME)
@@ -41,6 +46,6 @@ fun createFabricProperties(project: Project) {
                 }
         }
     } catch (e: Exception) {
-        throw InvalidUserDataException("You should define 'fabric.key' and 'fabric.secret' in local.properties. Visit 'https://fabric.io' to obtain them.")
+        throw Exception("You should define 'fabric.key' and 'fabric.secret' in local.properties. Visit 'https://fabric.io' to obtain them.")
     }
 }

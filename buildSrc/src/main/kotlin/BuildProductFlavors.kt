@@ -17,7 +17,7 @@
 import com.android.build.gradle.internal.dsl.ProductFlavor
 import org.gradle.api.NamedDomainObjectContainer
 
-interface BaseProductFlavor {
+interface BuildProductFlavor {
     val name: String
 
     fun libraryCreate(
@@ -29,7 +29,7 @@ interface BaseProductFlavor {
     ): ProductFlavor
 }
 
-object ProductFlavorDevelop : BaseProductFlavor {
+object ProductFlavorDevelop : BuildProductFlavor {
     override val name = "dev"
 
     override fun appCreate(
@@ -38,7 +38,7 @@ object ProductFlavorDevelop : BaseProductFlavor {
         return namedDomainObjectContainer.create(name) {
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
-            dimension = ProductDimensions.ENVIRONMENT
+            dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 
@@ -47,12 +47,12 @@ object ProductFlavorDevelop : BaseProductFlavor {
     ): ProductFlavor {
         return namedDomainObjectContainer.create(name) {
             versionNameSuffix = "-dev"
-            dimension = ProductDimensions.ENVIRONMENT
+            dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 }
 
-object ProductFlavorQA : BaseProductFlavor {
+object ProductFlavorQA : BuildProductFlavor {
     override val name = "qa"
 
     override fun appCreate(
@@ -61,7 +61,7 @@ object ProductFlavorQA : BaseProductFlavor {
         return namedDomainObjectContainer.create(name) {
             applicationIdSuffix = ".qa"
             versionNameSuffix = "-qa"
-            dimension = ProductDimensions.ENVIRONMENT
+            dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 
@@ -70,19 +70,19 @@ object ProductFlavorQA : BaseProductFlavor {
     ): ProductFlavor {
         return namedDomainObjectContainer.create(name) {
             versionNameSuffix = "-qa"
-            dimension = ProductDimensions.ENVIRONMENT
+            dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 }
 
-object ProductFlavorProduction : BaseProductFlavor {
+object ProductFlavorProduction : BuildProductFlavor {
     override val name = "prod"
 
     override fun appCreate(
         namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
     ): ProductFlavor {
         return namedDomainObjectContainer.create(name) {
-            dimension = ProductDimensions.ENVIRONMENT
+            dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 
@@ -90,7 +90,7 @@ object ProductFlavorProduction : BaseProductFlavor {
         namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
     ): ProductFlavor {
         return namedDomainObjectContainer.create(name) {
-            dimension = ProductDimensions.ENVIRONMENT
+            dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 }

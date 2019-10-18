@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
-object ProductDimensions {
+/**
+ * Configuration of product dimensions used on build variants
+ */
+object BuildProductDimensions {
     const val ENVIRONMENT = "environment"
 }

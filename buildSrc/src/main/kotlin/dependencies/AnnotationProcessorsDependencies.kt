@@ -16,9 +16,13 @@
 
 package dependencies
 
+/**
+ * Project annotation processor dependencies, makes it easy to include external binaries or
+ * other library modules to build.
+ */
 object AnnotationProcessorsDependencies {
-    const val DAGGER = "com.google.dagger:dagger-compiler:${DependenciesVersions.DAGGER}"
-    const val DATABINDING = "com.android.databinding:compiler:${DependenciesVersions.DATABINDING}"
-    const val GLIDE = "com.github.bumptech.glide:compiler:${DependenciesVersions.GLIDE}"
-    const val ROOM = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
+    const val DAGGER = "com.google.dagger:dagger-compiler:${BuildDependenciesVersions.DAGGER}"
+    const val DATABINDING = "com.android.databinding:compiler:${BuildDependenciesVersions.DATABINDING}"
+    const val GLIDE = "com.github.bumptech.glide:compiler:${BuildDependenciesVersions.GLIDE}"
+    const val ROOM = "androidx.room:room-compiler:${BuildDependenciesVersions.ROOM}"
 }

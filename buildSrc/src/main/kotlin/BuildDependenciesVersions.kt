@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-object DependenciesVersions {
+/**
+ * Configuration version of all build dependencies
+ */
+object BuildDependenciesVersions {
     const val KOTLIN = "1.3.50"
     const val APPCOMPAT = "1.1.0"
     const val MATERIAL = "1.1.0-beta01"

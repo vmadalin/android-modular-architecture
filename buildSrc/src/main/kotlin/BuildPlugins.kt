@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * Configuration of all gradle build plugins
+ */
 object BuildPlugins {
     const val ANDROID_APPLICATION = "com.android.application"
     const val ANDROID_DYNAMIC_FEATURE = "com.android.dynamic-feature"

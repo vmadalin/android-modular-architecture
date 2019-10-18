@@ -54,7 +54,7 @@ configure<SpotlessExtension> {
                 mapOf(
                     "dir" to ".",
                     "include" to listOf("**/*.kt"),
-                    "exclude" to listOf("**/build/**")
+                    "exclude" to listOf("**/build/**", "**/buildSrc/**")
                 )
             )
         )

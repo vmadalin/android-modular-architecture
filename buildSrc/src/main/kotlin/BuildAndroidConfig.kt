@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-object AndroidConfig {
+/**
+ * Configuration of android build
+ */
+object BuildAndroidConfig {
     const val APPLICATION_ID = "com.vmadalin.android"
 
     const val BUILD_TOOLS_VERSION = "29.0.0"

@@ -36,19 +36,19 @@ allOpen {
 }
 
 android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+    compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
     defaultConfig {
-        applicationId = AndroidConfig.APPLICATION_ID
-        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
-        buildToolsVersion(AndroidConfig.BUILD_TOOLS_VERSION)
+        applicationId = BuildAndroidConfig.APPLICATION_ID
+        minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
+        targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
+        buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
 
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
+        versionCode = BuildAndroidConfig.VERSION_CODE
+        versionName = BuildAndroidConfig.VERSION_NAME
 
-        vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
-        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
-        testInstrumentationRunnerArguments = AndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS
+        vectorDrawables.useSupportLibrary = BuildAndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
+        testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunnerArguments = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS
     }
 
     signingConfigs {
@@ -80,7 +80,7 @@ android {
         }
     }
 
-    flavorDimensions(ProductDimensions.ENVIRONMENT)
+    flavorDimensions(BuildProductDimensions.ENVIRONMENT)
     productFlavors {
         ProductFlavorDevelop.appCreate(this)
         ProductFlavorQA.appCreate(this)
