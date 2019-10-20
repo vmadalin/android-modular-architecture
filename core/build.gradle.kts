@@ -77,6 +77,15 @@ android {
         ProductFlavorQA.libraryCreate(this)
         ProductFlavorProduction.libraryCreate(this)
     }
+
+    sourceSets {
+        getByName("main") {
+            java.srcDir("src/main/kotlin")
+        }
+        getByName("test") {
+            java.srcDir("src/test/kotlin")
+        }
+    }
 }
 
 dependencies {
