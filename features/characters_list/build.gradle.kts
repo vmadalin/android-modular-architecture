@@ -85,6 +85,7 @@ dependencies {
     implementation(Dependencies.NAVIGATION_UI)
     implementation(Dependencies.LIFECYCLE_EXTENSIONS)
     implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+    implementation(Dependencies.RETROFIT)
     implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.FRAGMENT_KTX)
     implementation(Dependencies.CONSTRAIN_LAYOUT)

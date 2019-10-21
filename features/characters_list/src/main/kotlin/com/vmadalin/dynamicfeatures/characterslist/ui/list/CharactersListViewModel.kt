@@ -17,10 +17,12 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.vmadalin.core.network.NetworkState
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEMENTS
@@ -34,17 +36,34 @@ class CharactersListViewModel
     private val dataSourceFactory: CharactersPageDataSourceFactory
 ) : ViewModel() {
 
-    var charactersList: LiveData<PagedList<CharacterItem>> =
-        LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
-    private val _state: LiveData<CharactersListViewState> = Transformations.map(charactersList) {
-        CharactersListViewState.Listed(it)
+    val data = LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
+    val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
+        it.networkState
     }
+    private val _state = Transformations.map(networkState) {
+        when (it) {
+            is NetworkState.Success -> CharactersListViewState.Listed
+            is NetworkState.Loading ->
+                if (it.isAdditional) {
+                    CharactersListViewState.AddedLoading
+                } else {
+                    CharactersListViewState.Loading
+                }
+            else -> CharactersListViewState.Error
+        }
+    }
+
     val state: LiveData<CharactersListViewState>
         get() = _state
 
-    fun refreshCharactersList() {
-        // charactersList = dataSourceFactory.test(PAGE_MAX_ELEMENTS)
+    fun refreshLoadedCharactersList() {
+        dataSourceFactory.refresh()
     }
+
+    fun retryLoadCharactersList() {
+        dataSourceFactory.retry()
+    }
+
 
     override fun onCleared() {
         super.onCleared()

@@ -20,17 +20,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.paging.PagedList
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
+import com.vmadalin.core.extensions.observe
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersListComponent
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
 
 class CharactersListFragment : BaseFragment() {
@@ -52,16 +54,8 @@ class CharactersListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.state.observe(viewLifecycleOwner, Observer { viewState ->
-            when (viewState) {
-                is CharactersListViewState.Listed -> {
-                    if (viewBinding.swipeRefresh.isRefreshing) {
-                        viewBinding.swipeRefresh.isRefreshing = false
-                    }
-                    viewAdapter.submitList(viewState.data)
-                }
-            }
-        })
+        observe(viewModel.state, ::onViewStateChange)
+        observe(viewModel.data, ::onViewDataChange)
     }
 
     override fun onInitDependencyInjection() {
@@ -92,7 +86,21 @@ class CharactersListFragment : BaseFragment() {
         }
 
         viewBinding.swipeRefresh.setOnRefreshListener {
-            viewModel.refreshCharactersList()
+            viewModel.refreshLoadedCharactersList()
+        }
+    }
+
+    private fun onViewDataChange(viewData: PagedList<CharacterItem>) {
+        viewAdapter.submitList(viewData)
+    }
+
+    private fun onViewStateChange(viewState: CharactersListViewState) {
+        when (viewState) {
+            is CharactersListViewState.Listed -> {
+                if (viewBinding.swipeRefresh.isRefreshing) {
+                    viewBinding.swipeRefresh.isRefreshing = false
+                }
+            }
         }
     }
 }

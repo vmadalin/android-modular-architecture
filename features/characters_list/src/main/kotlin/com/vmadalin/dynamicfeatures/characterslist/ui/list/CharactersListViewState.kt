@@ -16,20 +16,20 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
-import androidx.paging.PagedList
-import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
+import com.vmadalin.core.ui.base.BaseViewState
 
-sealed class CharactersListViewState {
+sealed class CharactersListViewState: BaseViewState {
 
     object Loading : CharactersListViewState()
+    object AddedLoading : CharactersListViewState()
     object Empty : CharactersListViewState()
-    data class Error(val throwable: Throwable) : CharactersListViewState()
-    data class Listed(val data: PagedList<CharacterItem>?) : CharactersListViewState()
+    object Error : CharactersListViewState()
+    object Listed : CharactersListViewState()
 
     fun isLoading() = this is Loading
+    fun isAddedLoading() = this is AddedLoading
     fun isEmpty() = this is Empty
     fun isError() = this is Error
     fun isListed() = this is Listed
 
-    fun data(): PagedList<CharacterItem>? = if (this is Listed) this.data else null
 }

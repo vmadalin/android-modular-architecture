@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.network
+package com.vmadalin.core.extensions
 
-sealed class NetworkState {
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
-    object Success: NetworkState()
-
-    data class Loading(
-        val isAdditional: Boolean = false
-    ): NetworkState()
-
-    data class Error(
-        val code: Int? = null,
-        val message: String? = null
-    ): NetworkState()
-
-    fun isLoading() = this is NetworkState.Loading
-    fun isSuccess() = this is NetworkState.Success
-    fun isError() = this is NetworkState.Error
+fun <T> LifecycleOwner.observe(liveData: LiveData<T>, body: (T) -> Unit = {}) {
+    liveData.observe(this, Observer {
+        it?.let { t -> body(t) }
+    })
 }

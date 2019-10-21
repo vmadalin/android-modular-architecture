@@ -16,16 +16,32 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
 
+/**
+ * Data source factory which also provides a way to observe the last created data source.
+ * This allows us to channel its network request status etc back to the UI.
+ */
 class CharactersPageDataSourceFactory
 @Inject constructor(
     private val charactersPageDataSource: CharactersPageDataSource
 ) : DataSource.Factory<Int, CharacterItem>() {
 
+    val sourceLiveData = MutableLiveData<CharactersPageDataSource>()
+
     override fun create(): DataSource<Int, CharacterItem> {
+        sourceLiveData.postValue(charactersPageDataSource)
         return charactersPageDataSource
+    }
+
+    fun refresh() {
+        sourceLiveData.value?.invalidate()
+    }
+
+    fun retry() {
+        sourceLiveData.value?.retry()
     }
 }
