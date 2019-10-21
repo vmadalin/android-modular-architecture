@@ -20,16 +20,16 @@ import com.vmadalin.core.ui.base.BaseViewState
 
 sealed class CharactersListViewState: BaseViewState {
 
+    object Loaded : CharactersListViewState()
     object Loading : CharactersListViewState()
     object AddedLoading : CharactersListViewState()
     object Empty : CharactersListViewState()
     object Error : CharactersListViewState()
-    object Listed : CharactersListViewState()
 
+    fun isLoaded() = this is Loaded
     fun isLoading() = this is Loading
     fun isAddedLoading() = this is AddedLoading
     fun isEmpty() = this is Empty
     fun isError() = this is Error
-    fun isListed() = this is Listed
 
 }

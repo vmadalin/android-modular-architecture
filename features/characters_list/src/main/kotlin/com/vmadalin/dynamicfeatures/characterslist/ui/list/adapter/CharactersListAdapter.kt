@@ -18,28 +18,67 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharactersBinding
+import com.vmadalin.core.ui.base.BasePagedListAdapter
+import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
+import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemErrorBinding
+import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemLoadingBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 
-class CharactersListAdapter(private val clickListener: CharacterClickListener) :
-    PagedListAdapter<CharacterItem, CharactersListAdapter.ViewHolder>(
-        CharacterDiffCallback
-    ) {
+object ItemViewType {
+    const val CHARACTER = 0
+    const val LOADING = 1
+    const val ERROR = 2
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            ListItemCharactersBinding.inflate(LayoutInflater.from(parent.context))
-        )
+class CharactersListAdapter(
+    private val clickListener: CharacterClickListener
+) : BasePagedListAdapter<CharacterItem>(
+    itemsSame = { old, new -> old.id == new.id },
+    contentsSame = { old, new -> old == new }
+) {
+
+    private var state: CharactersListAdapterState = CharactersListAdapterState.Loaded
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            ItemViewType.CHARACTER -> ViewHolder(
+                ListItemCharacterBinding.inflate(
+                    LayoutInflater.from(
+                        parent.context
+                    )
+                )
+            )
+            ItemViewType.LOADING -> ViewLoadingHolder(
+                ListItemLoadingBinding.inflate(
+                    LayoutInflater.from(
+                        parent.context
+                    )
+                )
+            )
+            else -> ViewErrorHolder(ListItemErrorBinding.inflate(LayoutInflater.from(parent.context)))
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(clickListener, it) }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (getItemViewType(position)) {
+            ItemViewType.CHARACTER -> getItem(position)?.let {
+                if (holder is ViewHolder) {
+                    holder.bind(clickListener, it)
+                }
+            }
+        }
     }
 
-    class ViewHolder(private val binding: ListItemCharactersBinding) :
+    fun getSpanSize(position: Int): Int {
+        return when (getItemViewType(position)) {
+            ItemViewType.LOADING, ItemViewType.ERROR -> 2
+            else -> 1
+        }
+    }
+
+    class ViewHolder(private val binding: ListItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: CharacterClickListener, item: CharacterItem) {
             binding.clickListener = clickListener
@@ -48,13 +87,39 @@ class CharactersListAdapter(private val clickListener: CharacterClickListener) :
         }
     }
 
-    companion object CharacterDiffCallback : DiffUtil.ItemCallback<CharacterItem>() {
-        override fun areItemsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean {
-            return oldItem.id == newItem.id
-        }
+    class ViewLoadingHolder(binding: ListItemLoadingBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewErrorHolder(binding: ListItemErrorBinding) : RecyclerView.ViewHolder(binding.root)
 
-        override fun areContentsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean {
-            return oldItem == newItem
+    fun submitState(newState: CharactersListAdapterState) {
+        if (state.hasExtraRow != newState.hasExtraRow) {
+            if (state.hasExtraRow) {
+                notifyItemRemoved(itemCount)
+            } else {
+                notifyItemInserted(itemCount)
+            }
+        } else if (newState.hasExtraRow && state != newState) {
+            notifyItemChanged(itemCount - 1)
+        }
+        state = newState
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (state.hasExtraRow && position == itemCount - 1) {
+            if (state.isError()) {
+                ItemViewType.ERROR
+            } else {
+                ItemViewType.LOADING
+            }
+        } else {
+            ItemViewType.CHARACTER
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return if (state.hasExtraRow) {
+            super.getItemCount() + 1
+        } else {
+            super.getItemCount()
         }
     }
 }

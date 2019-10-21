@@ -60,7 +60,10 @@ class CharactersPageDataSource @Inject constructor(
         }
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
+    override fun loadAfter(
+        params: LoadParams<Int>,
+        callback: LoadCallback<Int, CharacterItem>
+    ) {
         networkState.postValue(NetworkState.Loading(true))
         scope.launch(CoroutineExceptionHandler { _, throwable ->
             retry = {
@@ -78,7 +81,10 @@ class CharactersPageDataSource @Inject constructor(
         }
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
+    override fun loadBefore(
+        params: LoadParams<Int>,
+        callback: LoadCallback<Int, CharacterItem>
+    ) {
         // Ignored, since we only ever append to our initial load
     }
 

@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
+import androidx.recyclerview.widget.GridLayoutManager
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
@@ -30,6 +31,7 @@ import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapterState
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersListComponent
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
@@ -80,6 +82,11 @@ class CharactersListFragment : BaseFragment() {
         viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.includeList.charactersList.apply {
             adapter = viewAdapter
+            (layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return viewAdapter.getSpanSize(position)
+                }
+            }
             addItemDecoration(
                 RecyclerViewItemDecoration(resources, R.dimen.characters_list_item_padding)
             )
@@ -97,6 +104,14 @@ class CharactersListFragment : BaseFragment() {
     private fun onViewStateChange(viewState: CharactersListViewState) {
         if (viewBinding.swipeRefresh.isRefreshing) {
             viewBinding.swipeRefresh.isRefreshing = false
+        }
+        when (viewState) {
+            is CharactersListViewState.Loaded ->
+                viewAdapter.submitState(CharactersListAdapterState.Loaded)
+            is CharactersListViewState.AddedLoading ->
+                viewAdapter.submitState(CharactersListAdapterState.Loading)
+            is CharactersListViewState.Error ->
+                viewAdapter.submitState(CharactersListAdapterState.Error)
         }
     }
 }

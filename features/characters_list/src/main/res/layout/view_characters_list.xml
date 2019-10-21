@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:visibleOrGone="@{viewState.listed || viewState.addedLoading}">
+        app:visibleOrGone="@{viewState.isLoaded || viewState.addedLoading}">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/characters_list"
@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme.BackgroundStyle"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="@integer/characters_list_spans"
-            tools:listitem="@layout/list_item_characters" />
+            tools:listitem="@layout/list_item_character" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

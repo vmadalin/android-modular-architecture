@@ -42,7 +42,7 @@ class CharactersListViewModel
                 if (it.data.isNullOrEmpty()) {
                     CharactersListViewState.Empty
                 } else {
-                    CharactersListViewState.Listed
+                    CharactersListViewState.Loaded
                 }
             is NetworkState.Loading ->
                 if (it.isAdditional) {
