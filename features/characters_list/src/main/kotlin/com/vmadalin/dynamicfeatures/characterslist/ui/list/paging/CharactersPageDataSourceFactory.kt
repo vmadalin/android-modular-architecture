@@ -18,7 +18,9 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
+import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
+import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 
 /**
@@ -27,14 +29,16 @@ import javax.inject.Inject
  */
 class CharactersPageDataSourceFactory
 @Inject constructor(
-    private val charactersPageDataSource: CharactersPageDataSource
+    private val repository: MarvelRepository,
+    private val scope: CoroutineScope
 ) : DataSource.Factory<Int, CharacterItem>() {
 
     val sourceLiveData = MutableLiveData<CharactersPageDataSource>()
 
     override fun create(): DataSource<Int, CharacterItem> {
-        sourceLiveData.postValue(charactersPageDataSource)
-        return charactersPageDataSource
+        val dataSource = CharactersPageDataSource(repository, scope)
+        sourceLiveData.postValue(dataSource)
+        return dataSource
     }
 
     fun refresh() {

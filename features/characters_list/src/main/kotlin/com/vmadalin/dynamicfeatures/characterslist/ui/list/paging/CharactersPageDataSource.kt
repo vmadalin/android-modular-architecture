@@ -27,7 +27,6 @@ import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 
 const val PAGE_INIT_ELEMENTS = 0
 const val PAGE_MAX_ELEMENTS = 50
@@ -49,77 +48,55 @@ class CharactersPageDataSource @Inject constructor(
             retry = {
                 loadInitial(params, callback)
             }
-            when (throwable) {
-                is HttpException ->
-                    networkState.postValue(
-                        NetworkState.Error(code = throwable.code(), message = throwable.message())
-                    )
-                else ->
-                    networkState.postValue(
-                        NetworkState.Error(message = throwable.message)
-                    )
-            }
-        })
-    {
-        val response = repository.getCharacters(
-            offset = PAGE_INIT_ELEMENTS,
-            limit = PAGE_MAX_ELEMENTS
-        )
-        callback.onResult(getCharacterItems(response), null, PAGE_MAX_ELEMENTS)
-        networkState.postValue(NetworkState.Success)
-    }
-}
-
-override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
-    networkState.postValue(NetworkState.Loading(true))
-    scope.launch(CoroutineExceptionHandler { _, throwable ->
-        retry = {
-            loadAfter(params, callback)
-        }
-        when (throwable) {
-            is HttpException ->
-                networkState.postValue(
-                    NetworkState.Error(
-                        code = throwable.code(),
-                        message = throwable.message()
-                    )
-                )
-            else ->
-                networkState.postValue(
-                    NetworkState.Error(
-                        message = throwable.message
-                    )
-                )
-        }
-    }) {
-        val response = repository.getCharacters(
-            offset = params.key,
-            limit = PAGE_MAX_ELEMENTS
-        )
-        callback.onResult(getCharacterItems(response), params.key + PAGE_MAX_ELEMENTS)
-        networkState.postValue(NetworkState.Success)
-    }
-}
-
-override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
-    // Ignored, since we only ever append to our initial load
-}
-
-fun retry() {
-    retry?.invoke()
-}
-
-private fun getCharacterItems(response: BaseResponse<CharacterResponse>): List<CharacterItem> {
-    return response.data.results.map {
-        CharacterItem(
-            id = it.id,
-            name = it.name,
-            description = it.description,
-            imageUrl = (it.thumbnail.path + "." + it.thumbnail.extension).replace(
-                "http",
-                "https"
+            networkState.postValue(NetworkState.Error(throwable))
+        }) {
+            val response = repository.getCharacters(
+                offset = PAGE_INIT_ELEMENTS,
+                limit = PAGE_MAX_ELEMENTS
             )
-        )
+            val data = getCharacterItems(response)
+            callback.onResult(data, null, PAGE_MAX_ELEMENTS)
+            networkState.postValue(NetworkState.Success(data))
+        }
     }
-}
+
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
+        networkState.postValue(NetworkState.Loading(true))
+        scope.launch(CoroutineExceptionHandler { _, throwable ->
+            retry = {
+                loadAfter(params, callback)
+            }
+            networkState.postValue(NetworkState.Error(throwable))
+        }) {
+            val response = repository.getCharacters(
+                offset = params.key,
+                limit = PAGE_MAX_ELEMENTS
+            )
+            val data = getCharacterItems(response)
+            callback.onResult(data, params.key + PAGE_MAX_ELEMENTS)
+            networkState.postValue(NetworkState.Success(data))
+        }
+    }
+
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, CharacterItem>) {
+        // Ignored, since we only ever append to our initial load
+    }
+
+    fun retry() {
+        retry?.invoke()
+    }
+
+    private fun getCharacterItems(response: BaseResponse<CharacterResponse>): List<CharacterItem> {
+        return response.data.results.map {
+            CharacterItem(
+                id = it.id,
+                name = it.name,
+                description = it.description,
+                imageUrl = (it.thumbnail.path + "." + it.thumbnail.extension).replace(
+                    "http",
+                    "https"
+                )
+            )
+        }
+    }
 }

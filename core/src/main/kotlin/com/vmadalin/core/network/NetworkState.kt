@@ -18,15 +18,16 @@ package com.vmadalin.core.network
 
 sealed class NetworkState {
 
-    object Success: NetworkState()
+    data class Success(
+        val data: List<*>? = null
+    ): NetworkState()
 
     data class Loading(
         val isAdditional: Boolean = false
     ): NetworkState()
 
     data class Error(
-        val code: Int? = null,
-        val message: String? = null
+        val throwable: Throwable
     ): NetworkState()
 
     fun isLoading() = this is NetworkState.Loading

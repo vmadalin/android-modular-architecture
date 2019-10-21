@@ -95,12 +95,8 @@ class CharactersListFragment : BaseFragment() {
     }
 
     private fun onViewStateChange(viewState: CharactersListViewState) {
-        when (viewState) {
-            is CharactersListViewState.Listed -> {
-                if (viewBinding.swipeRefresh.isRefreshing) {
-                    viewBinding.swipeRefresh.isRefreshing = false
-                }
-            }
+        if (viewBinding.swipeRefresh.isRefreshing) {
+            viewBinding.swipeRefresh.isRefreshing = false
         }
     }
 }
