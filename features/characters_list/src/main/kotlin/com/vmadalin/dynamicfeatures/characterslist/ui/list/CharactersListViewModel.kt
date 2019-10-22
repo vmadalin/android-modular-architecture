@@ -39,7 +39,7 @@ class CharactersListViewModel
     val state = Transformations.map(networkState) {
         when (it) {
             is NetworkState.Success ->
-                if (it.data.isNullOrEmpty()) {
+                if (!it.isAdditional && data.value.isNullOrEmpty()) {
                     CharactersListViewState.Empty
                 } else {
                     CharactersListViewState.Loaded
@@ -50,7 +50,12 @@ class CharactersListViewModel
                 } else {
                     CharactersListViewState.Loading
                 }
-            else -> CharactersListViewState.Error
+            is NetworkState.Error ->
+                if (it.isAdditional) {
+                    CharactersListViewState.AddedError
+                } else {
+                    CharactersListViewState.Error
+                }
         }
     }
 

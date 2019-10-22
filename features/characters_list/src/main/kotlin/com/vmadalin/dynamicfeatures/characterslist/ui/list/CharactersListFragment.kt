@@ -82,11 +82,7 @@ class CharactersListFragment : BaseFragment() {
         viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.includeList.charactersList.apply {
             adapter = viewAdapter
-            (layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return viewAdapter.getSpanSize(position)
-                }
-            }
+            (layoutManager as GridLayoutManager).spanSizeLookup = viewAdapter.getSpanSizeLookup()
             addItemDecoration(
                 RecyclerViewItemDecoration(resources, R.dimen.characters_list_item_padding)
             )
@@ -110,7 +106,7 @@ class CharactersListFragment : BaseFragment() {
                 viewAdapter.submitState(CharactersListAdapterState.Loaded)
             is CharactersListViewState.AddedLoading ->
                 viewAdapter.submitState(CharactersListAdapterState.Loading)
-            is CharactersListViewState.Error ->
+            is CharactersListViewState.AddedError ->
                 viewAdapter.submitState(CharactersListAdapterState.Error)
         }
     }

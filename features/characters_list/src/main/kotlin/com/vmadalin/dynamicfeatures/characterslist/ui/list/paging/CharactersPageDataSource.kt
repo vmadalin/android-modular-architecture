@@ -56,7 +56,7 @@ class CharactersPageDataSource @Inject constructor(
             )
             val data = getCharacterItems(response)
             callback.onResult(data, null, PAGE_MAX_ELEMENTS)
-            networkState.postValue(NetworkState.Success(data))
+            networkState.postValue(NetworkState.Success())
         }
     }
 
@@ -69,7 +69,7 @@ class CharactersPageDataSource @Inject constructor(
             retry = {
                 loadAfter(params, callback)
             }
-            networkState.postValue(NetworkState.Error(throwable))
+            networkState.postValue(NetworkState.Error(throwable, true))
         }) {
             val response = repository.getCharacters(
                 offset = params.key,
@@ -77,7 +77,7 @@ class CharactersPageDataSource @Inject constructor(
             )
             val data = getCharacterItems(response)
             callback.onResult(data, params.key + PAGE_MAX_ELEMENTS)
-            networkState.postValue(NetworkState.Success(data))
+            networkState.postValue(NetworkState.Success(true))
         }
     }
 

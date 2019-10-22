@@ -24,12 +24,19 @@ import com.vmadalin.core.ui.base.BasePagedListAdapter
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemErrorBinding
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemLoadingBinding
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.CharacterViewHolder
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.ErrorViewHolder
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.LoadingViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 
-object ItemViewType {
-    const val CHARACTER = 0
-    const val LOADING = 1
-    const val ERROR = 2
+private enum class ItemView(val type: Int, val span: Int) {
+    CHARACTER(type = 0, span = 1),
+    LOADING(type = 1, span = 2),
+    ERROR(type = 2, span = 2);
+
+    companion object {
+        fun valueOf(type: Int): ItemView? = values().first { it.type == type }
+    }
 }
 
 class CharactersListAdapter(
@@ -42,53 +49,35 @@ class CharactersListAdapter(
     private var state: CharactersListAdapterState = CharactersListAdapterState.Loaded
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when (viewType) {
-            ItemViewType.CHARACTER -> ViewHolder(
-                ListItemCharacterBinding.inflate(
-                    LayoutInflater.from(
-                        parent.context
-                    )
-                )
-            )
-            ItemViewType.LOADING -> ViewLoadingHolder(
-                ListItemLoadingBinding.inflate(
-                    LayoutInflater.from(
-                        parent.context
-                    )
-                )
-            )
-            else -> ViewErrorHolder(ListItemErrorBinding.inflate(LayoutInflater.from(parent.context)))
+        return when (ItemView.valueOf(viewType)) {
+            ItemView.CHARACTER -> CharacterViewHolder(ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context)))
+            ItemView.LOADING -> LoadingViewHolder(ListItemLoadingBinding.inflate(LayoutInflater.from(parent.context)))
+            else -> ErrorViewHolder(ListItemErrorBinding.inflate(LayoutInflater.from(parent.context)))
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (getItemViewType(position)) {
-            ItemViewType.CHARACTER -> getItem(position)?.let {
-                if (holder is ViewHolder) {
+        when (getItemView(position)) {
+            ItemView.CHARACTER -> getItem(position)?.let {
+                if (holder is CharacterViewHolder) {
                     holder.bind(clickListener, it)
                 }
             }
+            else -> {}
         }
     }
 
-    fun getSpanSize(position: Int): Int {
-        return when (getItemViewType(position)) {
-            ItemViewType.LOADING, ItemViewType.ERROR -> 2
-            else -> 1
+    override fun getItemCount(): Int {
+        return if (state.hasExtraRow) {
+            super.getItemCount() + 1
+        } else {
+            super.getItemCount()
         }
     }
 
-    class ViewHolder(private val binding: ListItemCharacterBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(clickListener: CharacterClickListener, item: CharacterItem) {
-            binding.clickListener = clickListener
-            binding.character = item
-            binding.executePendingBindings()
-        }
+    override fun getItemViewType(position: Int): Int {
+        return getItemView(position).type
     }
-
-    class ViewLoadingHolder(binding: ListItemLoadingBinding) : RecyclerView.ViewHolder(binding.root)
-    class ViewErrorHolder(binding: ListItemErrorBinding) : RecyclerView.ViewHolder(binding.root)
 
     fun submitState(newState: CharactersListAdapterState) {
         if (state.hasExtraRow != newState.hasExtraRow) {
@@ -103,23 +92,23 @@ class CharactersListAdapter(
         state = newState
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (state.hasExtraRow && position == itemCount - 1) {
-            if (state.isError()) {
-                ItemViewType.ERROR
-            } else {
-                ItemViewType.LOADING
+    fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
+        return object: GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return getItemView(position).span
             }
-        } else {
-            ItemViewType.CHARACTER
         }
     }
 
-    override fun getItemCount(): Int {
-        return if (state.hasExtraRow) {
-            super.getItemCount() + 1
+    private fun getItemView(position: Int): ItemView {
+        return if (state.hasExtraRow && position == itemCount - 1) {
+            if (state.isError()) {
+                ItemView.ERROR
+            } else {
+                ItemView.LOADING
+            }
         } else {
-            super.getItemCount()
+            ItemView.CHARACTER
         }
     }
 }

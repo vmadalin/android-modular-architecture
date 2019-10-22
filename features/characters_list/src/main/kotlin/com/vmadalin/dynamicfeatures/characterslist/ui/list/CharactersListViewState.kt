@@ -25,11 +25,13 @@ sealed class CharactersListViewState: BaseViewState {
     object AddedLoading : CharactersListViewState()
     object Empty : CharactersListViewState()
     object Error : CharactersListViewState()
+    object AddedError : CharactersListViewState()
 
     fun isLoaded() = this is Loaded
     fun isLoading() = this is Loading
     fun isAddedLoading() = this is AddedLoading
     fun isEmpty() = this is Empty
     fun isError() = this is Error
+    fun isAddedError() = this is AddedError
 
 }
