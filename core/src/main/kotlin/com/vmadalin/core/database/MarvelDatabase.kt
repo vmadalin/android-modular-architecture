@@ -23,6 +23,7 @@ import androidx.room.RoomDatabase
 import com.vmadalin.core.BuildConfig
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
+import com.vmadalin.core.database.migrations.MIGRATION_1_2
 
 @Database(
     entities = [CharacterFavorite::class],
@@ -34,7 +35,12 @@ abstract class MarvelDatabase : RoomDatabase() {
 
     companion object {
 
-        @Volatile private var instance: MarvelDatabase? = null
+        @Volatile
+        private var instance: MarvelDatabase? = null
+
+        private val dbMigrations by lazy {
+            listOf(MIGRATION_1_2)
+        }
 
         fun getInstance(context: Context): MarvelDatabase {
             return instance ?: synchronized(this) {
@@ -47,7 +53,8 @@ abstract class MarvelDatabase : RoomDatabase() {
                 context,
                 MarvelDatabase::class.java,
                 BuildConfig.MARVEL_DATABASE_NAME
-            ).build()
+            ).addMigrations(*dbMigrations.toTypedArray())
+             .build()
         }
     }
 }
