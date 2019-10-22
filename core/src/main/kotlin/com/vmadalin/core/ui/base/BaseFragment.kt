@@ -18,15 +18,33 @@ package com.vmadalin.core.ui.base
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import java.lang.Exception
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding>(
+    private val layoutId: Int
+) : Fragment() {
+
+    lateinit var viewBinding: T
 
     abstract fun onInitDependencyInjection()
     abstract fun onInitDataBinding()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        viewBinding.lifecycleOwner = this
+        return viewBinding.root
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

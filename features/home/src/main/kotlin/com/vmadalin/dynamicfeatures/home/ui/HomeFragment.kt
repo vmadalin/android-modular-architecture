@@ -18,11 +18,9 @@ package com.vmadalin.dynamicfeatures.home.ui
 
 import android.os.Bundle
 import android.os.Handler
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.lifecycle.Observer
@@ -37,26 +35,17 @@ import com.vmadalin.dynamicfeatures.home.ui.di.DaggerHomeComponent
 import com.vmadalin.dynamicfeatures.home.ui.di.HomeModule
 import javax.inject.Inject
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(
+    layoutId = R.layout.fragment_home
+) {
 
     @Inject
     lateinit var viewModel: HomeViewModel
-
-    private lateinit var viewBinding: FragmentHomeBinding
 
     private val navGraphIds = listOf(
         R.navigation.navigation_characters_list_graph,
         R.navigation.navigation_characters_favorites_graph
     )
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewBinding = FragmentHomeBinding.inflate(inflater, container, false)
-        return viewBinding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

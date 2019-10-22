@@ -17,9 +17,7 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -34,24 +32,16 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterD
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_character_detail.*
 
-class CharacterDetailFragment : BaseFragment() {
+class CharacterDetailFragment : BaseFragment<FragmentCharacterDetailBinding>(
+    layoutId = R.layout.fragment_character_detail
+) {
 
     @Inject
     lateinit var viewModel: CharacterDetailViewModel
 
-    private lateinit var viewBinding: FragmentCharacterDetailBinding
     private lateinit var viewDialog: ProgressBarDialog
 
     private val args: CharacterDetailFragmentArgs by navArgs()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewBinding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
-        return viewBinding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

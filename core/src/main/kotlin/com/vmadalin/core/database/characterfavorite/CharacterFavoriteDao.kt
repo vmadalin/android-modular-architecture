@@ -16,6 +16,7 @@
 
 package com.vmadalin.core.database.characterfavorite
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -23,6 +24,9 @@ import androidx.room.Query
 
 @Dao
 interface CharacterFavoriteDao {
+
+    @Query("SELECT * FROM character_favorite")
+    fun getAllCharactersFavoriteLiveData(): LiveData<List<CharacterFavorite>>
 
     @Query("SELECT * FROM character_favorite")
     suspend fun getAllCharactersFavorite(): List<CharacterFavorite>

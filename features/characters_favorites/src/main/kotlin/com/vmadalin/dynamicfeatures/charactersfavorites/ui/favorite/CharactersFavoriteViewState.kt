@@ -16,12 +16,10 @@
 
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
-import com.vmadalin.core.database.characterfavorite.CharacterFavorite
-
 sealed class CharactersFavoriteViewState {
 
     object Empty : CharactersFavoriteViewState()
-    data class Listed(val data: List<CharacterFavorite>) : CharactersFavoriteViewState()
+    object Listed : CharactersFavoriteViewState()
 
     fun isEmpty() = this is Empty
     fun isListed() = this is Listed

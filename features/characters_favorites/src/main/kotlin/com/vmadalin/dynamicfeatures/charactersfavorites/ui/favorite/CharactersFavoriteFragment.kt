@@ -17,12 +17,11 @@
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.vmadalin.android.SampleApp
+import com.vmadalin.core.database.characterfavorite.CharacterFavorite
+import com.vmadalin.core.extensions.observe
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
 import com.vmadalin.dynamicfeatures.charactersfavorites.R
@@ -33,34 +32,18 @@ import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.Character
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.DaggerCharactersFavoriteComponent
 import javax.inject.Inject
 
-class CharactersFavoriteFragment : BaseFragment() {
+class CharactersFavoriteFragment : BaseFragment<FragmentCharactersFavoriteListBinding>(
+    layoutId = R.layout.fragment_characters_favorite_list
+) {
 
     @Inject
     lateinit var viewModel: CharactersFavoriteViewModel
     @Inject
     lateinit var viewAdapter: CharactersFavoriteAdapter
 
-    private lateinit var viewBinding: FragmentCharactersFavoriteListBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewBinding = FragmentCharactersFavoriteListBinding.inflate(inflater, container, false)
-        return viewBinding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.state.observe(viewLifecycleOwner, Observer { viewState ->
-            when (viewState) {
-                is CharactersFavoriteViewState.Listed -> {
-                    viewAdapter.submitList(viewState.data)
-                }
-            }
-        })
-        viewModel.getAllFavoriteCharacters()
+        observe(viewModel.data, ::onViewDataChange)
     }
 
     override fun onInitDependencyInjection() {
@@ -85,5 +68,9 @@ class CharactersFavoriteFragment : BaseFragment() {
                 viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])
             }).attachToRecyclerView(this)
         }
+    }
+
+    private fun onViewDataChange(viewData: List<CharacterFavorite>) {
+        viewAdapter.submitList(viewData)
     }
 }

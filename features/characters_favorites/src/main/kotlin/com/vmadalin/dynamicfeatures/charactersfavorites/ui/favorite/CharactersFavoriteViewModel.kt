@@ -16,8 +16,7 @@
 
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
@@ -31,25 +30,18 @@ class CharactersFavoriteViewModel @Inject constructor(
     private val coroutineScope: CoroutineScope
 ) : ViewModel() {
 
-    private val _state = MutableLiveData<CharactersFavoriteViewState>()
-    val state: LiveData<CharactersFavoriteViewState>
-        get() = _state
-
-    fun getAllFavoriteCharacters() {
-        coroutineScope.launch {
-            val charactersFavorite = characterFavoriteRepository.getAllCharactersFavorite()
-            if (charactersFavorite.isEmpty()) {
-                _state.postValue(CharactersFavoriteViewState.Empty)
-            } else {
-                _state.postValue(CharactersFavoriteViewState.Listed(charactersFavorite))
-            }
+    val data = characterFavoriteRepository.getAllCharactersFavoriteLiveData()
+    val state = Transformations.map(data) {
+        if (it.isEmpty()) {
+            CharactersFavoriteViewState.Empty
+        } else {
+            CharactersFavoriteViewState.Listed
         }
     }
 
     fun removeFavoriteCharacter(character: CharacterFavorite) {
         coroutineScope.launch {
             characterFavoriteRepository.deleteCharacterFavorite(character)
-            getAllFavoriteCharacters()
         }
     }
 

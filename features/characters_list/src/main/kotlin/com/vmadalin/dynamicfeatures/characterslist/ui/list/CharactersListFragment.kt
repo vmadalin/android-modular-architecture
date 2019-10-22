@@ -17,9 +17,7 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
@@ -37,22 +35,14 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersLi
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
 
-class CharactersListFragment : BaseFragment() {
+class CharactersListFragment : BaseFragment<FragmentCharactersListBinding>(
+    layoutId = R.layout.fragment_characters_list
+) {
 
     @Inject
     lateinit var viewModel: CharactersListViewModel
 
-    private lateinit var viewBinding: FragmentCharactersListBinding
     private lateinit var viewAdapter: CharactersListAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        viewBinding = FragmentCharactersListBinding.inflate(inflater, container, false)
-        return viewBinding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
