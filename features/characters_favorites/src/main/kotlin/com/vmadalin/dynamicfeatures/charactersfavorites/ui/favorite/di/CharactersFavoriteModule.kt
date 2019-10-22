@@ -45,6 +45,5 @@ class CharactersFavoriteModule(private val fragment: CharactersFavoriteFragment)
 
     @Provides
     @FeatureScope
-    fun providesCharactersFavoriteAdapter() =
-        CharactersFavoriteAdapter()
+    fun providesCharactersFavoriteAdapter() = CharactersFavoriteAdapter()
 }

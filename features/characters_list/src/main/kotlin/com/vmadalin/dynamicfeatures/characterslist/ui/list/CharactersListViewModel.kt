@@ -20,15 +20,13 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import com.vmadalin.core.network.NetworkState
+import com.vmadalin.core.ui.base.BaseViewModel
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEMENTS
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
 
 class CharactersListViewModel
 @Inject constructor(
-    private val coroutineScope: CoroutineScope,
     private val dataSourceFactory: CharactersPageDataSourceFactory
 ) : ViewModel() {
 
@@ -59,16 +57,12 @@ class CharactersListViewModel
         }
     }
 
+
     fun refreshLoadedCharactersList() {
         dataSourceFactory.refresh()
     }
 
     fun retryLoadCharactersList() {
         dataSourceFactory.retry()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        coroutineScope.cancel()
     }
 }

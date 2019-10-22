@@ -36,7 +36,7 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
         dataFactory: CharactersPageDataSourceFactory
     ): CharactersListViewModel {
         return fragment.viewModel {
-            CharactersListViewModel(CoroutineScope(Dispatchers.IO), dataFactory)
+            CharactersListViewModel(dataFactory)
         }
     }
 
