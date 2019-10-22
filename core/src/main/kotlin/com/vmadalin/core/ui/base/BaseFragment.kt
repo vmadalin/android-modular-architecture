@@ -26,12 +26,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import java.lang.Exception
+import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
-abstract class BaseFragment<T : ViewDataBinding>(
+abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
     private val layoutId: Int
 ) : Fragment() {
 
-    lateinit var viewBinding: T
+    @Inject
+    lateinit var viewModel: M
+    lateinit var viewBinding: B
 
     abstract fun onInitDependencyInjection()
     abstract fun onInitDataBinding()
@@ -42,7 +46,7 @@ abstract class BaseFragment<T : ViewDataBinding>(
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-        viewBinding.lifecycleOwner = this
+        viewBinding.lifecycleOwner = viewLifecycleOwner
         return viewBinding.root
     }
 

@@ -29,15 +29,12 @@ import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_character_detail.*
 
-class CharacterDetailFragment : BaseFragment<FragmentCharacterDetailBinding>(
-    layoutId = R.layout.fragment_character_detail
-) {
-
-    @Inject
-    lateinit var viewModel: CharacterDetailViewModel
+class CharacterDetailFragment :
+    BaseFragment<FragmentCharacterDetailBinding, CharacterDetailViewModel>(
+        layoutId = R.layout.fragment_character_detail
+    ) {
 
     private lateinit var viewDialog: ProgressBarDialog
 
@@ -77,7 +74,6 @@ class CharacterDetailFragment : BaseFragment<FragmentCharacterDetailBinding>(
 
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
-        viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.addFavoriteButton.setOnClickListener {
             viewModel.addCharacterDetailToFavorite()
             Snackbar.make(

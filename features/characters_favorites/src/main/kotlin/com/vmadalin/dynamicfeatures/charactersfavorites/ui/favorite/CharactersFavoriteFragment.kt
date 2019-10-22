@@ -32,12 +32,11 @@ import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.Character
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.DaggerCharactersFavoriteComponent
 import javax.inject.Inject
 
-class CharactersFavoriteFragment : BaseFragment<FragmentCharactersFavoriteListBinding>(
-    layoutId = R.layout.fragment_characters_favorite_list
-) {
+class CharactersFavoriteFragment :
+    BaseFragment<FragmentCharactersFavoriteListBinding, CharactersFavoriteViewModel>(
+        layoutId = R.layout.fragment_characters_favorite_list
+    ) {
 
-    @Inject
-    lateinit var viewModel: CharactersFavoriteViewModel
     @Inject
     lateinit var viewAdapter: CharactersFavoriteAdapter
 
@@ -57,7 +56,6 @@ class CharactersFavoriteFragment : BaseFragment<FragmentCharactersFavoriteListBi
 
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
-        viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.includeList.charactersFavoriteList.apply {
             adapter = viewAdapter
             addItemDecoration(

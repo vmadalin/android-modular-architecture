@@ -33,14 +33,10 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersLis
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersListComponent
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
-import javax.inject.Inject
 
-class CharactersListFragment : BaseFragment<FragmentCharactersListBinding>(
+class CharactersListFragment : BaseFragment<FragmentCharactersListBinding, CharactersListViewModel>(
     layoutId = R.layout.fragment_characters_list
 ) {
-
-    @Inject
-    lateinit var viewModel: CharactersListViewModel
 
     private lateinit var viewAdapter: CharactersListAdapter
 
@@ -69,7 +65,6 @@ class CharactersListFragment : BaseFragment<FragmentCharactersListBinding>(
             })
 
         viewBinding.viewModel = viewModel
-        viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.includeList.charactersList.apply {
             adapter = viewAdapter
             (layoutManager as GridLayoutManager).spanSizeLookup = viewAdapter.getSpanSizeLookup()

@@ -33,14 +33,10 @@ import com.vmadalin.dynamicfeatures.home.R
 import com.vmadalin.dynamicfeatures.home.databinding.FragmentHomeBinding
 import com.vmadalin.dynamicfeatures.home.ui.di.DaggerHomeComponent
 import com.vmadalin.dynamicfeatures.home.ui.di.HomeModule
-import javax.inject.Inject
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     layoutId = R.layout.fragment_home
 ) {
-
-    @Inject
-    lateinit var viewModel: HomeViewModel
 
     private val navGraphIds = listOf(
         R.navigation.navigation_characters_list_graph,
@@ -68,7 +64,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
-        viewBinding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
