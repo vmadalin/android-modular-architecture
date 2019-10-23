@@ -33,9 +33,10 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModu
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersListComponent
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 
-class CharactersListFragment : BaseFragment<FragmentCharactersListBinding, CharactersListViewModel>(
-    layoutId = R.layout.fragment_characters_list
-) {
+class CharactersListFragment :
+    BaseFragment<FragmentCharactersListBinding, CharactersListViewModel>(
+        layoutId = R.layout.fragment_characters_list
+    ) {
 
     private lateinit var viewAdapter: CharactersListAdapter
 
@@ -68,10 +69,6 @@ class CharactersListFragment : BaseFragment<FragmentCharactersListBinding, Chara
             adapter = viewAdapter
             (layoutManager as GridLayoutManager).spanSizeLookup = viewAdapter.getSpanSizeLookup()
         }
-
-        viewBinding.swipeRefresh.setOnRefreshListener {
-            viewModel.refreshLoadedCharactersList()
-        }
     }
 
     private fun onViewDataChange(viewData: PagedList<CharacterItem>) {
@@ -79,9 +76,6 @@ class CharactersListFragment : BaseFragment<FragmentCharactersListBinding, Chara
     }
 
     private fun onViewStateChange(viewState: CharactersListViewState) {
-        if (viewBinding.swipeRefresh.isRefreshing) {
-            viewBinding.swipeRefresh.isRefreshing = false
-        }
         when (viewState) {
             is CharactersListViewState.Loaded ->
                 viewAdapter.submitState(CharactersListAdapterState.Loaded)

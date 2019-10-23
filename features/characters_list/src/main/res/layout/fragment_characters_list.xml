@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SampleMainActivity">
 
@@ -14,7 +14,9 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:onRefresh="@{() -> viewModel.refreshLoadedCharactersList()}"
+        app:showRefreshing="@{viewModel.state.refreshing}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,22 +25,22 @@
             <include
                 android:id="@+id/include_list"
                 layout="@layout/view_characters_list"
-                bind:viewState="@{viewModel.state}"/>
+                app:viewState="@{viewModel.state}"/>
 
             <include
                 android:id="@+id/include_list_empty"
                 layout="@layout/view_characters_list_empty"
-                bind:viewState="@{viewModel.state}"/>
+                app:viewState="@{viewModel.state}"/>
 
             <include
                 android:id="@+id/include_list_error"
                 layout="@layout/view_characters_list_error"
-                bind:viewState="@{viewModel.state}"/>
+                app:viewState="@{viewModel.state}"/>
 
             <include
                 android:id="@+id/include_list_loading"
                 layout="@layout/view_characters_list_loading"
-                bind:viewState="@{viewModel.state}"/>
+                app:viewState="@{viewModel.state}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
