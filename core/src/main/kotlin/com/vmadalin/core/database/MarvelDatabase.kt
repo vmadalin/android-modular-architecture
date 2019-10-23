@@ -54,7 +54,7 @@ abstract class MarvelDatabase : RoomDatabase() {
                 MarvelDatabase::class.java,
                 BuildConfig.MARVEL_DATABASE_NAME
             ).addMigrations(*dbMigrations.toTypedArray())
-             .build()
+                .build()
         }
     }
 }

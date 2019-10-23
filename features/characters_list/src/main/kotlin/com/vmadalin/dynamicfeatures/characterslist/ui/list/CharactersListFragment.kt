@@ -22,9 +22,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.vmadalin.android.SampleApp.Companion.coreComponent
+import com.vmadalin.core.extensions.observe
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
-import com.vmadalin.core.extensions.observe
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener

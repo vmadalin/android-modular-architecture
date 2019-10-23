@@ -20,8 +20,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
-import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
 
 /**
  * Data source factory which also provides a way to observe the last created data source.

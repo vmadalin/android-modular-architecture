@@ -21,9 +21,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.core.ui.base.BasePagedListAdapter
-import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
-import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemErrorBinding
-import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemLoadingBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.CharacterViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.ErrorViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.LoadingViewHolder
@@ -48,11 +45,15 @@ class CharactersListAdapter(
 
     private var state: CharactersListAdapterState = CharactersListAdapterState.Loaded
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        inflater: LayoutInflater,
+        viewType: Int
+    ): RecyclerView.ViewHolder {
         return when (ItemView.valueOf(viewType)) {
-            ItemView.CHARACTER -> CharacterViewHolder(ListItemCharacterBinding.inflate(LayoutInflater.from(parent.context)))
-            ItemView.LOADING -> LoadingViewHolder(ListItemLoadingBinding.inflate(LayoutInflater.from(parent.context)))
-            else -> ErrorViewHolder(ListItemErrorBinding.inflate(LayoutInflater.from(parent.context)))
+            ItemView.CHARACTER -> CharacterViewHolder(inflater)
+            ItemView.LOADING -> LoadingViewHolder(inflater)
+            else -> ErrorViewHolder(inflater)
         }
     }
 
@@ -93,7 +94,7 @@ class CharactersListAdapter(
     }
 
     fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
-        return object: GridLayoutManager.SpanSizeLookup() {
+        return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return getItemView(position).span
             }

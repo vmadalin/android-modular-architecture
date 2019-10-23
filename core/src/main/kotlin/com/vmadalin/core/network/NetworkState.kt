@@ -20,16 +20,16 @@ sealed class NetworkState {
 
     data class Success(
         val isAdditional: Boolean = false
-    ): NetworkState()
+    ) : NetworkState()
 
     data class Loading(
         val isAdditional: Boolean = false
-    ): NetworkState()
+    ) : NetworkState()
 
     data class Error(
         val throwable: Throwable,
         val isAdditional: Boolean = false
-    ): NetworkState()
+    ) : NetworkState()
 
     fun isLoading() = this is NetworkState.Loading
     fun isSuccess() = this is NetworkState.Success

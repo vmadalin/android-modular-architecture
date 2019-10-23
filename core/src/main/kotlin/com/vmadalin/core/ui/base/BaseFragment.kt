@@ -25,8 +25,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import java.lang.Exception
 import androidx.lifecycle.ViewModel
+import java.lang.Exception
 import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(

@@ -18,7 +18,7 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
 import com.vmadalin.core.ui.base.BaseViewState
 
-sealed class CharactersListViewState: BaseViewState {
+sealed class CharactersListViewState : BaseViewState {
 
     object Loaded : CharactersListViewState()
     object Loading : CharactersListViewState()
@@ -33,5 +33,4 @@ sealed class CharactersListViewState: BaseViewState {
     fun isEmpty() = this is Empty
     fun isError() = this is Error
     fun isAddedError() = this is AddedError
-
 }
