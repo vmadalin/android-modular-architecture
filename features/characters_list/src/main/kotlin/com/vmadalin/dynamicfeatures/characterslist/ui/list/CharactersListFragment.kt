@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.extensions.observe
 import com.vmadalin.core.ui.base.BaseFragment
-import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener
@@ -68,9 +67,6 @@ class CharactersListFragment : BaseFragment<FragmentCharactersListBinding, Chara
         viewBinding.includeList.charactersList.apply {
             adapter = viewAdapter
             (layoutManager as GridLayoutManager).spanSizeLookup = viewAdapter.getSpanSizeLookup()
-            addItemDecoration(
-                RecyclerViewItemDecoration(resources, R.dimen.characters_list_item_padding)
-            )
         }
 
         viewBinding.swipeRefresh.setOnRefreshListener {

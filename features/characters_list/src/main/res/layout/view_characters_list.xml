@@ -22,6 +22,7 @@
             android:theme="@style/AppTheme.BackgroundStyle"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="@integer/characters_list_spans"
+            app:itemDecorationSpacing="@{@dimen/characters_list_item_padding}"
             tools:listitem="@layout/list_item_character" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

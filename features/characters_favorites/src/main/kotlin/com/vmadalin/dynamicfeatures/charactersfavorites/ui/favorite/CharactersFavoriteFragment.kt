@@ -23,7 +23,6 @@ import com.vmadalin.android.SampleApp
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.extensions.observe
 import com.vmadalin.core.ui.base.BaseFragment
-import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
 import com.vmadalin.dynamicfeatures.charactersfavorites.R
 import com.vmadalin.dynamicfeatures.charactersfavorites.databinding.FragmentCharactersFavoriteListBinding
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteAdapter
@@ -58,9 +57,6 @@ class CharactersFavoriteFragment :
         viewBinding.viewModel = viewModel
         viewBinding.includeList.charactersFavoriteList.apply {
             adapter = viewAdapter
-            addItemDecoration(
-                RecyclerViewItemDecoration(resources, R.dimen.characters_favorite_list_item_padding)
-            )
 
             ItemTouchHelper(CharactersFavoriteTouchHelper {
                 viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])

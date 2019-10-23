@@ -26,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="@integer/characters_favorite_list_spans"
+            app:itemDecorationSpacing="@{@dimen/characters_favorite_list_item_padding}"
             tools:listitem="@layout/list_item_characters_favorite" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
