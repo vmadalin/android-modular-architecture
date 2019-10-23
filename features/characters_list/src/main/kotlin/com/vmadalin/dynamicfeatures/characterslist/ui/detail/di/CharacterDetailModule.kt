@@ -20,6 +20,7 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
+import com.vmadalin.core.ui.customviews.ProgressBarDialog
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
 import dagger.Module
@@ -40,7 +41,13 @@ class CharacterDetailModule(private val fragment: CharacterDetailFragment) {
             CharacterDetailViewModel(
                 marvelRepository = repository,
                 characterFavoriteRepository = characterFavoriteRepository,
-                coroutineScope = CoroutineScope(Dispatchers.IO))
+                coroutineScope = CoroutineScope(Dispatchers.IO)
+            )
         }
     }
+
+    @FeatureScope
+    @Provides
+    fun providesProgressBarDialog(): ProgressBarDialog =
+        ProgressBarDialog(fragment.requireContext())
 }

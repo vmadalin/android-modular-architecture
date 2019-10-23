@@ -27,7 +27,7 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.state.data().name}">
+                app:title="@{viewModel.data.name}">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                     android:contentDescription="@string/character_detail_image_content_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{viewModel.state.data().imageUrl}"
+                    app:imageUrl="@{viewModel.data.imageUrl}"
                     app:layout_collapseMode="parallax"
                     tools:src="@tools:sample/avatars" />
 
@@ -70,7 +70,7 @@
                     android:id="@+id/character_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.state.data().name}"
+                    android:text="@{viewModel.data.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -81,7 +81,7 @@
                     android:id="@+id/character_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.state.data().description}"
+                    android:text="@{viewModel.data.description}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/character_name"
@@ -98,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/character_detail_floating_button_margin"
             android:tint="@color/primary"
+            app:visibleOrGone="@{viewModel.state.addToFavorite}"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_favorites"

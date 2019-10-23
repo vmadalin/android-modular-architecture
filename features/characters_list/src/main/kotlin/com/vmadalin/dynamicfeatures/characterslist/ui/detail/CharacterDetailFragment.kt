@@ -18,17 +18,18 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.android.SampleApp.Companion.coreComponent
+import com.vmadalin.core.extensions.observe
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.core.ui.customviews.ProgressBarDialog
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_character_detail.*
 
 class CharacterDetailFragment :
@@ -36,28 +37,15 @@ class CharacterDetailFragment :
         layoutId = R.layout.fragment_character_detail
     ) {
 
-    private lateinit var viewDialog: ProgressBarDialog
+    @Inject
+    lateinit var progressDialog: ProgressBarDialog
 
     private val args: CharacterDetailFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDialog = ProgressBarDialog(requireContext())
-        viewModel.state.observe(viewLifecycleOwner, Observer { viewState ->
-            when (viewState) {
-                is CharacterDetailViewState.Loading -> {
-                    viewDialog.show(R.string.character_detail_dialog_loading_text)
-                }
-                is CharacterDetailViewState.Success -> {
-                    viewDialog.dismiss()
-                }
-                is CharacterDetailViewState.Error -> {
-                    viewDialog.dismissWithErrorMessage(R.string.character_detail_dialog_error_text)
-                }
-            }
-        })
+        observe(viewModel.state, ::onViewStateChange)
         viewModel.loadCharacterDetail(args.characterId)
-
         toolbar.setNavigationOnClickListener {
             it.findNavController().navigateUp()
         }
@@ -75,12 +63,23 @@ class CharacterDetailFragment :
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
         viewBinding.addFavoriteButton.setOnClickListener {
-            viewModel.addCharacterDetailToFavorite()
-            Snackbar.make(
-                requireView(),
-                R.string.character_detail_added_to_favorite_message,
-                Snackbar.LENGTH_LONG
-            ).show()
+            viewModel.addCharacterToFavorite()
+        }
+    }
+
+    private fun onViewStateChange(viewState: CharacterDetailViewState) {
+        when (viewState) {
+            is CharacterDetailViewState.Loading ->
+                progressDialog.show(R.string.character_detail_dialog_loading_text)
+            is CharacterDetailViewState.Error ->
+                progressDialog.dismissWithErrorMessage(R.string.character_detail_dialog_error_text)
+            is CharacterDetailViewState.AddedToFavorite ->
+                Snackbar.make(
+                    requireView(),
+                    R.string.character_detail_added_to_favorite_message,
+                    Snackbar.LENGTH_LONG
+                ).show()
+            else -> progressDialog.dismiss()
         }
     }
 }

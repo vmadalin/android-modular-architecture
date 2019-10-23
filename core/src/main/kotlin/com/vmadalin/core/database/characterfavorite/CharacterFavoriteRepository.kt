@@ -27,7 +27,7 @@ class CharacterFavoriteRepository @Inject constructor(
         return characterFavoriteDao.getAllCharactersFavoriteLiveData()
     }
 
-    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite {
+    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite? {
         return characterFavoriteDao.getCharacterFavorite(characterFavoriteId)
     }
 
