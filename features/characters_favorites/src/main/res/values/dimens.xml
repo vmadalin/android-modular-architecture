@@ -3,4 +3,5 @@
     <dimen name="characters_favorite_list_item_size">150dp</dimen>
     <dimen name="characters_favorite_list_item_text_padding">15dp</dimen>
     <dimen name="characters_favorite_list_item_padding">10dp</dimen>
+    <dimen name="characters_favorite_list_item_corner_radius">5dp</dimen>
 </resources>

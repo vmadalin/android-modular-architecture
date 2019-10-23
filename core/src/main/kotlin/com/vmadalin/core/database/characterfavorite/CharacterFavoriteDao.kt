@@ -25,10 +25,10 @@ import androidx.room.Query
 @Dao
 interface CharacterFavoriteDao {
 
-    @Query("SELECT * FROM character_favorite")
+    @Query("SELECT * FROM character_favorite ORDER BY name")
     fun getAllCharactersFavoriteLiveData(): LiveData<List<CharacterFavorite>>
 
-    @Query("SELECT * FROM character_favorite")
+    @Query("SELECT * FROM character_favorite ORDER BY name")
     suspend fun getAllCharactersFavorite(): List<CharacterFavorite>
 
     @Query("SELECT * FROM character_favorite WHERE id = :characterFavoriteId")

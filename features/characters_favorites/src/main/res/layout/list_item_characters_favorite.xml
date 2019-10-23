@@ -13,6 +13,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/characters_favorite_list_item_corner_radius"
+        app:cardElevation="@dimen/characters_favorite_list_item_corner_radius"
         app:cardBackgroundColor="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
