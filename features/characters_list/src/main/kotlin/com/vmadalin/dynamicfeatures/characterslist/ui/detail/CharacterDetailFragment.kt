@@ -18,8 +18,9 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.extensions.observe
@@ -30,7 +31,6 @@ import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacter
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.fragment_character_detail.*
 
 class CharacterDetailFragment :
     BaseFragment<FragmentCharacterDetailBinding, CharacterDetailViewModel>(
@@ -46,9 +46,6 @@ class CharacterDetailFragment :
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
         viewModel.loadCharacterDetail(args.characterId)
-        toolbar.setNavigationOnClickListener {
-            it.findNavController().navigateUp()
-        }
     }
 
     override fun onInitDependencyInjection() {
@@ -62,9 +59,6 @@ class CharacterDetailFragment :
 
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
-        viewBinding.addFavoriteButton.setOnClickListener {
-            viewModel.addCharacterToFavorite()
-        }
     }
 
     private fun onViewStateChange(viewState: CharacterDetailViewState) {
@@ -77,8 +71,9 @@ class CharacterDetailFragment :
                 Snackbar.make(
                     requireView(),
                     R.string.character_detail_added_to_favorite_message,
-                    Snackbar.LENGTH_LONG
+                    BaseTransientBottomBar.LENGTH_LONG
                 ).show()
+            is CharacterDetailViewState.Dismiss -> findNavController().navigateUp()
             else -> progressDialog.dismiss()
         }
     }

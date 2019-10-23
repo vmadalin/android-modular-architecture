@@ -23,10 +23,12 @@ sealed class CharacterDetailViewState {
     object AlreadyAddedToFavorite : CharacterDetailViewState()
     object AddedToFavorite : CharacterDetailViewState()
     object AddToFavorite : CharacterDetailViewState()
+    object Dismiss : CharacterDetailViewState()
 
     fun isLoading() = this is Loading
     fun isError() = this is Error
     fun isAddToFavorite() = this is AddToFavorite
     fun isAddedToFavorite() = this is AlreadyAddedToFavorite
     fun isAlreadyAddedToFavorite() = this is AddedToFavorite
+    fun isDismiss() = this is AddedToFavorite
 }

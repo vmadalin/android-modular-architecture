@@ -40,12 +40,12 @@
                     tools:src="@tools:sample/avatars" />
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel" />
+                    app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+                    app:navigationOnClick="@{() -> viewModel.dismissCharacterDetail()}"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -98,7 +98,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/character_detail_floating_button_margin"
             android:tint="@color/primary"
-            app:visibleOrGone="@{viewModel.state.addToFavorite}"
+            android:onClick="@{() -> viewModel.addCharacterToFavorite()}"
+            app:visibleOrGone="@{viewModel.state.isAddToFavorite()}"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_favorites"

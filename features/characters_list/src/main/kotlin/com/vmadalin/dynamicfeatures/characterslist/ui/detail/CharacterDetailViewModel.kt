@@ -79,6 +79,10 @@ class CharacterDetailViewModel @Inject constructor(
         }
     }
 
+    fun dismissCharacterDetail() {
+        _state.postValue(CharacterDetailViewState.Dismiss)
+    }
+
     private fun transform(response: BaseResponse<CharacterResponse>): CharacterDetail {
         val characterResponse = response.data.results.first()
         return CharacterDetail(

@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
@@ -39,6 +40,13 @@ fun setImageUrl(imageView: ImageView, url: String?) {
         .placeholder(ColorDrawable(Color.parseColor(placeholderColor)))
         .centerCrop()
         .into(imageView)
+}
+
+@BindingAdapter("navigationOnClick")
+fun setNavigationOnClick(toolbar: Toolbar, onClick: View.OnClickListener) {
+    toolbar.setNavigationOnClickListener {
+        onClick.onClick(it)
+    }
 }
 
 @BindingAdapter("visibleOrGone")
