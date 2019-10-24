@@ -19,11 +19,13 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
 sealed class CharactersListAdapterState(
     val hasExtraRow: Boolean
 ) {
-    object Loaded : CharactersListAdapterState(hasExtraRow = false)
-    object Loading : CharactersListAdapterState(hasExtraRow = true)
-    object Error : CharactersListAdapterState(hasExtraRow = true)
+    object NoMore : CharactersListAdapterState(hasExtraRow = false)
+    object AddLoading : CharactersListAdapterState(hasExtraRow = true)
+    object AddError : CharactersListAdapterState(hasExtraRow = true)
+    object Added : CharactersListAdapterState(hasExtraRow = true)
 
-    fun isLoaded() = this is Loaded
-    fun isLoading() = this is Loading
-    fun isError() = this is Error
+    fun isAddError() = this is AddError
+    fun isAddLoading() = this is AddLoading
+    fun isNoMore() = this is NoMore
+    fun isAdded() = this is Added
 }

@@ -78,11 +78,13 @@ class CharactersListFragment :
     private fun onViewStateChange(viewState: CharactersListViewState) {
         when (viewState) {
             is CharactersListViewState.Loaded ->
-                viewAdapter.submitState(CharactersListAdapterState.Loaded)
-            is CharactersListViewState.AddedLoading ->
-                viewAdapter.submitState(CharactersListAdapterState.Loading)
-            is CharactersListViewState.AddedError ->
-                viewAdapter.submitState(CharactersListAdapterState.Error)
+                viewAdapter.submitState(CharactersListAdapterState.Added)
+            is CharactersListViewState.AddLoading ->
+                viewAdapter.submitState(CharactersListAdapterState.AddLoading)
+            is CharactersListViewState.AddError ->
+                viewAdapter.submitState(CharactersListAdapterState.AddError)
+            is CharactersListViewState.NoMoreElements ->
+                viewAdapter.submitState(CharactersListAdapterState.NoMore)
         }
     }
 }

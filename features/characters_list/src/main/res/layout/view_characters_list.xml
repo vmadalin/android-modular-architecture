@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:visibleOrGone="@{viewState.isLoaded || viewState.addedLoading || viewState.addedError}">
+        app:visibleOrGone="@{viewState.isLoaded || viewState.addLoading || viewState.addError || viewState.NoMoreElements}">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/characters_list"

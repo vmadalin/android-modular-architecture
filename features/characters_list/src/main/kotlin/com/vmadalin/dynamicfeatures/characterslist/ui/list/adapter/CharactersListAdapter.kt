@@ -43,7 +43,7 @@ class CharactersListAdapter(
     contentsSame = { old, new -> old == new }
 ) {
 
-    private var state: CharactersListAdapterState = CharactersListAdapterState.Loaded
+    private var state: CharactersListAdapterState = CharactersListAdapterState.Added
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -81,16 +81,11 @@ class CharactersListAdapter(
     }
 
     fun submitState(newState: CharactersListAdapterState) {
-        if (state.hasExtraRow != newState.hasExtraRow) {
-            if (state.hasExtraRow) {
-                notifyItemRemoved(itemCount)
-            } else {
-                notifyItemInserted(itemCount)
-            }
-        } else if (newState.hasExtraRow && state != newState) {
+        val oldState = state
+        state = newState
+        if (newState.hasExtraRow && oldState != newState) {
             notifyItemChanged(itemCount - 1)
         }
-        state = newState
     }
 
     fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
@@ -103,7 +98,7 @@ class CharactersListAdapter(
 
     private fun getItemView(position: Int): ItemView {
         return if (state.hasExtraRow && position == itemCount - 1) {
-            if (state.isError()) {
+            if (state.isAddError()) {
                 ItemView.ERROR
             } else {
                 ItemView.LOADING

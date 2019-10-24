@@ -19,7 +19,8 @@ package com.vmadalin.core.network
 sealed class NetworkState {
 
     data class Success(
-        val isAdditional: Boolean = false
+        val isAdditional: Boolean = false,
+        val isEmptyResponse: Boolean = false
     ) : NetworkState()
 
     data class Loading(

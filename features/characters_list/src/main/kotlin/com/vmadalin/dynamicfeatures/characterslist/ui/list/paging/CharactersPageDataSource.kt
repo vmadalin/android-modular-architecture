@@ -56,7 +56,7 @@ class CharactersPageDataSource @Inject constructor(
             )
             val data = getCharacterItems(response)
             callback.onResult(data, null, PAGE_MAX_ELEMENTS)
-            networkState.postValue(NetworkState.Success())
+            networkState.postValue(NetworkState.Success(isEmptyResponse = data.isEmpty()))
         }
     }
 
@@ -77,7 +77,7 @@ class CharactersPageDataSource @Inject constructor(
             )
             val data = getCharacterItems(response)
             callback.onResult(data, params.key + PAGE_MAX_ELEMENTS)
-            networkState.postValue(NetworkState.Success(true))
+            networkState.postValue(NetworkState.Success(true, data.isEmpty()))
         }
     }
 
