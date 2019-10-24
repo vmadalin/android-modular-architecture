@@ -77,6 +77,14 @@ class CharactersListAdapter @Inject constructor(
         }
     }
 
+    override fun getItemId(position: Int): Long {
+        return when (getItemView(position)) {
+            ItemView.CHARACTER -> getItem(position)?.id!!
+            ItemView.LOADING -> 0L
+            ItemView.ERROR -> 1L
+        }
+    }
+
     override fun getItemCount(): Int {
         return if (state.hasExtraRow) {
             super.getItemCount() + 1

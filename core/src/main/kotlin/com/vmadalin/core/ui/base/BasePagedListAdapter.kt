@@ -18,6 +18,7 @@ package com.vmadalin.core.ui.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,12 @@ abstract class BasePagedListAdapter<T>(
     override fun areContentsTheSame(old: T, new: T): Boolean = contentsSame(old, new)
 }) {
 
+    init {
+        super.setHasStableIds(true)
+    }
+
+    var recyclerView: RecyclerView? = null
+
     abstract fun onCreateViewHolder(
         parent: ViewGroup,
         inflater: LayoutInflater,
@@ -39,5 +46,22 @@ abstract class BasePagedListAdapter<T>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return onCreateViewHolder(parent, layoutInflater, viewType)
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        this.recyclerView = recyclerView
+        super.onAttachedToRecyclerView(recyclerView)
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        this.recyclerView = null
+        super.onDetachedFromRecyclerView(recyclerView)
+    }
+
+    override fun submitList(pagedList: PagedList<T>?) {
+        super.submitList(pagedList)
+        if (pagedList.isNullOrEmpty()) {
+            recyclerView?.scrollToPosition(0)
+        }
     }
 }
