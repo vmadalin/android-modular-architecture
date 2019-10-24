@@ -73,7 +73,9 @@ class CharacterDetailFragment :
                     R.string.character_detail_added_to_favorite_message,
                     BaseTransientBottomBar.LENGTH_LONG
                 ).show()
-            is CharacterDetailViewState.Dismiss -> findNavController().navigateUp()
+            is CharacterDetailViewState.Dismiss -> {
+                findNavController().navigateUp()
+            }
             else -> progressDialog.dismiss()
         }
     }

@@ -14,21 +14,9 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.extensions
+package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+sealed class CharactersListViewEvent {
 
-fun <T> LifecycleOwner.observe(liveData: LiveData<T>, body: (T) -> Unit = {}) {
-    liveData.observe(this, Observer {
-        it?.let { t -> body(t) }
-    })
-}
-
-fun <T> LifecycleOwner.observe(liveData: MutableLiveData<T>, body: (T) -> Unit = {}) {
-    liveData.observe(this, Observer {
-        it?.let { t -> body(t) }
-    })
+    data class OpenCharacterDetail(val id: Long) : CharactersListViewEvent()
 }

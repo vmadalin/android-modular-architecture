@@ -20,6 +20,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import com.vmadalin.core.network.NetworkState
+import com.vmadalin.core.ui.livedata.SingleLiveData
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEMENTS
 import javax.inject.Inject
@@ -32,6 +33,8 @@ class CharactersListViewModel
     private val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
         it.networkState
     }
+
+    val event = SingleLiveData<CharactersListViewEvent>()
     val data = LivePagedListBuilder(dataSourceFactory, PAGE_MAX_ELEMENTS).build()
     val state = Transformations.map(networkState) {
         when (it) {
@@ -62,7 +65,11 @@ class CharactersListViewModel
         dataSourceFactory.refresh()
     }
 
-    fun retryLoadCharactersList() {
+    fun retryAddCharactersList() {
         dataSourceFactory.retry()
+    }
+
+    fun openCharacterDetail(characterId: Long) {
+        event.postValue(CharactersListViewEvent.OpenCharacterDetail(characterId))
     }
 }

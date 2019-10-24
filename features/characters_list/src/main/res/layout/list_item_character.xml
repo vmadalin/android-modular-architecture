@@ -9,14 +9,14 @@
             type="com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem" />
 
         <variable
-            name="clickListener"
-            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener" />
+            name="viewModel"
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(character)}"
+        android:onClick="@{() -> viewModel.openCharacterDetail(character.id)}"
         app:cardCornerRadius="@dimen/characters_list_item_corner_radius"
         app:cardElevation="@dimen/characters_list_item_elevation"
         app:cardBackgroundColor="@android:color/transparent">

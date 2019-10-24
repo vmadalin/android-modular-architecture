@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +33,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/characters_list_item_error_button_top_margin"
             android:text="@string/characters_list_add_retry_button"
+            android:onClick="@{() -> viewModel.retryAddCharactersList()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

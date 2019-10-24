@@ -20,30 +20,32 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.GridLayoutManager
 import com.vmadalin.android.SampleApp.Companion.coreComponent
+import com.vmadalin.core.extensions.gridLayoutManager
 import com.vmadalin.core.extensions.observe
 import com.vmadalin.core.ui.base.BaseFragment
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
-import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharacterClickListener
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapterState
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersListComponent
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
+import javax.inject.Inject
 
 class CharactersListFragment :
     BaseFragment<FragmentCharactersListBinding, CharactersListViewModel>(
         layoutId = R.layout.fragment_characters_list
     ) {
 
-    private lateinit var viewAdapter: CharactersListAdapter
+    @Inject
+    lateinit var viewAdapter: CharactersListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
         observe(viewModel.data, ::onViewDataChange)
+        observe(viewModel.event, ::onViewEvent)
     }
 
     override fun onInitDependencyInjection() {
@@ -56,18 +58,10 @@ class CharactersListFragment :
     }
 
     override fun onInitDataBinding() {
-        viewAdapter =
-            CharactersListAdapter(CharacterClickListener { characterId ->
-                findNavController().navigate(
-                    CharactersListFragmentDirections
-                        .actionCharactersListFragmentToCharacterDetailFragment(characterId)
-                )
-            })
-
         viewBinding.viewModel = viewModel
         viewBinding.includeList.charactersList.apply {
             adapter = viewAdapter
-            (layoutManager as GridLayoutManager).spanSizeLookup = viewAdapter.getSpanSizeLookup()
+            gridLayoutManager?.spanSizeLookup = viewAdapter.getSpanSizeLookup()
         }
     }
 
@@ -85,6 +79,16 @@ class CharactersListFragment :
                 viewAdapter.submitState(CharactersListAdapterState.AddError)
             is CharactersListViewState.NoMoreElements ->
                 viewAdapter.submitState(CharactersListAdapterState.NoMore)
+        }
+    }
+
+    private fun onViewEvent(viewEvent: CharactersListViewEvent) {
+        when (viewEvent) {
+            is CharactersListViewEvent.OpenCharacterDetail -> {
+                findNavController().navigate(
+                    CharactersListFragmentDirections
+                        .actionCharactersListFragmentToCharacterDetailFragment(viewEvent.id))
+            }
         }
     }
 }

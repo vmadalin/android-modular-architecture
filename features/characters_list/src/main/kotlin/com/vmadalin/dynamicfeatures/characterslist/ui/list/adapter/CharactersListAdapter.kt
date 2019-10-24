@@ -21,10 +21,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.core.ui.base.BasePagedListAdapter
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.CharacterViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.ErrorViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.LoadingViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
+import javax.inject.Inject
 
 private enum class ItemView(val type: Int, val span: Int) {
     CHARACTER(type = 0, span = 1),
@@ -36,8 +38,8 @@ private enum class ItemView(val type: Int, val span: Int) {
     }
 }
 
-class CharactersListAdapter(
-    private val clickListener: CharacterClickListener
+class CharactersListAdapter @Inject constructor(
+    private val viewModel: CharactersListViewModel
 ) : BasePagedListAdapter<CharacterItem>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
@@ -59,9 +61,16 @@ class CharactersListAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemView(position)) {
-            ItemView.CHARACTER -> getItem(position)?.let {
-                if (holder is CharacterViewHolder) {
-                    holder.bind(clickListener, it)
+            ItemView.CHARACTER -> {
+                getItem(position)?.let {
+                    if (holder is CharacterViewHolder) {
+                        holder.bind(viewModel, it)
+                    }
+                }
+            }
+            ItemView.ERROR -> {
+                if (holder is ErrorViewHolder) {
+                    holder.bind(viewModel)
                 }
             }
             else -> {}
@@ -107,8 +116,4 @@ class CharactersListAdapter(
             ItemView.CHARACTER
         }
     }
-}
-
-class CharacterClickListener(val clickListener: (characterId: Long) -> Unit) {
-    fun onClick(characterItem: CharacterItem) = clickListener(characterItem.id)
 }
