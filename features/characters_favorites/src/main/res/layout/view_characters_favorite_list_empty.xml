@@ -14,8 +14,7 @@
         android:layout_height="match_parent"
         app:visibleOrGone="@{viewState.empty}">
 
-        <TextView
-            android:id="@+id/textView"
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/TextAppearance.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

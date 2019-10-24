@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/character_image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/characters_favorite_list_item_size"
@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/character_name"
                 style="@style/TextAppearance.CardTitle"
                 android:layout_width="0dp"

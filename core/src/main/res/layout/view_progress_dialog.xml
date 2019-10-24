@@ -8,7 +8,7 @@
     android:background="@drawable/shape_progress_dialog"
     android:padding="@dimen/progress_bar_container_padding">
 
-    <ProgressBar
+    <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress_bar_loading"
         android:layout_width="@dimen/progress_bar_loading_size"
         android:layout_height="@dimen/progress_bar_loading_size"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/progress_bar_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

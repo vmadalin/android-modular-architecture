@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/characters_list_item_error_padding">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/error_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,9 +25,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/retry_button"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

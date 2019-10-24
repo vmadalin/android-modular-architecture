@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             style="@style/AppTheme.SurfaceStyle">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/character_image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/characters_list_item_size"
@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/character_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
