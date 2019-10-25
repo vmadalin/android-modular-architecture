@@ -17,7 +17,6 @@
 package com.vmadalin.dynamicfeatures.home.ui
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -46,11 +45,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-        Handler().postDelayed({
-            if (savedInstanceState == null) {
-                setupBottomNavigationBar()
-            }
-        }, 1000)
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+        }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        setupBottomNavigationBar()
     }
 
     override fun onInitDependencyInjection() {
@@ -101,7 +103,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     private fun setupBottomNavigationBar() {
         val navController = viewBinding.bottomNavigation.setupWithNavController(
             navGraphIds = navGraphIds,
-            fragmentManager = fragmentManager!!,
+            fragmentManager = childFragmentManager,
             containerId = R.id.nav_host_container,
             intent = requireActivity().intent
         )
