@@ -4,9 +4,9 @@
     <dimen name="characters_list_loading_size">50dp</dimen>
     <dimen name="characters_list_item_elevation">5dp</dimen>
     <dimen name="characters_list_item_corner_radius">5dp</dimen>
-    <dimen name="characters_list_item_size">150dp</dimen>
+    <dimen name="characters_list_item_size">140dp</dimen>
     <dimen name="characters_list_item_padding">10dp</dimen>
-    <dimen name="characters_list_item_text_padding">15dp</dimen>
+    <dimen name="characters_list_item_text_padding">10dp</dimen>
     <dimen name="characters_list_item_loading_size">30dp</dimen>
     <dimen name="characters_list_item_loading_padding">10dp</dimen>
     <dimen name="characters_list_item_error_padding">10dp</dimen>
@@ -14,6 +14,8 @@
 
     <!--Character Detail-->
     <dimen name="character_detail_app_bar_height">300dp</dimen>
-    <dimen name="character_detail_container_padding">15dp</dimen>
     <dimen name="character_detail_floating_button_margin">16dp</dimen>
+    <dimen name="character_detail_content_padding_top">30dp</dimen>
+    <dimen name="character_detail_content_padding_horizontal">15dp</dimen>
+    <dimen name="character_detail_content_description_margin_top">10dp</dimen>
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/character_detail_content_padding_horizontal"
+        android:paddingEnd="@dimen/character_detail_content_padding_horizontal"
+        android:paddingTop="@dimen/character_detail_content_padding_top">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/character_name"
+            style="@style/TextAppearance.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.data.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Character name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/character_description"
+            style="@style/TextAppearance.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/character_detail_content_description_margin_top"
+            android:text="@{viewModel.data.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/character_name"
+            tools:text="Character description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

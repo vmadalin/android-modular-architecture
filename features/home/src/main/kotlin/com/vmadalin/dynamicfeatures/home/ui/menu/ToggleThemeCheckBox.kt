@@ -26,9 +26,8 @@ const val DELAY_TO_APPLY_THEME = 1000L
 
 class ToggleThemeCheckBox @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyle: Int = 0
-) : AppCompatCheckBox(context) {
+    attrs: AttributeSet? = null
+) : AppCompatCheckBox(context, attrs) {
 
     init {
         setButtonDrawable(R.drawable.asl_theme)

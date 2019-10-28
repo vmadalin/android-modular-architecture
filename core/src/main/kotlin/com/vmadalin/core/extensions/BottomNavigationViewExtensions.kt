@@ -70,7 +70,7 @@ fun BottomNavigationView.setupWithNavController(
 
         // Attach or detach nav host fragment depending on whether it's the selected item.
         if (this.selectedItemId == graphId) {
-            // Update livedata with the selected graph
+            // Update liveData with the selected graph
             selectedNavController.value = navHostFragment.navController
             attachNavHostFragment(fragmentManager, navHostFragment, index == 0)
         } else {
