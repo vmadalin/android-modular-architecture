@@ -18,15 +18,10 @@ package com.vmadalin.core.ui.utils
 
 import android.content.Context
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 
 object ThemeUtils {
-
-    fun setAppTheme(activity: AppCompatActivity, theme: AppCompatDelegate) {
-
-        activity.delegate.applyDayNight()
-    }
 
     /**
      * Whether the current configuration is a dark theme i.e. in Night configuration.
@@ -41,5 +36,22 @@ object ThemeUtils {
      */
     fun isLightTheme(context: Context): Boolean {
         return !isDarkTheme(context)
+    }
+
+    /**
+     * Force [AppCompatDelegate] mode to night/notnight
+     *
+     * @param forceNight boolean that force night mode otherwise notnight is configured
+     * @param delay delay to apply mode changes
+     */
+    fun setNightMode(forceNight: Boolean, delay: Long = 0L) {
+        Handler().postDelayed({
+            AppCompatDelegate.setDefaultNightMode(
+                if (forceNight)
+                    AppCompatDelegate.MODE_NIGHT_YES
+                else
+                    AppCompatDelegate.MODE_NIGHT_NO
+            )
+        }, delay)
     }
 }

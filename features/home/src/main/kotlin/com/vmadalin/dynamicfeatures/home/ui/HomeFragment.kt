@@ -20,14 +20,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.lifecycle.Observer
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.vmadalin.android.SampleApp
 import com.vmadalin.core.extensions.setupWithNavController
 import com.vmadalin.core.ui.base.BaseFragment
-import com.vmadalin.core.ui.utils.ThemeUtils
 import com.vmadalin.dynamicfeatures.home.R
 import com.vmadalin.dynamicfeatures.home.databinding.FragmentHomeBinding
 import com.vmadalin.dynamicfeatures.home.ui.di.DaggerHomeComponent
@@ -55,6 +52,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         setupBottomNavigationBar()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.toolbar_menu, menu)
+    }
+
     override fun onInitDependencyInjection() {
         DaggerHomeComponent
             .builder()
@@ -66,29 +68,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.toolbar_menu, menu)
-
-        menu.findItem(R.id.menu_theme).actionView.apply {
-            if (this is AppCompatCheckBox) {
-                setButtonDrawable(R.drawable.asl_theme)
-                isChecked = ThemeUtils.isDarkTheme(requireContext())
-                setOnCheckedChangeListener { _, isChecked ->
-                    postDelayed({
-                        AppCompatDelegate.setDefaultNightMode(
-                            if (isChecked)
-                                AppCompatDelegate.MODE_NIGHT_YES
-                            else
-                                AppCompatDelegate.MODE_NIGHT_NO
-                        )
-                        requireCompatActivity().delegate.applyDayNight()
-                    }, 1000L)
-                }
-            }
-        }
     }
 
     // ============================================================================================
