@@ -1,8 +1,8 @@
 <resources>
-    <!--Home Tab Items-->
+    <!--Home tab items-->
     <string name="home_tab_characters">Characters</string>
     <string name="home_tab_favorites">Favorites</string>
 
-    <!--Home ToolBar Items-->
+    <!--Home toolbar items-->
     <string name="home_toolbar_theme">Toggle Theme</string>
 </resources>

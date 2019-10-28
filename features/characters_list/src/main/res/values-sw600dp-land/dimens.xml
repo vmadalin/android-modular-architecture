@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Characters list-->
+    <dimen name="characters_list_item_size">140dp</dimen>
+    <dimen name="characters_list_item_text_padding">15dp</dimen>
+
+    <!--Character detail-->
+    <dimen name="character_detail_app_bar_height">450dp</dimen>
+</resources>

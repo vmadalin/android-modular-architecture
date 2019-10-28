@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Characters List-->
+    <!--Characters list-->
     <dimen name="characters_list_loading_size">50dp</dimen>
     <dimen name="characters_list_item_elevation">5dp</dimen>
     <dimen name="characters_list_item_corner_radius">5dp</dimen>
@@ -12,7 +12,7 @@
     <dimen name="characters_list_item_error_padding">10dp</dimen>
     <dimen name="characters_list_item_error_button_top_margin">5dp</dimen>
 
-    <!--Character Detail-->
+    <!--Character detail-->
     <dimen name="character_detail_app_bar_height">300dp</dimen>
     <dimen name="character_detail_floating_button_margin">16dp</dimen>
     <dimen name="character_detail_content_padding_top">30dp</dimen>

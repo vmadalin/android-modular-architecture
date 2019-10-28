@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Character favorite-->
+    <dimen name="characters_favorite_list_item_size">150dp</dimen>
+    <dimen name="characters_favorite_list_item_text_padding">15dp</dimen>
+</resources>
