@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.ui.utils
+package com.vmadalin.core.ui.recyclerview
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewItemDecoration constructor(
+class RecyclerViewItemDecoration(
     private val spacingPx: Int
 ) : RecyclerView.ItemDecoration() {
 

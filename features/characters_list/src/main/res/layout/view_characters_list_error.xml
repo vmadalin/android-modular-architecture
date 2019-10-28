@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:visibleOrGone="@{viewState.error}">
+        app:visible="@{viewState.error}">
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/TextAppearance.Body"

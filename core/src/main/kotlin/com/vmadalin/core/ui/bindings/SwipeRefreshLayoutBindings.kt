@@ -20,17 +20,17 @@ import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 @BindingAdapter("showRefreshing")
-fun setShowRefreshing(swipeRefreshLayout: SwipeRefreshLayout, refresh: Boolean) {
-    if (refresh && !swipeRefreshLayout.isRefreshing) {
-        swipeRefreshLayout.isRefreshing = refresh
-    } else if (!refresh && swipeRefreshLayout.isRefreshing) {
-        swipeRefreshLayout.isRefreshing = refresh
+fun SwipeRefreshLayout.setShowRefreshing(refresh: Boolean) {
+    if (refresh && !isRefreshing) {
+        isRefreshing = refresh
+    } else if (!refresh && isRefreshing) {
+        isRefreshing = refresh
     }
 }
 
 @BindingAdapter("onRefresh")
-fun setOnRefresh(swipeRefreshLayout: SwipeRefreshLayout, onRefresh: () -> Unit) {
-    swipeRefreshLayout.setOnRefreshListener {
+fun SwipeRefreshLayout.setOnRefresh(onRefresh: () -> Unit) {
+    setOnRefreshListener {
         onRefresh()
     }
 }

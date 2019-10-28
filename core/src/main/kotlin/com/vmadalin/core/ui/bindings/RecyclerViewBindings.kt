@@ -18,11 +18,11 @@ package com.vmadalin.core.ui.bindings
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.core.ui.utils.RecyclerViewItemDecoration
+import com.vmadalin.core.ui.recyclerview.RecyclerViewItemDecoration
 
 @BindingAdapter("itemDecorationSpacing")
-fun setItemDecorationSpacing(recyclerView: RecyclerView, spacingPx: Float) {
-    recyclerView.addItemDecoration(
+fun RecyclerView.setItemDecorationSpacing(spacingPx: Float) {
+    addItemDecoration(
         RecyclerViewItemDecoration(spacingPx.toInt())
     )
 }

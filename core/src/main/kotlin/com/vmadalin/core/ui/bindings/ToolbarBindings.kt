@@ -21,8 +21,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter("navigationOnClick")
-fun setNavigationOnClick(toolbar: Toolbar, onClick: View.OnClickListener) {
-    toolbar.setNavigationOnClickListener {
+fun Toolbar.setNavigationOnClick(onClick: View.OnClickListener) {
+    setNavigationOnClickListener {
         onClick.onClick(it)
     }
 }

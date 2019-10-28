@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:visibleOrGone="@{viewState.isLoading}">
+        app:visible="@{viewState.isLoading}">
 
         <ProgressBar
             android:layout_width="@dimen/characters_list_loading_size"
