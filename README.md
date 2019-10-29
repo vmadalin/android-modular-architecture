@@ -1,24 +1,22 @@
 ## Kotlin Sample App
 [![CircleCI](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master.svg?style=shield)](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master)
 [![Codecov](https://codecov.io/gh/VMadalin/kotlin-sample-app/coverage.svg)](https://codecov.io/gh/VMadalin/kotlin-sample-app)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.41-blue.svg)](http://kotlinlang.org/)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.50-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://lv.binarybabel.org/catalog-api/gradle/latest.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 Clean architecture project app
 
-<img src="screenshots/demo/demo.gif" width="300">
+<img src="screenshots/demo/demo.gif" width="250">
 
 ## Screenshots
 
-<img src="screenshots/phone/light_mode_characters_list.png" width="300">
-<img src="screenshots/phone/light_mode_characters_favorite.png" width="300">
-<img src="screenshots/phone/light_mode_character_detail.png" width="300">
 
-<img src="screenshots/phone/dark_mode_characters_list.png" width="300">
-<img src="screenshots/phone/dark_mode_characters_favorite.png" width="300">
-<img src="screenshots/phone/dark_mode_character_detail.png" width="300">
+| Mode | Characters list | Characters favorite | Character detail |
+|------|-----------------|---------------------|------------------|
+| Light | <img src="screenshots/phone/light_mode_characters_list.png" width="250"> | <img src="screenshots/phone/light_mode_characters_favorite.png" width="250"> | <img src="screenshots/phone/light_mode_character_detail.png" width="250"> |
+| Dark | <img src="screenshots/phone/dark_mode_characters_list.png" width="250">  | <img src="screenshots/phone/dark_mode_characters_favorite.png" width="250"> | <img src="screenshots/phone/dark_mode_character_detail.png" width="250"> |
 
 ## License
     Copyright 2019 vmadalin.com
