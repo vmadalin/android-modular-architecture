@@ -8,6 +8,18 @@
 
 Clean architecture project app
 
+<img src="screenshots/demo/demo.gif" width="300">
+
+## Screenshots
+
+<img src="screenshots/phone/light_mode_characters_list.png" width="300">
+<img src="screenshots/phone/light_mode_characters_favorite.png" width="300">
+<img src="screenshots/phone/light_mode_character_detail.png" width="300">
+
+<img src="screenshots/phone/dark_mode_characters_list.png" width="300">
+<img src="screenshots/phone/dark_mode_characters_favorite.png" width="300">
+<img src="screenshots/phone/dark_mode_character_detail.png" width="300">
+
 ## License
     Copyright 2019 vmadalin.com
 
