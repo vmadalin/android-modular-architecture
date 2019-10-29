@@ -23,29 +23,23 @@ class CharacterFavoriteRepository @Inject constructor(
     private val characterFavoriteDao: CharacterFavoriteDao
 ) {
 
-    fun getAllCharactersFavoriteLiveData(): LiveData<List<CharacterFavorite>> {
-        return characterFavoriteDao.getAllCharactersFavoriteLiveData()
-    }
+    fun getAllCharactersFavoriteLiveData(): LiveData<List<CharacterFavorite>> =
+        characterFavoriteDao.getAllCharactersFavoriteLiveData()
 
-    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite? {
-        return characterFavoriteDao.getCharacterFavorite(characterFavoriteId)
-    }
+    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite? =
+        characterFavoriteDao.getCharacterFavorite(characterFavoriteId)
 
-    suspend fun getAllCharactersFavorite(): List<CharacterFavorite> {
-        return characterFavoriteDao.getAllCharactersFavorite()
-    }
+    suspend fun getAllCharactersFavorite(): List<CharacterFavorite> =
+        characterFavoriteDao.getAllCharactersFavorite()
 
-    suspend fun deleteAllCharactersFavorite() {
+    suspend fun deleteAllCharactersFavorite() =
         characterFavoriteDao.deleteAllCharactersFavorite()
-    }
 
-    suspend fun deleteCharacterFavoriteById(characterFavoriteId: Long) {
+    suspend fun deleteCharacterFavoriteById(characterFavoriteId: Long) =
         characterFavoriteDao.deleteCharacterFavoriteById(characterFavoriteId)
-    }
 
-    suspend fun deleteCharacterFavorite(character: CharacterFavorite) {
+    suspend fun deleteCharacterFavorite(character: CharacterFavorite) =
         characterFavoriteDao.deleteCharacterFavorite(character)
-    }
 
     suspend fun insertCharacterFavorite(id: Long, name: String, imageUrl: String) {
         val characterFavorite = CharacterFavorite(

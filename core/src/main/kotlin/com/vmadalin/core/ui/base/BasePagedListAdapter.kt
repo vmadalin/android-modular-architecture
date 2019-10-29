@@ -35,7 +35,7 @@ abstract class BasePagedListAdapter<T>(
         super.setHasStableIds(true)
     }
 
-    var recyclerView: RecyclerView? = null
+    private var recyclerView: RecyclerView? = null
 
     abstract fun onCreateViewHolder(
         parent: ViewGroup,

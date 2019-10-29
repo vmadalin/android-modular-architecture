@@ -25,7 +25,7 @@ import timber.log.Timber
 
 class SingleLiveData<T> : MutableLiveData<T>() {
 
-    private val pending = AtomicBoolean(false)
+    private val pending = AtomicBoolean()
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {

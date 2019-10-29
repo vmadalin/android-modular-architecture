@@ -22,6 +22,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
+/**
+ * The data access object for the [CharacterFavorite] class.
+ */
 @Dao
 interface CharacterFavoriteDao {
 

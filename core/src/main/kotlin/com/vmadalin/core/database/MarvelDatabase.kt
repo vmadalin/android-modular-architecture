@@ -25,22 +25,24 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.core.database.migrations.MIGRATION_1_2
 
+/**
+ * Marvel room database storing the different requested information like:
+ * characters, comics, stories, etc..
+ */
 @Database(
     entities = [CharacterFavorite::class],
     exportSchema = BuildConfig.MARVEL_DATABASE_EXPORT_SCHEMA,
     version = BuildConfig.MARVEL_DATABASE_VERSION
 )
 abstract class MarvelDatabase : RoomDatabase() {
+
     abstract fun characterFavoriteDao(): CharacterFavoriteDao
 
     companion object {
 
         @Volatile
         private var instance: MarvelDatabase? = null
-
-        private val dbMigrations by lazy {
-            listOf(MIGRATION_1_2)
-        }
+        private val migrationsDB by lazy { listOf(MIGRATION_1_2) }
 
         fun getInstance(context: Context): MarvelDatabase {
             return instance ?: synchronized(this) {
@@ -53,7 +55,7 @@ abstract class MarvelDatabase : RoomDatabase() {
                 context,
                 MarvelDatabase::class.java,
                 BuildConfig.MARVEL_DATABASE_NAME
-            ).addMigrations(*dbMigrations.toTypedArray())
+            ).addMigrations(*migrationsDB.toTypedArray())
                 .build()
         }
     }
