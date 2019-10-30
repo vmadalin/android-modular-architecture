@@ -111,9 +111,9 @@ android {
     }
 
     lintOptions {
-        disable("GoogleAppIndexingWarning")
+        lintConfig = rootProject.file(".lint/config.xml")
         isCheckAllWarnings = true
-        //isWarningsAsErrors = true
+        isWarningsAsErrors = true
     }
 
     testOptions {

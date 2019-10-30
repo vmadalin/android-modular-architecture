@@ -69,6 +69,12 @@ android {
             java.srcDir("src/test/kotlin")
         }
     }
+
+    lintOptions {
+        lintConfig = rootProject.file(".lint/config.xml")
+        isCheckAllWarnings = true
+        isWarningsAsErrors = true
+    }
 }
 
 dependencies {

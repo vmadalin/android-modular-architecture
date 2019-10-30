@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_characters_list_graph"
     app:startDestination="@+id/characters_list_fragment"
-    tools:ignore="UnusedNavigation">
+    tools:ignore="UnusedNavigation,UnusedIds">
     <fragment
         android:id="@+id/characters_list_fragment"
         android:name="com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment"
@@ -24,8 +24,5 @@
         <argument
             android:name="character_id"
             app:argType="long" />
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="sample://detail/{character_id}"/>
     </fragment>
 </navigation>

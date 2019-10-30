@@ -28,7 +28,7 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.Loadi
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
 
-private enum class ItemView(val type: Int, val span: Int) {
+internal enum class ItemView(val type: Int, val span: Int) {
     CHARACTER(type = 0, span = 1),
     LOADING(type = 1, span = 2),
     ERROR(type = 2, span = 2);
@@ -113,7 +113,7 @@ class CharactersListAdapter @Inject constructor(
         }
     }
 
-    private fun getItemView(position: Int): ItemView {
+    internal fun getItemView(position: Int): ItemView {
         return if (state.hasExtraRow && position == itemCount - 1) {
             if (state.isAddError()) {
                 ItemView.ERROR

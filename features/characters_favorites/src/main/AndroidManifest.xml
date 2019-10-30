@@ -1,4 +1,6 @@
-<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.vmadalin.dynamicfeatures.charactersfavorites">
 
     <dist:module
@@ -9,4 +11,9 @@
         </dist:delivery>
         <dist:fusing dist:include="false" />
     </dist:module>
+
+    <application
+        android:supportsRtl="true"
+        tools:ignore="AllowBackup,MissingApplicationIcon" />
+
 </manifest>

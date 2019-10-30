@@ -41,7 +41,7 @@ abstract class MarvelDatabase : RoomDatabase() {
     companion object {
 
         @Volatile
-        private var instance: MarvelDatabase? = null
+        internal var instance: MarvelDatabase? = null
         private val migrationsDB by lazy { listOf(MIGRATION_1_2) }
 
         fun getInstance(context: Context): MarvelDatabase {
