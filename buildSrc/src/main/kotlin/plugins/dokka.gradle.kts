@@ -14,23 +14,19 @@
  * limitations under the License.
  */
 
-import io.gitlab.arturbosch.detekt.DetektPlugin
-import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+package plugins
 
-apply<DetektPlugin>()
+import org.jetbrains.dokka.gradle.DokkaPlugin
+import org.jetbrains.dokka.gradle.DokkaTask
 
-configure<DetektExtension> {
-    input = project.files("src/main/java")
-    config = files("$rootDir/.detekt/config.yml")
-    filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
-    reports {
-        xml {
-            enabled = true
-            destination = project.file("build/reports/detekt/report.xml")
-        }
-        html {
-            enabled = true
-            destination = project.file("build/reports/detekt/report.html")
-        }
+apply<DokkaPlugin>()
+
+tasks {
+    withType<DokkaTask> {
+        outputFormat = "html"
+        outputDirectory = "$buildDir/javadoc"
+
+        reportUndocumented = true
+        skipEmptyPackages = true
     }
 }

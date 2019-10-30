@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package plugins
+
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
 
@@ -71,7 +73,7 @@ configure<SpotlessExtension> {
         target("**/*.gradle.kts", "*.gradle.kts")
         licenseHeaderFile(
             rootProject.file("COPYRIGHT"),
-            "import|tasks|apply|plugins|include|val|object|interface"
+            "package|import|tasks|apply|plugins|include|val|object|interface"
         )
         trimTrailingWhitespace()
         indentWithSpaces()

@@ -32,7 +32,7 @@ sealed class NetworkState {
         val isAdditional: Boolean = false
     ) : NetworkState()
 
-    fun isLoading() = this is NetworkState.Loading
-    fun isSuccess() = this is NetworkState.Success
-    fun isError() = this is NetworkState.Error
+    fun isLoading() = this is Loading
+    fun isSuccess() = this is Success
+    fun isError() = this is Error
 }

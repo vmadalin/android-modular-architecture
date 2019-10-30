@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.ui.base
+package plugins
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import io.gitlab.arturbosch.detekt.DetektPlugin
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
-abstract class BaseViewModel<ViewState : BaseViewState>(
-    initialState: ViewState? = null
-) : ViewModel() {
+apply<DetektPlugin>()
 
-    protected var _state: LiveData<ViewState> = MutableLiveData(initialState)
-    open val state: LiveData<ViewState>
-        get() = _state
+configure<DetektExtension> {
+    input = project.files("src/main/java")
+    config = files("$rootDir/.detekt/config.yml")
+    filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
+    reports {
+        xml {
+            enabled = true
+            destination = project.file("build/reports/detekt/report.xml")
+        }
+        html {
+            enabled = true
+            destination = project.file("build/reports/detekt/report.html")
+        }
+    }
 }

@@ -16,14 +16,14 @@
 
 import extensions.applyDefault
 
-plugins.apply("git-hooks-config")
-plugins.apply("update-dependencies-config")
+plugins.apply(BuildPlugins.GIT_HOOKS)
+plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES)
 
 allprojects {
     repositories.applyDefault()
 
-    plugins.apply("detekt-config")
-    plugins.apply("dokka-config")
-    plugins.apply("ktlint-config")
-    plugins.apply("spotless-config")
+    plugins.apply(BuildPlugins.DETEKT)
+    plugins.apply(BuildPlugins.DOKKA)
+    plugins.apply(BuildPlugins.KTLINT)
+    plugins.apply(BuildPlugins.SPOTLESS)
 }

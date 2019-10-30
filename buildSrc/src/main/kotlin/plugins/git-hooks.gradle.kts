@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package plugins
+
 import utils.isLinuxOrMacOs
 
 tasks {

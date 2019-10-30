@@ -14,17 +14,28 @@
  * limitations under the License.
  */
 
-import org.jetbrains.dokka.gradle.DokkaPlugin
-import org.jetbrains.dokka.gradle.DokkaTask
+package plugins
 
-apply<DokkaPlugin>()
+val ktlint: Configuration by configurations.creating
+
+dependencies {
+    ktlint("com.pinterest:ktlint:0.34.2")
+}
 
 tasks {
-    withType<DokkaTask> {
-        outputFormat = "html"
-        outputDirectory = "$buildDir/javadoc"
+    register<JavaExec>("ktlint") {
+        group = "verification"
+        description = "Check Kotlin code style."
+        classpath = ktlint
+        main = "com.pinterest.ktlint.Main"
+        args("--android", "src/**/*.kt")
+    }
 
-        reportUndocumented = true
-        skipEmptyPackages = true
+    register<JavaExec>("ktlintFormat") {
+        group = "formatting"
+        description = "Fix Kotlin code style deviations."
+        classpath = ktlint
+        main = "com.pinterest.ktlint.Main"
+        args("--android", "-F", "src/**/*.kt")
     }
 }
