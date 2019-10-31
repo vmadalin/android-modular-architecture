@@ -42,9 +42,11 @@ long application lifecycle management.
 
 //TODO
 
-## Libraries
+## Tech-stack
 
-This project takes advantage of many popular libraries and tools of the Android ecosystem. Most of the libraries are in the stable version, unless there is a good reason to use non-stable dependency.
+This project takes advantage of many popular libraries, plugins and tools of the Android ecosystem. Most of the libraries are in the stable version, unless there is a good reason to use non-stable dependency.
+
+#### Libraries
 
 * [Jetpack](https://developer.android.com/jetpack):
     * [Android KTX](https://developer.android.com/kotlin/ktx.html) - provide concise, idiomatic Kotlin to Jetpack and Android platform APIs.
@@ -58,9 +60,33 @@ This project takes advantage of many popular libraries and tools of the Android 
     * [Room](https://developer.android.com/topic/libraries/architecture/room) - persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - designed to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows data to survive configuration changes such as screen rotations.
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - managing background threads with simplified code and reducing needs for callbacks.
-* [Dagger2](https://dagger.dev/) - Dependency injector for replacement all FactoryFactory classes.
-* [Retrofit](https://square.github.io/retrofit/) - Type-safe HTTP client.
-* [Stetho](http://facebook.github.io/stetho/) - debug bridge for applications via Chrome Developer Tools
+* [Dagger2](https://dagger.dev/) - dependency injector for replacement all FactoryFactory classes.
+* [Retrofit](https://square.github.io/retrofit/) - type-safe HTTP client.
+* [Glide](https://github.com/bumptech/glide) -  image loading and caching library for Android focused on smooth scrolling.
+* [Moshi](https://github.com/square/moshi) - makes it easy to parse JSON into Kotlin objects.
+* [Timber](https://github.com/JakeWharton/timber) - a logger with a small, extensible API which provides utility on top of Android's normal Log class.
+* [Stetho](http://facebook.github.io/stetho/) - debug bridge for applications via Chrome Developer Tools.
+* [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/src/main/kotlin/dependencies/Dependencies.kt)
+
+#### Test Libraries
+
+* [UIAutomator](https://developer.android.com/training/testing/ui-automator) - a UI testing framework suitable for cross-app functional UI testing across system and installed apps.
+* [Espresso](https://developer.android.com/training/testing/espresso) - to write concise, beautiful, and reliable Android UI tests
+* [Robolectric](https://github.com/robolectric/robolectric) - industry-standard unit testing framework for Android.
+* [JUnit](https://github.com/junit-team/junit4) - a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
+* [Mockito](https://github.com/nhaarman/mockito-kotlin) - most popular Mocking framework for unit tests written in Java.
+* [AndroidX](https://github.com/android/android-test) - the androidx test library provides an extensive framework for testing Android apps.
+* [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/src/main/kotlin/dependencies/TestDependencies.kt)
+
+#### Plugins
+
+* [Ktlint](https://github.com/pinterest/ktlint) - an anti-bikeshedding Kotlin linter with built-in formatter.
+* [Detekt](https://github.com/arturbosch/detekt) - a static code analysis tool for the Kotlin programming language.
+* [Spotless](https://github.com/diffplug/spotless) - a code formatter can do more than just find formatting errors.
+* [Versions](https://github.com/ben-manes/gradle-versions-plugin) - make easy to determine which dependencies have updates.
+* [SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - generates simple object and builder classes for type-safe navigation and access to any associated arguments.
+* [Jacoco](https://github.com/jacoco/jacoco) - code coverage library
+* [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/build-dependencies.gradle.kts)
 
 ## Resources
 
