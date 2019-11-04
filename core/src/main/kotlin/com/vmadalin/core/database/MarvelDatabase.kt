@@ -42,7 +42,6 @@ abstract class MarvelDatabase : RoomDatabase() {
 
         @Volatile
         internal var instance: MarvelDatabase? = null
-        private val migrationsDB by lazy { listOf(MIGRATION_1_2) }
 
         fun getInstance(context: Context): MarvelDatabase {
             return instance ?: synchronized(this) {
@@ -55,7 +54,7 @@ abstract class MarvelDatabase : RoomDatabase() {
                 context,
                 MarvelDatabase::class.java,
                 BuildConfig.MARVEL_DATABASE_NAME
-            ).addMigrations(*migrationsDB.toTypedArray())
+            ).addMigrations(MIGRATION_1_2)
                 .build()
         }
     }
