@@ -10,7 +10,6 @@ What happened?  What did you expect to happen?
 
 ## Code and logs
 
-```
-// TODO(you): show the code that produces the problem,
-//            and any relevant logs.
+```text
+// TODO: show the code that produces the problem, and any relevant logs.
 ```
