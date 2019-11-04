@@ -17,6 +17,11 @@
         <item name="android:background">@color/primary</item>
     </style>
 
+    <style name="AppTheme.FloatingActionButton" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="tint">@color/primary</item>
+        <item name="backgroundTint">@color/accent</item>
+    </style>
+
     <!--Text appearances-->
     <style name="TextAppearance.Title" parent="@style/TextAppearance.MaterialComponents.Headline6">
         <item name="android:textColor">@color/textHeadline</item>
