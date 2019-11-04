@@ -31,8 +31,8 @@ private const val FABRIC_API_SECRET_PROPERTY_NAME = "fabric.secret"
  * @param project the project reference
  */
 fun createFabricProperties(project: Project) {
+    val fabricPropertiesFile = File(FABRIC_PROPERTIES_FILE_NAME)
     try {
-        val fabricPropertiesFile = File(FABRIC_PROPERTIES_FILE_NAME)
         val fabricApiKey = getLocalProperty(FABRIC_API_KEY_PROPERTY_NAME, project)
         val fabricApiSecret = getLocalProperty(FABRIC_API_SECRET_PROPERTY_NAME, project)
 
@@ -45,6 +45,9 @@ fun createFabricProperties(project: Project) {
                 }
         }
     } catch (e: Exception) {
-        throw Exception("You should define 'fabric.key' and 'fabric.secret' in local.properties. Visit 'https://fabric.io' to obtain them.")
+        throw NoSuchFileException(
+            file = fabricPropertiesFile,
+            reason = "You should define 'fabric.key' and 'fabric.secret' in local.properties. Visit 'https://fabric.io' to obtain them."
+        )
     }
 }

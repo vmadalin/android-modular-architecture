@@ -24,7 +24,7 @@ dependencies {
 
 tasks {
     register<JavaExec>("ktlint") {
-        group = "verification"
+        group = BuildTasksGroups.VERIFICATION
         description = "Check Kotlin code style."
         classpath = ktlint
         main = "com.pinterest.ktlint.Main"
@@ -32,7 +32,7 @@ tasks {
     }
 
     register<JavaExec>("ktlintFormat") {
-        group = "formatting"
+        group = BuildTasksGroups.FORMATTING
         description = "Fix Kotlin code style deviations."
         classpath = ktlint
         main = "com.pinterest.ktlint.Main"

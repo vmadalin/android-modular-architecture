@@ -27,7 +27,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import java.lang.Exception
 import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
@@ -67,7 +66,7 @@ abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
         if (activity is AppCompatActivity) {
             return activity
         } else {
-            throw Exception("Main activity should extend from 'AppCompatActivity'")
+            throw TypeCastException("Main activity should extend from 'AppCompatActivity'")
         }
     }
 }

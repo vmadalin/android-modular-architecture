@@ -40,6 +40,6 @@ fun getLocalProperty(propertyName: String, project: Project): String {
     return localProperties.getProperty(propertyName)?.let {
         it
     } ?: run {
-        throw Exception("Not defined property: $propertyName")
+        throw NoSuchFieldException("Not defined property: $propertyName")
     }
 }
