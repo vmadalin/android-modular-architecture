@@ -33,30 +33,29 @@ kotlinDslPluginOptions {
     experimentalWarning.set(false)
 }
 
-apply(from = "build-dependencies.gradle.kts")
-
-val gradleAndroid: String by extra
-val gradleVersions: String by extra
-val kotlin: String by extra
-val kotlinAllOpen: String by extra
-val navigation: String by extra
-val jacoco: String by extra
-val fabric: String by extra
-val dokka: String by extra
-val ktlint: String by extra
-val detekt: String by extra
-val spotless: String by extra
+object PluginsVersions {
+    const val GRADLE_ANDROID = "3.5.1"
+    const val GRADLE_VERSIONS = "0.22.0"
+    const val KOTLIN = "1.3.50"
+    const val NAVIGATION = "2.1.0-beta02"
+    const val JACOCO = "0.15.0"
+    const val FABRIC = "1.31.0"
+    const val DOKKA = "0.9.18"
+    const val KTLINT = "0.34.2"
+    const val SPOTLESS = "3.24.1"
+    const val DETEKT = "1.0.1"
+}
 
 dependencies {
-    implementation(gradleAndroid)
-    implementation(gradleVersions)
-    implementation(kotlin)
-    implementation(kotlinAllOpen)
-    implementation(navigation)
-    implementation(jacoco)
-    implementation(fabric)
-    implementation(dokka)
-    implementation(ktlint)
-    implementation(detekt)
-    implementation(spotless)
+    implementation("com.android.tools.build:gradle:${PluginsVersions.GRADLE_ANDROID}")
+    implementation("com.github.ben-manes:gradle-versions-plugin:${PluginsVersions.GRADLE_VERSIONS}")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginsVersions.KOTLIN}")
+    implementation("org.jetbrains.kotlin:kotlin-allopen:${PluginsVersions.KOTLIN}")
+    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")
+    implementation("com.vanniktech:gradle-android-junit-jacoco-plugin:${PluginsVersions.JACOCO}")
+    implementation("io.fabric.tools:gradle:${PluginsVersions.FABRIC}")
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:${PluginsVersions.DOKKA}")
+    implementation("com.pinterest:ktlint:${PluginsVersions.KTLINT}")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:${PluginsVersions.SPOTLESS}")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${PluginsVersions.DETEKT}")
 }

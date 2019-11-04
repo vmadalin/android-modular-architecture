@@ -70,7 +70,15 @@ configure<SpotlessExtension> {
     }
 
     kotlinGradle {
-        target("**/*.gradle.kts", "*.gradle.kts")
+        target(
+            fileTree(
+                mapOf(
+                    "dir" to ".",
+                    "include" to listOf("**/*.gradle.kts", "*.gradle.kts"),
+                    "exclude" to listOf("**/build/**")
+                )
+            )
+        )
         licenseHeaderFile(
             rootProject.file("COPYRIGHT"),
             "package|import|tasks|apply|plugins|include|val|object|interface"

@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+package commons
+
+import dependencies.Dependencies
+import extensions.implementation
+
 plugins {
-    id("commons.android-dynamic-feature")
+    id("kotlin")
+}
+
+dependencies {
+    implementation(Dependencies.KOTLIN)
 }
