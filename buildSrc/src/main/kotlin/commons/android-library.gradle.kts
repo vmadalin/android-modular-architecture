@@ -75,6 +75,11 @@ android {
             java.srcDir("src/test/kotlin")
         }
     }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {

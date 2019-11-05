@@ -26,4 +26,5 @@ object TestDependencies {
     const val ASSERTJ = "org.assertj:assertj-core:${BuildDependenciesVersions.ASSERTJ}"
     const val ROBOELECTRIC = "org.robolectric:robolectric:${BuildDependenciesVersions.ROBOELECTRIC}"
     const val ROOM = "androidx.room:room-testing:${BuildDependenciesVersions.ROOM}"
+    const val TEST_CORE = "androidx.test:core:${BuildDependenciesVersions.TEST_CORE}"
 }

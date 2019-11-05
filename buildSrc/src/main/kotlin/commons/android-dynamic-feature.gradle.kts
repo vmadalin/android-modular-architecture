@@ -82,6 +82,11 @@ android {
         isCheckAllWarnings = true
         isWarningsAsErrors = true
     }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {

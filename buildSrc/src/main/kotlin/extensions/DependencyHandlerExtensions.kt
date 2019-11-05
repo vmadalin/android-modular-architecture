@@ -91,6 +91,7 @@ fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.ASSERTJ)
     testImplementation(TestDependencies.ROBOELECTRIC)
     testImplementation(TestDependencies.ROOM)
+    testImplementation(TestDependencies.TEST_CORE)
 
     androidTestImplementation(TestAndroidDependencies.LEAKCANARY)
     androidTestImplementation(TestAndroidDependencies.MOCKITO)

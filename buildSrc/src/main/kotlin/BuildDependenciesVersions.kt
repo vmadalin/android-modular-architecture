@@ -43,6 +43,7 @@ object BuildDependenciesVersions {
     const val DATABINDING = "3.1.4"
 
     // Tests
+    const val TEST_CORE = "1.2.0"
     const val JUNIT = "4.12"
     const val ROBOELECTRIC = "4.3"
     const val MOCKITO = "2.2.0"
