@@ -50,6 +50,5 @@ object BuildDependenciesVersions {
     const val MOCKITO = "2.2.0"
     const val ASSERTJ = "3.13.2"
     const val ESPRESSO = "3.2.0"
-    const val RUNNER = "1.2.0"
-    const val RULES = "1.2.0"
+    const val FRAGMENT_TEST = "1.2.0-alpha02"
 }

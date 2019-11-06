@@ -14,15 +14,8 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.ui.animations
+package com.vmadalin.core.utils
 
-import android.view.animation.Animation
+import androidx.fragment.app.Fragment
 
-open class SimpleAnimationListener : Animation.AnimationListener {
-
-    override fun onAnimationStart(animation: Animation?) {}
-
-    override fun onAnimationEnd(animation: Animation?) {}
-
-    override fun onAnimationRepeat(animation: Animation?) {}
-}
+class TestFragment : Fragment()

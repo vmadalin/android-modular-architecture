@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.android.SampleApp.Companion.coreComponent
 import com.vmadalin.core.extensions.observe
@@ -71,7 +70,7 @@ class CharacterDetailFragment :
                 Snackbar.make(
                     requireView(),
                     R.string.character_detail_added_to_favorite_message,
-                    BaseTransientBottomBar.LENGTH_LONG
+                    Snackbar.LENGTH_LONG
                 ).show()
             is CharacterDetailViewState.Dismiss -> {
                 findNavController().navigateUp()
