@@ -24,7 +24,7 @@ import com.nhaarman.mockitokotlin2.capture
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.times
-import com.vmadalin.core.utils.TestLifecycleOwner
+import com.vmadalin.core.TestLifecycleOwner
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

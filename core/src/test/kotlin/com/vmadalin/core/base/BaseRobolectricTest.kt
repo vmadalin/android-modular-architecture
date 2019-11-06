@@ -26,13 +26,17 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(
+    manifest = "AndroidManifest.xml",
     application = BaseRobolectricTest.ApplicationStub::class,
     sdk = [Build.VERSION_CODES.LOLLIPOP]
 )
 abstract class BaseRobolectricTest {
 
-    protected val context: Context by lazy {
+    protected val application: Application by lazy {
         ApplicationProvider.getApplicationContext<ApplicationStub>()
+    }
+    protected val context: Context by lazy {
+        application
     }
 
     internal class ApplicationStub : Application()

@@ -97,6 +97,7 @@ fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.RUNNER)
     testImplementation(TestDependencies.COROUTINES_TEST)
     testImplementation(TestDependencies.FRAGMENT_TEST)
+    testImplementation(TestDependencies.EXT)
 
     androidTestImplementation(TestAndroidDependencies.LEAKCANARY)
     androidTestImplementation(TestAndroidDependencies.MOCKITO)

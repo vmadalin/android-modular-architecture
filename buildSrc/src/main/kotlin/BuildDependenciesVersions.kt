@@ -44,6 +44,7 @@ object BuildDependenciesVersions {
 
     // Tests
     const val TEST = "1.2.0"
+    const val EXT = "1.1.1"
     const val ARCH_CORE = "2.1.0"
     const val JUNIT = "4.12"
     const val ROBOELECTRIC = "4.3"

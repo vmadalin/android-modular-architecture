@@ -20,8 +20,8 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.vmadalin.core.TestFragment
 import com.vmadalin.core.base.BaseRobolectricTest
-import com.vmadalin.core.utils.TestFragment
 import org.hamcrest.Matchers
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat

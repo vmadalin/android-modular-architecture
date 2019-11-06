@@ -18,8 +18,8 @@ package com.vmadalin.core.extensions
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.testing.launchFragmentInContainer
+import com.vmadalin.core.TestFragment
 import com.vmadalin.core.base.BaseRobolectricTest
-import com.vmadalin.core.utils.TestFragment
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
