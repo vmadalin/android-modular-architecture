@@ -35,7 +35,7 @@ interface CharacterFavoriteDao {
     suspend fun getAllCharactersFavorite(): List<CharacterFavorite>
 
     @Query("SELECT * FROM character_favorite WHERE id = :characterFavoriteId")
-    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite
+    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite?
 
     @Query("DELETE FROM character_favorite")
     suspend fun deleteAllCharactersFavorite()
@@ -48,4 +48,7 @@ interface CharacterFavoriteDao {
 
     @Insert
     suspend fun insertCharacterFavorite(character: CharacterFavorite)
+
+    @Insert
+    suspend fun insertCharactersFavorites(characters: List<CharacterFavorite>)
 }
