@@ -10,5 +10,9 @@
 
         <activity android:name=".TestActivity" />
 
+        <activity
+            android:name=".TestActivityNoActionBar"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+
     </application>
 </manifest>

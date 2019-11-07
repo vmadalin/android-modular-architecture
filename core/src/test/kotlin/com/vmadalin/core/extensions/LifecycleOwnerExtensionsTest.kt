@@ -20,7 +20,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nhaarman.mockitokotlin2.capture
+import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.times
@@ -29,7 +29,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.anyInt
 import org.mockito.Mockito.verify
 
@@ -50,13 +49,13 @@ class LifecycleOwnerExtensionsTest {
         val mutableLiveData = MutableLiveData<String>()
         val observerPostValue = "Event Value"
         val observer = mock<(String) -> Unit>()
-        val observerCaptor: ArgumentCaptor<String> = ArgumentCaptor.forClass(String::class.java)
+        val observerCaptor = argumentCaptor<String>()
 
         lifecycleOwner.observe(mutableLiveData, observer)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer).invoke(capture(observerCaptor))
-        assertEquals(observerPostValue, observerCaptor.value)
+        verify(observer).invoke(observerCaptor.capture())
+        assertEquals(observerPostValue, observerCaptor.lastValue)
     }
 
     @Test
@@ -64,19 +63,19 @@ class LifecycleOwnerExtensionsTest {
         val mutableLiveData = MutableLiveData<Int>()
         val observerPostValue = 3
         val observer = mock<(Int) -> Unit>()
-        val observerCaptor: ArgumentCaptor<Int> = ArgumentCaptor.forClass(Int::class.java)
+        val observerCaptor = argumentCaptor<Int>()
 
         lifecycleOwner.observe(mutableLiveData, observer)
         mutableLiveData.postValue(observerPostValue)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(2)).invoke(capture(observerCaptor))
-        assertEquals(observerPostValue, observerCaptor.value)
+        verify(observer, times(2)).invoke(observerCaptor.capture())
+        assertEquals(observerPostValue, observerCaptor.lastValue)
 
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(3)).invoke(capture(observerCaptor))
-        assertEquals(observerPostValue, observerCaptor.value)
+        verify(observer, times(3)).invoke(observerCaptor.capture())
+        assertEquals(observerPostValue, observerCaptor.lastValue)
     }
 
     @Test
@@ -95,13 +94,13 @@ class LifecycleOwnerExtensionsTest {
         val liveData: LiveData<String> = mutableLiveData
         val observerPostValue = "Event Value"
         val observer = mock<(String) -> Unit>()
-        val observerCaptor: ArgumentCaptor<String> = ArgumentCaptor.forClass(String::class.java)
+        val observerCaptor = argumentCaptor<String>()
 
         lifecycleOwner.observe(liveData, observer)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer).invoke(capture(observerCaptor))
-        assertEquals(observerPostValue, observerCaptor.value)
+        verify(observer).invoke(observerCaptor.capture())
+        assertEquals(observerPostValue, observerCaptor.lastValue)
     }
 
     @Test
@@ -110,19 +109,19 @@ class LifecycleOwnerExtensionsTest {
         val liveData: LiveData<Int> = mutableLiveData
         val observerPostValue = 3
         val observer = mock<(Int) -> Unit>()
-        val observerCaptor: ArgumentCaptor<Int> = ArgumentCaptor.forClass(Int::class.java)
+        val observerCaptor = argumentCaptor<Int>()
 
         lifecycleOwner.observe(liveData, observer)
         mutableLiveData.postValue(observerPostValue)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(2)).invoke(capture(observerCaptor))
-        assertEquals(observerPostValue, observerCaptor.value)
+        verify(observer, times(2)).invoke(observerCaptor.capture())
+        assertEquals(observerPostValue, observerCaptor.lastValue)
 
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(3)).invoke(capture(observerCaptor))
-        assertEquals(observerPostValue, observerCaptor.value)
+        verify(observer, times(3)).invoke(observerCaptor.capture())
+        assertEquals(observerPostValue, observerCaptor.lastValue)
     }
 
     @Test

@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.utils
+package com.vmadalin.core.ui.utils
 
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.vmadalin.core.TestActivity
 import com.vmadalin.core.base.BaseRobolectricTest
-import com.vmadalin.core.ui.utils.ThemeUtils
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
