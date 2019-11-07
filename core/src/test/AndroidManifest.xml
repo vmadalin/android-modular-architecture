@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat">
 
-        <activity android:name=".utils.TestActivity" />
+        <activity android:name=".TestActivity" />
 
     </application>
 </manifest>

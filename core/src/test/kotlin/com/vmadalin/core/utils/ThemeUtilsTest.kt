@@ -85,7 +85,7 @@ class ThemeUtilsTest : BaseRobolectricTest() {
             ThemeUtils.setNightMode(true)
             it.delegate.applyDayNight()
 
-            assertFalse(ThemeUtils.isDarkTheme(it))
+            assertTrue(ThemeUtils.isDarkTheme(it))
         }
     }
 
@@ -95,7 +95,7 @@ class ThemeUtilsTest : BaseRobolectricTest() {
             ThemeUtils.setNightMode(false)
             it.delegate.applyDayNight()
 
-            assertFalse(ThemeUtils.isLightTheme(it))
+            assertTrue(ThemeUtils.isLightTheme(it))
         }
     }
 }
