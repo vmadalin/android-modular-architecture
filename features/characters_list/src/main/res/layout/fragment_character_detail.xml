@@ -45,7 +45,7 @@
                     app:layout_collapseMode="pin"
                     app:contentInsetStartWithNavigation="0dp"
                     app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
-                    app:navigationOnClick="@{() -> viewModel.dismissCharacterDetail()}"/>
+                    app:navigationOnClickListener="@{() -> viewModel.dismissCharacterDetail()}"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

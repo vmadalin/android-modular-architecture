@@ -25,7 +25,7 @@ import org.junit.Test
 
 class ViewBindingsTest : BaseRobolectricTest() {
 
-    lateinit var view: View
+    private lateinit var view: View
 
     @Before
     fun setUp() {
