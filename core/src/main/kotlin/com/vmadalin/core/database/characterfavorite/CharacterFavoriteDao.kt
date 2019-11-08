@@ -47,8 +47,8 @@ interface CharacterFavoriteDao {
     suspend fun deleteCharacterFavorite(character: CharacterFavorite)
 
     @Insert
-    suspend fun insertCharacterFavorite(character: CharacterFavorite)
+    suspend fun insertCharactersFavorites(characters: List<CharacterFavorite>)
 
     @Insert
-    suspend fun insertCharactersFavorites(characters: List<CharacterFavorite>)
+    suspend fun insertCharacterFavorite(character: CharacterFavorite)
 }

@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.database
+package com.vmadalin.core.database.charactersfavorite
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.core.database.MarvelDatabase
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.core.utils.getValue

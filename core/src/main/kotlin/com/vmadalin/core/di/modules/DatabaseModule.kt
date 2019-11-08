@@ -17,9 +17,12 @@
 package com.vmadalin.core.di.modules
 
 import android.content.Context
+import androidx.room.Room
+import com.vmadalin.core.BuildConfig
 import com.vmadalin.core.database.MarvelDatabase
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
+import com.vmadalin.core.database.migrations.MIGRATION_1_2
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -29,8 +32,19 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideCharacterFavoriteDao(context: Context): CharacterFavoriteDao {
-        return MarvelDatabase.getInstance(context).characterFavoriteDao()
+    fun provideMarvelDatabase(context: Context): MarvelDatabase {
+        return Room.databaseBuilder(
+            context,
+            MarvelDatabase::class.java,
+            BuildConfig.MARVEL_DATABASE_NAME
+        ).addMigrations(MIGRATION_1_2)
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCharacterFavoriteDao(marvelDatabase: MarvelDatabase): CharacterFavoriteDao {
+        return marvelDatabase.characterFavoriteDao()
     }
 
     @Singleton

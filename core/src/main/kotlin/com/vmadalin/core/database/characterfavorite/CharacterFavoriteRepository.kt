@@ -26,11 +26,11 @@ class CharacterFavoriteRepository @Inject constructor(
     fun getAllCharactersFavoriteLiveData(): LiveData<List<CharacterFavorite>> =
         characterFavoriteDao.getAllCharactersFavoriteLiveData()
 
-    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite? =
-        characterFavoriteDao.getCharacterFavorite(characterFavoriteId)
-
     suspend fun getAllCharactersFavorite(): List<CharacterFavorite> =
         characterFavoriteDao.getAllCharactersFavorite()
+
+    suspend fun getCharacterFavorite(characterFavoriteId: Long): CharacterFavorite? =
+        characterFavoriteDao.getCharacterFavorite(characterFavoriteId)
 
     suspend fun deleteAllCharactersFavorite() =
         characterFavoriteDao.deleteAllCharactersFavorite()
@@ -40,6 +40,9 @@ class CharacterFavoriteRepository @Inject constructor(
 
     suspend fun deleteCharacterFavorite(character: CharacterFavorite) =
         characterFavoriteDao.deleteCharacterFavorite(character)
+
+    suspend fun insertCharactersFavorites(characters: List<CharacterFavorite>) =
+        characterFavoriteDao.insertCharactersFavorites(characters)
 
     suspend fun insertCharacterFavorite(id: Long, name: String, imageUrl: String) {
         val characterFavorite = CharacterFavorite(
