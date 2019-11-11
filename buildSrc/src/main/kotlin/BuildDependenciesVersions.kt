@@ -52,4 +52,5 @@ object BuildDependenciesVersions {
     const val ASSERTJ = "3.13.2"
     const val ESPRESSO = "3.2.0"
     const val FRAGMENT_TEST = "1.2.0-alpha02"
+    const val MOCK_WEB_SERVER = "4.2.2"
 }

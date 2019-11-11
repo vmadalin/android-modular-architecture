@@ -17,7 +17,8 @@
 package com.vmadalin.core.network.responses
 
 data class BaseResponse<T>(
-    var code: Int,
+    var code: Any,
     var status: String,
+    val message: String,
     var data: DataResponse<T>
 )

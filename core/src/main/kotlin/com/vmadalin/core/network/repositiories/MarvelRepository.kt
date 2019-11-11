@@ -26,8 +26,7 @@ private const val API_PUBLIC_KEY = BuildConfig.MARVEL_API_KEY_PUBLIC
 private const val API_PRIVATE_KEY = BuildConfig.MARVEL_API_KEY_PRIVATE
 private const val HASH_FORMAT = "%s%s%s"
 
-class MarvelRepository
-constructor(private val service: MarvelService) {
+class MarvelRepository(private val service: MarvelService) {
 
     suspend fun getCharacter(id: Long): BaseResponse<CharacterResponse> {
         val timestamp = System.currentTimeMillis().toString()
