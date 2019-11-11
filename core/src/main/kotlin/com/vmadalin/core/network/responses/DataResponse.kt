@@ -16,6 +16,9 @@
 
 package com.vmadalin.core.network.responses
 
+import com.vmadalin.core.annotations.OpenForTesting
+
+@OpenForTesting
 data class DataResponse<T>(
     var offset: Int,
     var limit: Int,

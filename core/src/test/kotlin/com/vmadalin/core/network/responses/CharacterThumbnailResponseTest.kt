@@ -16,12 +16,22 @@
 
 package com.vmadalin.core.network.responses
 
-import com.vmadalin.core.annotations.OpenForTesting
+import org.junit.Assert
+import org.junit.Test
 
-@OpenForTesting
-data class CharacterResponse(
-    var id: Long,
-    var name: String,
-    var description: String,
-    var thumbnail: CharacterThumbnailResponse
-)
+class CharacterThumbnailResponseTest {
+
+    @Test
+    fun createCharacterThumbnailResponse_ShouldAddCorrectAttributes() {
+        val path = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784"
+        val extension = "jpg"
+
+        val characterThumbnailResponse = CharacterThumbnailResponse(
+            path = path,
+            extension = extension
+        )
+
+        Assert.assertEquals(path, characterThumbnailResponse.path)
+        Assert.assertEquals(extension, characterThumbnailResponse.extension)
+    }
+}
