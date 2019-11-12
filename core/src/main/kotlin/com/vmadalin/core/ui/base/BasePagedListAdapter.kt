@@ -18,6 +18,8 @@ package com.vmadalin.core.ui.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -25,7 +27,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BasePagedListAdapter<T>(
     itemsSame: (T, T) -> Boolean,
-    contentsSame: (T, T) -> Boolean = { old, new -> old == new }
+    contentsSame: (T, T) -> Boolean = { old, new -> old == new },
+    @VisibleForTesting(otherwise = PRIVATE)
+    internal var recyclerView: RecyclerView? = null
 ) : PagedListAdapter<T, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<T>() {
     override fun areItemsTheSame(old: T, new: T): Boolean = itemsSame(old, new)
     override fun areContentsTheSame(old: T, new: T): Boolean = contentsSame(old, new)
@@ -34,8 +38,6 @@ abstract class BasePagedListAdapter<T>(
     init {
         super.setHasStableIds(true)
     }
-
-    private var recyclerView: RecyclerView? = null
 
     abstract fun onCreateViewHolder(
         parent: ViewGroup,

@@ -30,16 +30,16 @@ class BaseViewHolderTest {
     private val rootView: View = mock()
 
     @Test
-    fun test() {
+    fun createBaseViewHolder_ShouldInitializeCorrectly() {
         doReturn(rootView).whenever(binding).root
 
-        val baseViewHolder = MockBaseViewHolder()
+        val baseViewHolder = TestBaseViewHolder()
 
         assertEquals(binding, baseViewHolder.binding)
         assertEquals(binding.root, baseViewHolder.itemView)
     }
 
-    inner class MockBaseViewHolder : BaseViewHolder<ViewDataBinding>(
+    inner class TestBaseViewHolder : BaseViewHolder<ViewDataBinding>(
         binding = binding
     )
 }
