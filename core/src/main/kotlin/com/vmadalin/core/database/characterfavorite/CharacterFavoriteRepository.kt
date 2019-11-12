@@ -16,11 +16,14 @@
 
 package com.vmadalin.core.database.characterfavorite
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.LiveData
 import javax.inject.Inject
 
 class CharacterFavoriteRepository @Inject constructor(
-    private val characterFavoriteDao: CharacterFavoriteDao
+    @VisibleForTesting(otherwise = PRIVATE)
+    internal val characterFavoriteDao: CharacterFavoriteDao
 ) {
 
     fun getAllCharactersFavoriteLiveData(): LiveData<List<CharacterFavorite>> =

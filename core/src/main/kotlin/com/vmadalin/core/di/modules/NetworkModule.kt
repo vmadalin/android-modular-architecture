@@ -32,24 +32,35 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(): OkHttpClient {
-        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        return httpLoggingInterceptor
+    }
+
+    @Singleton
+    @Provides
+    fun provideHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            clientBuilder.addInterceptor(httpLoggingInterceptor)
+            clientBuilder.addInterceptor(interceptor)
         }
         return clientBuilder.build()
     }
 
     @Singleton
     @Provides
-    fun provideMarvelService(): MarvelService {
+    fun provideRetrofitBuilder(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.MARVEL_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(MarvelService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMarvelService(retrofit: Retrofit): MarvelService {
+        return retrofit.create(MarvelService::class.java)
     }
 
     @Singleton

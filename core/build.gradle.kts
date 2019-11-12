@@ -35,7 +35,7 @@ allOpen {
 android {
     buildTypes.forEach {
         try {
-            it.buildConfigStringField("MARVEL_API_BASE_URL", "https://gateway.marvel.com")
+            it.buildConfigStringField("MARVEL_API_BASE_URL", "https://gateway.marvel.com/")
             it.buildConfigStringField("MARVEL_API_KEY_PUBLIC", getLocalProperty("marvel.key.public"))
             it.buildConfigStringField("MARVEL_API_KEY_PRIVATE", getLocalProperty("marvel.key.private"))
 

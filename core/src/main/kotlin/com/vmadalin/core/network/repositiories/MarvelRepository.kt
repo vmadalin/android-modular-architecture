@@ -16,6 +16,8 @@
 
 package com.vmadalin.core.network.repositiories
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import com.vmadalin.core.BuildConfig
 import com.vmadalin.core.extensions.toMD5
 import com.vmadalin.core.network.responses.BaseResponse
@@ -26,7 +28,10 @@ private const val API_PUBLIC_KEY = BuildConfig.MARVEL_API_KEY_PUBLIC
 private const val API_PRIVATE_KEY = BuildConfig.MARVEL_API_KEY_PRIVATE
 private const val HASH_FORMAT = "%s%s%s"
 
-class MarvelRepository(private val service: MarvelService) {
+class MarvelRepository(
+    @VisibleForTesting(otherwise = PRIVATE)
+    internal val service: MarvelService
+) {
 
     suspend fun getCharacter(id: Long): BaseResponse<CharacterResponse> {
         val timestamp = System.currentTimeMillis().toString()
