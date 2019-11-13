@@ -31,6 +31,7 @@ import com.vmadalin.core.R
 /**
  * This is a workaround until the Navigation Component supports multiple back stacks.
  * Issue tracking: https://issuetracker.google.com/issues/127932815
+ * Issue github: https://github.com/android/architecture-components-samples/issues/530
  */
 fun BottomNavigationView.setupWithNavController(
     navGraphIds: List<Int>,
@@ -102,6 +103,11 @@ fun BottomNavigationView.setupWithNavController(
                     // Commit a transaction that cleans the back stack and adds the first fragment
                     // to it, creating the fixed started destination.
                     fragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            R.anim.nav_default_enter_anim,
+                            R.anim.nav_default_exit_anim,
+                            R.anim.nav_default_pop_enter_anim,
+                            R.anim.nav_default_pop_exit_anim)
                         .attach(selectedFragment)
                         .setPrimaryNavigationFragment(selectedFragment)
                         .apply {
@@ -113,11 +119,6 @@ fun BottomNavigationView.setupWithNavController(
                             }
                         }
                         .addToBackStack(firstFragmentTag)
-                        .setCustomAnimations(
-                            R.anim.nav_default_enter_anim,
-                            R.anim.nav_default_exit_anim,
-                            R.anim.nav_default_pop_enter_anim,
-                            R.anim.nav_default_pop_exit_anim)
                         .setReorderingAllowed(true)
                         .commit()
                 }
@@ -234,6 +235,16 @@ private fun obtainNavHostFragment(
         .add(containerId, navHostFragment, fragmentTag)
         .commitNow()
     return navHostFragment
+}
+
+private fun FragmentManager.isOnBackStack(backStackName: String): Boolean {
+    val backStackCount = backStackEntryCount
+    for (index in 0 until backStackCount) {
+        if (getBackStackEntryAt(index).name == backStackName) {
+            return true
+        }
+    }
+    return false
 }
 
 private fun getFragmentTag(index: Int) = "bottomNavigation#$index"
