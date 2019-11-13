@@ -63,14 +63,32 @@ class ViewBindingsTest : BaseRobolectricTest() {
     }
 
     @Test
+    fun forceViewVisibility_AsNonVisible() {
+        view.visible = false
+        assertTrue(view.visibility == View.GONE)
+    }
+
+    @Test
     fun forceViewVisibility_AsInvisible() {
         view.invisible = true
         assertTrue(view.visibility == View.INVISIBLE)
     }
 
     @Test
+    fun forceViewVisibility_AsNonInvisible() {
+        view.invisible = false
+        assertTrue(view.visibility == View.VISIBLE)
+    }
+
+    @Test
     fun forceViewVisibility_AsGone() {
         view.gone = true
         assertTrue(view.visibility == View.GONE)
+    }
+
+    @Test
+    fun forceViewVisibility_AsNonGone() {
+        view.gone = false
+        assertTrue(view.visibility == View.VISIBLE)
     }
 }

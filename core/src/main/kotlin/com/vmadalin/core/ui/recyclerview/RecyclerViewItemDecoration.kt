@@ -18,11 +18,14 @@ package com.vmadalin.core.ui.recyclerview
 
 import android.graphics.Rect
 import android.view.View
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerViewItemDecoration(
-    private val spacingPx: Int
+    @VisibleForTesting(otherwise = PRIVATE)
+    internal val spacingPx: Int
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
