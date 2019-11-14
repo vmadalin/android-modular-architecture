@@ -35,28 +35,22 @@ class CharactersListModule(private val fragment: CharactersListFragment) {
     @Provides
     fun providesCharactersListViewModel(
         dataFactory: CharactersPageDataSourceFactory
-    ): CharactersListViewModel {
-        return fragment.viewModel {
-            CharactersListViewModel(dataFactory)
-        }
+    ) = fragment.viewModel {
+        CharactersListViewModel(dataFactory)
     }
 
     @FeatureScope
     @Provides
     fun providesCharactersPageDataSourceFactory(
         repository: MarvelRepository
-    ): CharactersPageDataSourceFactory {
-        return CharactersPageDataSourceFactory(
-            repository,
-            CoroutineScope(Dispatchers.IO)
-        )
-    }
+    ) = CharactersPageDataSourceFactory(
+        repository = repository,
+        scope = CoroutineScope(Dispatchers.IO)
+    )
 
     @FeatureScope
     @Provides
     fun providesCharactersListAdapter(
         viewModel: CharactersListViewModel
-    ): CharactersListAdapter {
-        return CharactersListAdapter(viewModel)
-    }
+    ) = CharactersListAdapter(viewModel)
 }

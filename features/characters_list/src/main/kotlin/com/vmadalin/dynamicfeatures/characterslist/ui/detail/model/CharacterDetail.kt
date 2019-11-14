@@ -17,12 +17,12 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail.model
 
 data class CharacterDetail(
-    var id: Long,
-    var name: String,
-    var description: String,
-    var imageUrl: String,
+    val id: Long,
+    val name: String,
+    val description: String,
+    val imageUrl: String,
 
-    var detailUrl: String? = null,
-    var wikiUrl: String? = null,
-    var comicUrl: String? = null
+    val detailUrl: String? = null,
+    val wikiUrl: String? = null,
+    val comicUrl: String? = null
 )

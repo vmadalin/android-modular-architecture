@@ -51,51 +51,45 @@ class CharactersListAdapter @Inject constructor(
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: Int
-    ): RecyclerView.ViewHolder {
-        return when (ItemView.valueOf(viewType)) {
+    ): RecyclerView.ViewHolder =
+        when (ItemView.valueOf(viewType)) {
             ItemView.CHARACTER -> CharacterViewHolder(inflater)
             ItemView.LOADING -> LoadingViewHolder(inflater)
             else -> ErrorViewHolder(inflater)
         }
-    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemView(position)) {
-            ItemView.CHARACTER -> {
+            ItemView.CHARACTER ->
                 getItem(position)?.let {
                     if (holder is CharacterViewHolder) {
                         holder.bind(viewModel, it)
                     }
                 }
-            }
-            ItemView.ERROR -> {
+            ItemView.ERROR ->
                 if (holder is ErrorViewHolder) {
                     holder.bind(viewModel)
                 }
+            else -> {
             }
-            else -> {}
         }
     }
 
-    override fun getItemId(position: Int): Long {
-        return when (getItemView(position)) {
-            ItemView.CHARACTER -> getItem(position)?.id!!
+    override fun getItemId(position: Int) =
+        when (getItemView(position)) {
+            ItemView.CHARACTER -> getItem(position)?.id ?: -1L
             ItemView.LOADING -> 0L
             ItemView.ERROR -> 1L
         }
-    }
 
-    override fun getItemCount(): Int {
-        return if (state.hasExtraRow) {
+    override fun getItemCount() =
+        if (state.hasExtraRow) {
             super.getItemCount() + 1
         } else {
             super.getItemCount()
         }
-    }
 
-    override fun getItemViewType(position: Int): Int {
-        return getItemView(position).type
-    }
+    override fun getItemViewType(position: Int) = getItemView(position).type
 
     fun submitState(newState: CharactersListAdapterState) {
         val oldState = state
@@ -105,16 +99,15 @@ class CharactersListAdapter @Inject constructor(
         }
     }
 
-    fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
-        return object : GridLayoutManager.SpanSizeLookup() {
+    fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup =
+        object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return getItemView(position).span
             }
         }
-    }
 
-    internal fun getItemView(position: Int): ItemView {
-        return if (state.hasExtraRow && position == itemCount - 1) {
+    internal fun getItemView(position: Int) =
+        if (state.hasExtraRow && position == itemCount - 1) {
             if (state.isAddError()) {
                 ItemView.ERROR
             } else {
@@ -123,5 +116,4 @@ class CharactersListAdapter @Inject constructor(
         } else {
             ItemView.CHARACTER
         }
-    }
 }

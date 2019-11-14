@@ -22,7 +22,7 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import com.vmadalin.core.ui.utils.ThemeUtils
 import com.vmadalin.dynamicfeatures.home.R
 
-const val DELAY_TO_APPLY_THEME = 1000L
+private const val DELAY_TO_APPLY_THEME = 1000L
 
 class ToggleThemeCheckBox @JvmOverloads constructor(
     context: Context,

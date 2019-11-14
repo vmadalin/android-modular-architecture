@@ -33,6 +33,7 @@ import com.vmadalin.core.R
  * Issue tracking: https://issuetracker.google.com/issues/127932815
  * Issue github: https://github.com/android/architecture-components-samples/issues/530
  */
+@Suppress("UnsafeCast", "UnsafeCallOnNullableType", "LongMethod", "ComplexMethod")
 fun BottomNavigationView.setupWithNavController(
     navGraphIds: List<Int>,
     fragmentManager: FragmentManager,
@@ -155,6 +156,7 @@ fun BottomNavigationView.setupWithNavController(
     return selectedNavController
 }
 
+@Suppress("UnsafeCast")
 private fun BottomNavigationView.setupDeepLinks(
     navGraphIds: List<Int>,
     fragmentManager: FragmentManager,
@@ -179,6 +181,7 @@ private fun BottomNavigationView.setupDeepLinks(
     }
 }
 
+@Suppress("UnsafeCast")
 private fun BottomNavigationView.setupItemReselected(
     graphIdToTagMap: SparseArray<String>,
     fragmentManager: FragmentManager
@@ -219,6 +222,7 @@ private fun attachNavHostFragment(
         .commitNow()
 }
 
+@Suppress("UnsafeCast")
 private fun obtainNavHostFragment(
     fragmentManager: FragmentManager,
     fragmentTag: String,

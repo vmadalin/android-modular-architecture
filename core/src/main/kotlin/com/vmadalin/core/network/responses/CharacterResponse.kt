@@ -20,8 +20,8 @@ import com.vmadalin.core.annotations.OpenForTesting
 
 @OpenForTesting
 data class CharacterResponse(
-    var id: Long,
-    var name: String,
-    var description: String,
-    var thumbnail: CharacterThumbnailResponse
+    val id: Long,
+    val name: String,
+    val description: String,
+    val thumbnail: CharacterThumbnailResponse
 )

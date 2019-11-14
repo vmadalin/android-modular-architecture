@@ -84,11 +84,10 @@ class CharactersListFragment :
 
     private fun onViewEvent(viewEvent: CharactersListViewEvent) {
         when (viewEvent) {
-            is CharactersListViewEvent.OpenCharacterDetail -> {
+            is CharactersListViewEvent.OpenCharacterDetail ->
                 findNavController().navigate(
                     CharactersListFragmentDirections
                         .actionCharactersListFragmentToCharacterDetailFragment(viewEvent.id))
-            }
         }
     }
 }

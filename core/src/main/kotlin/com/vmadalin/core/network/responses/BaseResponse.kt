@@ -20,8 +20,8 @@ import com.vmadalin.core.annotations.OpenForTesting
 
 @OpenForTesting
 data class BaseResponse<T>(
-    var code: Any,
-    var status: String,
+    val code: Any,
+    val status: String,
     val message: String,
-    var data: DataResponse<T>
+    val data: DataResponse<T>
 )

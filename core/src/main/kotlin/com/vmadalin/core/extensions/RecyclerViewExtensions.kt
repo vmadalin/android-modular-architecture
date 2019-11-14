@@ -21,21 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 val RecyclerView.gridLayoutManager: GridLayoutManager?
-    get() {
-        val layoutManager = this.layoutManager
-        return if (layoutManager is GridLayoutManager) {
-            layoutManager
-        } else {
-            null
-        }
-    }
+    get() = layoutManager as? GridLayoutManager
 
 val RecyclerView.linearLayoutManager: LinearLayoutManager?
-    get() {
-        val layoutManager = this.layoutManager
-        return if (layoutManager is LinearLayoutManager) {
-            layoutManager
-        } else {
-            null
-        }
-    }
+    get() = layoutManager as? LinearLayoutManager

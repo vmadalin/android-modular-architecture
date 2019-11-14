@@ -20,6 +20,6 @@ import com.vmadalin.core.annotations.OpenForTesting
 
 @OpenForTesting
 data class CharacterThumbnailResponse(
-    var path: String,
-    var extension: String
+    val path: String,
+    val extension: String
 )

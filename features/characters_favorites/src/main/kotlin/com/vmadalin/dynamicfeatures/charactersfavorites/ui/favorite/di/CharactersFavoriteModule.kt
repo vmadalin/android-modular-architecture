@@ -34,13 +34,11 @@ class CharactersFavoriteModule(private val fragment: CharactersFavoriteFragment)
     @FeatureScope
     fun providesCharactersFavoriteViewModel(
         characterFavoriteRepository: CharacterFavoriteRepository
-    ): CharactersFavoriteViewModel {
-        return fragment.viewModel {
-            CharactersFavoriteViewModel(
-                characterFavoriteRepository = characterFavoriteRepository,
-                coroutineScope = CoroutineScope(Dispatchers.IO)
-            )
-        }
+    ) = fragment.viewModel {
+        CharactersFavoriteViewModel(
+            characterFavoriteRepository = characterFavoriteRepository,
+            coroutineScope = CoroutineScope(Dispatchers.IO)
+        )
     }
 
     @Provides

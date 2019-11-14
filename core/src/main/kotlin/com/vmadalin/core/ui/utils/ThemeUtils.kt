@@ -26,17 +26,13 @@ object ThemeUtils {
     /**
      * Whether the current configuration is a dark theme i.e. in Night configuration.
      */
-    fun isDarkTheme(context: Context): Boolean {
-        return context.resources.configuration.uiMode and
+    fun isDarkTheme(context: Context) = context.resources.configuration.uiMode and
             Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
-    }
 
     /**
      * Whether the current configuration is a light theme i.e. in Day configuration.
      */
-    fun isLightTheme(context: Context): Boolean {
-        return !isDarkTheme(context)
-    }
+    fun isLightTheme(context: Context) = !isDarkTheme(context)
 
     /**
      * Force [AppCompatDelegate] mode to night/notnight
@@ -47,10 +43,11 @@ object ThemeUtils {
     fun setNightMode(forceNight: Boolean, delay: Long = 0L) {
         Handler().postDelayed({
             AppCompatDelegate.setDefaultNightMode(
-                if (forceNight)
+                if (forceNight) {
                     AppCompatDelegate.MODE_NIGHT_YES
-                else
+                } else {
                     AppCompatDelegate.MODE_NIGHT_NO
+                }
             )
         }, delay)
     }

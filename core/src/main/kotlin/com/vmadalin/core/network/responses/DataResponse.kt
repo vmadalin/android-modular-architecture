@@ -20,9 +20,9 @@ import com.vmadalin.core.annotations.OpenForTesting
 
 @OpenForTesting
 data class DataResponse<T>(
-    var offset: Int,
-    var limit: Int,
-    var total: Int,
-    var count: Int,
-    var results: List<T>
+    val offset: Int,
+    val limit: Int,
+    val total: Int,
+    val count: Int,
+    val results: List<T>
 )

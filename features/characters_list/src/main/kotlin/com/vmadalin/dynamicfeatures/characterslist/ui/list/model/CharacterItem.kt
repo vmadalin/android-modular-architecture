@@ -17,8 +17,8 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.model
 
 data class CharacterItem(
-    var id: Long,
-    var name: String,
-    var description: String,
-    var imageUrl: String
+    val id: Long,
+    val name: String,
+    val description: String,
+    val imageUrl: String
 )

@@ -44,7 +44,7 @@ class SampleApp : Application() {
          */
         @JvmStatic
         fun coreComponent(context: Context) =
-            (context.applicationContext as SampleApp).coreComponent
+            (context.applicationContext as? SampleApp)?.coreComponent
     }
 
     /**

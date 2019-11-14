@@ -92,8 +92,8 @@ class CharactersPageDataSource @Inject constructor(
         retry?.invoke()
     }
 
-    private fun getCharacterItems(response: BaseResponse<CharacterResponse>): List<CharacterItem> {
-        return response.data.results.map {
+    private fun getCharacterItems(response: BaseResponse<CharacterResponse>) =
+        response.data.results.map {
             CharacterItem(
                 id = it.id,
                 name = it.name,
@@ -104,5 +104,4 @@ class CharactersPageDataSource @Inject constructor(
                 )
             )
         }
-    }
 }

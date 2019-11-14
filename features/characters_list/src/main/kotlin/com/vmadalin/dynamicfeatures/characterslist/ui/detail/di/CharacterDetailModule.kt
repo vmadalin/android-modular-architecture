@@ -36,18 +36,15 @@ class CharacterDetailModule(private val fragment: CharacterDetailFragment) {
     fun providesCharacterDetailViewModel(
         repository: MarvelRepository,
         characterFavoriteRepository: CharacterFavoriteRepository
-    ): CharacterDetailViewModel {
-        return fragment.viewModel {
-            CharacterDetailViewModel(
-                marvelRepository = repository,
-                characterFavoriteRepository = characterFavoriteRepository,
-                coroutineScope = CoroutineScope(Dispatchers.IO)
-            )
-        }
+    ) = fragment.viewModel {
+        CharacterDetailViewModel(
+            marvelRepository = repository,
+            characterFavoriteRepository = characterFavoriteRepository,
+            coroutineScope = CoroutineScope(Dispatchers.IO)
+        )
     }
 
     @FeatureScope
     @Provides
-    fun providesProgressBarDialog(): ProgressBarDialog =
-        ProgressBarDialog(fragment.requireContext())
+    fun providesProgressBarDialog() = ProgressBarDialog(fragment.requireContext())
 }

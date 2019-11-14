@@ -22,7 +22,7 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 apply<DetektPlugin>()
 
 configure<DetektExtension> {
-    input = project.files("src/main/java")
+    input = project.files("src/main/kotlin")
     config = files("$rootDir/.detekt/config.yml")
     filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
     reports {

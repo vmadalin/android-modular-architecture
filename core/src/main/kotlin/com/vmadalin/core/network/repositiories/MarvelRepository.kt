@@ -56,7 +56,6 @@ class MarvelRepository(
     //  Private methods
     // ============================================================================================
 
-    private fun generateApiHash(timestamp: String): String {
-        return HASH_FORMAT.format(timestamp, API_PRIVATE_KEY, API_PUBLIC_KEY).toMD5()
-    }
+    private fun generateApiHash(timestamp: String) =
+        HASH_FORMAT.format(timestamp, API_PRIVATE_KEY, API_PUBLIC_KEY).toMD5()
 }

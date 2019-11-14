@@ -50,22 +50,17 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder(): Retrofit {
-        return Retrofit.Builder()
+    fun provideRetrofitBuilder() =
+        Retrofit.Builder()
             .baseUrl(BuildConfig.MARVEL_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
 
     @Singleton
     @Provides
-    fun provideMarvelService(retrofit: Retrofit): MarvelService {
-        return retrofit.create(MarvelService::class.java)
-    }
+    fun provideMarvelService(retrofit: Retrofit) = retrofit.create(MarvelService::class.java)
 
     @Singleton
     @Provides
-    fun provideMarvelRepository(service: MarvelService): MarvelRepository {
-        return MarvelRepository(service)
-    }
+    fun provideMarvelRepository(service: MarvelService) = MarvelRepository(service)
 }

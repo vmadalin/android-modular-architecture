@@ -28,9 +28,7 @@ class HomeModule(private val fragment: HomeFragment) {
 
     @Provides
     @FeatureScope
-    fun providesHomeViewModel(): HomeViewModel {
-        return fragment.viewModel {
-            HomeViewModel()
-        }
+    fun providesHomeViewModel() = fragment.viewModel {
+        HomeViewModel()
     }
 }

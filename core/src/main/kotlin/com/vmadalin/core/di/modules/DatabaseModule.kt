@@ -32,28 +32,24 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideMarvelDatabase(context: Context): MarvelDatabase {
-        return Room.databaseBuilder(
+    fun provideMarvelDatabase(context: Context) =
+        Room.databaseBuilder(
             context,
             MarvelDatabase::class.java,
             BuildConfig.MARVEL_DATABASE_NAME
         ).addMigrations(MIGRATION_1_2)
             .build()
-    }
 
     @Singleton
     @Provides
-    fun provideCharacterFavoriteDao(marvelDatabase: MarvelDatabase): CharacterFavoriteDao {
-        return marvelDatabase.characterFavoriteDao()
-    }
+    fun provideCharacterFavoriteDao(marvelDatabase: MarvelDatabase) =
+        marvelDatabase.characterFavoriteDao()
 
     @Singleton
     @Provides
     fun provideCharacterFavoriteRepository(
         characterFavoriteDao: CharacterFavoriteDao
-    ): CharacterFavoriteRepository {
-        return CharacterFavoriteRepository(
+    ) = CharacterFavoriteRepository(
             characterFavoriteDao
         )
-    }
 }
