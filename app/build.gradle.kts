@@ -17,7 +17,11 @@
 import utils.createFabricProperties
 import dependencies.Dependencies
 import dependencies.DebugDependencies
-import extensions.*
+import extensions.addTestsDependencies
+import extensions.implementation
+import extensions.debugImplementation
+import extensions.getLocalProperty
+import extensions.buildConfigBooleanField
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
