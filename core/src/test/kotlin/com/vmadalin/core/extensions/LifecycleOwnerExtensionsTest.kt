@@ -79,6 +79,17 @@ class LifecycleOwnerExtensionsTest {
     }
 
     @Test
+    fun observingMutableLiveDat_WhenPostNullValue_ShouldNotTrigger() {
+        val mutableLiveData = MutableLiveData<Int>()
+        val observer = mock<(Int) -> Unit>()
+
+        lifecycleOwner.observe(mutableLiveData, observer)
+        mutableLiveData.postValue(null)
+
+        verify(observer, never()).invoke(anyInt())
+    }
+
+    @Test
     fun observingMutableLiveData_WithoutPostValue_ShouldNotTrigger() {
         val mutableLiveData = MutableLiveData<Int>()
         val observer = mock<(Int) -> Unit>()
@@ -122,6 +133,18 @@ class LifecycleOwnerExtensionsTest {
 
         verify(observer, times(3)).invoke(observerCaptor.capture())
         assertEquals(observerPostValue, observerCaptor.lastValue)
+    }
+
+    @Test
+    fun observingLiveData_WhenPostNullValue_ShouldNotTrigger() {
+        val mutableLiveData = MutableLiveData<Int>()
+        val liveData: LiveData<Int> = mutableLiveData
+        val observer = mock<(Int) -> Unit>()
+
+        lifecycleOwner.observe(liveData, observer)
+        mutableLiveData.postValue(null)
+
+        verify(observer, never()).invoke(anyInt())
     }
 
     @Test
