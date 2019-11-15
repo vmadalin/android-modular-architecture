@@ -45,10 +45,12 @@ abstract class BasePagedListAdapter<T>(
         viewType: Int
     ): RecyclerView.ViewHolder
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        return onCreateViewHolder(parent, layoutInflater, viewType)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        onCreateViewHolder(
+            parent = parent,
+            inflater = LayoutInflater.from(parent.context),
+            viewType = viewType
+        )
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView

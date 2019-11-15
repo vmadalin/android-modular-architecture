@@ -18,45 +18,90 @@ package com.vmadalin.core.ui.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.RecyclerView
+import com.nhaarman.mockitokotlin2.after
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
+import com.nhaarman.mockitokotlin2.same
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.core.pagedListOf
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito.anyInt
 import org.mockito.MockitoAnnotations
+import org.mockito.Spy
 
 class BasePagedListAdapterTest : BaseRobolectricTest() {
 
-    interface ItemComparator : (String, String) -> Boolean {
+    @get:Rule
+    val rule = InstantTaskExecutorRule()
+
+    interface Comparator : (String, String) -> Boolean {
         override fun invoke(p1: String, p2: String): Boolean = false
     }
 
     @Mock
     lateinit var viewHolder: RecyclerView.ViewHolder
     @Mock
-    lateinit var itemsSame: ItemComparator
+    lateinit var itemsSame: Comparator
     @Mock
-    lateinit var contentsSame: ItemComparator
+    lateinit var contentsSame: Comparator
     @Mock
     lateinit var recyclerView: RecyclerView
-
-    private lateinit var adapter: TestBasePagedListAdapter
+    @Spy
+    lateinit var adapter: TestBasePagedListAdapter
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        adapter = TestBasePagedListAdapter()
+    }
+
+    @Test
+    fun createViewHolder_ShouldInvokeAbstractMethod() {
+        val parent = mock<ViewGroup>()
+        val viewType = 1
+
+        doReturn(context).whenever(parent).context
+        adapter.onCreateViewHolder(parent, viewType)
+
+        verify(adapter).onCreateViewHolder(same(parent), any(), same(viewType))
+    }
+
+    @Test
+    fun listedRecycleView_ShouldInvokeItemsComparator() {
+        adapter.submitList(pagedListOf("item1", "item2"))
+        adapter.submitList(pagedListOf("item3", "item4"))
+
+        verify(itemsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
+    }
+
+    @Test
+    fun listedRecycleView_ShouldInvokeContentComparator() {
+        doReturn(true).whenever(itemsSame).invoke(anyString(), anyString())
+
+        adapter.submitList(pagedListOf("item1", "item2"))
+        adapter.submitList(pagedListOf("item6", "item4", "item2"))
+
+        verify(contentsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
+    }
+
+    @Test
+    fun emptyRecycleView_ShouldNotInvokeAnyComparator() {
+        verify(itemsSame, after(100).never()).invoke(anyString(), anyString())
+        verify(contentsSame, after(100).never()).invoke(anyString(), anyString())
     }
 
     @Test

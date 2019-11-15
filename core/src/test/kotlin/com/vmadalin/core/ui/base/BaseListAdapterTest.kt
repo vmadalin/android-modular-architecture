@@ -91,7 +91,6 @@ class BaseListAdapterTest : BaseRobolectricTest() {
 
         adapter.submitList(listOf("item1", "item2"))
         adapter.submitList(listOf("item6", "item4", "item2"))
-        adapter.notifyItemChanged(2)
 
         verify(contentsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
     }
