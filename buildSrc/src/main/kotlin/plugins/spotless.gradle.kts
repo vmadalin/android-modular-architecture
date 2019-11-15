@@ -80,7 +80,7 @@ configure<SpotlessExtension> {
             )
         )
         licenseHeaderFile(
-            rootProject.file("COPYRIGHT"),
+            rootProject.file(".spotless/copyright"),
             "package|import|tasks|apply|plugins|include|val|object|interface"
         )
         trimTrailingWhitespace()
