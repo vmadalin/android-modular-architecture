@@ -16,6 +16,6 @@
 
 package com.vmadalin.core
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 
-class TestActivity : AppCompatActivity()
+class TestFragmentActivity : FragmentActivity()

@@ -18,4 +18,4 @@ package com.vmadalin.core
 
 import androidx.appcompat.app.AppCompatActivity
 
-class TestActivityNoActionBar : AppCompatActivity()
+class TestCompactActivityNoActionBar : AppCompatActivity()

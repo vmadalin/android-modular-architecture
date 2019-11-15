@@ -8,10 +8,12 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat">
 
-        <activity android:name=".TestActivity" />
+        <activity android:name=".TestFragmentActivity" />
+
+        <activity android:name=".TestCompatActivity" />
 
         <activity
-            android:name=".TestActivityNoActionBar"
+            android:name=".TestCompactActivityNoActionBar"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
 
     </application>
