@@ -23,7 +23,6 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.RecyclerView
 import com.nhaarman.mockitokotlin2.after
 import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
@@ -70,6 +69,20 @@ class BasePagedListAdapterTest : BaseRobolectricTest() {
     }
 
     @Test
+    fun initializeAdapter_WithoutRecycleView() {
+        assertTrue(adapter.hasStableIds())
+        assertNull(adapter.recyclerView)
+    }
+
+    @Test
+    fun initializeAdapter_WithRecycleView() {
+        adapter.recyclerView = recyclerView
+
+        assertTrue(adapter.hasStableIds())
+        assertEquals(recyclerView, adapter.recyclerView)
+    }
+
+    @Test
     fun createViewHolder_ShouldInvokeAbstractMethod() {
         val parent = mock<ViewGroup>()
         val viewType = 1
@@ -105,14 +118,10 @@ class BasePagedListAdapterTest : BaseRobolectricTest() {
     }
 
     @Test
-    fun initializeAdapterCorrectly() {
-        assertTrue(adapter.hasStableIds())
-    }
-
-    @Test
     fun attachedRecycleView_ShouldStoreInstance() {
         val attachedRecyclerView: RecyclerView = mock()
 
+        adapter.recyclerView = recyclerView
         adapter.onAttachedToRecyclerView(attachedRecyclerView)
 
         assertEquals(attachedRecyclerView, adapter.recyclerView)
@@ -122,6 +131,7 @@ class BasePagedListAdapterTest : BaseRobolectricTest() {
     fun detachedRecycleView_ShouldDestroyInstance() {
         val detachedRecyclerView: RecyclerView = mock()
 
+        adapter.recyclerView = recyclerView
         adapter.onDetachedFromRecyclerView(detachedRecyclerView)
 
         assertNull(adapter.recyclerView)
@@ -132,6 +142,7 @@ class BasePagedListAdapterTest : BaseRobolectricTest() {
         val pagedList = mock<PagedList<String>>()
         doReturn(false).whenever(pagedList).isNullOrEmpty()
 
+        adapter.recyclerView = recyclerView
         adapter.submitList(pagedList)
 
         verify(recyclerView, never()).scrollToPosition(anyInt())
@@ -140,19 +151,32 @@ class BasePagedListAdapterTest : BaseRobolectricTest() {
     @Test
     fun submitList_ShouldScrollUp() {
         val pagedList = mock<PagedList<String>>()
-        val positionCaptor = argumentCaptor<Int>()
         doReturn(true).whenever(pagedList).isNullOrEmpty()
 
+        adapter.recyclerView = recyclerView
         adapter.submitList(pagedList)
 
-        verify(recyclerView).scrollToPosition(positionCaptor.capture())
-        assertEquals(0, positionCaptor.lastValue)
+        verify(recyclerView).scrollToPosition(same(0))
+    }
+
+    @Test
+    fun submitNull_ShouldScrollUp() {
+        adapter.recyclerView = recyclerView
+        adapter.submitList(null)
+
+        verify(recyclerView).scrollToPosition(same(0))
+    }
+
+    @Test
+    fun submitNull_ShouldNotScrollUp() {
+        adapter.submitList(null)
+
+        verify(recyclerView, never()).scrollToPosition(anyInt())
     }
 
     inner class TestBasePagedListAdapter : BasePagedListAdapter<String>(
         itemsSame = itemsSame,
-        contentsSame = contentsSame,
-        recyclerView = recyclerView
+        contentsSame = contentsSame
     ) {
 
         override fun onCreateViewHolder(

@@ -27,13 +27,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BasePagedListAdapter<T>(
     itemsSame: (T, T) -> Boolean,
-    contentsSame: (T, T) -> Boolean = { old, new -> old == new },
-    @VisibleForTesting(otherwise = PRIVATE)
-    internal var recyclerView: RecyclerView? = null
+    contentsSame: (T, T) -> Boolean
 ) : PagedListAdapter<T, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<T>() {
     override fun areItemsTheSame(old: T, new: T): Boolean = itemsSame(old, new)
     override fun areContentsTheSame(old: T, new: T): Boolean = contentsSame(old, new)
 }) {
+
+    @VisibleForTesting(otherwise = PRIVATE)
+    internal var recyclerView: RecyclerView? = null
 
     init {
         super.setHasStableIds(true)
