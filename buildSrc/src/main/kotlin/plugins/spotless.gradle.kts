@@ -56,12 +56,12 @@ configure<SpotlessExtension> {
                 mapOf(
                     "dir" to ".",
                     "include" to listOf("**/*.kt"),
-                    "exclude" to listOf("**/build/**", "**/buildSrc/**")
+                    "exclude" to listOf("**/build/**", "**/buildSrc/**", "**/.*")
                 )
             )
         )
         licenseHeaderFile(
-            rootProject.file("COPYRIGHT"),
+            rootProject.file(".spotless/copyright.kt"),
             "^(package|object|import|interface)"
         )
         trimTrailingWhitespace()
@@ -80,7 +80,7 @@ configure<SpotlessExtension> {
             )
         )
         licenseHeaderFile(
-            rootProject.file(".spotless/copyright"),
+            rootProject.file(".spotless/copyright.kt"),
             "package|import|tasks|apply|plugins|include|val|object|interface"
         )
         trimTrailingWhitespace()
