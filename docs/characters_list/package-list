@@ -1,0 +1,12 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+com.vmadalin.dynamicfeatures.characterslist.ui.detail
+com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
+com.vmadalin.dynamicfeatures.characterslist.ui.detail.model
+com.vmadalin.dynamicfeatures.characterslist.ui.list
+com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
+com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders
+com.vmadalin.dynamicfeatures.characterslist.ui.list.di
+com.vmadalin.dynamicfeatures.characterslist.ui.list.model
+com.vmadalin.dynamicfeatures.characterslist.ui.list.paging

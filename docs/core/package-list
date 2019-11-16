@@ -1,0 +1,33 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:com.vmadalin.core.extensions$gridLayoutManager#androidx.recyclerview.widget.RecyclerViewcom.vmadalin.core.extensions/androidx.recyclerview.widget.-recycler-view/grid-layout-manager.html
+$dokka.location:com.vmadalin.core.extensions$linearLayoutManager#androidx.recyclerview.widget.RecyclerViewcom.vmadalin.core.extensions/androidx.recyclerview.widget.-recycler-view/linear-layout-manager.html
+$dokka.location:com.vmadalin.core.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.LiveData((com.vmadalin.core.extensions.observe.T)), kotlin.Function1((com.vmadalin.core.extensions.observe.T, kotlin.Unit)))com.vmadalin.core.extensions/androidx.lifecycle.-lifecycle-owner/observe.html
+$dokka.location:com.vmadalin.core.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.MutableLiveData((com.vmadalin.core.extensions.observe.T)), kotlin.Function1((com.vmadalin.core.extensions.observe.T, kotlin.Unit)))com.vmadalin.core.extensions/androidx.lifecycle.-lifecycle-owner/observe.html
+$dokka.location:com.vmadalin.core.extensions$setupWithNavController(com.google.android.material.bottomnavigation.BottomNavigationView, kotlin.collections.List((kotlin.Int)), androidx.fragment.app.FragmentManager, kotlin.Int, android.content.Intent)com.vmadalin.core.extensions/com.google.android.material.bottomnavigation.-bottom-navigation-view/setup-with-nav-controller.html
+$dokka.location:com.vmadalin.core.extensions$toHex(kotlin.ByteArray)com.vmadalin.core.extensions/kotlin.-byte-array/to-hex.html
+$dokka.location:com.vmadalin.core.extensions$toMD5(kotlin.String)com.vmadalin.core.extensions/kotlin.-string/to-m-d5.html
+$dokka.location:com.vmadalin.core.extensions$viewModel(androidx.fragment.app.Fragment, kotlin.String, kotlin.Function0((com.vmadalin.core.extensions.viewModel.VM)))com.vmadalin.core.extensions/androidx.fragment.app.-fragment/view-model.html
+$dokka.location:com.vmadalin.core.ui.bindings$gone#android.view.Viewcom.vmadalin.core.ui.bindings/android.view.-view/gone.html
+$dokka.location:com.vmadalin.core.ui.bindings$imageUrl(android.widget.ImageView, kotlin.String, kotlin.Int)com.vmadalin.core.ui.bindings/android.widget.-image-view/image-url.html
+$dokka.location:com.vmadalin.core.ui.bindings$invisible#android.view.Viewcom.vmadalin.core.ui.bindings/android.view.-view/invisible.html
+$dokka.location:com.vmadalin.core.ui.bindings$setItemDecorationSpacing(androidx.recyclerview.widget.RecyclerView, kotlin.Float)com.vmadalin.core.ui.bindings/androidx.recyclerview.widget.-recycler-view/set-item-decoration-spacing.html
+$dokka.location:com.vmadalin.core.ui.bindings$visible#android.view.Viewcom.vmadalin.core.ui.bindings/android.view.-view/visible.html
+com.vmadalin.core.annotations
+com.vmadalin.core.database
+com.vmadalin.core.database.characterfavorite
+com.vmadalin.core.database.migrations
+com.vmadalin.core.di
+com.vmadalin.core.di.modules
+com.vmadalin.core.di.scopes
+com.vmadalin.core.extensions
+com.vmadalin.core.network
+com.vmadalin.core.network.repositiories
+com.vmadalin.core.network.responses
+com.vmadalin.core.network.services
+com.vmadalin.core.ui.base
+com.vmadalin.core.ui.bindings
+com.vmadalin.core.ui.customviews
+com.vmadalin.core.ui.livedata
+com.vmadalin.core.ui.recyclerview
+com.vmadalin.core.ui.utils

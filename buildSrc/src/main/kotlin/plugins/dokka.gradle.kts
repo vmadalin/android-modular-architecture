@@ -24,9 +24,6 @@ apply<DokkaPlugin>()
 tasks {
     withType<DokkaTask> {
         outputFormat = "html"
-        outputDirectory = "$buildDir/javadoc"
-
-        reportUndocumented = true
-        skipEmptyPackages = true
+        outputDirectory = "${rootProject.rootDir}/docs"
     }
 }

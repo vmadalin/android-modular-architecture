@@ -1,0 +1,7 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
+com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter
+com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.holders
+com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di

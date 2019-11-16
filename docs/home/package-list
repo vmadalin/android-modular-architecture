@@ -1,0 +1,6 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+com.vmadalin.dynamicfeatures.home.ui
+com.vmadalin.dynamicfeatures.home.ui.di
+com.vmadalin.dynamicfeatures.home.ui.menu
