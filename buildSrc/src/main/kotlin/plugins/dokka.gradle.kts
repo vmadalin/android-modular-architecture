@@ -23,7 +23,7 @@ apply<DokkaPlugin>()
 
 tasks {
     withType<DokkaTask> {
-        outputFormat = "html"
+        outputFormat = "javadoc"
         outputDirectory = "${rootProject.rootDir}/docs"
     }
 }
