@@ -40,7 +40,7 @@ class MarvelDatabaseTest : TestRobolectric() {
     }
 
     @Test
-    fun test() {
+    fun obtainCharacterFavoriteDao() {
         doReturn(characterFavoriteDao).whenever(marvelDatabase).characterFavoriteDao()
 
         assertThat(
