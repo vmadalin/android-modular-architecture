@@ -3,7 +3,6 @@
 package="com.vmadalin.libraries.testutils">
 
 <application
-    android:label="@string/app_name"
     android:theme="@style/Theme.AppCompat">
 
     <activity android:name=".TestFragmentActivity" />
