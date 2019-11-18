@@ -24,6 +24,37 @@ long application lifecycle management.
 | Light | <img src="screenshots/phone/light_mode_characters_list.png" width="250"> | <img src="screenshots/phone/light_mode_characters_favorite.png" width="250"> | <img src="screenshots/phone/light_mode_character_detail.png" width="250"> |
 | Dark  | <img src="screenshots/phone/dark_mode_characters_list.png" width="250">  | <img src="screenshots/phone/dark_mode_characters_favorite.png" width="250">  | <img src="screenshots/phone/dark_mode_character_detail.png" width="250">  |
 
+## Environment setup
+
+First off, you require the latest Android Studio 3.5 (or newer) to be able to build the app.
+
+You need to supply API keys for the various services the app uses. That is currently Marvel and Fabric (Crashlytics). You can find information about how to gain access via these relevant links.
+
+- Marvel: https://developer.marvel.com/
+- Firebase: https://get.fabric.io/
+
+When you obtain the keys, you can provide them to the app by putting the following in the `local.properties` project root file:
+
+```
+#Marvel API KEYS
+marvel.key.public = <insert>
+marvel.key.private = <insert>
+
+#Fabric API KEYS
+fabric.key = <insert>
+fabric.secret = <insert>
+```
+
+Moreover, to sign your app for release you should generate an upload key and keystore following the [official documentation](https://developer.android.com/studio/publish/app-signing#sign-apk). Append the information used to generate it into `local.properties` project root file following the structure:
+
+```
+#Signing Config
+signing.key.alias = <insert>
+signing.key.password = <insert>
+signing.store.file = <insert>
+signing.store.password = <insert>
+```
+
 ## Architecture
 
 //TODO
