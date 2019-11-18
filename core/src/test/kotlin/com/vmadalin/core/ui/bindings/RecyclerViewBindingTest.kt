@@ -17,15 +17,15 @@
 package com.vmadalin.core.ui.bindings
 
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.core.base.BaseRobolectricTest
 import com.vmadalin.core.ui.recyclerview.RecyclerViewItemDecoration
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.Matchers.instanceOf
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
 
-class RecyclerViewBindingTest : BaseRobolectricTest() {
+class RecyclerViewBindingTest : TestRobolectric() {
 
     private lateinit var recyclerView: RecyclerView
 

@@ -20,14 +20,14 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.vmadalin.core.TestFragment
-import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.libraries.testutils.TestFragment
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.Matchers
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat
 import org.junit.Test
 
-class FragmentExtensionsTest : BaseRobolectricTest() {
+class FragmentExtensionsTest : TestRobolectric() {
 
     private open class TestViewModel(val state: Lifecycle.State? = null) : ViewModel()
 

@@ -25,6 +25,7 @@ import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.addTestsDependencies
 import extensions.implementation
+import extensions.testImplementation
 import extensions.kapt
 
 plugins {
@@ -96,5 +97,6 @@ dependencies {
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
 
+    testImplementation(project(BuildModules.Libraries.TEST_UTILS))
     addTestsDependencies()
 }

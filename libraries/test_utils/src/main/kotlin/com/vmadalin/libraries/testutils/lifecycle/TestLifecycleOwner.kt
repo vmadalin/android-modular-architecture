@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core
+package com.vmadalin.libraries.testutils.lifecycle
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver

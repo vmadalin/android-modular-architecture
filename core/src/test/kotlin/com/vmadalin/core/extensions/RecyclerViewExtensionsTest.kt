@@ -19,7 +19,7 @@ package com.vmadalin.core.extensions
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.Matchers.instanceOf
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -27,7 +27,7 @@ import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
 
-class RecyclerViewExtensionsTest : BaseRobolectricTest() {
+class RecyclerViewExtensionsTest : TestRobolectric() {
 
     private lateinit var recyclerView: RecyclerView
 

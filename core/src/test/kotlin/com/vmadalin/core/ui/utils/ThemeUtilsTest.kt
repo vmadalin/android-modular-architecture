@@ -19,15 +19,15 @@ package com.vmadalin.core.ui.utils
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.vmadalin.core.TestCompatActivity
-import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.libraries.testutils.TestCompatActivity
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class ThemeUtilsTest : BaseRobolectricTest() {
+class ThemeUtilsTest : TestRobolectric() {
 
     @get:Rule
     val rule = ActivityScenarioRule(TestCompatActivity::class.java)

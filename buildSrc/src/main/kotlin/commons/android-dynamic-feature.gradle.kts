@@ -25,7 +25,9 @@ import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.addTestsDependencies
 import extensions.implementation
+import extensions.testImplementation
 import extensions.kapt
+import gradle.kotlin.dsl.accessors._8fbe50ab46e72ba67087bf0fa5fe6568.testImplementation
 
 plugins {
     id("com.android.dynamic-feature")
@@ -119,5 +121,6 @@ dependencies {
     kapt(AnnotationProcessorsDependencies.GLIDE)
     kapt(AnnotationProcessorsDependencies.ROOM)
 
+    testImplementation(project(BuildModules.Libraries.TEST_UTILS))
     addTestsDependencies()
 }

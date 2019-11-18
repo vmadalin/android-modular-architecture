@@ -19,11 +19,11 @@ package com.vmadalin.core.database.charactersfavorite
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
-import com.vmadalin.core.base.BaseRobolectricTest
 import com.vmadalin.core.database.MarvelDatabase
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
-import com.vmadalin.core.utils.getValue
+import com.vmadalin.libraries.testutils.livedata.getValue
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.hasItem
 import org.hamcrest.Matchers.not
@@ -36,7 +36,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class CharacterFavoriteDaoTest : BaseRobolectricTest() {
+class CharacterFavoriteDaoTest : TestRobolectric() {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

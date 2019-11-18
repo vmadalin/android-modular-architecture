@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.base
+package com.vmadalin.libraries.testutils.robolectric
 
 import android.app.Application
 import android.content.Context
@@ -27,10 +27,10 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(
     manifest = "AndroidManifest.xml",
-    application = BaseRobolectricTest.ApplicationStub::class,
+    application = TestRobolectric.ApplicationStub::class,
     sdk = [Build.VERSION_CODES.LOLLIPOP]
 )
-abstract class BaseRobolectricTest {
+open class TestRobolectric {
 
     protected val application: Application by lazy {
         ApplicationProvider.getApplicationContext<ApplicationStub>()

@@ -17,13 +17,13 @@
 package com.vmadalin.core.ui.bindings
 
 import android.view.View
-import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class ViewBindingsTest : BaseRobolectricTest() {
+class ViewBindingsTest : TestRobolectric() {
 
     private lateinit var view: View
 

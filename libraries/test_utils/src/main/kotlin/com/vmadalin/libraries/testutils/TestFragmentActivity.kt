@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core
+package com.vmadalin.libraries.testutils
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 
-class TestCompatActivity : AppCompatActivity()
+class TestFragmentActivity : FragmentActivity()

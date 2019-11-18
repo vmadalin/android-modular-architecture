@@ -18,8 +18,8 @@ package com.vmadalin.core.database
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.whenever
-import com.vmadalin.core.base.BaseRobolectricTest
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.Matchers.instanceOf
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -27,7 +27,7 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
-class MarvelDatabaseTest : BaseRobolectricTest() {
+class MarvelDatabaseTest : TestRobolectric() {
 
     @Mock
     lateinit var marvelDatabase: MarvelDatabase

@@ -29,8 +29,8 @@ import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.same
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.vmadalin.core.base.BaseRobolectricTest
-import com.vmadalin.core.pagedListOf
+import com.vmadalin.libraries.testutils.pagelist.pagedListOf
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -43,7 +43,7 @@ import org.mockito.Mockito.anyInt
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 
-class BasePagedListAdapterTest : BaseRobolectricTest() {
+class BasePagedListAdapterTest : TestRobolectric() {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()

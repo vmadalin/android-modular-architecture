@@ -27,7 +27,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.same
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -38,7 +38,7 @@ import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 import org.robolectric.shadows.ShadowLooper
 
-class BaseListAdapterTest : BaseRobolectricTest() {
+class BaseListAdapterTest : TestRobolectric() {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()

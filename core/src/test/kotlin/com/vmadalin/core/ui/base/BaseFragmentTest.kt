@@ -26,9 +26,9 @@ import androidx.lifecycle.ViewModel
 import androidx.test.core.app.ActivityScenario
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import com.vmadalin.core.TestCompatActivity
-import com.vmadalin.core.TestFragmentActivity
-import com.vmadalin.core.base.BaseRobolectricTest
+import com.vmadalin.libraries.testutils.TestCompatActivity
+import com.vmadalin.libraries.testutils.TestFragmentActivity
+import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.Matchers.instanceOf
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertThat
@@ -37,7 +37,7 @@ import org.junit.Test
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 
-class BaseFragmentTest : BaseRobolectricTest() {
+class BaseFragmentTest : TestRobolectric() {
 
     @Spy
     lateinit var baseFragment: TestBaseFragment
