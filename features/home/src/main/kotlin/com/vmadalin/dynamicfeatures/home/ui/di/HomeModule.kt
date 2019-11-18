@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.home.ui.di
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.dynamicfeatures.home.ui.HomeFragment
@@ -24,7 +26,10 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class HomeModule(private val fragment: HomeFragment) {
+class HomeModule(
+    @VisibleForTesting(otherwise = PRIVATE)
+    val fragment: HomeFragment
+) {
 
     @Provides
     @FeatureScope

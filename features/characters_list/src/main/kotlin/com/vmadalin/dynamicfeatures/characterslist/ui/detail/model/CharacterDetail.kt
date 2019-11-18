@@ -20,9 +20,5 @@ data class CharacterDetail(
     val id: Long,
     val name: String,
     val description: String,
-    val imageUrl: String,
-
-    val detailUrl: String? = null,
-    val wikiUrl: String? = null,
-    val comicUrl: String? = null
+    val imageUrl: String
 )

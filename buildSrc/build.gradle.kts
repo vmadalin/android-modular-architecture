@@ -24,6 +24,7 @@ repositories {
     google()
     jcenter()
     mavenCentral()
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://maven.fabric.io/public")
     maven("https://plugins.gradle.org/m2/")
     maven("https://ci.android.com/builds/submitted/5837096/androidx_snapshot/latest/repository")
@@ -38,7 +39,7 @@ object PluginsVersions {
     const val GRADLE_VERSIONS = "0.22.0"
     const val KOTLIN = "1.3.50"
     const val NAVIGATION = "2.1.0-beta02"
-    const val JACOCO = "0.15.0"
+    const val JACOCO = "0.16.0-SNAPSHOT"
     const val FABRIC = "1.31.0"
     const val DOKKA = "0.10.0"
     const val KTLINT = "0.34.2"
