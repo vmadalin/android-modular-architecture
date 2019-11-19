@@ -55,6 +55,15 @@ signing.store.file = <insert>
 signing.store.password = <insert>
 ```
 
+## Build variants
+
+The application has different product flavours: `Dev`, `QA`, `Prod`. Each variant has a specific target environment and to make easier to distinguish them the app uses a specific icon colour for `debug` and `release` build variant with descriptive app name. In this case and given that it's a sample, all variants have the same Marvel API endpoint. But the idea is to have different environments target for Development and QA respectively, what doesn't affect the production environment. This is applicable to any tool, platform, service what is being used. For more information about build variant, check this [link](https://developer.android.com/studio/build/build-variants).
+
+| Types  | DEV   | QA     | PROD   | 
+|-------|:------:|:------:|:------:|
+| Debug | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
+| Release | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
+
 ## Architecture
 
 //TODO
