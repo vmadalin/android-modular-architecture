@@ -114,11 +114,9 @@ dependencies {
     implementation(Dependencies.DAGGER)
     implementation(Dependencies.TIMBER)
     implementation(Dependencies.LOGGING)
-    implementation(Dependencies.GLIDE)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
     kapt(AnnotationProcessorsDependencies.DATABINDING)
-    kapt(AnnotationProcessorsDependencies.GLIDE)
     kapt(AnnotationProcessorsDependencies.ROOM)
 
     testImplementation(project(BuildModules.Libraries.TEST_UTILS))

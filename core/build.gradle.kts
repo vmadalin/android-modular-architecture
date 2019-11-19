@@ -69,10 +69,9 @@ dependencies {
     implementation(Dependencies.PAGING)
     implementation(Dependencies.MOSHI)
     implementation(Dependencies.MOSHI_KTX)
-    implementation(Dependencies.GLIDE)
+    implementation(Dependencies.COIL)
     implementation(Dependencies.CRASHLYTICS)
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
-    kapt(AnnotationProcessorsDependencies.GLIDE)
     kapt(AnnotationProcessorsDependencies.ROOM)
 }

@@ -36,7 +36,7 @@ object BuildDependenciesVersions {
     const val RETROFIT = "2.6.2"
     const val LOGGING = "4.2.2"
     const val MOSHI = "1.8.0"
-    const val GLIDE = "4.10.0"
+    const val COIL = "0.8.0"
     const val CRASHLYTICS = "2.10.1"
     const val PLAY_CORE = "1.6.3"
     const val LEAKCANARY = "2.0-beta-2"
