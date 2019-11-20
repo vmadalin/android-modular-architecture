@@ -77,16 +77,4 @@ class CharacterDetailModuleTest {
             assertEquals(favoriteRepository, this.characterFavoriteRepository)
         }
     }
-
-    @Test
-    fun verifyProvidedProgressBarDialog() {
-        every {
-            fragment.requireContext()
-        } returns mockk()
-
-        module = CharacterDetailModule(fragment)
-        module.providesProgressBarDialog().run {
-            assertEquals(null, this.context)
-        }
-    }
 }
