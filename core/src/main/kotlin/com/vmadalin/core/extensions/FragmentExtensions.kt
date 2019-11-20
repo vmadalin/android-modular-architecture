@@ -21,18 +21,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
-inline fun <reified VM : ViewModel> Fragment.viewModel(
+@Suppress("UNCHECKED_CAST")
+fun <VM : ViewModel> Fragment.viewModel(
     key: String? = null,
-    noinline factory: () -> VM
+    factory: () -> VM
 ): VM {
-    @Suppress("UNCHECKED_CAST")
+    val factoryViewModel = factory()
     val viewModelProviderFactory = object : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T = factory() as T
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return factoryViewModel as T
+        }
     }
 
     return if (key != null) {
-        ViewModelProviders.of(this, viewModelProviderFactory).get(key, VM::class.java)
+        ViewModelProviders.of(this, viewModelProviderFactory).get(key, factoryViewModel::class.java)
     } else {
-        ViewModelProviders.of(this, viewModelProviderFactory).get(VM::class.java)
+        ViewModelProviders.of(this, viewModelProviderFactory).get(factoryViewModel::class.java)
     }
 }

@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.vmadalin.core.network.repositiories.MarvelRepository
@@ -29,8 +31,10 @@ import kotlinx.coroutines.CoroutineScope
  */
 class CharactersPageDataSourceFactory
 @Inject constructor(
-    private val repository: MarvelRepository,
-    private val scope: CoroutineScope
+    @VisibleForTesting(otherwise = PRIVATE)
+    val repository: MarvelRepository,
+    @VisibleForTesting(otherwise = PRIVATE)
+    val scope: CoroutineScope
 ) : DataSource.Factory<Int, CharacterItem>() {
 
     val sourceLiveData = MutableLiveData<CharactersPageDataSource>()

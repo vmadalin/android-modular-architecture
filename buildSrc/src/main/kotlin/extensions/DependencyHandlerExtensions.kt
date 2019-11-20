@@ -88,6 +88,7 @@ fun DependencyHandler.androidTestImplementation(dependencyNotation: String): Dep
 fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.JUNIT)
     testImplementation(TestDependencies.MOCKITO)
+    testImplementation(TestDependencies.MOCKK)
     testImplementation(TestDependencies.ASSERTJ)
     testImplementation(TestDependencies.ROBOELECTRIC)
     testImplementation(TestDependencies.ROOM)

@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
@@ -29,7 +31,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 @Module
-class CharactersListModule(private val fragment: CharactersListFragment) {
+class CharactersListModule(
+    @VisibleForTesting(otherwise = PRIVATE)
+    val fragment: CharactersListFragment
+) {
 
     @FeatureScope
     @Provides

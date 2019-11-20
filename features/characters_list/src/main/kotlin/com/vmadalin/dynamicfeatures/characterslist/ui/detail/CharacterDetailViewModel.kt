@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,9 +32,12 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class CharacterDetailViewModel @Inject constructor(
-    private val marvelRepository: MarvelRepository,
-    private val characterFavoriteRepository: CharacterFavoriteRepository,
-    private val coroutineScope: CoroutineScope
+    @VisibleForTesting(otherwise = PRIVATE)
+    val marvelRepository: MarvelRepository,
+    @VisibleForTesting(otherwise = PRIVATE)
+    val characterFavoriteRepository: CharacterFavoriteRepository,
+    @VisibleForTesting(otherwise = PRIVATE)
+    val coroutineScope: CoroutineScope
 ) : ViewModel() {
 
     private val _data = MutableLiveData<CharacterDetail>()

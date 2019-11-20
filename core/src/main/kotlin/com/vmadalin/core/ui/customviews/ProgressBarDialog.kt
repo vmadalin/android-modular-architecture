@@ -23,7 +23,9 @@ import androidx.annotation.StringRes
 import com.vmadalin.core.R
 import kotlinx.android.synthetic.main.view_progress_dialog.*
 
-class ProgressBarDialog(context: Context) : AlertDialog(context, R.style.CustomProgressDialog) {
+class ProgressBarDialog(
+    context: Context
+) : AlertDialog(context, R.style.CustomProgressDialog) {
 
     override fun show() {
         show(null)

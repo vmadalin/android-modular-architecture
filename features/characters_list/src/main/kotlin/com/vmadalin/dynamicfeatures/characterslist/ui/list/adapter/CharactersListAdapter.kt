@@ -18,6 +18,8 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.core.ui.base.BasePagedListAdapter
@@ -39,7 +41,8 @@ internal enum class ItemView(val type: Int, val span: Int) {
 }
 
 class CharactersListAdapter @Inject constructor(
-    private val viewModel: CharactersListViewModel
+    @VisibleForTesting(otherwise = PRIVATE)
+    val viewModel: CharactersListViewModel
 ) : BasePagedListAdapter<CharacterItem>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }

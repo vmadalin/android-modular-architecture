@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -27,7 +29,8 @@ import javax.inject.Inject
 
 class CharactersListViewModel
 @Inject constructor(
-    private val dataSourceFactory: CharactersPageDataSourceFactory
+    @VisibleForTesting(otherwise = PRIVATE)
+    val dataSourceFactory: CharactersPageDataSourceFactory
 ) : ViewModel() {
 
     private val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {

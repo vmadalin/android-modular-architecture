@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
@@ -26,8 +28,10 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class CharactersFavoriteViewModel @Inject constructor(
-    private val characterFavoriteRepository: CharacterFavoriteRepository,
-    private val coroutineScope: CoroutineScope
+    @VisibleForTesting(otherwise = PRIVATE)
+    val characterFavoriteRepository: CharacterFavoriteRepository,
+    @VisibleForTesting(otherwise = PRIVATE)
+    val coroutineScope: CoroutineScope
 ) : ViewModel() {
 
     val data = characterFavoriteRepository.getAllCharactersFavoriteLiveData()

@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
@@ -29,16 +31,19 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 @Module
-class CharacterDetailModule(private val fragment: CharacterDetailFragment) {
+class CharacterDetailModule(
+    @VisibleForTesting(otherwise = PRIVATE)
+    val fragment: CharacterDetailFragment
+) {
 
     @FeatureScope
     @Provides
     fun providesCharacterDetailViewModel(
-        repository: MarvelRepository,
+        marvelRepository: MarvelRepository,
         characterFavoriteRepository: CharacterFavoriteRepository
     ) = fragment.viewModel {
         CharacterDetailViewModel(
-            marvelRepository = repository,
+            marvelRepository = marvelRepository,
             characterFavoriteRepository = characterFavoriteRepository,
             coroutineScope = CoroutineScope(Dispatchers.IO)
         )
