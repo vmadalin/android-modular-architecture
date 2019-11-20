@@ -17,14 +17,17 @@
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter
 
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
+import androidx.recyclerview.widget.ItemTouchHelper.LEFT
+import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
 import androidx.recyclerview.widget.RecyclerView
 import javax.inject.Inject
 
 class CharactersFavoriteTouchHelper @Inject constructor(
     private val onSwiped: ((Int) -> Unit)
 ) : ItemTouchHelper.SimpleCallback(
-    0,
-    ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+    ACTION_STATE_IDLE,
+    LEFT or RIGHT
 ) {
 
     override fun onMove(
