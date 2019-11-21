@@ -26,8 +26,6 @@ import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFa
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteAdapter
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 @Module
 class CharactersFavoriteModule(
@@ -41,8 +39,7 @@ class CharactersFavoriteModule(
         characterFavoriteRepository: CharacterFavoriteRepository
     ) = fragment.viewModel {
         CharactersFavoriteViewModel(
-            characterFavoriteRepository = characterFavoriteRepository,
-            coroutineScope = CoroutineScope(Dispatchers.IO)
+            characterFavoriteRepository = characterFavoriteRepository
         )
     }
 

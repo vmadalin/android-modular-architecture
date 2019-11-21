@@ -20,18 +20,15 @@ import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class CharactersFavoriteViewModel @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
-    val characterFavoriteRepository: CharacterFavoriteRepository,
-    @VisibleForTesting(otherwise = PRIVATE)
-    val coroutineScope: CoroutineScope
+    val characterFavoriteRepository: CharacterFavoriteRepository
 ) : ViewModel() {
 
     val data = characterFavoriteRepository.getAllCharactersFavoriteLiveData()
@@ -44,13 +41,8 @@ class CharactersFavoriteViewModel @Inject constructor(
     }
 
     fun removeFavoriteCharacter(character: CharacterFavorite) {
-        coroutineScope.launch {
+        viewModelScope.launch {
             characterFavoriteRepository.deleteCharacterFavorite(character)
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        coroutineScope.cancel()
     }
 }
