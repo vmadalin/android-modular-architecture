@@ -17,32 +17,20 @@ application architecture that is modular, scalable, maintainable and testable. T
 has all of these small details that will set the rock-solid foundation of the larger app suitable for bigger teams and
 long application lifecycle management.
 
-## Design
+## Table of Contents
 
-App [support different screen sizes](https://developer.android.com/training/multiscreen/screensizes) and the content has been adapted to fit for mobile devices and tablets. To do that, it has been created a flexible layout using one or more of the following concepts: 
+- [Development](https://github.com/VMadalin/kotlin-sample-app#development)
+- [Design](https://github.com/VMadalin/kotlin-sample-app#design)
+- [Architecture](https://github.com/VMadalin/kotlin-sample-app#architecture)
+- [Documentation](https://github.com/VMadalin/kotlin-sample-app#documentation)
+- [Tech-stack](https://github.com/VMadalin/kotlin-sample-app#tech-stack)
+- [Resources](https://github.com/VMadalin/kotlin-sample-app#resources)
+- [Contributions](https://github.com/VMadalin/kotlin-sample-app#contributions)
+- [License](https://github.com/VMadalin/kotlin-sample-app#license)
 
-- [Use constraintLayout](https://developer.android.com/training/multiscreen/screensizes#ConstraintLayout)
-- [Avoid hard-coded layout sizes](https://developer.android.com/training/multiscreen/screensizes#TaskUseWrapMatchPar)
-- [Create alternative layouts](https://developer.android.com/training/multiscreen/screensizes#alternative-layouts)
-- [Use the smallest width qualifier](https://developer.android.com/training/multiscreen/screensizes#TaskUseSWQuali)
-- [Use the available width qualifier](https://developer.android.com/training/multiscreen/screensizes#available-width)
-- [Add orientation qualifiers](https://developer.android.com/training/multiscreen/screensizes#TaskUseOriQuali)
+## Development
 
-In terms of design has been followed recommendations [android material design](https://developer.android.com/guide/topics/ui/look-and-feel) comprehensive guide for visual, motion, and interaction design across platforms and devices. Granting the project in this way a great user experience (UX) and user interface (UI). For more info about UX best practices visit [link](https://developer.android.com/topic/google-play-instant/best-practices/apps).
-
-Moreover, has been implemented support for [dark theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) with the following benefits:  
-- Can reduce power usage by a significant amount (depending on the device’s screen technology).
-- Improves visibility for users with low vision and those who are sensitive to bright light.
-- Makes it easier for anyone to use a device in a low-light environment.
-
-| Mode  | Characters list                                                          | Characters favorite                                                          | Character detail                                                          |
-|-------|--------------------------------------------------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| Light | <img src="screenshots/phone/light_mode_characters_list.png" width="250"> | <img src="screenshots/phone/light_mode_characters_favorite.png" width="250"> | <img src="screenshots/phone/light_mode_character_detail.png" width="250"> |
-| Dark  | <img src="screenshots/phone/dark_mode_characters_list.png" width="250">  | <img src="screenshots/phone/dark_mode_characters_favorite.png" width="250">  | <img src="screenshots/phone/dark_mode_character_detail.png" width="250">  |
-
-## Development setup
-
-### Environment 
+### Environment setup
 
 First off, you require the latest Android Studio 3.5 (or newer) to be able to build the app.
 
@@ -73,13 +61,14 @@ signing.store.file = <insert>
 signing.store.password = <insert>
 ```
 
-### Code quality 
+### Code style 
 
 To maintain the style and quality of the code, are used the bellow static analysis tools. All of them use properly configuration and you find them in the project root directory `.{toolName}`.
 
 | Tools  | Config file | Check command | Fix command | 
 |--------|------------:|---------------|-------------|
 | [detekt](https://github.com/arturbosch/detekt) | [/.detekt](https://github.com/VMadalin/kotlin-sample-app/tree/master/.detekt) | `./gradlew detekt` | - |
+| [ktlint](https://github.com/pinterest/ktlint) | - | `./gradlew ktlint` | `./gradlew ktlintFormat` |
 | [spotless](https://github.com/diffplug/spotless) | [/.spotless](https://github.com/VMadalin/kotlin-sample-app/tree/master/.spotless) | `./gradlew spotlessCheck` | `./gradlew spotlessApply`
 | [lint](https://developer.android.com/studio/write/lint) | [/.lint](https://github.com/VMadalin/kotlin-sample-app/tree/master/.lint) | `./gradlew lint` | - |
 
@@ -91,7 +80,34 @@ git commit --no-verify
 
 The pre-commit git hooks have exactly the same checks as [CircleCI](https://circleci.com/) and are defined in this [script](https://github.com/VMadalin/kotlin-sample-app/blob/master/scripts/git-hooks/pre-commit.sh). This step ensures that all commits comply with the established rules. However the continuous integration will ultimately be validated that the changes are correct.
 
-## Build variants
+## Design
+
+App [support different screen sizes](https://developer.android.com/training/multiscreen/screensizes) and the content has been adapted to fit for mobile devices and tablets. To do that, it has been created a flexible layout using one or more of the following concepts: 
+
+- [Use constraintLayout](https://developer.android.com/training/multiscreen/screensizes#ConstraintLayout)
+- [Avoid hard-coded layout sizes](https://developer.android.com/training/multiscreen/screensizes#TaskUseWrapMatchPar)
+- [Create alternative layouts](https://developer.android.com/training/multiscreen/screensizes#alternative-layouts)
+- [Use the smallest width qualifier](https://developer.android.com/training/multiscreen/screensizes#TaskUseSWQuali)
+- [Use the available width qualifier](https://developer.android.com/training/multiscreen/screensizes#available-width)
+- [Add orientation qualifiers](https://developer.android.com/training/multiscreen/screensizes#TaskUseOriQuali)
+
+In terms of design has been followed recommendations [android material design](https://developer.android.com/guide/topics/ui/look-and-feel) comprehensive guide for visual, motion, and interaction design across platforms and devices. Granting the project in this way a great user experience (UX) and user interface (UI). For more info about UX best practices visit [link](https://developer.android.com/topic/google-play-instant/best-practices/apps).
+
+Moreover, has been implemented support for [dark theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) with the following benefits:  
+- Can reduce power usage by a significant amount (depending on the device’s screen technology).
+- Improves visibility for users with low vision and those who are sensitive to bright light.
+- Makes it easier for anyone to use a device in a low-light environment.
+
+| Mode  | Characters list                                                          | Characters favorite                                                          | Character detail                                                          |
+|-------|--------------------------------------------------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| Light | <img src="screenshots/phone/light_mode_characters_list.png" width="250"> | <img src="screenshots/phone/light_mode_characters_favorite.png" width="250"> | <img src="screenshots/phone/light_mode_character_detail.png" width="250"> |
+| Dark  | <img src="screenshots/phone/dark_mode_characters_list.png" width="250">  | <img src="screenshots/phone/dark_mode_characters_favorite.png" width="250">  | <img src="screenshots/phone/dark_mode_character_detail.png" width="250">  |
+
+## Architecture
+
+//TODO
+
+### Build variants
 
 The application has different product flavours: `Dev`, `QA`, `Prod`. Each variant has a specific target environment and to make easier to distinguish them the app uses a specific icon colour for `debug` and `release` build variant with descriptive app name. In this case and given that it's a sample, all variants have the same Marvel API endpoint. But the idea is to have different environments target for Development and QA respectively, what doesn't affect the production environment. This is applicable to any tool, platform, service what is being used. For more information about build variant, check this [link](https://developer.android.com/studio/build/build-variants).
 
@@ -100,9 +116,11 @@ The application has different product flavours: `Dev`, `QA`, `Prod`. Each varian
 | Debug | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
 | Release | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
 
-## Architecture
+## Documentation
 
-//TODO
+The documentation is generated following [KDoc](https://kotlinlang.org/docs/reference/kotlin-doc.html) language (the equivalent of Java's [JavaDoc](https://en.wikipedia.org/wiki/Javadoc)) via documentation engine for Kotlin [Dokka](https://github.com/Kotlin/dokka). 
+
+To consult it check this [link](https://vmadalin.github.io/kotlin-sample-app/) or open the project `/docs` directory.
 
 ## Tech-stack
 
@@ -130,13 +148,14 @@ This project takes advantage of many popular libraries, plugins and tools of the
 -   [Stetho](http://facebook.github.io/stetho/) - debug bridge for applications via Chrome Developer Tools.
 -   [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/src/main/kotlin/dependencies/Dependencies.kt)
 
-### Test Dependencies
+### Test dependencies
 
 -   [UIAutomator](https://developer.android.com/training/testing/ui-automator) - a UI testing framework suitable for cross-app functional UI testing across system and installed apps.
 -   [Espresso](https://developer.android.com/training/testing/espresso) - to write concise, beautiful, and reliable Android UI tests
 -   [Robolectric](https://github.com/robolectric/robolectric) - industry-standard unit testing framework for Android.
 -   [JUnit](https://github.com/junit-team/junit4) - a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
 -   [Mockito](https://github.com/nhaarman/mockito-kotlin) - most popular Mocking framework for unit tests written in Java.
+-   [Mockk](https://github.com/mockk/mockk) - provides DSL to mock behavior. Built from zero to fit Kotlin language.
 -   [AndroidX](https://github.com/android/android-test) - the androidx test library provides an extensive framework for testing Android apps.
 -   [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/src/main/kotlin/dependencies/TestDependencies.kt)
 
@@ -190,7 +209,7 @@ The open-source community create and maintains tons of awesome libraries making 
 -   [awesome-android-libraries](https://github.com/KotlinBy/awesome-kotlin#android-libraries) - collection of awesome Kotlin related stuff.
 -   [android-arsenal](https://android-arsenal.com/) - android developer portal with tools, libraries, and apps.
 
-### Best Practices
+### Best practices
 
 Avoid reinventing the wheel by following these guidelines:
 
