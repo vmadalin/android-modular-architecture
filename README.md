@@ -40,7 +40,9 @@ Moreover, has been implemented support for [dark theme](https://developer.androi
 | Light | <img src="screenshots/phone/light_mode_characters_list.png" width="250"> | <img src="screenshots/phone/light_mode_characters_favorite.png" width="250"> | <img src="screenshots/phone/light_mode_character_detail.png" width="250"> |
 | Dark  | <img src="screenshots/phone/dark_mode_characters_list.png" width="250">  | <img src="screenshots/phone/dark_mode_characters_favorite.png" width="250">  | <img src="screenshots/phone/dark_mode_character_detail.png" width="250">  |
 
-## Environment setup
+## Development setup
+
+### Environment 
 
 First off, you require the latest Android Studio 3.5 (or newer) to be able to build the app.
 
@@ -70,6 +72,24 @@ signing.key.password = <insert>
 signing.store.file = <insert>
 signing.store.password = <insert>
 ```
+
+### Code quality 
+
+To maintain the style and quality of the code, are used the bellow static analysis tools. All of them use properly configuration and you find them in the project root directory `.{toolName}`.
+
+| Tools  | Config file | Check command | Fix command | 
+|--------|------------:|---------------|-------------|
+| [detekt](https://github.com/arturbosch/detekt) | [/.detekt](https://github.com/VMadalin/kotlin-sample-app/tree/master/.detekt) | `./gradlew detekt` | - |
+| [spotless](https://github.com/diffplug/spotless) | [/.spotless](https://github.com/VMadalin/kotlin-sample-app/tree/master/.spotless) | `./gradlew spotlessCheck` | `./gradlew spotlessApply`
+| [lint](https://developer.android.com/studio/write/lint) | [/.lint](https://github.com/VMadalin/kotlin-sample-app/tree/master/.lint) | `./gradlew lint` | - |
+
+All these tools are integrated in [pre-commit git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), in order
+ensure that all static analysis and tests passes before you can commit your changes. To skip them for specific commit add this option at your git command:
+```
+git commit --no-verify
+```
+
+The pre-commit git hooks have exactly the same checks as [CircleCI](https://circleci.com/) and are defined in this [script](https://github.com/VMadalin/kotlin-sample-app/blob/master/scripts/git-hooks/pre-commit.sh). This step ensures that all commits comply with the established rules. However the continuous integration will ultimately be validated that the changes are correct.
 
 ## Build variants
 
