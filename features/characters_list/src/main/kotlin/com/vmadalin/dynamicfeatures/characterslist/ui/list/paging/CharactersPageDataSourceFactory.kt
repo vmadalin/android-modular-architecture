@@ -37,7 +37,7 @@ class CharactersPageDataSourceFactory
     val scope: CoroutineScope
 ) : DataSource.Factory<Int, CharacterItem>() {
 
-    val sourceLiveData = MutableLiveData<CharactersPageDataSource>()
+    var sourceLiveData = MutableLiveData<CharactersPageDataSource>()
 
     override fun create(): DataSource<Int, CharacterItem> {
         val dataSource = CharactersPageDataSource(repository, scope)

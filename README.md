@@ -61,11 +61,11 @@ signing.store.file = <insert>
 signing.store.password = <insert>
 ```
 
-### Code style 
+### Code style
 
 To maintain the style and quality of the code, are used the bellow static analysis tools. All of them use properly configuration and you find them in the project root directory `.{toolName}`.
 
-| Tools  | Config file | Check command | Fix command | 
+| Tools  | Config file | Check command | Fix command |
 |--------|------------:|---------------|-------------|
 | [detekt](https://github.com/arturbosch/detekt) | [/.detekt](https://github.com/VMadalin/kotlin-sample-app/tree/master/.detekt) | `./gradlew detekt` | - |
 | [ktlint](https://github.com/pinterest/ktlint) | - | `./gradlew ktlint` | `./gradlew ktlintFormat` |
@@ -82,7 +82,7 @@ The pre-commit git hooks have exactly the same checks as [CircleCI](https://circ
 
 ## Design
 
-App [support different screen sizes](https://developer.android.com/training/multiscreen/screensizes) and the content has been adapted to fit for mobile devices and tablets. To do that, it has been created a flexible layout using one or more of the following concepts: 
+App [support different screen sizes](https://developer.android.com/training/multiscreen/screensizes) and the content has been adapted to fit for mobile devices and tablets. To do that, it has been created a flexible layout using one or more of the following concepts:
 
 - [Use constraintLayout](https://developer.android.com/training/multiscreen/screensizes#ConstraintLayout)
 - [Avoid hard-coded layout sizes](https://developer.android.com/training/multiscreen/screensizes#TaskUseWrapMatchPar)
@@ -93,7 +93,7 @@ App [support different screen sizes](https://developer.android.com/training/mult
 
 In terms of design has been followed recommendations [android material design](https://developer.android.com/guide/topics/ui/look-and-feel) comprehensive guide for visual, motion, and interaction design across platforms and devices. Granting the project in this way a great user experience (UX) and user interface (UI). For more info about UX best practices visit [link](https://developer.android.com/topic/google-play-instant/best-practices/apps).
 
-Moreover, has been implemented support for [dark theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) with the following benefits:  
+Moreover, has been implemented support for [dark theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) with the following benefits:
 - Can reduce power usage by a significant amount (depending on the device’s screen technology).
 - Improves visibility for users with low vision and those who are sensitive to bright light.
 - Makes it easier for anyone to use a device in a low-light environment.
@@ -118,7 +118,7 @@ The application has different product flavours: `Dev`, `QA`, `Prod`. Each varian
 
 ## Documentation
 
-The documentation is generated following [KDoc](https://kotlinlang.org/docs/reference/kotlin-doc.html) language (the equivalent of Java's [JavaDoc](https://en.wikipedia.org/wiki/Javadoc)) via documentation engine for Kotlin [Dokka](https://github.com/Kotlin/dokka). 
+The documentation is generated following [KDoc](https://kotlinlang.org/docs/reference/kotlin-doc.html) language (the equivalent of Java's [JavaDoc](https://en.wikipedia.org/wiki/Javadoc)) via documentation engine for Kotlin [Dokka](https://github.com/Kotlin/dokka).
 
 To consult it check this [link](https://vmadalin.github.io/kotlin-sample-app/) or open the project `/docs` directory.
 

@@ -33,7 +33,8 @@ class CharactersListViewModel
     val dataSourceFactory: CharactersPageDataSourceFactory
 ) : ViewModel() {
 
-    private val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
+    @VisibleForTesting(otherwise = PRIVATE)
+    val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
         it.networkState
     }
 

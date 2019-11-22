@@ -16,6 +16,8 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.vmadalin.core.network.NetworkState
@@ -32,8 +34,10 @@ const val PAGE_INIT_ELEMENTS = 0
 const val PAGE_MAX_ELEMENTS = 50
 
 class CharactersPageDataSource @Inject constructor(
-    private val repository: MarvelRepository,
-    private val scope: CoroutineScope
+    @VisibleForTesting(otherwise = PRIVATE)
+    val repository: MarvelRepository,
+    @VisibleForTesting(otherwise = PRIVATE)
+    val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, CharacterItem>() {
 
     val networkState = MutableLiveData<NetworkState>()
