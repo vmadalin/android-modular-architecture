@@ -31,7 +31,7 @@ private const val FABRIC_API_SECRET_PROPERTY_NAME = "fabric.secret"
  * @param project the project reference
  */
 fun createFabricProperties(project: Project) {
-    val fabricPropertiesFile = File(FABRIC_PROPERTIES_FILE_NAME)
+    val fabricPropertiesFile = project.rootProject.file(FABRIC_PROPERTIES_FILE_NAME)
     try {
         val fabricApiKey = getLocalProperty(FABRIC_API_KEY_PROPERTY_NAME, project)
         val fabricApiSecret = getLocalProperty(FABRIC_API_SECRET_PROPERTY_NAME, project)
