@@ -26,8 +26,8 @@ class CharacterFavoriteViewHolder(
 ) : BaseViewHolder<ListItemCharactersFavoriteBinding>(
     binding = ListItemCharactersFavoriteBinding.inflate(inflater)
 ) {
-    fun bind(item: CharacterFavorite) {
-        binding.character = item
+    fun bind(characterFavorite: CharacterFavorite) {
+        binding.character = characterFavorite
         binding.executePendingBindings()
     }
 }

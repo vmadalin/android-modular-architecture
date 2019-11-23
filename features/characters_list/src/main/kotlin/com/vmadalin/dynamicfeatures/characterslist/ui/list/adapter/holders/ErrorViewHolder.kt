@@ -26,7 +26,7 @@ class ErrorViewHolder(
 ) : BaseViewHolder<ListItemErrorBinding>(
     binding = ListItemErrorBinding.inflate(inflater)
 ) {
-    fun bind(viewModel: CharactersListViewModel?) {
+    fun bind(viewModel: CharactersListViewModel) {
         binding.viewModel = viewModel
         binding.executePendingBindings()
     }

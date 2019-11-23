@@ -27,7 +27,7 @@ class CharacterViewHolder(
 ) : BaseViewHolder<ListItemCharacterBinding>(
     binding = ListItemCharacterBinding.inflate(inflater)
 ) {
-    fun bind(viewModel: CharactersListViewModel?, item: CharacterItem) {
+    fun bind(viewModel: CharactersListViewModel, item: CharacterItem) {
         binding.viewModel = viewModel
         binding.character = item
         binding.executePendingBindings()
