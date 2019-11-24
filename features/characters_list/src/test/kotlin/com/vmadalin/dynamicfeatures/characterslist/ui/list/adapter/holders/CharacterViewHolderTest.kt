@@ -14,33 +14,34 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
+package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders
 
 // import android.view.LayoutInflater
 // import android.view.View
 // import androidx.databinding.ViewDataBinding
-// import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemErrorBinding
+// import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemCharacterBinding
 // import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
-// import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.ErrorViewHolder
+// import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.CharacterViewHolder
+// import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 // import io.mockk.MockKAnnotations
 // import io.mockk.every
 // import io.mockk.impl.annotations.MockK
 // import io.mockk.mockk
 // import io.mockk.mockkStatic
 // import io.mockk.verify
-// import org.junit.Assert.assertEquals
+// import org.junit.Assert
 // import org.junit.Before
 // import org.junit.Test
 //
-// class ErrorViewHolderTest {
+// class CharacterViewHolderTest {
 //
 //    @MockK
 //    lateinit var view: View
 //    @MockK
 //    lateinit var layoutInflater: LayoutInflater
 //    @MockK(relaxed = true)
-//    lateinit var binding: ListItemErrorBinding
-//    lateinit var viewHolder: ErrorViewHolder
+//    lateinit var binding: ListItemCharacterBinding
+//    lateinit var viewHolder: CharacterViewHolder
 //
 //    @Before
 //    fun setUp() {
@@ -49,26 +50,28 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
 //
 //    @Test
 //    fun createViewHolder_ShouldInitializeCorrectly() {
-//        mockkStatic(ListItemErrorBinding::class)
+//        mockkStatic(ListItemCharacterBinding::class)
 //        every { (binding as ViewDataBinding).root } returns view
-//        every { ListItemErrorBinding.inflate(layoutInflater) } returns binding
+//        every { ListItemCharacterBinding.inflate(layoutInflater) } returns binding
 //
-//        viewHolder = ErrorViewHolder(layoutInflater)
+//        viewHolder = CharacterViewHolder(layoutInflater)
 //
-//        assertEquals(binding, viewHolder.binding)
+//        Assert.assertEquals(binding, viewHolder.binding)
 //    }
 //
 //    @Test
 //    fun bindViewHolder_ShouldBindingDataVariable() {
-//        mockkStatic(ListItemErrorBinding::class)
+//        mockkStatic(ListItemCharacterBinding::class)
 //        every { (binding as ViewDataBinding).root } returns view
-//        every { ListItemErrorBinding.inflate(layoutInflater) } returns binding
+//        every { ListItemCharacterBinding.inflate(layoutInflater) } returns binding
 //
 //        val viewModel = mockk<CharactersListViewModel>()
-//        viewHolder = ErrorViewHolder(layoutInflater)
-//        viewHolder.bind(viewModel)
+//        val characterItem = mockk<CharacterItem>()
+//        viewHolder = CharacterViewHolder(layoutInflater)
+//        viewHolder.bind(viewModel, characterItem)
 //
 //        verify { binding.viewModel = viewModel }
+//        verify { binding.character = characterItem }
 //        verify { binding.executePendingBindings() }
 //    }
 // }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter
+package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders
 
 // import android.view.LayoutInflater
 // import android.view.View

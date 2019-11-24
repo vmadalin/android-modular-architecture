@@ -33,7 +33,7 @@ import kotlinx.coroutines.launch
 const val PAGE_INIT_ELEMENTS = 0
 const val PAGE_MAX_ELEMENTS = 50
 
-class CharactersPageDataSource @Inject constructor(
+open class CharactersPageDataSource @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val repository: MarvelRepository,
     @VisibleForTesting(otherwise = PRIVATE)
