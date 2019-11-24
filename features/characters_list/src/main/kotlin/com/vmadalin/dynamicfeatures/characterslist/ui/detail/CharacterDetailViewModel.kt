@@ -21,14 +21,12 @@ import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.network.repositiories.MarvelRepository
-import com.vmadalin.core.network.responses.BaseResponse
-import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetail
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers.CharacterDetailMapper
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class CharacterDetailViewModel @Inject constructor(
@@ -37,7 +35,7 @@ class CharacterDetailViewModel @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val characterFavoriteRepository: CharacterFavoriteRepository,
     @VisibleForTesting(otherwise = PRIVATE)
-    val coroutineScope: CoroutineScope
+    val characterDetailMapper: CharacterDetailMapper
 ) : ViewModel() {
 
     private val _data = MutableLiveData<CharacterDetail>()
@@ -48,17 +46,12 @@ class CharacterDetailViewModel @Inject constructor(
     val state: LiveData<CharacterDetailViewState>
         get() = _state
 
-    override fun onCleared() {
-        super.onCleared()
-        coroutineScope.cancel()
-    }
-
     fun loadCharacterDetail(characterId: Long) {
         _state.postValue(CharacterDetailViewState.Loading)
-        coroutineScope.launch {
+        viewModelScope.launch {
             try {
                 val result = marvelRepository.getCharacter(characterId)
-                _data.postValue(transform(result))
+                _data.postValue(characterDetailMapper.map(result))
 
                 characterFavoriteRepository.getCharacterFavorite(characterId)?.let {
                     _state.postValue(CharacterDetailViewState.AlreadyAddedToFavorite)
@@ -73,7 +66,7 @@ class CharacterDetailViewModel @Inject constructor(
 
     fun addCharacterToFavorite() {
         _data.value?.let {
-            coroutineScope.launch {
+            viewModelScope.launch {
                 characterFavoriteRepository.insertCharacterFavorite(
                     id = it.id,
                     name = it.name,
@@ -86,19 +79,5 @@ class CharacterDetailViewModel @Inject constructor(
 
     fun dismissCharacterDetail() {
         _state.postValue(CharacterDetailViewState.Dismiss)
-    }
-
-    private fun transform(response: BaseResponse<CharacterResponse>): CharacterDetail {
-        val characterResponse = response.data.results.first()
-        return CharacterDetail(
-            id = characterResponse.id,
-            name = characterResponse.name,
-            description = characterResponse.description,
-            imageUrl = (characterResponse.thumbnail.path +
-                "." + characterResponse.thumbnail.extension).replace(
-                "http",
-                "https"
-            )
-        )
     }
 }

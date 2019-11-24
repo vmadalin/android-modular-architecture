@@ -25,10 +25,9 @@ import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.ui.customviews.ProgressBarDialog
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers.CharacterDetailMapper
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 @Module
 class CharacterDetailModule(
@@ -40,14 +39,19 @@ class CharacterDetailModule(
     @Provides
     fun providesCharacterDetailViewModel(
         marvelRepository: MarvelRepository,
-        characterFavoriteRepository: CharacterFavoriteRepository
+        characterFavoriteRepository: CharacterFavoriteRepository,
+        characterDetailMapper: CharacterDetailMapper
     ) = fragment.viewModel {
         CharacterDetailViewModel(
             marvelRepository = marvelRepository,
             characterFavoriteRepository = characterFavoriteRepository,
-            coroutineScope = CoroutineScope(Dispatchers.IO)
+            characterDetailMapper = characterDetailMapper
         )
     }
+
+    @FeatureScope
+    @Provides
+    fun providesCharacterDetailMapper() = CharacterDetailMapper()
 
     @FeatureScope
     @Provides

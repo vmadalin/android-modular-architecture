@@ -24,7 +24,6 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPage
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import com.vmadalin.libraries.testutils.rules.CoroutineRule
 import io.mockk.MockKAnnotations
-import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
@@ -73,9 +72,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.Empty
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -95,9 +92,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.NoMoreElements
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -116,9 +111,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.Loaded
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -135,9 +128,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.Loaded
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -154,9 +145,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.Loading
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -175,9 +164,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.AddLoading
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -196,9 +183,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.Error
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -218,9 +203,7 @@ class CharactersListViewModelTest {
 
         val expectedState = CharactersListViewState.AddError
         assertEquals(expectedState, viewModel.state.value)
-        coVerify {
-            stateObserver.onChanged(expectedState)
-        }
+        verify { stateObserver.onChanged(expectedState) }
     }
 
     @Test
@@ -251,9 +234,7 @@ class CharactersListViewModelTest {
 
         val expectedEvent = CharactersListViewEvent.OpenCharacterDetail(characterId)
         assertEquals(expectedEvent, viewModel.event.value)
-        coVerify {
-            eventObserver.onChanged(expectedEvent)
-        }
+        verify { eventObserver.onChanged(expectedEvent) }
     }
 
     inner class FakeCharactersPageDataSource(

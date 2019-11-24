@@ -22,6 +22,7 @@ import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers.CharacterDetailMapper
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -62,10 +63,12 @@ class CharacterDetailModuleTest {
         val factoryCaptor = slot<() -> CharacterDetailViewModel>()
         val marvelRepository = mockk<MarvelRepository>(relaxed = true)
         val favoriteRepository = mockk<CharacterFavoriteRepository>(relaxed = true)
+        val mapper = mockk<CharacterDetailMapper>(relaxed = true)
         module = CharacterDetailModule(fragment)
         module.providesCharacterDetailViewModel(
             marvelRepository = marvelRepository,
-            characterFavoriteRepository = favoriteRepository
+            characterFavoriteRepository = favoriteRepository,
+            characterDetailMapper = mapper
         )
 
         verify {
@@ -75,6 +78,7 @@ class CharacterDetailModuleTest {
         factoryCaptor.captured().run {
             assertEquals(marvelRepository, this.marvelRepository)
             assertEquals(favoriteRepository, this.characterFavoriteRepository)
+            assertEquals(mapper, this.characterDetailMapper)
         }
     }
 }
