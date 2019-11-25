@@ -241,7 +241,8 @@ class CharactersListViewModelTest {
         forceNetworkState: NetworkState
     ) : CharactersPageDataSource(
         repository = mockk(),
-        scope = mockk()
+        scope = mockk(),
+        mapper = mockk()
     ) {
         init {
             networkState.postValue(forceNetworkState)

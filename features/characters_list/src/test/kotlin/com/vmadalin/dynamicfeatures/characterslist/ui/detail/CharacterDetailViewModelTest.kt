@@ -23,7 +23,7 @@ import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetail
-import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers.CharacterDetailMapper
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper
 import com.vmadalin.libraries.testutils.rules.CoroutineRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery

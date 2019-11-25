@@ -25,7 +25,7 @@ import androidx.lifecycle.viewModelScope
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetail
-import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers.CharacterDetailMapper
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 

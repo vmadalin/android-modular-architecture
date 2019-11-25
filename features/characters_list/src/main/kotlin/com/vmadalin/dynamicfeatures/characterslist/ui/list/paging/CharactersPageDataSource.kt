@@ -22,9 +22,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.vmadalin.core.network.NetworkState
 import com.vmadalin.core.network.repositiories.MarvelRepository
-import com.vmadalin.core.network.responses.BaseResponse
-import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -37,7 +36,9 @@ open class CharactersPageDataSource @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val repository: MarvelRepository,
     @VisibleForTesting(otherwise = PRIVATE)
-    val scope: CoroutineScope
+    val scope: CoroutineScope,
+    @VisibleForTesting(otherwise = PRIVATE)
+    val mapper: CharacterItemMapper
 ) : PageKeyedDataSource<Int, CharacterItem>() {
 
     val networkState = MutableLiveData<NetworkState>()
@@ -58,8 +59,8 @@ open class CharactersPageDataSource @Inject constructor(
                 offset = PAGE_INIT_ELEMENTS,
                 limit = PAGE_MAX_ELEMENTS
             )
-            val data = getCharacterItems(response)
-            callback.onResult(data, null, PAGE_MAX_ELEMENTS)
+            val data = mapper.map(response)
+            callback.onResult(mapper.map(response), null, PAGE_MAX_ELEMENTS)
             networkState.postValue(NetworkState.Success(isEmptyResponse = data.isEmpty()))
         }
     }
@@ -79,7 +80,7 @@ open class CharactersPageDataSource @Inject constructor(
                 offset = params.key,
                 limit = PAGE_MAX_ELEMENTS
             )
-            val data = getCharacterItems(response)
+            val data = mapper.map(response)
             callback.onResult(data, params.key + PAGE_MAX_ELEMENTS)
             networkState.postValue(NetworkState.Success(true, data.isEmpty()))
         }
@@ -95,17 +96,4 @@ open class CharactersPageDataSource @Inject constructor(
     fun retry() {
         retry?.invoke()
     }
-
-    private fun getCharacterItems(response: BaseResponse<CharacterResponse>) =
-        response.data.results.map {
-            CharacterItem(
-                id = it.id,
-                name = it.name,
-                description = it.description,
-                imageUrl = (it.thumbnail.path + "." + it.thumbnail.extension).replace(
-                    "http",
-                    "https"
-                )
-            )
-        }
 }

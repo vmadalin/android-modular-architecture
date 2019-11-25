@@ -21,6 +21,7 @@ import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -73,10 +74,16 @@ class CharactersListModuleTest {
 
     @Test
     fun verifyProvidedCharactersPageDataSourceFactory() {
+        val viewModel = mockk<CharactersListViewModel>(relaxed = true)
         val repository = mockk<MarvelRepository>(relaxed = true)
+        val mapper = mockk<CharacterItemMapper>(relaxed = true)
         module = CharactersListModule(fragment)
 
-        module.providesCharactersPageDataSourceFactory(repository).run {
+        module.providesCharactersPageDataSource(
+            viewModel = viewModel,
+            repository = repository,
+            mapper = mapper
+        ).run {
             assertEquals(repository, this.repository)
         }
     }

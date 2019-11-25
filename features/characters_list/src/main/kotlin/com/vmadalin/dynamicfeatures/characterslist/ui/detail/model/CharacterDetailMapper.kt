@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers
+package com.vmadalin.dynamicfeatures.characterslist.ui.detail.model
 
 import com.vmadalin.core.mapper.Mapper
 import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
-import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetail
 
 private const val IMAGE_URL_FORMAT = "%s.%s"
 
@@ -28,13 +27,12 @@ class CharacterDetailMapper : Mapper<BaseResponse<CharacterResponse>, CharacterD
     @Throws(NoSuchElementException::class)
     override fun map(from: BaseResponse<CharacterResponse>): CharacterDetail {
         val characterResponse = from.data.results.first()
-        val characterThumbnailPathHttps = characterResponse.thumbnail.path.replace("http", "https")
         return CharacterDetail(
             id = characterResponse.id,
             name = characterResponse.name,
             description = characterResponse.description,
             imageUrl = IMAGE_URL_FORMAT.format(
-                characterThumbnailPathHttps,
+                characterResponse.thumbnail.path.replace("http", "https"),
                 characterResponse.thumbnail.extension
             )
         )

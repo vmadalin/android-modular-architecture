@@ -20,10 +20,9 @@ import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineScope
+import javax.inject.Provider
 
 /**
  * Data source factory which also provides a way to observe the last created data source.
@@ -32,15 +31,13 @@ import kotlinx.coroutines.CoroutineScope
 class CharactersPageDataSourceFactory
 @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
-    val repository: MarvelRepository,
-    @VisibleForTesting(otherwise = PRIVATE)
-    val scope: CoroutineScope
+    val providerDataSource: Provider<CharactersPageDataSource>
 ) : DataSource.Factory<Int, CharacterItem>() {
 
     var sourceLiveData = MutableLiveData<CharactersPageDataSource>()
 
     override fun create(): DataSource<Int, CharacterItem> {
-        val dataSource = CharactersPageDataSource(repository, scope)
+        val dataSource = providerDataSource.get()
         sourceLiveData.postValue(dataSource)
         return dataSource
     }

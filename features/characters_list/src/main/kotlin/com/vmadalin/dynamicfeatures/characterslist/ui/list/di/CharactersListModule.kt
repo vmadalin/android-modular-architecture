@@ -18,17 +18,18 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
+import androidx.lifecycle.viewModelScope
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper
+import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 @Module
 class CharactersListModule(
@@ -44,14 +45,20 @@ class CharactersListModule(
         CharactersListViewModel(dataFactory)
     }
 
+    @Provides
+    fun providesCharactersPageDataSource(
+        viewModel: CharactersListViewModel,
+        repository: MarvelRepository,
+        mapper: CharacterItemMapper
+    ) = CharactersPageDataSource(
+            repository = repository,
+            scope = viewModel.viewModelScope,
+            mapper = mapper
+        )
+
     @FeatureScope
     @Provides
-    fun providesCharactersPageDataSourceFactory(
-        repository: MarvelRepository
-    ) = CharactersPageDataSourceFactory(
-        repository = repository,
-        scope = CoroutineScope(Dispatchers.IO)
-    )
+    fun providesCharacterItemMapper() = CharacterItemMapper()
 
     @FeatureScope
     @Provides

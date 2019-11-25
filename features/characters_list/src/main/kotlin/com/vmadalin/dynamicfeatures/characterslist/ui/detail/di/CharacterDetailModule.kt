@@ -25,7 +25,7 @@ import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.ui.customviews.ProgressBarDialog
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
-import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.mappers.CharacterDetailMapper
+import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper
 import dagger.Module
 import dagger.Provides
 
