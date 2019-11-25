@@ -17,6 +17,7 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
@@ -30,6 +31,7 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.verify
+import kotlinx.coroutines.CoroutineScope
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -73,18 +75,23 @@ class CharactersListModuleTest {
     }
 
     @Test
-    fun verifyProvidedCharactersPageDataSourceFactory() {
-        val viewModel = mockk<CharactersListViewModel>(relaxed = true)
+    fun verifyProvidedCharactersPageDataSource() {
         val repository = mockk<MarvelRepository>(relaxed = true)
         val mapper = mockk<CharacterItemMapper>(relaxed = true)
-        module = CharactersListModule(fragment)
+        val viewModel = mockk<CharactersListViewModel>(relaxed = true)
+        val scope = mockk<CoroutineScope>()
+        every { viewModel.viewModelScope } returns scope
 
-        module.providesCharactersPageDataSource(
+        module = CharactersListModule(fragment)
+        val dataSource = module.providesCharactersPageDataSource(
             viewModel = viewModel,
             repository = repository,
             mapper = mapper
-        ).run {
-            assertEquals(repository, this.repository)
-        }
+        )
+
+        assertEquals(repository, dataSource.repository)
+        assertEquals(mapper, dataSource.mapper)
+        assertEquals(scope, dataSource.scope)
+
     }
 }

@@ -24,18 +24,16 @@ import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.same
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.vmadalin.core.network.repositiories.MarvelRepository
-import kotlinx.coroutines.CoroutineScope
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
-import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
+import javax.inject.Provider
 
 @RunWith(MockitoJUnitRunner::class)
 class CharactersPageDataSourceFactoryTest {
@@ -43,10 +41,8 @@ class CharactersPageDataSourceFactoryTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Mock
-    lateinit var repository: MarvelRepository
-    @Mock
-    lateinit var scope: CoroutineScope
+    @Spy
+    lateinit var providerDataSource: Provider<CharactersPageDataSource>
     @Spy
     lateinit var sourceLiveData: MutableLiveData<CharactersPageDataSource>
     @InjectMocks
@@ -65,6 +61,8 @@ class CharactersPageDataSourceFactoryTest {
 
     @Test
     fun initializeFactory_WithCreate_ShouldHaveDataSource() {
+        doReturn(CharactersPageDataSource(mock(), mock(), mock())).whenever(providerDataSource).get()
+
         val dataSource = dataSourceFactory.create() as CharactersPageDataSource
 
         verify(dataSourceFactory.sourceLiveData).postValue(same(dataSource))
