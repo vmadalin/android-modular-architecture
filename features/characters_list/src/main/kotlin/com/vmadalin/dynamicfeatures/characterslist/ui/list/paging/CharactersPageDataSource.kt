@@ -42,18 +42,19 @@ open class CharactersPageDataSource @Inject constructor(
 ) : PageKeyedDataSource<Int, CharacterItem>() {
 
     val networkState = MutableLiveData<NetworkState>()
-    private var retry: (() -> Unit)? = null
+    @VisibleForTesting(otherwise = PRIVATE)
+    var retry: (() -> Unit)? = null
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, CharacterItem>
     ) {
         networkState.postValue(NetworkState.Loading())
-        scope.launch(CoroutineExceptionHandler { _, throwable ->
+        scope.launch(CoroutineExceptionHandler { _, _ ->
             retry = {
                 loadInitial(params, callback)
             }
-            networkState.postValue(NetworkState.Error(throwable))
+            networkState.postValue(NetworkState.Error())
         }) {
             val response = repository.getCharacters(
                 offset = PAGE_INIT_ELEMENTS,
@@ -70,11 +71,11 @@ open class CharactersPageDataSource @Inject constructor(
         callback: LoadCallback<Int, CharacterItem>
     ) {
         networkState.postValue(NetworkState.Loading(true))
-        scope.launch(CoroutineExceptionHandler { _, throwable ->
+        scope.launch(CoroutineExceptionHandler { _, _ ->
             retry = {
                 loadAfter(params, callback)
             }
-            networkState.postValue(NetworkState.Error(throwable, true))
+            networkState.postValue(NetworkState.Error(true))
         }) {
             val response = repository.getCharacters(
                 offset = params.key,

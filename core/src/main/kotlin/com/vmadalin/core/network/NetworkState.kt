@@ -28,7 +28,6 @@ sealed class NetworkState {
     ) : NetworkState()
 
     data class Error(
-        val throwable: Throwable,
         val isAdditional: Boolean = false
     ) : NetworkState()
 

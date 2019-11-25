@@ -64,25 +64,18 @@ class NetworkStateTest {
 
     @Test
     fun defaultInitializeErrorState_ShouldHaveDefaultValues() {
-        val throwable = IllegalThreadStateException()
-        val networkState = NetworkState.Error(throwable)
+        val networkState = NetworkState.Error()
 
         assertTrue(networkState.isError())
-        assertEquals(throwable, networkState.throwable)
         assertEquals(false, networkState.isAdditional)
     }
 
     @Test
     fun initializeErrorState_ShouldHaveDefaultValues() {
         val isAdditional = true
-        val throwable = IllegalThreadStateException()
-        val networkState = NetworkState.Error(
-            throwable = throwable,
-            isAdditional = isAdditional
-        )
+        val networkState = NetworkState.Error(isAdditional)
 
         assertTrue(networkState.isError())
-        assertEquals(throwable, networkState.throwable)
         assertEquals(isAdditional, networkState.isAdditional)
     }
 }

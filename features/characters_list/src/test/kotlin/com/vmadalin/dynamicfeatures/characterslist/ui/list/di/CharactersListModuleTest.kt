@@ -92,6 +92,5 @@ class CharactersListModuleTest {
         assertEquals(repository, dataSource.repository)
         assertEquals(mapper, dataSource.mapper)
         assertEquals(scope, dataSource.scope)
-
     }
 }

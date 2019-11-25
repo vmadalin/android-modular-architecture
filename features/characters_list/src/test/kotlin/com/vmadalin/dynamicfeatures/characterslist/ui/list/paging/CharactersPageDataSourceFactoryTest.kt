@@ -24,6 +24,7 @@ import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.same
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
+import javax.inject.Provider
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Rule
@@ -33,7 +34,6 @@ import org.mockito.InjectMocks
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
-import javax.inject.Provider
 
 @RunWith(MockitoJUnitRunner::class)
 class CharactersPageDataSourceFactoryTest {
@@ -61,7 +61,9 @@ class CharactersPageDataSourceFactoryTest {
 
     @Test
     fun initializeFactory_WithCreate_ShouldHaveDataSource() {
-        doReturn(CharactersPageDataSource(mock(), mock(), mock())).whenever(providerDataSource).get()
+        doReturn(
+            CharactersPageDataSource(mock(), mock(), mock())
+        ).whenever(providerDataSource).get()
 
         val dataSource = dataSourceFactory.create() as CharactersPageDataSource
 

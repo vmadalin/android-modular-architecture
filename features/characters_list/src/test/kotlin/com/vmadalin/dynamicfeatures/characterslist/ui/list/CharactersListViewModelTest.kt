@@ -169,9 +169,7 @@ class CharactersListViewModelTest {
 
     @Test
     fun networkErrorCharacters_ShouldBeErrorState() {
-        val networkState = NetworkState.Error(
-            throwable = Exception("fake error")
-        )
+        val networkState = NetworkState.Error()
         val fakePageDataSource = FakeCharactersPageDataSource(networkState)
         val fakeSourceLiveData = MutableLiveData<CharactersPageDataSource>(fakePageDataSource)
         every {
@@ -188,10 +186,7 @@ class CharactersListViewModelTest {
 
     @Test
     fun networkAdditionalErrorCharacters_ShouldBeAddErrorState() {
-        val networkState = NetworkState.Error(
-            throwable = Exception("fake error"),
-            isAdditional = true
-        )
+        val networkState = NetworkState.Error(true)
         val fakePageDataSource = FakeCharactersPageDataSource(networkState)
         val fakeSourceLiveData = MutableLiveData<CharactersPageDataSource>(fakePageDataSource)
         every {
