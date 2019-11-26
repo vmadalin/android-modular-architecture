@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_toggle_theme"
         android:title="@string/home_toolbar_theme"
         app:showAsAction="always"
         app:actionViewClass="com.vmadalin.dynamicfeatures.home.ui.menu.ToggleThemeCheckBox" />

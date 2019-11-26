@@ -25,14 +25,22 @@ import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.vmadalin.android.SampleApp
 import com.vmadalin.core.extensions.setupWithNavController
 import com.vmadalin.core.ui.base.BaseFragment
+import com.vmadalin.core.utils.ThemeUtils
 import com.vmadalin.dynamicfeatures.home.R
 import com.vmadalin.dynamicfeatures.home.databinding.FragmentHomeBinding
 import com.vmadalin.dynamicfeatures.home.ui.di.DaggerHomeComponent
 import com.vmadalin.dynamicfeatures.home.ui.di.HomeModule
+import com.vmadalin.dynamicfeatures.home.ui.menu.ToggleThemeCheckBox
+import javax.inject.Inject
+
+private const val DELAY_TO_APPLY_THEME = 1000L
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     layoutId = R.layout.fragment_home
 ) {
+
+    @Inject
+    lateinit var themeUtils: ThemeUtils
 
     private val navGraphIds = listOf(
         R.navigation.navigation_characters_list_graph,
@@ -55,6 +63,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.toolbar_menu, menu)
+
+        menu.findItem(R.id.menu_toggle_theme).apply {
+            val actionView = this.actionView
+            if (actionView is ToggleThemeCheckBox) {
+                actionView.isChecked = themeUtils.isDarkTheme(requireContext())
+                actionView.setOnCheckedChangeListener { _, isChecked ->
+                    themeUtils.setNightMode(isChecked, DELAY_TO_APPLY_THEME)
+                }
+            }
+        }
     }
 
     override fun onInitDependencyInjection() {

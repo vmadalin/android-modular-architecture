@@ -16,24 +16,28 @@
 
 package com.vmadalin.android
 
-import android.app.Application
 import android.content.Context
-import androidx.appcompat.app.AppCompatDelegate
 import com.crashlytics.android.Crashlytics
-import com.google.android.play.core.splitcompat.SplitCompat
+import com.google.android.play.core.splitcompat.SplitCompatApplication
+import com.vmadalin.android.di.DaggerAppComponent
 import com.vmadalin.core.di.CoreComponent
 import com.vmadalin.core.di.DaggerCoreComponent
 import com.vmadalin.core.di.modules.ContextModule
+import com.vmadalin.core.utils.ThemeUtils
 import io.fabric.sdk.android.Fabric
+import javax.inject.Inject
 import kotlin.random.Random
 import timber.log.Timber
 
 /**
  * Base class for maintaining global application state.
  */
-class SampleApp : Application() {
+class SampleApp : SplitCompatApplication() {
 
     lateinit var coreComponent: CoreComponent
+
+    @Inject
+    lateinit var themeUtils: ThemeUtils
 
     companion object {
 
@@ -54,18 +58,9 @@ class SampleApp : Application() {
         super.onCreate()
         initTimber()
         initFabric()
+        initCoreDependencyInjection()
+        initAppDependencyInjection()
         initRandomNightMode()
-        initDependencyInjection()
-    }
-
-    /**
-     * Override application attachBaseContext
-     *
-     * @param context application context
-     */
-    override fun attachBaseContext(context: Context) {
-        super.attachBaseContext(context)
-        SplitCompat.install(this)
     }
 
     // ============================================================================================
@@ -73,9 +68,20 @@ class SampleApp : Application() {
     // ============================================================================================
 
     /**
-     * Initialize dependency injection component
+     * Initialize app dependency injection component
      */
-    private fun initDependencyInjection() {
+    private fun initAppDependencyInjection() {
+        DaggerAppComponent
+            .builder()
+            .coreComponent(coreComponent)
+            .build()
+            .inject(this)
+    }
+
+    /**
+     * Initialize core dependency injection component
+     */
+    private fun initCoreDependencyInjection() {
         coreComponent = DaggerCoreComponent
             .builder()
             .contextModule(ContextModule(this))
@@ -105,11 +111,7 @@ class SampleApp : Application() {
      */
     private fun initRandomNightMode() {
         if (BuildConfig.DEBUG) {
-            val nightMode = when (Random.nextBoolean()) {
-                true -> AppCompatDelegate.MODE_NIGHT_YES
-                false -> AppCompatDelegate.MODE_NIGHT_NO
-            }
-            AppCompatDelegate.setDefaultNightMode(nightMode)
+            themeUtils.setNightMode(Random.nextBoolean())
         }
     }
 }

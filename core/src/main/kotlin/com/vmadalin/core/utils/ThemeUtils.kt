@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.vmadalin.core.ui.utils
+package com.vmadalin.core.utils
 
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 
-object ThemeUtils {
+class ThemeUtils {
 
     /**
      * Whether the current configuration is a dark theme i.e. in Night configuration.

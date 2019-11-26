@@ -17,11 +17,13 @@
 import utils.createFabricProperties
 import dependencies.Dependencies
 import dependencies.DebugDependencies
+import dependencies.AnnotationProcessorsDependencies
 import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.debugImplementation
 import extensions.getLocalProperty
 import extensions.buildConfigBooleanField
+import extensions.kapt
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
@@ -158,8 +160,11 @@ dependencies {
     implementation(Dependencies.LOGGING)
     implementation(Dependencies.CRASHLYTICS)
     implementation(Dependencies.PLAY_CORE)
+    implementation(Dependencies.DAGGER)
 
     debugImplementation(DebugDependencies.LEAKCANARY)
+
+    kapt(AnnotationProcessorsDependencies.DAGGER)
 
     addTestsDependencies()
 }

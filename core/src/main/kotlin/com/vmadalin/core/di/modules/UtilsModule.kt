@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package com.vmadalin.dynamicfeatures.home.ui.menu
+package com.vmadalin.core.di.modules
 
-import android.content.Context
-import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatCheckBox
-import com.vmadalin.dynamicfeatures.home.R
+import com.vmadalin.core.utils.ThemeUtils
+import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
-class ToggleThemeCheckBox @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null
-) : AppCompatCheckBox(context, attrs) {
+@Module
+class UtilsModule {
 
-    init {
-        setButtonDrawable(R.drawable.asl_theme)
-    }
+    @Singleton
+    @Provides
+    fun provideThemeUtils() = ThemeUtils()
 }

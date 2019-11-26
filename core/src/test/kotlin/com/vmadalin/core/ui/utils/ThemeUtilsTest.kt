@@ -19,6 +19,7 @@ package com.vmadalin.core.ui.utils
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.vmadalin.core.utils.ThemeUtils
 import com.vmadalin.libraries.testutils.TestCompatActivity
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.junit.Assert.assertFalse
@@ -33,6 +34,8 @@ class ThemeUtilsTest : TestRobolectric() {
     val rule = ActivityScenarioRule(TestCompatActivity::class.java)
     private lateinit var scenario: ActivityScenario<TestCompatActivity>
 
+    private var themeUtils = ThemeUtils()
+
     @Before
     fun setUp() {
         scenario = rule.scenario
@@ -44,7 +47,7 @@ class ThemeUtilsTest : TestRobolectric() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             it.delegate.applyDayNight()
 
-            assertTrue(ThemeUtils.isDarkTheme(it))
+            assertTrue(themeUtils.isDarkTheme(it))
         }
     }
 
@@ -54,7 +57,7 @@ class ThemeUtilsTest : TestRobolectric() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             it.delegate.applyDayNight()
 
-            assertFalse(ThemeUtils.isLightTheme(it))
+            assertFalse(themeUtils.isLightTheme(it))
         }
     }
 
@@ -64,7 +67,7 @@ class ThemeUtilsTest : TestRobolectric() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             it.delegate.applyDayNight()
 
-            assertTrue(ThemeUtils.isLightTheme(it))
+            assertTrue(themeUtils.isLightTheme(it))
         }
     }
 
@@ -74,27 +77,27 @@ class ThemeUtilsTest : TestRobolectric() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             it.delegate.applyDayNight()
 
-            assertFalse(ThemeUtils.isDarkTheme(it))
+            assertFalse(themeUtils.isDarkTheme(it))
         }
     }
 
     @Test
     fun forceAppNightMode_ShouldBeDarkTheme() {
         scenario.onActivity {
-            ThemeUtils.setNightMode(true)
+            themeUtils.setNightMode(true)
             it.delegate.applyDayNight()
 
-            assertTrue(ThemeUtils.isDarkTheme(it))
+            assertTrue(themeUtils.isDarkTheme(it))
         }
     }
 
     @Test
     fun forceAppNoNightMode_ShouldBeLightTheme() {
         scenario.onActivity {
-            ThemeUtils.setNightMode(false)
+            themeUtils.setNightMode(false)
             it.delegate.applyDayNight()
 
-            assertTrue(ThemeUtils.isLightTheme(it))
+            assertTrue(themeUtils.isLightTheme(it))
         }
     }
 }
