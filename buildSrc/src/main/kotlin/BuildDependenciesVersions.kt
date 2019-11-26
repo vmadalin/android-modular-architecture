@@ -38,7 +38,7 @@ object BuildDependenciesVersions {
     const val MOSHI = "1.8.0"
     const val COIL = "0.8.0"
     const val CRASHLYTICS = "2.10.1"
-    const val PLAY_CORE = "1.6.3"
+    const val PLAY_CORE = "1.6.4"
     const val LEAKCANARY = "2.0-beta-2"
     const val DATABINDING = "3.1.4"
     const val AUTO_SERVICE = "1.0-rc4"

@@ -16,6 +16,7 @@
 
 package extensions
 
+import dependencies.Dependencies
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
 import org.gradle.api.artifacts.Dependency
@@ -101,9 +102,12 @@ fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.EXT)
     testImplementation(TestDependencies.MOCK_WEB_SERVER)
 
+    androidTestImplementation(TestAndroidDependencies.PLAY_CORE)
     androidTestImplementation(TestAndroidDependencies.LEAKCANARY)
     androidTestImplementation(TestAndroidDependencies.MOCKITO)
     androidTestImplementation(TestAndroidDependencies.ESPRESSO)
     androidTestImplementation(TestAndroidDependencies.RUNNER)
     androidTestImplementation(TestAndroidDependencies.RULES)
+    androidTestImplementation(TestAndroidDependencies.JUNIT)
+    androidTestImplementation(TestAndroidDependencies.FRAGMENT_TEST)
 }
