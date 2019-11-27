@@ -23,7 +23,7 @@ import com.vmadalin.android.di.DaggerAppComponent
 import com.vmadalin.core.di.CoreComponent
 import com.vmadalin.core.di.DaggerCoreComponent
 import com.vmadalin.core.di.modules.ContextModule
-import com.vmadalin.core.utils.ThemeUtils
+import com.vmadalin.commons.ui.utils.ThemeUtils
 import io.fabric.sdk.android.Fabric
 import javax.inject.Inject
 import kotlin.random.Random

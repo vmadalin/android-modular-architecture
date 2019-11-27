@@ -16,7 +16,7 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.list
 
-import com.vmadalin.core.ui.base.BaseViewState
+import com.vmadalin.commons.base.BaseViewState
 
 sealed class CharactersListViewState : BaseViewState {
 

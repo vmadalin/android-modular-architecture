@@ -38,7 +38,7 @@ plugins {
 
 allOpen {
     // allows mocking for classes w/o directly opening them for release builds
-    annotation("com.vmadalin.core.annotations.OpenClass")
+    annotation("com.vmadalin.core.annotations.OpenForTesting")
 }
 
 android {
@@ -150,6 +150,7 @@ afterEvaluate {
 
 dependencies {
     implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Commons.UI))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)
