@@ -17,8 +17,8 @@
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.holders
 
 import android.view.LayoutInflater
-import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.commons.base.BaseViewHolder
+import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.dynamicfeatures.charactersfavorites.databinding.ListItemCharactersFavoriteBinding
 
 class CharacterFavoriteViewHolder(

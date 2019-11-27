@@ -18,8 +18,8 @@ package com.vmadalin.dynamicfeatures.home.ui.di
 
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
-import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.commons.ui.extensions.viewModel
+import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.dynamicfeatures.home.ui.HomeFragment
 import com.vmadalin.dynamicfeatures.home.ui.HomeViewModel
 import dagger.Module

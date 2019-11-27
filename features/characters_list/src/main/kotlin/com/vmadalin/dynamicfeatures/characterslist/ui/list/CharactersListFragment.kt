@@ -21,9 +21,9 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import com.vmadalin.android.SampleApp.Companion.coreComponent
+import com.vmadalin.commons.base.BaseFragment
 import com.vmadalin.commons.ui.extensions.gridLayoutManager
 import com.vmadalin.commons.ui.extensions.observe
-import com.vmadalin.commons.base.BaseFragment
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharactersListBinding
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter

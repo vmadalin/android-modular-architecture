@@ -20,9 +20,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.vmadalin.android.SampleApp
-import com.vmadalin.core.database.characterfavorite.CharacterFavorite
-import com.vmadalin.commons.ui.extensions.observe
 import com.vmadalin.commons.base.BaseFragment
+import com.vmadalin.commons.ui.extensions.observe
+import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.dynamicfeatures.charactersfavorites.R
 import com.vmadalin.dynamicfeatures.charactersfavorites.databinding.FragmentCharactersFavoriteListBinding
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.CharactersFavoriteAdapter

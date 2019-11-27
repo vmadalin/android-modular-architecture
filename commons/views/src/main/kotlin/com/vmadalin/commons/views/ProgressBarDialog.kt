@@ -18,9 +18,7 @@ package com.vmadalin.commons.views
 
 import android.app.AlertDialog
 import android.content.Context
-import android.view.View
 import androidx.annotation.StringRes
-
 import kotlinx.android.synthetic.main.view_progress_dialog.*
 
 class ProgressBarDialog(
@@ -37,6 +35,7 @@ class ProgressBarDialog(
         setCanceledOnTouchOutside(false)
         setCancelable(false)
 
+        messageRes?.toString()
 //        progress_bar_loading.visibility = View.VISIBLE
 //
 //        messageRes?.let {
@@ -51,7 +50,9 @@ class ProgressBarDialog(
         setCanceledOnTouchOutside(true)
         setCancelable(true)
 
-        //progress_bar_message.setText(errorMessage)
-        //progress_bar_loading.visibility = View.GONE
+        errorMessage.toString()
+
+        // progress_bar_message.setText(errorMessage)
+        // progress_bar_loading.visibility = View.GONE
     }
 }
