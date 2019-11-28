@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-import dependencies.Dependencies
-import dependencies.AnnotationProcessorsDependencies
-import extensions.implementation
-import extensions.kapt
+package com.vmadalin.commons.ui.extensions
 
-plugins {
-    id("commons.android-library")
-}
+import android.content.Context
+import androidx.annotation.StringRes
 
-dependencies {
-    implementation(project(BuildModules.Commons.UI))
-
-    implementation(Dependencies.CONSTRAIN_LAYOUT)
-    implementation(Dependencies.NAVIGATION_FRAGMENT)
-    implementation(Dependencies.NAVIGATION_UI)
-    implementation(Dependencies.FRAGMENT_KTX)
-
-    kapt(AnnotationProcessorsDependencies.DATABINDING)
-}
+fun Context.getString(@StringRes resId: Int?) =
+    resId?.let {
+        getString(it)
+    } ?: run {
+        ""
+    }

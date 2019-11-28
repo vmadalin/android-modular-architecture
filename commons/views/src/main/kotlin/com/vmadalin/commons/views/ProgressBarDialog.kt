@@ -16,14 +16,18 @@
 
 package com.vmadalin.commons.views
 
-import android.app.AlertDialog
 import android.content.Context
+import android.view.LayoutInflater
 import androidx.annotation.StringRes
-import kotlinx.android.synthetic.main.view_progress_dialog.*
+import androidx.appcompat.app.AlertDialog
+import com.vmadalin.commons.ui.extensions.getString
+import com.vmadalin.commons.views.databinding.ViewProgressDialogBinding
 
 class ProgressBarDialog(
     context: Context
 ) : AlertDialog(context, R.style.CustomProgressDialog) {
+
+    lateinit var viewBinding: ViewProgressDialogBinding
 
     override fun show() {
         show(null)
@@ -31,27 +35,20 @@ class ProgressBarDialog(
 
     fun show(@StringRes messageRes: Int?) {
         super.show()
-        setContentView(R.layout.view_progress_dialog)
+        viewBinding = ViewProgressDialogBinding.inflate(LayoutInflater.from(context))
+        setContentView(viewBinding.root)
         setCanceledOnTouchOutside(false)
         setCancelable(false)
 
-        messageRes?.toString()
-//        progress_bar_loading.visibility = View.VISIBLE
-//
-//        messageRes?.let {
-//            progress_bar_message.text = context.getString(it)
-//            progress_bar_message.visibility = View.VISIBLE
-//        } ?: run {
-//            progress_bar_message.visibility = View.GONE
-//        }
+        viewBinding.isLoading = true
+        viewBinding.message = context.getString(messageRes)
     }
 
     fun dismissWithErrorMessage(errorMessage: Int) {
         setCanceledOnTouchOutside(true)
         setCancelable(true)
 
-        errorMessage.toString()
-//        progress_bar_message.setText(errorMessage)
-//        progress_bar_loading.visibility = View.GONE
+        viewBinding.isLoading = false
+        viewBinding.message = context.getString(errorMessage)
     }
 }
