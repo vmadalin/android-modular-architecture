@@ -48,10 +48,6 @@ android {
     }
 }
 
-junitJacoco {
-    excludes = listOf("**/extensions/NavigationExtensions*.*")
-}
-
 dependencies {
     implementation(Dependencies.ROOM)
     implementation(Dependencies.ROOM_KTX)

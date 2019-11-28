@@ -23,6 +23,10 @@ plugins {
     id("commons.android-library")
 }
 
+junitJacoco {
+    excludes = listOf("**/extensions/NavigationExtensions*.*")
+}
+
 dependencies {
     implementation(Dependencies.LIFECYCLE_EXTENSIONS)
     implementation(Dependencies.LIFECYCLE_VIEWMODEL)
