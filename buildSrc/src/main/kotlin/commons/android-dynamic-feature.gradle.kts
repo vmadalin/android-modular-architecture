@@ -104,8 +104,6 @@ junitJacoco {
 dependencies {
     implementation(project(BuildModules.APP))
     implementation(project(BuildModules.CORE))
-    implementation(project(BuildModules.Commons.BASE))
-    implementation(project(BuildModules.Commons.UI))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)

@@ -27,12 +27,6 @@ object BuildModules {
         const val CHARACTERS_FAVORITES = ":features:characters_favorites"
     }
 
-    object Commons {
-        const val BASE = ":commons:base"
-        const val UI = ":commons:ui"
-        const val VIEWS = ":commons:views"
-    }
-
     object Libraries {
         const val TEST_UTILS = ":libraries:test_utils"
     }

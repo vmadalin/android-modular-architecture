@@ -16,7 +16,7 @@
 
 package com.vmadalin.core.di.modules
 
-import com.vmadalin.commons.ui.utils.ThemeUtils
+import com.vmadalin.core.utils.ThemeUtils
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

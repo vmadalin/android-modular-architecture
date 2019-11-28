@@ -24,7 +24,7 @@ import com.vmadalin.core.di.modules.NetworkModule
 import com.vmadalin.core.di.modules.UtilsModule
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.services.MarvelService
-import com.vmadalin.commons.ui.utils.ThemeUtils
+import com.vmadalin.core.utils.ThemeUtils
 import dagger.Component
 import javax.inject.Singleton
 

@@ -17,7 +17,7 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders
 
 import android.view.LayoutInflater
-import com.vmadalin.commons.base.BaseViewHolder
+import com.vmadalin.core.ui.base.BaseViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.databinding.ListItemLoadingBinding
 
 class LoadingViewHolder(

@@ -18,7 +18,7 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vmadalin.commons.ui.extensions.viewModel
+import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel

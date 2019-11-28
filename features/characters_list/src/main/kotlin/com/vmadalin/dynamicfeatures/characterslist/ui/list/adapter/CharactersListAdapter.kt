@@ -22,7 +22,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.commons.base.BasePagedListAdapter
+import com.vmadalin.core.ui.base.BasePagedListAdapter
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.CharacterViewHolder
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.holders.ErrorViewHolder

@@ -29,7 +29,7 @@ plugins {
 
 allOpen {
     // allows mocking for classes w/o directly opening them for release builds
-    annotation("com.vmadalin.core.annotations.OpenForTesting")
+    annotation("com.vmadalin.core.annotations.OpenClass")
 }
 
 android {
@@ -53,18 +53,25 @@ junitJacoco {
 }
 
 dependencies {
-    implementation(project(BuildModules.Commons.UI))
-
     implementation(Dependencies.ROOM)
     implementation(Dependencies.ROOM_KTX)
     implementation(Dependencies.LIFECYCLE_EXTENSIONS)
+    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
     implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.FRAGMENT_KTX)
+    implementation(Dependencies.CONSTRAIN_LAYOUT)
+    implementation(Dependencies.RECYCLE_VIEW)
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
     implementation(Dependencies.RETROFIT)
     implementation(Dependencies.RETROFIT_CONVERTER)
     implementation(Dependencies.LOGGING)
+    implementation(Dependencies.PAGING)
     implementation(Dependencies.MOSHI)
     implementation(Dependencies.MOSHI_KTX)
+    implementation(Dependencies.COIL)
     implementation(Dependencies.CRASHLYTICS)
 
+    kapt(AnnotationProcessorsDependencies.DATABINDING)
     kapt(AnnotationProcessorsDependencies.ROOM)
 }
