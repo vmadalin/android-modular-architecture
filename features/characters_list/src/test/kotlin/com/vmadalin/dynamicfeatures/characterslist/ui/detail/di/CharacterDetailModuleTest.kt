@@ -54,7 +54,7 @@ class CharacterDetailModuleTest {
 
     @Test
     fun verifyProvidedCharacterDetailViewModel() {
-        mockkStatic("com.vmadalin.core.extensions.FragmentExtensionsKt")
+        mockkStatic("com.vmadalin.commons.ui.extensions.FragmentExtensionsKt")
 
         every {
             fragment.viewModel(any(), any<() -> ViewModel>())
