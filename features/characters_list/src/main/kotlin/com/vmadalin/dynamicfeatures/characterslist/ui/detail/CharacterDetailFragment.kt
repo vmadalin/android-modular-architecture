@@ -22,8 +22,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.vmadalin.android.SampleApp.Companion.coreComponent
-import com.vmadalin.commons.base.BaseFragment
 import com.vmadalin.commons.ui.extensions.observe
+import com.vmadalin.commons.base.BaseFragment
 import com.vmadalin.commons.views.ProgressBarDialog
 import com.vmadalin.dynamicfeatures.characterslist.R
 import com.vmadalin.dynamicfeatures.characterslist.databinding.FragmentCharacterDetailBinding

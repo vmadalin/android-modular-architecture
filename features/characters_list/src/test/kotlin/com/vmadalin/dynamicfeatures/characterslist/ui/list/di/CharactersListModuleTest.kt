@@ -56,7 +56,7 @@ class CharactersListModuleTest {
 
     @Test
     fun verifyProvidedCharactersListViewModel() {
-        mockkStatic("com.vmadalin.commons.ui.extensions.FragmentExtensionsKt")
+        mockkStatic("com.vmadalin.core.extensions.FragmentExtensionsKt")
 
         every {
             fragment.viewModel(any(), any<() -> ViewModel>())

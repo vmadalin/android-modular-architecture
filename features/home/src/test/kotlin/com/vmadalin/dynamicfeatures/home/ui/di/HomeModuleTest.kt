@@ -17,7 +17,7 @@
 package com.vmadalin.dynamicfeatures.home.ui.di
 
 import androidx.lifecycle.ViewModel
-import com.vmadalin.commons.ui.extensions.viewModel
+import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.dynamicfeatures.home.ui.HomeFragment
 import com.vmadalin.dynamicfeatures.home.ui.HomeViewModel
 import io.mockk.MockKAnnotations
@@ -53,7 +53,7 @@ class HomeModuleTest {
 
     @Test
     fun verifyProvidedHomeViewModel() {
-        mockkStatic("com.vmadalin.commons.ui.extensions.FragmentExtensionsKt")
+        mockkStatic("com.vmadalin.core.extensions.FragmentExtensionsKt")
 
         every {
             fragment.viewModel(any(), any<() -> ViewModel>())

@@ -20,10 +20,10 @@ import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.vmadalin.android.di.DaggerAppComponent
-import com.vmadalin.commons.ui.utils.ThemeUtils
 import com.vmadalin.core.di.CoreComponent
 import com.vmadalin.core.di.DaggerCoreComponent
 import com.vmadalin.core.di.modules.ContextModule
+import com.vmadalin.commons.ui.utils.ThemeUtils
 import io.fabric.sdk.android.Fabric
 import javax.inject.Inject
 import kotlin.random.Random

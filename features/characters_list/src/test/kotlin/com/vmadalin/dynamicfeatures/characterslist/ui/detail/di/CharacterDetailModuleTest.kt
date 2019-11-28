@@ -17,8 +17,8 @@
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
 
 import androidx.lifecycle.ViewModel
-import com.vmadalin.commons.ui.extensions.viewModel
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
+import com.vmadalin.commons.ui.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
@@ -54,7 +54,7 @@ class CharacterDetailModuleTest {
 
     @Test
     fun verifyProvidedCharacterDetailViewModel() {
-        mockkStatic("com.vmadalin.commons.ui.extensions.FragmentExtensionsKt")
+        mockkStatic("com.vmadalin.core.extensions.FragmentExtensionsKt")
 
         every {
             fragment.viewModel(any(), any<() -> ViewModel>())

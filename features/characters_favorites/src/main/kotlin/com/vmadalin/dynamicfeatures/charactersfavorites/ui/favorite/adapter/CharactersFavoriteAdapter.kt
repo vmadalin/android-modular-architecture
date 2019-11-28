@@ -19,8 +19,8 @@ package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.vmadalin.commons.base.BaseListAdapter
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
+import com.vmadalin.commons.base.BaseListAdapter
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.holders.CharacterFavoriteViewHolder
 
 class CharactersFavoriteAdapter : BaseListAdapter<CharacterFavorite>(
