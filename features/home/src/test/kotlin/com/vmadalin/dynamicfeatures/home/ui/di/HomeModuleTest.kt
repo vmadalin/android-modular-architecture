@@ -17,7 +17,7 @@
 package com.vmadalin.dynamicfeatures.home.ui.di
 
 import androidx.lifecycle.ViewModel
-import com.vmadalin.core.extensions.viewModel
+import com.vmadalin.commons.ui.extensions.viewModel
 import com.vmadalin.dynamicfeatures.home.ui.HomeFragment
 import com.vmadalin.dynamicfeatures.home.ui.HomeViewModel
 import io.mockk.MockKAnnotations

@@ -16,7 +16,9 @@
 
 package com.vmadalin.dynamicfeatures.characterslist.ui.detail
 
-sealed class CharacterDetailViewState {
+import com.vmadalin.commons.ui.base.BaseViewState
+
+sealed class CharacterDetailViewState : BaseViewState {
 
     object Loading : CharacterDetailViewState()
     object Error : CharacterDetailViewState()

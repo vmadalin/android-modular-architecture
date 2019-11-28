@@ -24,25 +24,10 @@ plugins {
 }
 
 dependencies {
-    implementation(Dependencies.ROOM)
-    implementation(Dependencies.ROOM_KTX)
-    implementation(Dependencies.LIFECYCLE_EXTENSIONS)
-    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.FRAGMENT_KTX)
     implementation(Dependencies.CONSTRAIN_LAYOUT)
-    implementation(Dependencies.RECYCLE_VIEW)
     implementation(Dependencies.NAVIGATION_FRAGMENT)
     implementation(Dependencies.NAVIGATION_UI)
-    implementation(Dependencies.RETROFIT)
-    implementation(Dependencies.RETROFIT_CONVERTER)
-    implementation(Dependencies.LOGGING)
-    implementation(Dependencies.PAGING)
-    implementation(Dependencies.MOSHI)
-    implementation(Dependencies.MOSHI_KTX)
-    implementation(Dependencies.COIL)
-    implementation(Dependencies.CRASHLYTICS)
+    implementation(Dependencies.FRAGMENT_KTX)
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
-    kapt(AnnotationProcessorsDependencies.ROOM)
 }

@@ -17,8 +17,8 @@
 package com.vmadalin.dynamicfeatures.caractersfavorites.ui.favorite.di
 
 import androidx.lifecycle.ViewModel
+import com.vmadalin.commons.ui.extensions.viewModel
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
-import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteFragment
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteViewModel
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.CharactersFavoriteModule

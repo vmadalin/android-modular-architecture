@@ -16,7 +16,9 @@
 
 package com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite
 
-sealed class CharactersFavoriteViewState {
+import com.vmadalin.commons.ui.base.BaseViewState
+
+sealed class CharactersFavoriteViewState : BaseViewState {
 
     object Empty : CharactersFavoriteViewState()
     object Listed : CharactersFavoriteViewState()

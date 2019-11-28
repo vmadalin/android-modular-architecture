@@ -23,8 +23,8 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.vmadalin.android.SampleApp
-import com.vmadalin.core.extensions.setupWithNavController
-import com.vmadalin.core.ui.base.BaseFragment
+import com.vmadalin.commons.ui.base.BaseFragment
+import com.vmadalin.commons.ui.extensions.setupWithNavController
 import com.vmadalin.core.utils.ThemeUtils
 import com.vmadalin.dynamicfeatures.home.R
 import com.vmadalin.dynamicfeatures.home.databinding.FragmentHomeBinding

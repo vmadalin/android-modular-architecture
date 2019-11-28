@@ -21,6 +21,7 @@ include(
     BuildModules.Features.CHARACTERS_LIST,
     BuildModules.Features.CHARACTERS_FAVORITES,
     BuildModules.Libraries.TEST_UTILS,
+    BuildModules.Commons.UI,
     BuildModules.Commons.VIEWS
 )
 
