@@ -98,7 +98,7 @@ class BasePagedListAdapterTest : TestRobolectric() {
         adapter.submitList(pagedListOf("item1", "item2"))
         adapter.submitList(pagedListOf("item3", "item4"))
 
-        verify(itemsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
+        verify(itemsSame, after(300).atLeastOnce()).invoke(anyString(), anyString())
     }
 
     @Test
@@ -108,13 +108,13 @@ class BasePagedListAdapterTest : TestRobolectric() {
         adapter.submitList(pagedListOf("item1", "item2"))
         adapter.submitList(pagedListOf("item6", "item4", "item2"))
 
-        verify(contentsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
+        verify(contentsSame, after(300).atLeastOnce()).invoke(anyString(), anyString())
     }
 
     @Test
     fun emptyRecycleView_ShouldNotInvokeAnyComparator() {
-        verify(itemsSame, after(100).never()).invoke(anyString(), anyString())
-        verify(contentsSame, after(100).never()).invoke(anyString(), anyString())
+        verify(itemsSame, after(300).never()).invoke(anyString(), anyString())
+        verify(contentsSame, after(300).never()).invoke(anyString(), anyString())
     }
 
     @Test
