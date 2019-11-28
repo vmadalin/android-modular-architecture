@@ -18,11 +18,11 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.detail.di
 
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
+import com.vmadalin.commons.views.ProgressBarDialog
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import com.vmadalin.core.di.scopes.FeatureScope
 import com.vmadalin.core.extensions.viewModel
 import com.vmadalin.core.network.repositiories.MarvelRepository
-import com.vmadalin.core.ui.customviews.ProgressBarDialog
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailFragment
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper

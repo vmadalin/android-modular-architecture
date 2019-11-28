@@ -20,7 +20,8 @@ include(
     BuildModules.Features.HOME,
     BuildModules.Features.CHARACTERS_LIST,
     BuildModules.Features.CHARACTERS_FAVORITES,
-    BuildModules.Libraries.TEST_UTILS
+    BuildModules.Libraries.TEST_UTILS,
+    BuildModules.Commons.VIEWS
 )
 
 rootProject.buildFileName = "build.gradle.kts"
