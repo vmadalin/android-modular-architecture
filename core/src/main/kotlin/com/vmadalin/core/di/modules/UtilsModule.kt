@@ -16,14 +16,26 @@
 
 package com.vmadalin.core.di.modules
 
+import com.vmadalin.core.di.CoreComponent
 import com.vmadalin.core.utils.ThemeUtils
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * Class that contributes to the object graph [CoreComponent].
+ *
+ * @see Module
+ */
 @Module
 class UtilsModule {
 
+    /**
+     * Create a provider method binding for [ThemeUtils].
+     *
+     * @return Instance of theme utils.
+     * @see Provides
+     */
     @Singleton
     @Provides
     fun provideThemeUtils() = ThemeUtils()

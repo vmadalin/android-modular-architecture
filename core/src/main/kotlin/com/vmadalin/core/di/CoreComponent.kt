@@ -30,6 +30,8 @@ import javax.inject.Singleton
 
 /**
  * Core component that all module's components depend on.
+ *
+ * @see Component
  */
 @Singleton
 @Component(modules = [

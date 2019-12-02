@@ -29,12 +29,26 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDeta
 import dagger.Module
 import dagger.Provides
 
+/**
+ * Class that contributes to the object graph [CharacterDetailComponent].
+ *
+ * @see Module
+ */
 @Module
 class CharacterDetailModule(
     @VisibleForTesting(otherwise = PRIVATE)
     val fragment: CharacterDetailFragment
 ) {
 
+    /**
+     * Create a provider method binding for [CharacterDetailViewModel].
+     *
+     * @param marvelRepository
+     * @param characterFavoriteRepository handler character favorite repository
+     * @param characterDetailMapper mapper to parse view model
+     *
+     * @return instance of view model.
+     */
     @FeatureScope
     @Provides
     fun providesCharacterDetailViewModel(
@@ -49,10 +63,22 @@ class CharacterDetailModule(
         )
     }
 
+    /**
+     * Create a provider method binding for [CharacterDetailMapper].
+     *
+     * @return instance of mapper.
+     * @see Provides
+     */
     @FeatureScope
     @Provides
     fun providesCharacterDetailMapper() = CharacterDetailMapper()
 
+    /**
+     * Create a provider method binding for [ProgressBarDialog].
+     *
+     * @return instance of dialog.
+     * @see Provides
+     */
     @FeatureScope
     @Provides
     fun providesProgressBarDialog() = ProgressBarDialog(fragment.requireContext())

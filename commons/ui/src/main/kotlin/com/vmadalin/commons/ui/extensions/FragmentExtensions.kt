@@ -21,6 +21,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
+/**
+ * Generic view model provider.
+ *
+ * @param key The key to use to identify the ViewModel.
+ * @param factory Function creates a new instance of the ViewModel.
+ * @return A ViewModel that is an instance of the given type [VM].
+ * @see ViewModel
+ */
 @Suppress("UNCHECKED_CAST")
 fun <VM : ViewModel> Fragment.viewModel(
     key: String? = null,

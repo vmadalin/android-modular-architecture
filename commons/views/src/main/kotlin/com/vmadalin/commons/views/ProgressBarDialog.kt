@@ -23,16 +23,34 @@ import androidx.appcompat.app.AlertDialog
 import com.vmadalin.commons.ui.extensions.getString
 import com.vmadalin.commons.views.databinding.ViewProgressDialogBinding
 
+/**
+ * Custom progress dialog to display as alert during on long process user waiting.
+ *
+ * @see AlertDialog
+ */
 class ProgressBarDialog(
     context: Context
 ) : AlertDialog(context, R.style.CustomProgressDialog) {
 
     lateinit var viewBinding: ViewProgressDialogBinding
 
+    /**
+     * Start the dialog and display it on screen. The window is placed in the application
+     * layer and opaque.
+     *
+     * @see AlertDialog.show
+     */
     override fun show() {
         show(null)
     }
 
+    /**
+     * Start the dialog and display it on screen. The window is placed in the application
+     * layer and opaque.
+     *
+     * @param messageRes Message resource identifier.
+     * @see show
+     */
     fun show(@StringRes messageRes: Int?) {
         super.show()
         viewBinding = ViewProgressDialogBinding.inflate(LayoutInflater.from(context))
@@ -44,11 +62,18 @@ class ProgressBarDialog(
         viewBinding.message = context.getString(messageRes)
     }
 
-    fun dismissWithErrorMessage(errorMessage: Int) {
+    /**
+     * Dismiss this dialog, removing it from the screen. This method can be invoked safely
+     * from any thread.
+     *
+     * @param messageRes Message resource identifier.
+     * @see AlertDialog.dismiss
+     */
+    fun dismissWithErrorMessage(@StringRes messageRes: Int) {
         setCanceledOnTouchOutside(true)
         setCancelable(true)
 
         viewBinding.isLoading = false
-        viewBinding.message = context.getString(errorMessage)
+        viewBinding.message = context.getString(messageRes)
     }
 }

@@ -21,8 +21,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- * [CharacterFavorite] represents when a user adds a character to favorite, containing the different
- * info required for display on screen
+ * Entity represents when a user adds a character to favorite, containing the different
+ * info required for display on screen.
  */
 @Entity(tableName = "character_favorite")
 data class CharacterFavorite(

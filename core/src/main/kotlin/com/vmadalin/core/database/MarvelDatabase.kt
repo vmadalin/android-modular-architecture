@@ -23,8 +23,9 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 
 /**
- * Marvel room database storing the different requested information like:
- * characters, comics, stories, etc..
+ * Marvel room database storing the different requested information like: characters, comics, etc...
+ *
+ * @see Database
  */
 @Database(
     entities = [CharacterFavorite::class],
@@ -33,5 +34,10 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 )
 abstract class MarvelDatabase : RoomDatabase() {
 
+    /**
+     * Get character favorite data access object.
+     *
+     * @return Character favorite dao.
+     */
     abstract fun characterFavoriteDao(): CharacterFavoriteDao
 }

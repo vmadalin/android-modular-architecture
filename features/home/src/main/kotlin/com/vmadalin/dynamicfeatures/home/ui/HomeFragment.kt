@@ -35,6 +35,11 @@ import javax.inject.Inject
 
 private const val DELAY_TO_APPLY_THEME = 1000L
 
+/**
+ * Home principal view containing bottom navigation bar with different characters tabs.
+ *
+ * @see BaseFragment
+ */
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     layoutId = R.layout.fragment_home
 ) {
@@ -47,6 +52,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         R.navigation.navigation_characters_favorites_graph
     )
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * @param view The view returned by onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @see BaseFragment.onViewCreated
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
@@ -55,11 +68,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
+    /**
+     * Called when all saved state has been restored into the view hierarchy of the fragment.
+     *
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state,
+     * this is the state.
+     * @see BaseFragment.onViewStateRestored
+     */
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         setupBottomNavigationBar()
     }
 
+    /**
+     * Initialize the contents of the Fragment host's standard options menu.
+     *
+     * @param menu The options menu in which you place your items.
+     * @param inflater Inflater to instantiate menu XML files into Menu objects.
+     * @see BaseFragment.onCreateOptionsMenu
+     */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.toolbar_menu, menu)
@@ -75,6 +102,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
+    /**
+     * Initialize dagger injection dependency graph.
+     */
     override fun onInitDependencyInjection() {
         DaggerHomeComponent
             .builder()
@@ -84,19 +114,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
             .inject(this)
     }
 
+    /**
+     * Initialize view data binding variables.
+     */
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
     }
 
     // ============================================================================================
-    //  Private methods
+    //  Private setups methods
     // ============================================================================================
 
+    /**
+     * Configure app custom support action bar.
+     */
     private fun setupToolbar() {
         setHasOptionsMenu(true)
         requireCompatActivity().setSupportActionBar(viewBinding.toolbar)
     }
 
+    /**
+     * Configure app bottom bar via navigation graph.
+     */
     private fun setupBottomNavigationBar() {
         val navController = viewBinding.bottomNavigation.setupWithNavController(
             navGraphIds = navGraphIds,

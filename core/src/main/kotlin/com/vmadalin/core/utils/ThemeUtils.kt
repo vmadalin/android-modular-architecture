@@ -21,6 +21,9 @@ import android.content.res.Configuration
 import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 
+/**
+ * Utils for application theme configuration.
+ */
 class ThemeUtils {
 
     /**
@@ -35,10 +38,10 @@ class ThemeUtils {
     fun isLightTheme(context: Context) = !isDarkTheme(context)
 
     /**
-     * Force [AppCompatDelegate] mode to night/notnight
+     * Force [AppCompatDelegate] Mode to night/notnight.
      *
-     * @param forceNight boolean that force night mode otherwise notnight is configured
-     * @param delay delay to apply mode changes
+     * @param forceNight Boolean that force night mode otherwise notnight is configured.
+     * @param delay Delay to apply mode changes.
      */
     fun setNightMode(forceNight: Boolean, delay: Long = 0L) {
         Handler().postDelayed({

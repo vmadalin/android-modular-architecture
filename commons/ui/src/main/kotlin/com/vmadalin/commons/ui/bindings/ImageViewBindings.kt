@@ -26,6 +26,12 @@ import coil.api.load
 import com.vmadalin.commons.ui.R
 import kotlin.random.Random
 
+/**
+ * Set image loaded from url.
+ *
+ * @param url Image url to download and set as drawable.
+ * @param placeholderId Drawable resource identifier to set while downloading image.
+ */
 @BindingAdapter("imageUrl", "imagePlaceholder", requireAll = false)
 fun ImageView.imageUrl(url: String?, @DrawableRes placeholderId: Int?) {
     load(url) {

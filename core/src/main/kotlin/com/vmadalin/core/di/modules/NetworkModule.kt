@@ -17,6 +17,7 @@
 package com.vmadalin.core.di.modules
 
 import com.vmadalin.core.BuildConfig
+import com.vmadalin.core.di.CoreComponent
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.services.MarvelService
 import dagger.Module
@@ -27,9 +28,20 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Class that contributes to the object graph [CoreComponent].
+ *
+ * @see Module
+ */
 @Module
 class NetworkModule {
 
+    /**
+     * Create a provider method binding for [HttpLoggingInterceptor].
+     *
+     * @return Instance of http interceptor.
+     * @see Provides
+     */
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -38,6 +50,12 @@ class NetworkModule {
         return httpLoggingInterceptor
     }
 
+    /**
+     * Create a provider method binding for [OkHttpClient].
+     *
+     * @return Instance of http client.
+     * @see Provides
+     */
     @Singleton
     @Provides
     fun provideHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
@@ -48,6 +66,12 @@ class NetworkModule {
         return clientBuilder.build()
     }
 
+    /**
+     * Create a provider method binding for [Retrofit].
+     *
+     * @return Instance of retrofit.
+     * @see Provides
+     */
     @Singleton
     @Provides
     fun provideRetrofitBuilder() =
@@ -56,10 +80,22 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    /**
+     * Create a provider method binding for [MarvelService].
+     *
+     * @return Instance of marvel service.
+     * @see Provides
+     */
     @Singleton
     @Provides
     fun provideMarvelService(retrofit: Retrofit) = retrofit.create(MarvelService::class.java)
 
+    /**
+     * Create a provider method binding for [MarvelRepository].
+     *
+     * @return Instance of marvel repository.
+     * @see Provides
+     */
     @Singleton
     @Provides
     fun provideMarvelRepository(service: MarvelService) = MarvelRepository(service)

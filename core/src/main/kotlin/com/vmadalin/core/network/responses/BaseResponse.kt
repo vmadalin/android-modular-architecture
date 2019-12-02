@@ -18,6 +18,7 @@ package com.vmadalin.core.network.responses
 
 import com.vmadalin.core.annotations.OpenForTesting
 
+
 @OpenForTesting
 data class BaseResponse<T>(
     val code: Any,

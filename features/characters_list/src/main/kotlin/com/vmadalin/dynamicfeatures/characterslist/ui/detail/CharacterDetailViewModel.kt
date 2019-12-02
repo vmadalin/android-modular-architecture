@@ -29,6 +29,11 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDeta
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 
+/**
+ * View model responsible for preparing and managing the data for [CharacterDetailFragment].
+ *
+ * @see ViewModel
+ */
 class CharacterDetailViewModel @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val marvelRepository: MarvelRepository,
@@ -46,6 +51,15 @@ class CharacterDetailViewModel @Inject constructor(
     val state: LiveData<CharacterDetailViewState>
         get() = _state
 
+    // ============================================================================================
+    //  Public methods
+    // ============================================================================================
+
+    /**
+     * Fetch selected character detail info.
+     *
+     * @param characterId Character identifier.
+     */
     fun loadCharacterDetail(characterId: Long) {
         _state.postValue(CharacterDetailViewState.Loading)
         viewModelScope.launch {
@@ -64,6 +78,9 @@ class CharacterDetailViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Store selected character to database favorite list.
+     */
     fun addCharacterToFavorite() {
         _data.value?.let {
             viewModelScope.launch {
@@ -77,6 +94,9 @@ class CharacterDetailViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Send interaction event for dismiss character detail view.
+     */
     fun dismissCharacterDetail() {
         _state.postValue(CharacterDetailViewState.Dismiss)
     }

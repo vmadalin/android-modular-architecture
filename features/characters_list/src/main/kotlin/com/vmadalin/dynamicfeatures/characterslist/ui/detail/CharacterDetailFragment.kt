@@ -31,6 +31,11 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.CharacterDetailM
 import com.vmadalin.dynamicfeatures.characterslist.ui.detail.di.DaggerCharacterDetailComponent
 import javax.inject.Inject
 
+/**
+ * View detail for selected character, displaying extra info and with option to add it to favorite.
+ *
+ * @see BaseFragment
+ */
 class CharacterDetailFragment :
     BaseFragment<FragmentCharacterDetailBinding, CharacterDetailViewModel>(
         layoutId = R.layout.fragment_character_detail
@@ -41,12 +46,23 @@ class CharacterDetailFragment :
 
     private val args: CharacterDetailFragmentArgs by navArgs()
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * @param view The view returned by onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @see BaseFragment.onViewCreated
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
         viewModel.loadCharacterDetail(args.characterId)
     }
 
+    /**
+     * Initialize dagger injection dependency graph.
+     */
     override fun onInitDependencyInjection() {
         DaggerCharacterDetailComponent
             .builder()
@@ -56,10 +72,22 @@ class CharacterDetailFragment :
             .inject(this)
     }
 
+    /**
+     * Initialize view data binding variables.
+     */
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
     }
 
+    // ============================================================================================
+    //  Private observers methods
+    // ============================================================================================
+
+    /**
+     * Observer view state change on [CharacterDetailViewState].
+     *
+     * @param viewState State of character detail.
+     */
     private fun onViewStateChange(viewState: CharacterDetailViewState) {
         when (viewState) {
             is CharacterDetailViewState.Loading ->

@@ -24,11 +24,26 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * Simple item decoration allows the application to add a special drawing and layout offset
+ * to specific item views from the adapter's data set. Support the grid and linear layout.
+ *
+ * @see RecyclerView.ItemDecoration
+ */
 class RecyclerViewItemDecoration(
     @VisibleForTesting(otherwise = PRIVATE)
     internal val spacingPx: Int
 ) : RecyclerView.ItemDecoration() {
 
+    /**
+     * Retrieve any offsets for the given item.
+     *
+     * @param outRect Rect to receive the output.
+     * @param view The child view to decorate
+     * @param parent RecyclerView this ItemDecoration is decorating
+     * @param state The current state of RecyclerView.
+     * @see RecyclerView.ItemDecoration.getItemOffsets
+     */
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -52,9 +67,17 @@ class RecyclerViewItemDecoration(
     }
 
     // ============================================================================================
-    //  Private methods
+    //  Private configs methods
     // ============================================================================================
 
+    /**
+     * Configure spacing for grid layout, given a rectangle.
+     *
+     * @param outRect Rect to modify.
+     * @param layoutManager The currently responsible for layout policy.
+     * @param position Position of the item represented by this ViewHolder.
+     * @param itemCount The total number of items that can be laid out.
+     */
     private fun configSpacingForGridLayoutManager(
         outRect: Rect,
         layoutManager: GridLayoutManager,
@@ -70,6 +93,14 @@ class RecyclerViewItemDecoration(
         outRect.bottom = if (position / cols == rows - 1) spacingPx else 0
     }
 
+    /**
+     * Configure spacing for linear layout, given a rectangle.
+     *
+     * @param outRect Rect to modify.
+     * @param layoutManager The currently responsible for layout policy.
+     * @param position Position of the item represented by this ViewHolder.
+     * @param itemCount The total number of items that can be laid out.
+     */
     private fun configSpacingForLinearLayoutManager(
         outRect: Rect,
         layoutManager: LinearLayoutManager,

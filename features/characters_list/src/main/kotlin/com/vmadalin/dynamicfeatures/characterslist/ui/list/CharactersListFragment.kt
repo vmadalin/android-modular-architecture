@@ -33,6 +33,11 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.di.DaggerCharactersLi
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
 import javax.inject.Inject
 
+/**
+ * View listing the all marvel characters with option to display the detail view.
+ *
+ * @see BaseFragment
+ */
 class CharactersListFragment :
     BaseFragment<FragmentCharactersListBinding, CharactersListViewModel>(
         layoutId = R.layout.fragment_characters_list
@@ -41,6 +46,14 @@ class CharactersListFragment :
     @Inject
     lateinit var viewAdapter: CharactersListAdapter
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * @param view The view returned by onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @see BaseFragment.onViewCreated
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
@@ -48,6 +61,9 @@ class CharactersListFragment :
         observe(viewModel.event, ::onViewEvent)
     }
 
+    /**
+     * Initialize dagger injection dependency graph.
+     */
     override fun onInitDependencyInjection() {
         DaggerCharactersListComponent
             .builder()
@@ -57,6 +73,9 @@ class CharactersListFragment :
             .inject(this)
     }
 
+    /**
+     * Initialize view data binding variables.
+     */
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
         viewBinding.includeList.charactersList.apply {
@@ -65,10 +84,24 @@ class CharactersListFragment :
         }
     }
 
+    // ============================================================================================
+    //  Private observers methods
+    // ============================================================================================
+
+    /**
+     * Observer view data change on [CharactersListViewModel].
+     *
+     * @param viewData Paged list of characters.
+     */
     private fun onViewDataChange(viewData: PagedList<CharacterItem>) {
         viewAdapter.submitList(viewData)
     }
 
+    /**
+     * Observer view state change on [CharactersListViewModel].
+     *
+     * @param viewState State of characters list.
+     */
     private fun onViewStateChange(viewState: CharactersListViewState) {
         when (viewState) {
             is CharactersListViewState.Loaded ->
@@ -82,6 +115,11 @@ class CharactersListFragment :
         }
     }
 
+    /**
+     * Observer view event change on [CharactersListViewModel].
+     *
+     * @param viewEvent Event on characters list.
+     */
     private fun onViewEvent(viewEvent: CharactersListViewEvent) {
         when (viewEvent) {
             is CharactersListViewEvent.OpenCharacterDetail ->

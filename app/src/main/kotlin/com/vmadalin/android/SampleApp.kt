@@ -31,6 +31,8 @@ import timber.log.Timber
 
 /**
  * Base class for maintaining global application state.
+ *
+ * @see SplitCompatApplication
  */
 class SampleApp : SplitCompatApplication() {
 
@@ -42,9 +44,9 @@ class SampleApp : SplitCompatApplication() {
     companion object {
 
         /**
-         * Obtain core dagger component
+         * Obtain core dagger component.
          *
-         * @param context application context
+         * @param context The application context
          */
         @JvmStatic
         fun coreComponent(context: Context) =
@@ -52,7 +54,10 @@ class SampleApp : SplitCompatApplication() {
     }
 
     /**
-     * Override application onCreate
+     * Called when the application is starting, before any activity, service, or receiver objects
+     * (excluding content providers) have been created.
+     *
+     * @see SplitCompatApplication.onCreate
      */
     override fun onCreate() {
         super.onCreate()
@@ -64,11 +69,11 @@ class SampleApp : SplitCompatApplication() {
     }
 
     // ============================================================================================
-    //  Private methods
+    //  Private init methods
     // ============================================================================================
 
     /**
-     * Initialize app dependency injection component
+     * Initialize app dependency injection component.
      */
     private fun initAppDependencyInjection() {
         DaggerAppComponent
@@ -79,7 +84,7 @@ class SampleApp : SplitCompatApplication() {
     }
 
     /**
-     * Initialize core dependency injection component
+     * Initialize core dependency injection component.
      */
     private fun initCoreDependencyInjection() {
         coreComponent = DaggerCoreComponent
@@ -89,7 +94,7 @@ class SampleApp : SplitCompatApplication() {
     }
 
     /**
-     * Initialize log library Timber only on debug build
+     * Initialize log library Timber only on debug build.
      */
     private fun initTimber() {
         if (BuildConfig.DEBUG) {
@@ -98,7 +103,7 @@ class SampleApp : SplitCompatApplication() {
     }
 
     /**
-     * Initialize crash report library Fabric on non debug build
+     * Initialize crash report library Fabric on non debug build.
      */
     private fun initFabric() {
         if (!BuildConfig.DEBUG) {
@@ -107,7 +112,7 @@ class SampleApp : SplitCompatApplication() {
     }
 
     /**
-     * Initialize random nightMode to make developer aware of day/night themes
+     * Initialize random nightMode to make developer aware of day/night themes.
      */
     private fun initRandomNightMode() {
         if (BuildConfig.DEBUG) {

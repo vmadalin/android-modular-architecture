@@ -22,8 +22,20 @@ import com.vmadalin.core.network.responses.CharacterResponse
 
 private const val IMAGE_URL_FORMAT = "%s.%s"
 
+/**
+ * Helper class to transforms network response to visual model, catching the necessary data.
+ *
+ * @see Mapper
+ */
 class CharacterDetailMapper : Mapper<BaseResponse<CharacterResponse>, CharacterDetail> {
 
+    /**
+     * Transform network response to [CharacterDetail].
+     *
+     * @param from Network characters response.
+     * @return List of parsed characters items.
+     * @throws NoSuchElementException If the response results are empty.
+     */
     @Throws(NoSuchElementException::class)
     override fun map(from: BaseResponse<CharacterResponse>): CharacterDetail {
         val characterResponse = from.data.results.first()

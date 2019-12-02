@@ -27,12 +27,24 @@ import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.adapter.Char
 import dagger.Module
 import dagger.Provides
 
+/**
+ * Class that contributes to the object graph [CharactersFavoriteComponent].
+ *
+ * @see Module
+ */
 @Module
 class CharactersFavoriteModule(
     @VisibleForTesting(otherwise = PRIVATE)
     val fragment: CharactersFavoriteFragment
 ) {
 
+    /**
+     * Create a provider method binding for [CharactersFavoriteViewModel].
+     *
+     * @param characterFavoriteRepository Handler character favorite repository.
+     * @return Instance of view model.
+     * @see Provides
+     */
     @Provides
     @FeatureScope
     fun providesCharactersFavoriteViewModel(
@@ -43,6 +55,12 @@ class CharactersFavoriteModule(
         )
     }
 
+    /**
+     * Create a provider method binding for [CharactersFavoriteAdapter].
+     *
+     * @return Instance of adapter.
+     * @see Provides
+     */
     @Provides
     @FeatureScope
     fun providesCharactersFavoriteAdapter() = CharactersFavoriteAdapter()

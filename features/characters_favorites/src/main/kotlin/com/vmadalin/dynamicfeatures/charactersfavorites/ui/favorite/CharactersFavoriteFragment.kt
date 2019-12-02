@@ -31,6 +31,11 @@ import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.Character
 import com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.di.DaggerCharactersFavoriteComponent
 import javax.inject.Inject
 
+/**
+ * View listing the added favorite characters with option to remove element by swiping.
+ *
+ * @see BaseFragment
+ */
 class CharactersFavoriteFragment :
     BaseFragment<FragmentCharactersFavoriteListBinding, CharactersFavoriteViewModel>(
         layoutId = R.layout.fragment_characters_favorite_list
@@ -39,11 +44,22 @@ class CharactersFavoriteFragment :
     @Inject
     lateinit var viewAdapter: CharactersFavoriteAdapter
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * @param view The view returned by onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @see BaseFragment.onViewCreated
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.data, ::onViewDataChange)
     }
 
+    /**
+     * Initialize dagger injection dependency graph.
+     */
     override fun onInitDependencyInjection() {
         DaggerCharactersFavoriteComponent
             .builder()
@@ -53,6 +69,9 @@ class CharactersFavoriteFragment :
             .inject(this)
     }
 
+    /**
+     * Initialize view data binding variables.
+     */
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
         viewBinding.includeList.charactersFavoriteList.apply {
@@ -64,6 +83,15 @@ class CharactersFavoriteFragment :
         }
     }
 
+    // ============================================================================================
+    //  Private observers methods
+    // ============================================================================================
+
+    /**
+     * Observer view data change on [CharactersFavoriteViewModel].
+     *
+     * @param viewData List of favorite characters.
+     */
     private fun onViewDataChange(viewData: List<CharacterFavorite>) {
         viewAdapter.submitList(viewData)
     }

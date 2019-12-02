@@ -27,6 +27,11 @@ import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPage
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.PAGE_MAX_ELEMENTS
 import javax.inject.Inject
 
+/**
+ * View model responsible for preparing and managing the data for [CharactersListFragment].
+ *
+ * @see ViewModel
+ */
 class CharactersListViewModel
 @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
@@ -65,14 +70,29 @@ class CharactersListViewModel
         }
     }
 
+    // ============================================================================================
+    //  Public methods
+    // ============================================================================================
+
+    /**
+     * Refresh characters fetch them again and update the list.
+     */
     fun refreshLoadedCharactersList() {
         dataSourceFactory.refresh()
     }
 
+    /**
+     * Retry last fetch operation to add characters into list.
+     */
     fun retryAddCharactersList() {
         dataSourceFactory.retry()
     }
 
+    /**
+     * Send interaction event for open character detail view from selected character.
+     *
+     * @param characterId Character identifier.
+     */
     fun openCharacterDetail(characterId: Long) {
         event.postValue(CharactersListViewEvent.OpenCharacterDetail(characterId))
     }

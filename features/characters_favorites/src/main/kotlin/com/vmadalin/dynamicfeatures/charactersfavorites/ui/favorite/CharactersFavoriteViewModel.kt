@@ -26,6 +26,11 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 
+/**
+ * View model responsible for preparing and managing the data for [CharactersFavoriteFragment].
+ *
+ * @see ViewModel
+ */
 class CharactersFavoriteViewModel @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val characterFavoriteRepository: CharacterFavoriteRepository
@@ -40,6 +45,15 @@ class CharactersFavoriteViewModel @Inject constructor(
         }
     }
 
+    // ============================================================================================
+    //  Public methods
+    // ============================================================================================
+
+    /**
+     * Remove the selected favorite character from database in case if exist.
+     *
+     * @param character Favorite character.
+     */
     fun removeFavoriteCharacter(character: CharacterFavorite) {
         viewModelScope.launch {
             characterFavoriteRepository.deleteCharacterFavorite(character)
