@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BasePagedListAdapter - commons/ui</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">commons/ui</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.commons.ui.base</a>&nbsp;/&nbsp;<a href="./index.html">BasePagedListAdapter</a><br/>
+<br/>
+<h1>BasePagedListAdapter</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BasePagedListAdapter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PagedListAdapter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">ViewHolder</span><span class="symbol">&gt;</span></code>
+<p>Base paged list adapter to standardize and simplify initialization for this component.</p>
+<h3>Parameters</h3>
+<p><a name="itemsSame"></a>
+<code>itemsSame</code> - Function called to check whether two objects represent the same item.</p>
+<p><a name="contentsSame"></a>
+<code>contentsSame</code> - Function called to check whether two items have the same data.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">PagedListAdapter</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Base paged list adapter to standardize and simplify initialization for this component.</p>
+<code><span class="identifier">BasePagedListAdapter</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$<init>(kotlin.Function2((com.vmadalin.commons.ui.base.BasePagedListAdapter.T, , kotlin.Boolean)), kotlin.Function2((com.vmadalin.commons.ui.base.BasePagedListAdapter.T, , kotlin.Boolean)))/itemsSame">itemsSame</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$<init>(kotlin.Function2((com.vmadalin.commons.ui.base.BasePagedListAdapter.T, , kotlin.Boolean)), kotlin.Function2((com.vmadalin.commons.ui.base.BasePagedListAdapter.T, , kotlin.Boolean)))/contentsSame">contentsSame</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="on-attached-to-recycler-view.html">onAttachedToRecyclerView</a></h4>
+</td>
+<td>
+<p>Called by RecyclerView when it starts observing this Adapter.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onAttachedToRecyclerView</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onAttachedToRecyclerView(androidx.recyclerview.widget.RecyclerView)/recyclerView">recyclerView</span><span class="symbol">:</span>&nbsp;<span class="identifier">RecyclerView</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-create-view-holder.html">onCreateViewHolder</a></h4>
+</td>
+<td>
+<p>Called when RecyclerView needs a new <a href="#">RecyclerView.ViewHolder</a> of the given type to
+represent an item.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCreateViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/inflater">inflater</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/LayoutInflater.html"><span class="identifier">LayoutInflater</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/viewType">viewType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ViewHolder</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onCreateViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)/viewType">viewType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ViewHolder</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-detached-from-recycler-view.html">onDetachedFromRecyclerView</a></h4>
+</td>
+<td>
+<p>Called by RecyclerView when it stops observing this Adapter.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onDetachedFromRecyclerView</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$onDetachedFromRecyclerView(androidx.recyclerview.widget.RecyclerView)/recyclerView">recyclerView</span><span class="symbol">:</span>&nbsp;<span class="identifier">RecyclerView</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="submit-list.html">submitList</a></h4>
+</td>
+<td>
+<p>Set the new list to be displayed.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submitList</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BasePagedListAdapter$submitList(androidx.paging.PagedList((com.vmadalin.commons.ui.base.BasePagedListAdapter.T)))/pagedList">pagedList</span><span class="symbol">:</span>&nbsp;<span class="identifier">PagedList</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

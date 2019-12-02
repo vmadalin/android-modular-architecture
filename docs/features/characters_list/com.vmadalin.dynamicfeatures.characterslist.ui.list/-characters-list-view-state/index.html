@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharactersListViewState - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.list</a>&nbsp;/&nbsp;<a href="./index.html">CharactersListViewState</a><br/>
+<br/>
+<h1>CharactersListViewState</h1>
+<code><span class="keyword">sealed</span> <span class="keyword">class </span><span class="identifier">CharactersListViewState</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BaseViewState</span></code>
+<p>Different states for <a href="../-characters-list-fragment/index.html">CharactersListFragment</a>.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">BaseViewState</a></p>
+</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-add-error.html">AddError</a></h4>
+</td>
+<td>
+<p>Error on add more elements into characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">AddError</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-add-loading.html">AddLoading</a></h4>
+</td>
+<td>
+<p>Loading on add more elements into characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">AddLoading</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-empty.html">Empty</a></h4>
+</td>
+<td>
+<p>Empty characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">Empty</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-error.html">Error</a></h4>
+</td>
+<td>
+<p>Error on loading characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">Error</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-loaded.html">Loaded</a></h4>
+</td>
+<td>
+<p>Loaded characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">Loaded</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-loading.html">Loading</a></h4>
+</td>
+<td>
+<p>Loading characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">Loading</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-no-more-elements.html">NoMoreElements</a></h4>
+</td>
+<td>
+<p>No more elements for adding into characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">NoMoreElements</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-refreshing.html">Refreshing</a></h4>
+</td>
+<td>
+<p>Refreshing characters list.</p>
+<code><span class="keyword">object </span><span class="identifier">Refreshing</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharactersListViewState</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="is-add-error.html">isAddError</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-add-error.html">AddError</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isAddError</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-add-loading.html">isAddLoading</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-add-loading.html">AddLoading</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isAddLoading</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-empty.html">isEmpty</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-empty.html">Empty</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isEmpty</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-error.html">isError</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-error.html">Error</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isError</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-loaded.html">isLoaded</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-loaded.html">Loaded</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isLoaded</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-loading.html">isLoading</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-loading.html">Loading</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isLoading</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-no-more-elements.html">isNoMoreElements</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-no-more-elements.html">NoMoreElements</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isNoMoreElements</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-refreshing.html">isRefreshing</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-refreshing.html">Refreshing</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isRefreshing</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

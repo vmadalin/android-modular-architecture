@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleLiveData - commons/ui</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">commons/ui</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.commons.ui.livedata</a>&nbsp;/&nbsp;<a href="./index.html">SingleLiveData</a><br/>
+<br/>
+<h1>SingleLiveData</h1>
+<code><span class="keyword">class </span><span class="identifier">SingleLiveData</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A lifecycle-aware observable that sends only new updates after subscription, used for events
+like navigation and Snackbar messages.</p>
+<p>This avoids a common problem with events: on configuration change (like rotation) an update
+can be emitted if the observer is active. This LiveData only calls the observable if there's an
+explicit call to setValue() or call().</p>
+<p>Note that only one observer is going to be notified of changes.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">MutableLiveData</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>A lifecycle-aware observable that sends only new updates after subscription, used for events
+like navigation and Snackbar messages.</p>
+<code><span class="identifier">SingleLiveData</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="observe.html">observe</a></h4>
+</td>
+<td>
+<p>Adds the given observer to the observers list within the lifespan of the given
+owner. The events are dispatched on the main thread. If LiveData already has data
+set, it will be delivered to the observer.</p>
+<code><span class="keyword">fun </span><span class="identifier">observe</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.livedata.SingleLiveData$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Observer((com.vmadalin.commons.ui.livedata.SingleLiveData.T)))/owner">owner</span><span class="symbol">:</span>&nbsp;<span class="identifier">LifecycleOwner</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.livedata.SingleLiveData$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Observer((com.vmadalin.commons.ui.livedata.SingleLiveData.T)))/observer">observer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Observer</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="set-value.html">setValue</a></h4>
+</td>
+<td>
+<p>Sets the value. If there are active observers, the value will be dispatched to them.</p>
+<code><span class="keyword">fun </span><span class="identifier">setValue</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.livedata.SingleLiveData$setValue(com.vmadalin.commons.ui.livedata.SingleLiveData.T)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.vmadalin.dynamicfeatures.characterslist.ui.list.paging - features/characters_list</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="./index.html">com.vmadalin.dynamicfeatures.characterslist.ui.list.paging</a><br/>
+<br/>
+<h2>Package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-characters-page-data-source/index.html">CharactersPageDataSource</a></h4>
+</td>
+<td>
+<p>Incremental data loader for page-keyed content, where requests return keys for next/previous
+pages. Obtaining paginated the Marvel characters.</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharactersPageDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PageKeyedDataSource</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-characters-page-data-source-factory/index.html">CharactersPageDataSourceFactory</a></h4>
+</td>
+<td>
+<p>Data source factory which also provides a way to observe the last created data source.
+This allows us to channel its network request status etc back to the UI.</p>
+<code><span class="keyword">class </span><span class="identifier">CharactersPageDataSourceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Factory</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-p-a-g-e_-i-n-i-t_-e-l-e-m-e-n-t-s.html">PAGE_INIT_ELEMENTS</a></h4>
+</td>
+<td>
+<code><span class="keyword">const</span> <span class="keyword">val </span><span class="identifier">PAGE_INIT_ELEMENTS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-p-a-g-e_-m-a-x_-e-l-e-m-e-n-t-s.html">PAGE_MAX_ELEMENTS</a></h4>
+</td>
+<td>
+<code><span class="keyword">const</span> <span class="keyword">val </span><span class="identifier">PAGE_MAX_ELEMENTS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

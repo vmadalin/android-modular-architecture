@@ -8,8 +8,11 @@
 <a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.core.di</a>&nbsp;/&nbsp;<a href="./index.html">CoreComponent</a><br/>
 <br/>
 <h1>CoreComponent</h1>
-<code><span class="identifier">@Singleton</span> <span class="identifier">@Component</span><span class="symbol">(</span>[ContextModule, NetworkModule, DatabaseModule]<span class="symbol">)</span> <span class="keyword">interface </span><span class="identifier">CoreComponent</span></code>
+<code><span class="identifier">@Singleton</span> <span class="identifier">@Component</span><span class="symbol">(</span>[ContextModule, NetworkModule, DatabaseModule, UtilsModule]<span class="symbol">)</span> <span class="keyword">interface </span><span class="identifier">CoreComponent</span></code>
 <p>Core component that all module's components depend on.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">Component</a></p>
+</p>
 <h3>Functions</h3>
 <table>
 <tbody>
@@ -40,6 +43,13 @@
 </td>
 <td>
 <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">marvelService</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.core.network.services/-marvel-service/index.html"><span class="identifier">MarvelService</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="theme-utils.html">themeUtils</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">themeUtils</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.core.utils/-theme-utils/index.html"><span class="identifier">ThemeUtils</span></a></code></td>
 </tr>
 </tbody>
 </table>

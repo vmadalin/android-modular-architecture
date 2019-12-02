@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharactersPageDataSourceFactory - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.list.paging</a>&nbsp;/&nbsp;<a href="./index.html">CharactersPageDataSourceFactory</a><br/>
+<br/>
+<h1>CharactersPageDataSourceFactory</h1>
+<code><span class="keyword">class </span><span class="identifier">CharactersPageDataSourceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Factory</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span></code>
+<p>Data source factory which also provides a way to observe the last created data source.
+This allows us to channel its network request status etc back to the UI.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">DataSource.Factory</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Data source factory which also provides a way to observe the last created data source.
+This allows us to channel its network request status etc back to the UI.</p>
+<code><span class="identifier">CharactersPageDataSourceFactory</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory$<init>(javax.inject.Provider((com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource)))/providerDataSource">providerDataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Provider</span><span class="symbol">&lt;</span><a href="../-characters-page-data-source/index.html"><span class="identifier">CharactersPageDataSource</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="provider-data-source.html">providerDataSource</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">providerDataSource</span><span class="symbol">: </span><span class="identifier">Provider</span><span class="symbol">&lt;</span><a href="../-characters-page-data-source/index.html"><span class="identifier">CharactersPageDataSource</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="source-live-data.html">sourceLiveData</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">sourceLiveData</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="../-characters-page-data-source/index.html"><span class="identifier">CharactersPageDataSource</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="create.html">create</a></h4>
+</td>
+<td>
+<p>Create a DataSource.</p>
+<code><span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataSource</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="refresh.html">refresh</a></h4>
+</td>
+<td>
+<p>Force refresh data source by invalidating and re-create again.</p>
+<code><span class="keyword">fun </span><span class="identifier">refresh</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="retry.html">retry</a></h4>
+</td>
+<td>
+<p>Force retry last fetch operation on data source.</p>
+<code><span class="keyword">fun </span><span class="identifier">retry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

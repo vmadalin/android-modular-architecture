@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseListAdapter.onCreateViewHolder - commons/ui</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">commons/ui</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.commons.ui.base</a>&nbsp;/&nbsp;<a href="index.html">BaseListAdapter</a>&nbsp;/&nbsp;<a href="./on-create-view-holder.html">onCreateViewHolder</a><br/>
+<br/>
+<h1>onCreateViewHolder</h1>
+<a name="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCreateViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/inflater">inflater</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/LayoutInflater.html"><span class="identifier">LayoutInflater</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/viewType">viewType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ViewHolder</span></code>
+<p>Called when RecyclerView needs a new <a href="#">RecyclerView.ViewHolder</a> of the given type to
+represent an item.</p>
+<h3>Parameters</h3>
+<p><a name="parent"></a>
+<code>parent</code> - The ViewGroup into which the new View will be added after it is bound to
+an adapter position.</p>
+<p><a name="inflater"></a>
+<code>inflater</code> - Instantiates a layout XML file into its corresponding View objects.</p>
+<p><a name="viewType"></a>
+<code>viewType</code> - The view type of the new View.</p>
+<p><strong>Return</strong><br/>
+A new ViewHolder that holds a View of the given view type.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">ListAdapter.onCreateViewHolder</a></p>
+</p>
+<a name="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onCreateViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.base.BaseListAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)/viewType">viewType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ViewHolder</span></code>
+<p>Called when RecyclerView needs a new <a href="#">RecyclerView.ViewHolder</a> of the given type to
+represent an item.</p>
+<h3>Parameters</h3>
+<p><a name="parent"></a>
+<code>parent</code> - The ViewGroup into which the new View will be added after it is bound to
+an adapter position.</p>
+<p><a name="viewType"></a>
+<code>viewType</code> - The view type of the new View.</p>
+<p><strong>Return</strong><br/>
+A new ViewHolder that holds a View of the given view type.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">ListAdapter.onCreateViewHolder</a></p>
+</p>
+</BODY>
+</HTML>

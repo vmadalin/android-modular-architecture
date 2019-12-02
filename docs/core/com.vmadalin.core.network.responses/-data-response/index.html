@@ -9,6 +9,18 @@
 <br/>
 <h1>DataResponse</h1>
 <code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DataResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Marvel API data network response format.</p>
+<h3>Parameters</h3>
+<p><a name="offset"></a>
+<code>offset</code> - The requested offset (number of skipped results) of the call.</p>
+<p><a name="limit"></a>
+<code>limit</code> - The requested result limit.</p>
+<p><a name="total"></a>
+<code>total</code> - The total number of resources available given the current filter set.</p>
+<p><a name="count"></a>
+<code>count</code> - The total number of results returned by this call.</p>
+<p><a name="results"></a>
+<code>results</code> - The list of <a href="index.html#T">T</a> returned by the call.</p>
 <h3>Constructors</h3>
 <table>
 <tbody>
@@ -17,6 +29,7 @@
 <h4><a href="-init-.html">&lt;init&gt;</a></h4>
 </td>
 <td>
+<p>Marvel API data network response format.</p>
 <code><span class="identifier">DataResponse</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.network.responses.DataResponse$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.collections.List((com.vmadalin.core.network.responses.DataResponse.T)))/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.DataResponse$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.collections.List((com.vmadalin.core.network.responses.DataResponse.T)))/limit">limit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.DataResponse$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.collections.List((com.vmadalin.core.network.responses.DataResponse.T)))/total">total</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.DataResponse$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.collections.List((com.vmadalin.core.network.responses.DataResponse.T)))/count">count</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.DataResponse$<init>(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.collections.List((com.vmadalin.core.network.responses.DataResponse.T)))/results">results</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code></td>
 </tr>
 </tbody>
@@ -29,6 +42,7 @@
 <h4><a href="count.html">count</a></h4>
 </td>
 <td>
+<p>The total number of results returned by this call.</p>
 <code><span class="keyword">val </span><span class="identifier">count</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
 </tr>
 <tr>
@@ -36,6 +50,7 @@
 <h4><a href="limit.html">limit</a></h4>
 </td>
 <td>
+<p>The requested result limit.</p>
 <code><span class="keyword">val </span><span class="identifier">limit</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
 </tr>
 <tr>
@@ -43,6 +58,7 @@
 <h4><a href="offset.html">offset</a></h4>
 </td>
 <td>
+<p>The requested offset (number of skipped results) of the call.</p>
 <code><span class="keyword">val </span><span class="identifier">offset</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
 </tr>
 <tr>
@@ -50,6 +66,7 @@
 <h4><a href="results.html">results</a></h4>
 </td>
 <td>
+<p>The list of <a href="index.html#T">T</a> returned by the call.</p>
 <code><span class="keyword">val </span><span class="identifier">results</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
 </tr>
 <tr>
@@ -57,6 +74,7 @@
 <h4><a href="total.html">total</a></h4>
 </td>
 <td>
+<p>The total number of resources available given the current filter set.</p>
 <code><span class="keyword">val </span><span class="identifier">total</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
 </tr>
 </tbody>

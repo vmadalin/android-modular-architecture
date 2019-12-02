@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharactersListModule - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.list.di</a>&nbsp;/&nbsp;<a href="./index.html">CharactersListModule</a><br/>
+<br/>
+<h1>CharactersListModule</h1>
+<code><span class="identifier">@Module</span> <span class="keyword">class </span><span class="identifier">CharactersListModule</span></code>
+<p>Class that contributes to the object graph <a href="../-characters-list-component/index.html">CharactersListComponent</a>.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">Module</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Class that contributes to the object graph <a href="../-characters-list-component/index.html">CharactersListComponent</a>.</p>
+<code><span class="identifier">CharactersListModule</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule$<init>(com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListFragment)/fragment">fragment</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-fragment/index.html"><span class="identifier">CharactersListFragment</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="fragment.html">fragment</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">fragment</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-fragment/index.html"><span class="identifier">CharactersListFragment</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="provides-character-item-mapper.html">providesCharacterItemMapper</a></h4>
+</td>
+<td>
+<p>Create a provider method binding for <a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item-mapper/index.html">CharacterItemMapper</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">providesCharacterItemMapper</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item-mapper/index.html"><span class="identifier">CharacterItemMapper</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="provides-characters-list-adapter.html">providesCharactersListAdapter</a></h4>
+</td>
+<td>
+<p>Create a provider method binding for <a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter/-characters-list-adapter/index.html">CharactersListAdapter</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">providesCharactersListAdapter</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule$providesCharactersListAdapter(com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel)/viewModel">viewModel</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-view-model/index.html"><span class="identifier">CharactersListViewModel</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter/-characters-list-adapter/index.html"><span class="identifier">CharactersListAdapter</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="provides-characters-list-view-model.html">providesCharactersListViewModel</a></h4>
+</td>
+<td>
+<p>Create a provider method binding for <a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-view-model/index.html">CharactersListViewModel</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">providesCharactersListViewModel</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule$providesCharactersListViewModel(com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSourceFactory)/dataFactory">dataFactory</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.paging/-characters-page-data-source-factory/index.html"><span class="identifier">CharactersPageDataSourceFactory</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-view-model/index.html"><span class="identifier">CharactersListViewModel</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="provides-characters-page-data-source.html">providesCharactersPageDataSource</a></h4>
+</td>
+<td>
+<p>Create a provider method binding for <a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.paging/-characters-page-data-source/index.html">CharactersPageDataSource</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">providesCharactersPageDataSource</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule$providesCharactersPageDataSource(com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel, com.vmadalin.core.network.repositiories.MarvelRepository, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper)/viewModel">viewModel</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-view-model/index.html"><span class="identifier">CharactersListViewModel</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule$providesCharactersPageDataSource(com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel, com.vmadalin.core.network.repositiories.MarvelRepository, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper)/repository">repository</span><span class="symbol">:</span>&nbsp;<span class="identifier">MarvelRepository</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.di.CharactersListModule$providesCharactersPageDataSource(com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel, com.vmadalin.core.network.repositiories.MarvelRepository, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper)/mapper">mapper</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item-mapper/index.html"><span class="identifier">CharacterItemMapper</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.paging/-characters-page-data-source/index.html"><span class="identifier">CharactersPageDataSource</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

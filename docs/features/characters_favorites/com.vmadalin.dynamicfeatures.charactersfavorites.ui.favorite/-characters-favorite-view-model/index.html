@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharactersFavoriteViewModel - features/characters_favorites</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_favorites</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite</a>&nbsp;/&nbsp;<a href="./index.html">CharactersFavoriteViewModel</a><br/>
+<br/>
+<h1>CharactersFavoriteViewModel</h1>
+<code><span class="keyword">class </span><span class="identifier">CharactersFavoriteViewModel</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ViewModel</span></code>
+<p>View model responsible for preparing and managing the data for <a href="../-characters-favorite-fragment/index.html">CharactersFavoriteFragment</a>.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">ViewModel</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>View model responsible for preparing and managing the data for <a href="../-characters-favorite-fragment/index.html">CharactersFavoriteFragment</a>.</p>
+<code><span class="identifier">CharactersFavoriteViewModel</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteViewModel$<init>(com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository)/characterFavoriteRepository">characterFavoriteRepository</span><span class="symbol">:</span>&nbsp;<span class="identifier">CharacterFavoriteRepository</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="character-favorite-repository.html">characterFavoriteRepository</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">characterFavoriteRepository</span><span class="symbol">: </span><span class="identifier">CharacterFavoriteRepository</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="data.html">data</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">data</span><span class="symbol">: </span><span class="identifier">LiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">CharacterFavorite</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="state.html">state</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">state</span><span class="symbol">: </span><span class="identifier">LiveData</span><span class="symbol">&lt;</span><a href="../-characters-favorite-view-state/index.html"><span class="identifier">CharactersFavoriteViewState</span></a><span class="symbol">!</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="remove-favorite-character.html">removeFavoriteCharacter</a></h4>
+</td>
+<td>
+<p>Remove the selected favorite character from database in case if exist.</p>
+<code><span class="keyword">fun </span><span class="identifier">removeFavoriteCharacter</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.charactersfavorites.ui.favorite.CharactersFavoriteViewModel$removeFavoriteCharacter(com.vmadalin.core.database.characterfavorite.CharacterFavorite)/character">character</span><span class="symbol">:</span>&nbsp;<span class="identifier">CharacterFavorite</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

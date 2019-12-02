@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>observe - commons/ui</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">commons/ui</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.commons.ui.extensions</a>&nbsp;/&nbsp;<a href="index.html">androidx.lifecycle.LifecycleOwner</a>&nbsp;/&nbsp;<a href="./observe.html">observe</a><br/>
+<br/>
+<h1>observe</h1>
+<a name="com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.LiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">LifecycleOwner</span><span class="symbol">.</span><span class="identifier">observe</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.LiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))/liveData">liveData</span><span class="symbol">:</span>&nbsp;<span class="identifier">LiveData</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.LiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))/observer">observer</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">T</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds the given observer to the observers list within the lifespan of the given
+owner. The events are dispatched on the main thread. If LiveData already has data
+set, it will be delivered to the observer.</p>
+<h3>Parameters</h3>
+<p><a name="liveData"></a>
+<code>liveData</code> - The liveData to observe.</p>
+<p><a name="observer"></a>
+<code>observer</code> - The observer that will receive the events.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">LiveData.observe</a></p>
+</p>
+<a name="com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.MutableLiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">LifecycleOwner</span><span class="symbol">.</span><span class="identifier">observe</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.MutableLiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))/liveData">liveData</span><span class="symbol">:</span>&nbsp;<span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.MutableLiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))/observer">observer</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">T</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds the given observer to the observers list within the lifespan of the given
+owner. The events are dispatched on the main thread. If LiveData already has data
+set, it will be delivered to the observer.</p>
+<h3>Parameters</h3>
+<p><a name="liveData"></a>
+<code>liveData</code> - The mutableLiveData to observe.</p>
+<p><a name="observer"></a>
+<code>observer</code> - The observer that will receive the events.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">MutableLiveData.observe</a></p>
+</p>
+</BODY>
+</HTML>

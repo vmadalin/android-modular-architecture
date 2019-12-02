@@ -2,3 +2,4 @@ $dokka.format:html
 $dokka.linkExtension:html
 
 com.vmadalin.android
+com.vmadalin.android.di

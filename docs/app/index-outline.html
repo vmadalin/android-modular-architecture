@@ -23,7 +23,34 @@
 <link rel="stylesheet" href="../style.css">
 </HEAD>
 <BODY>
-<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/index.html"><span class="keyword">class </span><span class="identifier">SampleApp</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/app/Application.html"><span class="identifier">Application</span></a></a></a><br/>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-component/index.html"><span class="identifier">@Component</span><span class="symbol">(</span>[CoreComponent]<span class="symbol">, </span>[AppModule]<span class="symbol">)</span> <span class="keyword">interface </span><span class="identifier">AppComponent</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Module Contents</title>
+<link rel="stylesheet" href="../style.css">
+</HEAD>
+<BODY>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-component/inject.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">inject</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.di.AppComponent$inject(com.vmadalin.android.SampleApp)/application">application</span><span class="symbol">:</span>&nbsp;<a href="com.vmadalin.android/-sample-app/index.html"><span class="identifier">SampleApp</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-module/index.html"><span class="identifier">@Module</span> <span class="keyword">class </span><span class="identifier">AppModule</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Module Contents</title>
+<link rel="stylesheet" href="../style.css">
+</HEAD>
+<BODY>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-module/-init-.html"><span class="identifier">AppModule</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-module/provide-context.html"><span class="identifier">@Provides</span> <span class="keyword">fun </span><span class="identifier">provideContext</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.di.AppModule$provideContext(com.vmadalin.android.SampleApp)/application">application</span><span class="symbol">:</span>&nbsp;<a href="com.vmadalin.android/-sample-app/index.html"><span class="identifier">SampleApp</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/index.html"><span class="keyword">class </span><span class="identifier">SampleApp</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SplitCompatApplication</span></a></a><br/>
 <ul>
 <HTML>
 <HEAD>
@@ -33,10 +60,10 @@
 </HEAD>
 <BODY>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/-init-.html"><span class="identifier">SampleApp</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
-<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/attach-base-context.html"><span class="keyword">protected</span> <span class="keyword">fun </span><span class="identifier">attachBaseContext</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.SampleApp$attachBaseContext(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/core-component.html"><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">coreComponent</span><span class="symbol">: </span><span class="identifier">CoreComponent</span></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/core-component.html"><span class="identifier">@JvmStatic</span> <span class="keyword">fun </span><span class="identifier">coreComponent</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.SampleApp.Companion$coreComponent(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CoreComponent</span><span class="symbol">?</span></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/on-create.html"><span class="keyword">fun </span><span class="identifier">onCreate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/theme-utils.html"><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">themeUtils</span><span class="symbol">: </span><span class="identifier">ThemeUtils</span></a></a><br/>
 </BODY>
 </HTML>
 </ul>
@@ -66,7 +93,7 @@
 <link rel="stylesheet" href="../style.css">
 </HEAD>
 <BODY>
-<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/index.html"><span class="keyword">class </span><span class="identifier">SampleApp</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/app/Application.html"><span class="identifier">Application</span></a></a></a><br/>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/index.html"><span class="keyword">class </span><span class="identifier">SampleApp</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SplitCompatApplication</span></a></a><br/>
 <ul>
 <HTML>
 <HEAD>
@@ -76,10 +103,10 @@
 </HEAD>
 <BODY>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/-init-.html"><span class="identifier">SampleApp</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
-<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/attach-base-context.html"><span class="keyword">protected</span> <span class="keyword">fun </span><span class="identifier">attachBaseContext</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.SampleApp$attachBaseContext(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/core-component.html"><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">coreComponent</span><span class="symbol">: </span><span class="identifier">CoreComponent</span></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/core-component.html"><span class="identifier">@JvmStatic</span> <span class="keyword">fun </span><span class="identifier">coreComponent</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.SampleApp.Companion$coreComponent(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CoreComponent</span><span class="symbol">?</span></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/on-create.html"><span class="keyword">fun </span><span class="identifier">onCreate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-app/theme-utils.html"><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">themeUtils</span><span class="symbol">: </span><span class="identifier">ThemeUtils</span></a></a><br/>
 </BODY>
 </HTML>
 </ul>
@@ -94,6 +121,45 @@
 <BODY>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-main-activity/-init-.html"><span class="identifier">SampleMainActivity</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
 <a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android/-sample-main-activity/on-create.html"><span class="keyword">protected</span> <span class="keyword">fun </span><span class="identifier">onCreate</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.SampleMainActivity$onCreate(android.os.Bundle)/savedInstanceState">savedInstanceState</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/os/Bundle.html"><span class="identifier">Bundle</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+</BODY>
+</HTML>
+</ul>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/index.html"><span class="keyword">package</span>&nbsp;<span class="identifier">com.vmadalin.android.di</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Module Contents</title>
+<link rel="stylesheet" href="../style.css">
+</HEAD>
+<BODY>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-component/index.html"><span class="identifier">@Component</span><span class="symbol">(</span>[CoreComponent]<span class="symbol">, </span>[AppModule]<span class="symbol">)</span> <span class="keyword">interface </span><span class="identifier">AppComponent</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Module Contents</title>
+<link rel="stylesheet" href="../style.css">
+</HEAD>
+<BODY>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-component/inject.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">inject</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.di.AppComponent$inject(com.vmadalin.android.SampleApp)/application">application</span><span class="symbol">:</span>&nbsp;<a href="com.vmadalin.android/-sample-app/index.html"><span class="identifier">SampleApp</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-module/index.html"><span class="identifier">@Module</span> <span class="keyword">class </span><span class="identifier">AppModule</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Module Contents</title>
+<link rel="stylesheet" href="../style.css">
+</HEAD>
+<BODY>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-module/-init-.html"><span class="identifier">AppModule</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
+<a href="/Users/vmadalin/kotlin-sample-app/docs/app/index"><a href="com.vmadalin.android.di/-app-module/provide-context.html"><span class="identifier">@Provides</span> <span class="keyword">fun </span><span class="identifier">provideContext</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.android.di.AppModule$provideContext(com.vmadalin.android.SampleApp)/application">application</span><span class="symbol">:</span>&nbsp;<a href="com.vmadalin.android/-sample-app/index.html"><span class="identifier">SampleApp</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a></a></a><br/>
 </BODY>
 </HTML>
 </ul>

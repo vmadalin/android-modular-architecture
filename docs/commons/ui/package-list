@@ -1,0 +1,19 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:com.vmadalin.commons.ui.bindings$gone#android.view.Viewcom.vmadalin.commons.ui.bindings/android.view.-view/gone.html
+$dokka.location:com.vmadalin.commons.ui.bindings$imageUrl(android.widget.ImageView, kotlin.String, kotlin.Int)com.vmadalin.commons.ui.bindings/android.widget.-image-view/image-url.html
+$dokka.location:com.vmadalin.commons.ui.bindings$invisible#android.view.Viewcom.vmadalin.commons.ui.bindings/android.view.-view/invisible.html
+$dokka.location:com.vmadalin.commons.ui.bindings$setItemDecorationSpacing(androidx.recyclerview.widget.RecyclerView, kotlin.Float)com.vmadalin.commons.ui.bindings/androidx.recyclerview.widget.-recycler-view/set-item-decoration-spacing.html
+$dokka.location:com.vmadalin.commons.ui.bindings$visible#android.view.Viewcom.vmadalin.commons.ui.bindings/android.view.-view/visible.html
+$dokka.location:com.vmadalin.commons.ui.extensions$getString(android.content.Context, kotlin.Int)com.vmadalin.commons.ui.extensions/android.content.-context/get-string.html
+$dokka.location:com.vmadalin.commons.ui.extensions$gridLayoutManager#androidx.recyclerview.widget.RecyclerViewcom.vmadalin.commons.ui.extensions/androidx.recyclerview.widget.-recycler-view/grid-layout-manager.html
+$dokka.location:com.vmadalin.commons.ui.extensions$linearLayoutManager#androidx.recyclerview.widget.RecyclerViewcom.vmadalin.commons.ui.extensions/androidx.recyclerview.widget.-recycler-view/linear-layout-manager.html
+$dokka.location:com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.LiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))com.vmadalin.commons.ui.extensions/androidx.lifecycle.-lifecycle-owner/observe.html
+$dokka.location:com.vmadalin.commons.ui.extensions$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.MutableLiveData((com.vmadalin.commons.ui.extensions.observe.T)), kotlin.Function1((com.vmadalin.commons.ui.extensions.observe.T, kotlin.Unit)))com.vmadalin.commons.ui.extensions/androidx.lifecycle.-lifecycle-owner/observe.html
+$dokka.location:com.vmadalin.commons.ui.extensions$setupWithNavController(com.google.android.material.bottomnavigation.BottomNavigationView, kotlin.collections.List((kotlin.Int)), androidx.fragment.app.FragmentManager, kotlin.Int, android.content.Intent)com.vmadalin.commons.ui.extensions/com.google.android.material.bottomnavigation.-bottom-navigation-view/setup-with-nav-controller.html
+$dokka.location:com.vmadalin.commons.ui.extensions$viewModel(androidx.fragment.app.Fragment, kotlin.String, kotlin.Function0((com.vmadalin.commons.ui.extensions.viewModel.VM)))com.vmadalin.commons.ui.extensions/androidx.fragment.app.-fragment/view-model.html
+com.vmadalin.commons.ui.base
+com.vmadalin.commons.ui.bindings
+com.vmadalin.commons.ui.extensions
+com.vmadalin.commons.ui.livedata
+com.vmadalin.commons.ui.recyclerview

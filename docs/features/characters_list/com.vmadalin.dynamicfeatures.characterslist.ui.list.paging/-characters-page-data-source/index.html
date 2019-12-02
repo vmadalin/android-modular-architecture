@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharactersPageDataSource - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.list.paging</a>&nbsp;/&nbsp;<a href="./index.html">CharactersPageDataSource</a><br/>
+<br/>
+<h1>CharactersPageDataSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharactersPageDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PageKeyedDataSource</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span></code>
+<p>Incremental data loader for page-keyed content, where requests return keys for next/previous
+pages. Obtaining paginated the Marvel characters.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">PageKeyedDataSource</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Incremental data loader for page-keyed content, where requests return keys for next/previous
+pages. Obtaining paginated the Marvel characters.</p>
+<code><span class="identifier">CharactersPageDataSource</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$<init>(com.vmadalin.core.network.repositiories.MarvelRepository, kotlinx.coroutines.CoroutineScope, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper)/repository">repository</span><span class="symbol">:</span>&nbsp;<span class="identifier">MarvelRepository</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$<init>(com.vmadalin.core.network.repositiories.MarvelRepository, kotlinx.coroutines.CoroutineScope, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper)/scope">scope</span><span class="symbol">:</span>&nbsp;<span class="identifier">CoroutineScope</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$<init>(com.vmadalin.core.network.repositiories.MarvelRepository, kotlinx.coroutines.CoroutineScope, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItemMapper)/mapper">mapper</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item-mapper/index.html"><span class="identifier">CharacterItemMapper</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="mapper.html">mapper</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">mapper</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item-mapper/index.html"><span class="identifier">CharacterItemMapper</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="network-state.html">networkState</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">networkState</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><span class="identifier">NetworkState</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="repository.html">repository</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">repository</span><span class="symbol">: </span><span class="identifier">MarvelRepository</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="retry.html">retry</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">retry</span><span class="symbol">: </span><span class="symbol">(</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="scope.html">scope</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">scope</span><span class="symbol">: </span><span class="identifier">CoroutineScope</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="load-after.html">loadAfter</a></h4>
+</td>
+<td>
+<p>Append page with the key specified by <a href="#">LoadParams.key</a>.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadAfter</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$loadAfter(androidx.paging.PageKeyedDataSource.LoadParams((kotlin.Int)), androidx.paging.PageKeyedDataSource.LoadCallback((kotlin.Int, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem)))/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadParams</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$loadAfter(androidx.paging.PageKeyedDataSource.LoadParams((kotlin.Int)), androidx.paging.PageKeyedDataSource.LoadCallback((kotlin.Int, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadCallback</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="load-before.html">loadBefore</a></h4>
+</td>
+<td>
+<p>Prepend page with the key specified by <a href="#">LoadParams.key</a></p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBefore</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$loadBefore(androidx.paging.PageKeyedDataSource.LoadParams((kotlin.Int)), androidx.paging.PageKeyedDataSource.LoadCallback((kotlin.Int, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem)))/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadParams</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$loadBefore(androidx.paging.PageKeyedDataSource.LoadParams((kotlin.Int)), androidx.paging.PageKeyedDataSource.LoadCallback((kotlin.Int, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadCallback</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="load-initial.html">loadInitial</a></h4>
+</td>
+<td>
+<p>Load initial data.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadInitial</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$loadInitial(androidx.paging.PageKeyedDataSource.LoadInitialParams((kotlin.Int)), androidx.paging.PageKeyedDataSource.LoadInitialCallback((kotlin.Int, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem)))/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadInitialParams</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.paging.CharactersPageDataSource$loadInitial(androidx.paging.PageKeyedDataSource.LoadInitialParams((kotlin.Int)), androidx.paging.PageKeyedDataSource.LoadInitialCallback((kotlin.Int, com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadInitialCallback</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="retry.html">retry</a></h4>
+</td>
+<td>
+<p>Force retry last fetch operation in case it has ever been previously executed.</p>
+<code><span class="keyword">fun </span><span class="identifier">retry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

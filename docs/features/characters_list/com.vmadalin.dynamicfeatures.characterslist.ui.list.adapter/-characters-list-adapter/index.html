@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharactersListAdapter - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter</a>&nbsp;/&nbsp;<a href="./index.html">CharactersListAdapter</a><br/>
+<br/>
+<h1>CharactersListAdapter</h1>
+<code><span class="keyword">class </span><span class="identifier">CharactersListAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BasePagedListAdapter</span><span class="symbol">&lt;</span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list.model/-character-item/index.html"><span class="identifier">CharacterItem</span></a><span class="symbol">&gt;</span></code>
+<p>Class for presenting characters List data in a <a href="#">RecyclerView</a>, including computing
+diffs between Lists on a background thread.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">BaseListAdapter</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Class for presenting characters List data in a <a href="#">RecyclerView</a>, including computing
+diffs between Lists on a background thread.</p>
+<code><span class="identifier">CharactersListAdapter</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$<init>(com.vmadalin.dynamicfeatures.characterslist.ui.list.CharactersListViewModel)/viewModel">viewModel</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-view-model/index.html"><span class="identifier">CharactersListViewModel</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="view-model.html">viewModel</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">viewModel</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.list/-characters-list-view-model/index.html"><span class="identifier">CharactersListViewModel</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="get-item-count.html">getItemCount</a></h4>
+</td>
+<td>
+<p>Returns the total number of items in the data set held by the adapter.</p>
+<code><span class="keyword">fun </span><span class="identifier">getItemCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="get-item-id.html">getItemId</a></h4>
+</td>
+<td>
+<p>Return the stable ID for the item at position.</p>
+<code><span class="keyword">fun </span><span class="identifier">getItemId</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$getItemId(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="get-item-view-type.html">getItemViewType</a></h4>
+</td>
+<td>
+<p>Return the view type of the item at position for the purposes of view recycling.</p>
+<code><span class="keyword">fun </span><span class="identifier">getItemViewType</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$getItemViewType(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="get-span-size-lookup.html">getSpanSizeLookup</a></h4>
+</td>
+<td>
+<p>Obtain helper class to provide the number of spans each item occupies.</p>
+<code><span class="keyword">fun </span><span class="identifier">getSpanSizeLookup</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SpanSizeLookup</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-bind-view-holder.html">onBindViewHolder</a></h4>
+</td>
+<td>
+<p>Called by RecyclerView to display the data at the specified position.</p>
+<code><span class="keyword">fun </span><span class="identifier">onBindViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$onBindViewHolder(androidx.recyclerview.widget.RecyclerView.ViewHolder, kotlin.Int)/holder">holder</span><span class="symbol">:</span>&nbsp;<span class="identifier">ViewHolder</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$onBindViewHolder(androidx.recyclerview.widget.RecyclerView.ViewHolder, kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-create-view-holder.html">onCreateViewHolder</a></h4>
+</td>
+<td>
+<p>Called when RecyclerView needs a new <a href="#">RecyclerView.ViewHolder</a> of the given type to
+represent an item.</p>
+<code><span class="keyword">fun </span><span class="identifier">onCreateViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/inflater">inflater</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/LayoutInflater.html"><span class="identifier">LayoutInflater</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$onCreateViewHolder(android.view.ViewGroup, android.view.LayoutInflater, kotlin.Int)/viewType">viewType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ViewHolder</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="submit-state.html">submitState</a></h4>
+</td>
+<td>
+<p>Update current adapter state with the new one, applying visual changes.</p>
+<code><span class="keyword">fun </span><span class="identifier">submitState</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapter$submitState(com.vmadalin.dynamicfeatures.characterslist.ui.list.adapter.CharactersListAdapterState)/newState">newState</span><span class="symbol">:</span>&nbsp;<a href="../-characters-list-adapter-state/index.html"><span class="identifier">CharactersListAdapterState</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

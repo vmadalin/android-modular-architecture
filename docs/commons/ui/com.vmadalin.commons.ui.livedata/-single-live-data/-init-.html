@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleLiveData.<init> - commons/ui</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">commons/ui</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.commons.ui.livedata</a>&nbsp;/&nbsp;<a href="index.html">SingleLiveData</a>&nbsp;/&nbsp;<a href="./-init-.html">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="com.vmadalin.commons.ui.livedata.SingleLiveData$&lt;init&gt;()"></a>
+<code><span class="identifier">SingleLiveData</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A lifecycle-aware observable that sends only new updates after subscription, used for events
+like navigation and Snackbar messages.</p>
+<p>This avoids a common problem with events: on configuration change (like rotation) an update
+can be emitted if the observer is active. This LiveData only calls the observable if there's an
+explicit call to setValue() or call().</p>
+<p>Note that only one observer is going to be notified of changes.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">MutableLiveData</a></p>
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharacterDetailViewState - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.detail</a>&nbsp;/&nbsp;<a href="./index.html">CharacterDetailViewState</a><br/>
+<br/>
+<h1>CharacterDetailViewState</h1>
+<code><span class="keyword">sealed</span> <span class="keyword">class </span><span class="identifier">CharacterDetailViewState</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BaseViewState</span></code>
+<p>Different states for <a href="../-character-detail-fragment/index.html">CharacterDetailFragment</a>.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">BaseViewState</a></p>
+</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-added-to-favorite.html">AddedToFavorite</a></h4>
+</td>
+<td>
+<p>Added current character to favorite list.</p>
+<code><span class="keyword">object </span><span class="identifier">AddedToFavorite</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharacterDetailViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-add-to-favorite.html">AddToFavorite</a></h4>
+</td>
+<td>
+<p>Add current character to favorite list.</p>
+<code><span class="keyword">object </span><span class="identifier">AddToFavorite</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharacterDetailViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-already-added-to-favorite.html">AlreadyAddedToFavorite</a></h4>
+</td>
+<td>
+<p>Already added character to favorite list.</p>
+<code><span class="keyword">object </span><span class="identifier">AlreadyAddedToFavorite</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharacterDetailViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-dismiss.html">Dismiss</a></h4>
+</td>
+<td>
+<p>Dismiss the detail view.</p>
+<code><span class="keyword">object </span><span class="identifier">Dismiss</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharacterDetailViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-error.html">Error</a></h4>
+</td>
+<td>
+<p>Error on loading character detail info.</p>
+<code><span class="keyword">object </span><span class="identifier">Error</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharacterDetailViewState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-loading.html">Loading</a></h4>
+</td>
+<td>
+<p>Loading character detail info.</p>
+<code><span class="keyword">object </span><span class="identifier">Loading</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CharacterDetailViewState</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="is-added-to-favorite.html">isAddedToFavorite</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-added-to-favorite.html">AddedToFavorite</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isAddedToFavorite</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-add-to-favorite.html">isAddToFavorite</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-add-to-favorite.html">AddToFavorite</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isAddToFavorite</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-already-added-to-favorite.html">isAlreadyAddedToFavorite</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-already-added-to-favorite.html">AlreadyAddedToFavorite</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isAlreadyAddedToFavorite</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-dismiss.html">isDismiss</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-dismiss.html">Dismiss</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isDismiss</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-error.html">isError</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-error.html">Error</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isError</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-loading.html">isLoading</a></h4>
+</td>
+<td>
+<p>Check if current view state is <a href="-loading.html">Loading</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">isLoading</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

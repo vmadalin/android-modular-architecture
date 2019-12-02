@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleLiveData.observe - commons/ui</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">commons/ui</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.commons.ui.livedata</a>&nbsp;/&nbsp;<a href="index.html">SingleLiveData</a>&nbsp;/&nbsp;<a href="./observe.html">observe</a><br/>
+<br/>
+<h1>observe</h1>
+<a name="com.vmadalin.commons.ui.livedata.SingleLiveData$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Observer((com.vmadalin.commons.ui.livedata.SingleLiveData.T)))"></a>
+<code><span class="identifier">@MainThread</span> <span class="keyword">fun </span><span class="identifier">observe</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.commons.ui.livedata.SingleLiveData$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Observer((com.vmadalin.commons.ui.livedata.SingleLiveData.T)))/owner">owner</span><span class="symbol">:</span>&nbsp;<span class="identifier">LifecycleOwner</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.commons.ui.livedata.SingleLiveData$observe(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Observer((com.vmadalin.commons.ui.livedata.SingleLiveData.T)))/observer">observer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Observer</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds the given observer to the observers list within the lifespan of the given
+owner. The events are dispatched on the main thread. If LiveData already has data
+set, it will be delivered to the observer.</p>
+<h3>Parameters</h3>
+<p><a name="owner"></a>
+<code>owner</code> - The LifecycleOwner which controls the observer</p>
+<p><a name="observer"></a>
+<code>observer</code> - The observer that will receive the events</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">MutableLiveData.observe</a></p>
+</p>
+</BODY>
+</HTML>

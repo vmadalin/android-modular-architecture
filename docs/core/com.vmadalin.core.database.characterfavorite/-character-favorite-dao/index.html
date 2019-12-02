@@ -10,6 +10,9 @@
 <h1>CharacterFavoriteDao</h1>
 <code><span class="keyword">interface </span><span class="identifier">CharacterFavoriteDao</span></code>
 <p>The data access object for the <a href="../-character-favorite/index.html">CharacterFavorite</a> class.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">Dao</a></p>
+</p>
 <h3>Functions</h3>
 <table>
 <tbody>
@@ -18,6 +21,7 @@
 <h4><a href="delete-all-characters-favorite.html">deleteAllCharactersFavorite</a></h4>
 </td>
 <td>
+<p>Delete all database favorite characters.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">deleteAllCharactersFavorite</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
 </tr>
 <tr>
@@ -25,6 +29,7 @@
 <h4><a href="delete-character-favorite.html">deleteCharacterFavorite</a></h4>
 </td>
 <td>
+<p>Delete database favorite character.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">deleteCharacterFavorite</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao$deleteCharacterFavorite(com.vmadalin.core.database.characterfavorite.CharacterFavorite)/character">character</span><span class="symbol">:</span>&nbsp;<a href="../-character-favorite/index.html"><span class="identifier">CharacterFavorite</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
 </tr>
 <tr>
@@ -32,6 +37,7 @@
 <h4><a href="delete-character-favorite-by-id.html">deleteCharacterFavoriteById</a></h4>
 </td>
 <td>
+<p>Delete database favorite character by identifier.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">deleteCharacterFavoriteById</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao$deleteCharacterFavoriteById(kotlin.Long)/characterFavoriteId">characterFavoriteId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
 </tr>
 <tr>
@@ -39,6 +45,7 @@
 <h4><a href="get-all-characters-favorite.html">getAllCharactersFavorite</a></h4>
 </td>
 <td>
+<p>Obtain all database added favorite characters ordering by name field.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">getAllCharactersFavorite</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-character-favorite/index.html"><span class="identifier">CharacterFavorite</span></a><span class="symbol">&gt;</span></code></td>
 </tr>
 <tr>
@@ -46,6 +53,7 @@
 <h4><a href="get-all-characters-favorite-live-data.html">getAllCharactersFavoriteLiveData</a></h4>
 </td>
 <td>
+<p>Obtain all database added favorite characters ordering by name field.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getAllCharactersFavoriteLiveData</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-character-favorite/index.html"><span class="identifier">CharacterFavorite</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
 </tr>
 <tr>
@@ -53,6 +61,7 @@
 <h4><a href="get-character-favorite.html">getCharacterFavorite</a></h4>
 </td>
 <td>
+<p>Obtain database favorite character by identifier.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">getCharacterFavorite</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao$getCharacterFavorite(kotlin.Long)/characterFavoriteId">characterFavoriteId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-character-favorite/index.html"><span class="identifier">CharacterFavorite</span></a><span class="symbol">?</span></code></td>
 </tr>
 <tr>
@@ -60,6 +69,7 @@
 <h4><a href="insert-character-favorite.html">insertCharacterFavorite</a></h4>
 </td>
 <td>
+<p>Add to database a favorite character.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">insertCharacterFavorite</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao$insertCharacterFavorite(com.vmadalin.core.database.characterfavorite.CharacterFavorite)/character">character</span><span class="symbol">:</span>&nbsp;<a href="../-character-favorite/index.html"><span class="identifier">CharacterFavorite</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
 </tr>
 <tr>
@@ -67,6 +77,7 @@
 <h4><a href="insert-characters-favorites.html">insertCharactersFavorites</a></h4>
 </td>
 <td>
+<p>Add to database a list of favorite characters.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">insertCharactersFavorites</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao$insertCharactersFavorites(kotlin.collections.List((com.vmadalin.core.database.characterfavorite.CharacterFavorite)))/characters">characters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../-character-favorite/index.html"><span class="identifier">CharacterFavorite</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
 </tr>
 </tbody>

@@ -9,6 +9,16 @@
 <br/>
 <h1>BaseResponse</h1>
 <code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">BaseResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Generic network response for any type data <a href="index.html#T">T</a>.</p>
+<h3>Parameters</h3>
+<p><a name="code"></a>
+<code>code</code> - The HTTP status code of the returned result.</p>
+<p><a name="status"></a>
+<code>status</code> - A string description of the call status.</p>
+<p><a name="message"></a>
+<code>message</code> - A more descriptive message of the failure call status.</p>
+<p><a name="data"></a>
+<code>data</code> - The results returned by the call.</p>
 <h3>Constructors</h3>
 <table>
 <tbody>
@@ -17,6 +27,7 @@
 <h4><a href="-init-.html">&lt;init&gt;</a></h4>
 </td>
 <td>
+<p>Generic network response for any type data <a href="index.html#T">T</a>.</p>
 <code><span class="identifier">BaseResponse</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.core.network.responses.BaseResponse$<init>(kotlin.Any, kotlin.String, kotlin.String, com.vmadalin.core.network.responses.DataResponse((com.vmadalin.core.network.responses.BaseResponse.T)))/code">code</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.BaseResponse$<init>(kotlin.Any, kotlin.String, kotlin.String, com.vmadalin.core.network.responses.DataResponse((com.vmadalin.core.network.responses.BaseResponse.T)))/status">status</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.BaseResponse$<init>(kotlin.Any, kotlin.String, kotlin.String, com.vmadalin.core.network.responses.DataResponse((com.vmadalin.core.network.responses.BaseResponse.T)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.vmadalin.core.network.responses.BaseResponse$<init>(kotlin.Any, kotlin.String, kotlin.String, com.vmadalin.core.network.responses.DataResponse((com.vmadalin.core.network.responses.BaseResponse.T)))/data">data</span><span class="symbol">:</span>&nbsp;<a href="../-data-response/index.html"><span class="identifier">DataResponse</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code></td>
 </tr>
 </tbody>
@@ -29,6 +40,7 @@
 <h4><a href="code.html">code</a></h4>
 </td>
 <td>
+<p>The HTTP status code of the returned result.</p>
 <code><span class="keyword">val </span><span class="identifier">code</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
 </tr>
 <tr>
@@ -36,6 +48,7 @@
 <h4><a href="data.html">data</a></h4>
 </td>
 <td>
+<p>The results returned by the call.</p>
 <code><span class="keyword">val </span><span class="identifier">data</span><span class="symbol">: </span><a href="../-data-response/index.html"><span class="identifier">DataResponse</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
 </tr>
 <tr>
@@ -43,6 +56,7 @@
 <h4><a href="message.html">message</a></h4>
 </td>
 <td>
+<p>A more descriptive message of the failure call status.</p>
 <code><span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
 </tr>
 <tr>
@@ -50,6 +64,7 @@
 <h4><a href="status.html">status</a></h4>
 </td>
 <td>
+<p>A string description of the call status.</p>
 <code><span class="keyword">val </span><span class="identifier">status</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
 </tr>
 </tbody>

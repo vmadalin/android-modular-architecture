@@ -10,5 +10,18 @@
 <h1>getCharacter</h1>
 <a name="com.vmadalin.core.network.services.MarvelService$getCharacter(kotlin.Long, kotlin.String, kotlin.String, kotlin.String)"></a>
 <code><span class="identifier">@GET</span><span class="symbol">(</span>"/v1/public/characters/{id}"<span class="symbol">)</span> <span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">getCharacter</span><span class="symbol">(</span><span class="identifier">@Path</span><span class="symbol">(</span>"id"<span class="symbol">)</span> <span class="identifier" id="com.vmadalin.core.network.services.MarvelService$getCharacter(kotlin.Long, kotlin.String, kotlin.String, kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier">@Query</span><span class="symbol">(</span>"apikey"<span class="symbol">)</span> <span class="identifier" id="com.vmadalin.core.network.services.MarvelService$getCharacter(kotlin.Long, kotlin.String, kotlin.String, kotlin.String)/apiKey">apiKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier">@Query</span><span class="symbol">(</span>"hash"<span class="symbol">)</span> <span class="identifier" id="com.vmadalin.core.network.services.MarvelService$getCharacter(kotlin.Long, kotlin.String, kotlin.String, kotlin.String)/hash">hash</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier">@Query</span><span class="symbol">(</span>"ts"<span class="symbol">)</span> <span class="identifier" id="com.vmadalin.core.network.services.MarvelService$getCharacter(kotlin.Long, kotlin.String, kotlin.String, kotlin.String)/timestamp">timestamp</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.vmadalin.core.network.responses/-base-response/index.html"><span class="identifier">BaseResponse</span></a><span class="symbol">&lt;</span><a href="../../com.vmadalin.core.network.responses/-character-response/index.html"><span class="identifier">CharacterResponse</span></a><span class="symbol">&gt;</span></code>
+<p>Fetches a single character resource. It is the canonical URI for any character resource
+provided by the API.</p>
+<h3>Parameters</h3>
+<p><a name="id"></a>
+<code>id</code> - A single character id.</p>
+<p><a name="apiKey"></a>
+<code>apiKey</code> - A unique identifier used to authenticate all calling to an API.</p>
+<p><a name="hash"></a>
+<code>hash</code> - A md5 digest of the ts parameter, private API key and public.</p>
+<p><a name="timestamp"></a>
+<code>timestamp</code> - A digital current record of the time.</p>
+<p><strong>Return</strong><br/>
+Response for single character resource.</p>
 </BODY>
 </HTML>

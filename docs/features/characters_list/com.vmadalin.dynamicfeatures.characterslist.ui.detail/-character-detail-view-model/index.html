@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharacterDetailViewModel - features/characters_list</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">features/characters_list</a>&nbsp;/&nbsp;<a href="../index.html">com.vmadalin.dynamicfeatures.characterslist.ui.detail</a>&nbsp;/&nbsp;<a href="./index.html">CharacterDetailViewModel</a><br/>
+<br/>
+<h1>CharacterDetailViewModel</h1>
+<code><span class="keyword">class </span><span class="identifier">CharacterDetailViewModel</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ViewModel</span></code>
+<p>View model responsible for preparing and managing the data for <a href="../-character-detail-fragment/index.html">CharacterDetailFragment</a>.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">ViewModel</a></p>
+</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>View model responsible for preparing and managing the data for <a href="../-character-detail-fragment/index.html">CharacterDetailFragment</a>.</p>
+<code><span class="identifier">CharacterDetailViewModel</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel$<init>(com.vmadalin.core.network.repositiories.MarvelRepository, com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository, com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper)/marvelRepository">marvelRepository</span><span class="symbol">:</span>&nbsp;<span class="identifier">MarvelRepository</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel$<init>(com.vmadalin.core.network.repositiories.MarvelRepository, com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository, com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper)/characterFavoriteRepository">characterFavoriteRepository</span><span class="symbol">:</span>&nbsp;<span class="identifier">CharacterFavoriteRepository</span><span class="symbol">, </span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel$<init>(com.vmadalin.core.network.repositiories.MarvelRepository, com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository, com.vmadalin.dynamicfeatures.characterslist.ui.detail.model.CharacterDetailMapper)/characterDetailMapper">characterDetailMapper</span><span class="symbol">:</span>&nbsp;<a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.detail.model/-character-detail-mapper/index.html"><span class="identifier">CharacterDetailMapper</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="character-detail-mapper.html">characterDetailMapper</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">characterDetailMapper</span><span class="symbol">: </span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.detail.model/-character-detail-mapper/index.html"><span class="identifier">CharacterDetailMapper</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="character-favorite-repository.html">characterFavoriteRepository</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">characterFavoriteRepository</span><span class="symbol">: </span><span class="identifier">CharacterFavoriteRepository</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="data.html">data</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">data</span><span class="symbol">: </span><span class="identifier">LiveData</span><span class="symbol">&lt;</span><a href="../../com.vmadalin.dynamicfeatures.characterslist.ui.detail.model/-character-detail/index.html"><span class="identifier">CharacterDetail</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="marvel-repository.html">marvelRepository</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">marvelRepository</span><span class="symbol">: </span><span class="identifier">MarvelRepository</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="state.html">state</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">state</span><span class="symbol">: </span><span class="identifier">LiveData</span><span class="symbol">&lt;</span><a href="../-character-detail-view-state/index.html"><span class="identifier">CharacterDetailViewState</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="add-character-to-favorite.html">addCharacterToFavorite</a></h4>
+</td>
+<td>
+<p>Store selected character to database favorite list.</p>
+<code><span class="keyword">fun </span><span class="identifier">addCharacterToFavorite</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="dismiss-character-detail.html">dismissCharacterDetail</a></h4>
+</td>
+<td>
+<p>Send interaction event for dismiss character detail view.</p>
+<code><span class="keyword">fun </span><span class="identifier">dismissCharacterDetail</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="load-character-detail.html">loadCharacterDetail</a></h4>
+</td>
+<td>
+<p>Fetch selected character detail info.</p>
+<code><span class="keyword">fun </span><span class="identifier">loadCharacterDetail</span><span class="symbol">(</span><span class="identifier" id="com.vmadalin.dynamicfeatures.characterslist.ui.detail.CharacterDetailViewModel$loadCharacterDetail(kotlin.Long)/characterId">characterId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
