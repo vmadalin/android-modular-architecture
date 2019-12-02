@@ -35,7 +35,7 @@ open class CharacterItemMapper : Mapper<BaseResponse<CharacterResponse>, List<Ch
      * @param from Network characters response.
      * @return List of parsed characters items.
      */
-    override fun map(from: BaseResponse<CharacterResponse>) =
+    override suspend fun map(from: BaseResponse<CharacterResponse>) =
         from.data.results.map {
             CharacterItem(
                 id = it.id,

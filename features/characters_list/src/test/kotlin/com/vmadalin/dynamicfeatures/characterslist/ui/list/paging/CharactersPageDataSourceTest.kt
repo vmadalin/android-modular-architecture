@@ -33,7 +33,6 @@ import io.mockk.Called
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
@@ -102,13 +101,13 @@ class CharactersPageDataSourceTest {
         val emptyData = emptyList<CharacterItem>()
         val response = mockk<BaseResponse<CharacterResponse>>()
 
-        every { mapper.map(any()) } returns emptyData
+        coEvery { mapper.map(any()) } returns emptyData
         coEvery { repository.getCharacters(any(), any()) } returns response
 
         dataSource.loadInitial(params, callback)
 
         coVerify { repository.getCharacters(0, PAGE_MAX_ELEMENTS) }
-        verify { mapper.map(response) }
+        coVerify { mapper.map(response) }
         verify { callback.onResult(emptyData, null, PAGE_MAX_ELEMENTS) }
         verify {
             networkState.postValue(
@@ -127,13 +126,13 @@ class CharactersPageDataSourceTest {
         val data = listOf(mockk<CharacterItem>())
         val response = mockk<BaseResponse<CharacterResponse>>()
 
-        every { mapper.map(any()) } returns data
+        coEvery { mapper.map(any()) } returns data
         coEvery { repository.getCharacters(any(), any()) } returns response
 
         dataSource.loadInitial(params, callback)
 
         coVerify { repository.getCharacters(0, PAGE_MAX_ELEMENTS) }
-        verify { mapper.map(response) }
+        coVerify { mapper.map(response) }
         verify { callback.onResult(data, null, PAGE_MAX_ELEMENTS) }
         verify { networkState.postValue(NetworkState.Success()) }
     }
@@ -165,13 +164,13 @@ class CharactersPageDataSourceTest {
         val emptyData = emptyList<CharacterItem>()
         val response = mockk<BaseResponse<CharacterResponse>>()
 
-        every { mapper.map(any()) } returns emptyData
+        coEvery { mapper.map(any()) } returns emptyData
         coEvery { repository.getCharacters(any(), any()) } returns response
 
         dataSource.loadAfter(params, callback)
 
         coVerify { repository.getCharacters(paramKey, PAGE_MAX_ELEMENTS) }
-        verify { mapper.map(response) }
+        coVerify { mapper.map(response) }
         verify { callback.onResult(emptyData, paramKey + PAGE_MAX_ELEMENTS) }
         verify {
             networkState.postValue(
@@ -191,13 +190,13 @@ class CharactersPageDataSourceTest {
         val data = listOf(mockk<CharacterItem>())
         val response = mockk<BaseResponse<CharacterResponse>>()
 
-        every { mapper.map(any()) } returns data
+        coEvery { mapper.map(any()) } returns data
         coEvery { repository.getCharacters(any(), any()) } returns response
 
         dataSource.loadAfter(params, callback)
 
         coVerify { repository.getCharacters(paramKey, PAGE_MAX_ELEMENTS) }
-        verify { mapper.map(response) }
+        coVerify { mapper.map(response) }
         verify { callback.onResult(data, paramKey + PAGE_MAX_ELEMENTS) }
         verify {
             networkState.postValue(

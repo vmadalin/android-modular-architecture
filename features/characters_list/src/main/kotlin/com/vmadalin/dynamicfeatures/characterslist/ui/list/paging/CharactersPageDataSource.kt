@@ -75,7 +75,7 @@ open class CharactersPageDataSource @Inject constructor(
                 limit = PAGE_MAX_ELEMENTS
             )
             val data = mapper.map(response)
-            callback.onResult(mapper.map(response), null, PAGE_MAX_ELEMENTS)
+            callback.onResult(data, null, PAGE_MAX_ELEMENTS)
             networkState.postValue(NetworkState.Success(isEmptyResponse = data.isEmpty()))
         }
     }

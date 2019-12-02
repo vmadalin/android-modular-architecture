@@ -44,7 +44,7 @@ class SingleLiveData<T> : MutableLiveData<T>() {
      * owner. The events are dispatched on the main thread. If LiveData already has data
      * set, it will be delivered to the observer.
      *
-     * @param owner    The LifecycleOwner which controls the observer
+     * @param owner The LifecycleOwner which controls the observer
      * @param observer The observer that will receive the events
      * @see MutableLiveData.observe
      */

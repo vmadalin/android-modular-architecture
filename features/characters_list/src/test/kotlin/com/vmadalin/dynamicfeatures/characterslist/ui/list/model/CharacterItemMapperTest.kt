@@ -20,6 +20,7 @@ import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.core.network.responses.CharacterThumbnailResponse
 import com.vmadalin.core.network.responses.DataResponse
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -29,7 +30,7 @@ class CharacterItemMapperTest {
     private val mapper = CharacterItemMapper()
 
     @Test
-    fun characterMapper_WithEmptyResults_ShouldReturnEmptyList() {
+    fun characterMapper_WithEmptyResults_ShouldReturnEmptyList() = runBlocking {
         val response = BaseResponse(
             code = 200,
             status = "Ok",
@@ -47,7 +48,7 @@ class CharacterItemMapperTest {
     }
 
     @Test
-    fun characterMapper_WithResults_ShouldReturnParsedList() {
+    fun characterMapper_WithResults_ShouldReturnParsedList() = runBlocking {
         val response = BaseResponse(
             code = 200,
             status = "Ok",

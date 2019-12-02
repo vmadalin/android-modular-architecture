@@ -28,7 +28,6 @@ import com.vmadalin.libraries.testutils.rules.CoroutineRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import io.mockk.verify
@@ -92,7 +91,7 @@ class CharacterDetailViewModelTest {
         val characterDetail = mockk<CharacterDetail>()
         val characterResponse = mockk<BaseResponse<CharacterResponse>>()
         coEvery { marvelRepository.getCharacter(any()) } returns characterResponse
-        every { characterDetailMapper.map(any()) } returns characterDetail
+        coEvery { characterDetailMapper.map(any()) } returns characterDetail
 
         val characterId = 1L
         viewModel.loadCharacterDetail(characterId)
@@ -107,7 +106,7 @@ class CharacterDetailViewModelTest {
         val characterDetail = mockk<CharacterDetail>()
         coEvery { characterFavoriteRepository.getCharacterFavorite(any()) } returns null
         coEvery { marvelRepository.getCharacter(any()) } returns mockk()
-        every { characterDetailMapper.map(any()) } returns characterDetail
+        coEvery { characterDetailMapper.map(any()) } returns characterDetail
 
         viewModel.loadCharacterDetail(1L)
 
@@ -121,7 +120,7 @@ class CharacterDetailViewModelTest {
         val characterDetail = mockk<CharacterDetail>()
         coEvery { characterFavoriteRepository.getCharacterFavorite(any()) } returns mockk()
         coEvery { marvelRepository.getCharacter(any()) } returns mockk()
-        every { characterDetailMapper.map(any()) } returns characterDetail
+        coEvery { characterDetailMapper.map(any()) } returns characterDetail
 
         viewModel.loadCharacterDetail(1L)
 
@@ -149,7 +148,7 @@ class CharacterDetailViewModelTest {
             imageUrl = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
         )
         coEvery { marvelRepository.getCharacter(any()) } returns mockk()
-        every { characterDetailMapper.map(any()) } returns characterDetail
+        coEvery { characterDetailMapper.map(any()) } returns characterDetail
 
         viewModel.loadCharacterDetail(1L)
         viewModel.addCharacterToFavorite()

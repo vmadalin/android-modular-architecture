@@ -20,6 +20,7 @@ import com.vmadalin.core.network.responses.BaseResponse
 import com.vmadalin.core.network.responses.CharacterResponse
 import com.vmadalin.core.network.responses.CharacterThumbnailResponse
 import com.vmadalin.core.network.responses.DataResponse
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -29,24 +30,26 @@ class CharacterDetailMapperTest {
 
     @Test(expected = NoSuchElementException::class)
     fun characterMapper_WithEmptyResults_ShouldThrowException() {
-        val response = BaseResponse(
-            code = 200,
-            status = "Ok",
-            message = "Ok",
-            data = DataResponse<CharacterResponse>(
-                offset = 0,
-                limit = 0,
-                total = 0,
-                count = 0,
-                results = emptyList()
+        runBlocking {
+            val response = BaseResponse(
+                code = 200,
+                status = "Ok",
+                message = "Ok",
+                data = DataResponse<CharacterResponse>(
+                    offset = 0,
+                    limit = 0,
+                    total = 0,
+                    count = 0,
+                    results = emptyList()
+                )
             )
-        )
 
-        mapper.map(response)
+            mapper.map(response)
+        }
     }
 
     @Test
-    fun characterMapper_WithResults_ShouldParseModel() {
+    fun characterMapper_WithResults_ShouldParseModel() = runBlocking {
         val response = BaseResponse(
             code = 200,
             status = "Ok",

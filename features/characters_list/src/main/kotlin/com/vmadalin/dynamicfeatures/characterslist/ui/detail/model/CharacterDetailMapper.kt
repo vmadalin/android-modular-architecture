@@ -37,7 +37,7 @@ class CharacterDetailMapper : Mapper<BaseResponse<CharacterResponse>, CharacterD
      * @throws NoSuchElementException If the response results are empty.
      */
     @Throws(NoSuchElementException::class)
-    override fun map(from: BaseResponse<CharacterResponse>): CharacterDetail {
+    override suspend fun map(from: BaseResponse<CharacterResponse>): CharacterDetail {
         val characterResponse = from.data.results.first()
         return CharacterDetail(
             id = characterResponse.id,

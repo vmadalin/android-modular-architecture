@@ -56,7 +56,7 @@ class CharactersFavoriteTouchHelper @Inject constructor(
      *
      * @param viewHolder The ViewHolder which has been swiped by the user.
      * @param direction The direction to which the ViewHolder is swiped. It is one of
-     * [ItemTouchHelper.UP],[ItemTouchHelper.DOWN],[ItemTouchHelper.LEFT] or [ItemTouchHelper.RIGHT].
+     * [ItemTouchHelper.UP], [ItemTouchHelper.DOWN], [ItemTouchHelper.LEFT] or [ItemTouchHelper.RIGHT].
      * @see ItemTouchHelper.SimpleCallback.onSwiped
      */
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
