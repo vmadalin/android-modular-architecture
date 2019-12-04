@@ -1,4 +1,4 @@
-## Kotlin Sample App (work-in-progress 👷🔧️👷‍♀️⛏)
+## Kotlin Sample App
 [![CircleCI](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master.svg?style=shield)](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master)
 [![Codecov](https://codecov.io/gh/VMadalin/kotlin-sample-app/coverage.svg)](https://codecov.io/gh/VMadalin/kotlin-sample-app)
 [![Codacy](https://api.codacy.com/project/badge/Grade/5970b6648df0465588f9781ae6e3332e)](https://www.codacy.com/manual/VMadalin/kotlin-sample-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VMadalin/kotlin-sample-app&amp;utm_campaign=Badge_Grade)
@@ -107,19 +107,57 @@ Moreover, has been implemented support for [dark theme](https://developer.androi
 
 The architecture of the application is based, apply and strictly complies with each of the following 5 points:
 
+<img src="screenshots/architecture/project_structure.png" width="300" align="right" hspace="20">
+
 -   A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) to manage fragment operations.
 -   [Android architecture components](https://developer.android.com/topic/libraries/architecture/), part of Android Jetpack for give to project a robust design, testable and maintainable. 
--   Pattern [Model-View-ViewModel](](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)) (MVVM) facilitating a [separation](https://en.wikipedia.org/wiki/Separation_of_concerns) of development of the graphical user interface.
+-   Pattern [Model-View-ViewModel](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) (MVVM) facilitating a [separation](https://en.wikipedia.org/wiki/Separation_of_concerns) of development of the graphical user interface.
 -   [S.O.L.I.D](https://en.wikipedia.org/wiki/SOLID) design principles intended to make software designs more understandable, flexible and maintainable.
 -   [Modular app architecture](https://proandroiddev.com/build-a-modular-android-app-architecture-25342d99de82) allows to be developed features in isolation, independently from other features.
 
 ### Modules
 
-Modules are collection of source files and build settings that allow you to divide a project into discrete units of functionality. In this case apart from dividing by functionality/responsibility, existing dependence between them:
+Modules are collection of source files and build settings that allow you to divide a project into discrete units of functionality. In this case apart from dividing by functionality/responsibility, existing the following dependence between them:
 
 <p align="center">
  <img src="screenshots/architecture/modules_diagram.png">
 </p>
+
+The above graph shows the app modularisation:
+-    `:app` depends on `:core` and indirectly depends on `:features` by dynamic-features.
+-    `:features` modules depends on `:commons`, `:core`, `:libraries` and `:app`.
+-    `:core` and `:commons` only depends for possible utils on `:libraries`.
+-    `:libraries` don’t have any dependency.
+
+#### App module
+
+The `:app` module is an [com.android.application](https://developer.android.com/studio/build/), which is needed to create the app bundle.  It is also responsible for initiating the [dependency graph](https://github.com/google/dagger), [play core](https://developer.android.com/reference/com/google/android/play/core/release-notes) and another project global libraries, differentiating especially between different app environments.
+
+#### Core module
+
+The `:core` module is an [com.android.library](https://developer.android.com/studio/projects/android-library)  for serving network requests or accessing to the database. Providing the data source for the many features that require it.
+
+#### Features modules
+
+The `:features` module are an [com.android.dynamic-feature](https://developer.android.com/studio/projects/dynamic-delivery) is essentially a gradle module which can be downloaded independently from the base application module. It can hold code and resources and include dependencies, just like any other gradle module. 
+
+#### Commons modules
+
+The `:commons` modules are an [com.android.library](https://developer.android.com/studio/projects/android-library) only contains code and resources which are shared between feature modules. Reusing this way resources, layouts, views, and components in the different features modules, without the need to duplicate code.
+
+#### Libraries modules
+
+The `:libraries` modules are an [com.android.library](https://developer.android.com/studio/projects/android-library), basically contains different utilities that can be used by the different modules.
+
+### Architecture components
+
+Ideally, ViewModels shouldn’t know anything about Android. This improves testability, leak safety and modularity. ViewModels have different scopes than activities or fragments. While a ViewModel is alive and running, an activity can be in any of its lifecycle states. Activities and fragments can be destroyed and created again while the ViewModel is unaware.
+
+Passing a reference of the View (activity or fragment) to the ViewModel is a serious risk. Lets assume the ViewModel requests data from the network and the data comes back some time later. At that moment, the View reference might be destroyed or might be an old activity that is no longer visible, generating a memory leak and, possibly, a crash.
+
+<img src="screenshots/architecture/communication_diagram.png">
+
+The communication between the different layers follow the above diagram using the reactive paradigm, observing changes on components without need of callbacks avoiding leaks and edge cases related with them.
 
 ### Build variants
 
