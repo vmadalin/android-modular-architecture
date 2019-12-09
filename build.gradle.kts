@@ -18,6 +18,7 @@ import extensions.applyDefault
 
 plugins.apply(BuildPlugins.GIT_HOOKS)
 plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES)
+apply(from = "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle")
 
 allprojects {
     repositories.applyDefault()

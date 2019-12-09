@@ -120,7 +120,7 @@ The architecture of the application is based, apply and strictly complies with e
 Modules are collection of source files and build settings that allow you to divide a project into discrete units of functionality. In this case apart from dividing by functionality/responsibility, existing the following dependence between them:
 
 <p align="center">
- <img src="screenshots/architecture/modules_diagram.png">
+ <img src="screenshots/architecture/project-dependecy-graph.png">
 </p>
 
 The above graph shows the app modularisation:
