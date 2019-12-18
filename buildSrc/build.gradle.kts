@@ -34,6 +34,15 @@ kotlinDslPluginOptions {
     experimentalWarning.set(false)
 }
 
+gradlePlugin {
+    plugins {
+        register("DependencyGraphGenerator") {
+            id = "project-dependencies-graph-plugin"
+            implementationClass = "plugins.graph.DependencyGraphGeneratorPlugin"
+        }
+    }
+}
+
 object PluginsVersions {
     const val GRADLE_ANDROID = "3.5.1"
     const val GRADLE_VERSIONS = "0.22.0"
@@ -45,6 +54,7 @@ object PluginsVersions {
     const val KTLINT = "0.34.2"
     const val SPOTLESS = "3.24.1"
     const val DETEKT = "1.0.1"
+    const val GRAPHVIZ = "0.12.1"
 }
 
 dependencies {
@@ -59,4 +69,5 @@ dependencies {
     implementation("com.pinterest:ktlint:${PluginsVersions.KTLINT}")
     implementation("com.diffplug.spotless:spotless-plugin-gradle:${PluginsVersions.SPOTLESS}")
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${PluginsVersions.DETEKT}")
+    implementation("guru.nidi:graphviz-java:${PluginsVersions.GRAPHVIZ}")
 }
