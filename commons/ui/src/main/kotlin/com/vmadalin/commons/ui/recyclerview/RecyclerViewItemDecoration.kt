@@ -23,6 +23,7 @@ import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.ceil
 
 /**
  * Simple item decoration allows the application to add a special drawing and layout offset
@@ -85,7 +86,7 @@ class RecyclerViewItemDecoration(
         itemCount: Int
     ) {
         val cols = layoutManager.spanCount
-        val rows = if (itemCount % 2 == 0) itemCount / cols else itemCount / cols + 1
+        val rows = ceil(itemCount / cols.toDouble()).toInt()
 
         outRect.top = spacingPx
         outRect.left = spacingPx
