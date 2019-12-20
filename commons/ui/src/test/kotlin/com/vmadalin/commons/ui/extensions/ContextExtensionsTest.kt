@@ -23,7 +23,6 @@ import io.mockk.impl.annotations.MockK
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyInt
 
 class ContextExtensionsTest {
 
@@ -40,7 +39,7 @@ class ContextExtensionsTest {
         val resId = 0
         val expectedString = "test"
 
-        every { context.getString(anyInt()) } returns expectedString
+        every { context.getString(any()) } returns expectedString
 
         assertEquals(expectedString, context.getString(resId))
     }
