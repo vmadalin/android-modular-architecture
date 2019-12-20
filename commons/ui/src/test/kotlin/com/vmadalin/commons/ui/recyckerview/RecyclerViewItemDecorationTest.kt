@@ -300,9 +300,9 @@ class RecyclerViewItemDecorationTest {
     }
 
     private data class KRect(
-        var left: Int,
-        var top: Int,
-        var right: Int,
-        var bottom: Int
+        val left: Int,
+        val top: Int,
+        val right: Int,
+        val bottom: Int
     )
 }
