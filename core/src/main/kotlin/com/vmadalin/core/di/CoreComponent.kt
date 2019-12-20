@@ -42,12 +42,38 @@ import javax.inject.Singleton
 ])
 interface CoreComponent {
 
+    /**
+     * Provide dependency graph Context
+     *
+     * @return Context
+     */
     fun context(): Context
 
+    /**
+     * Provide dependency graph MarvelService
+     *
+     * @return MarvelService
+     */
     fun marvelService(): MarvelService
+
+    /**
+     * Provide dependency graph MarvelRepository
+     *
+     * @return MarvelRepository
+     */
     fun marvelRepository(): MarvelRepository
 
+    /**
+     * Provide dependency graph CharacterFavoriteDao
+     *
+     * @return CharacterFavoriteDao
+     */
     fun characterFavoriteDao(): CharacterFavoriteDao
 
+    /**
+     * Provide dependency graph ThemeUtils
+     *
+     * @return ThemeUtils
+     */
     fun themeUtils(): ThemeUtils
 }
