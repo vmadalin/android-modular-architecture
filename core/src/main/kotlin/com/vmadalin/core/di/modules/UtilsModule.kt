@@ -18,8 +18,9 @@ package com.vmadalin.core.di.modules
 
 import com.vmadalin.core.di.CoreComponent
 import com.vmadalin.core.utils.ThemeUtils
+import com.vmadalin.core.utils.ThemeUtilsImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import javax.inject.Singleton
 
 /**
@@ -28,15 +29,15 @@ import javax.inject.Singleton
  * @see Module
  */
 @Module
-class UtilsModule {
+abstract class UtilsModule {
 
     /**
-     * Create a provider method binding for [ThemeUtils].
+     * Create a provider method binding for [ThemeUtilsImpl].
      *
      * @return Instance of theme utils.
-     * @see Provides
+     * @see Binds
      */
     @Singleton
-    @Provides
-    fun provideThemeUtils() = ThemeUtils()
+    @Binds
+    abstract fun bindThemeUtils(themeUtilsImpl: ThemeUtilsImpl): ThemeUtils
 }

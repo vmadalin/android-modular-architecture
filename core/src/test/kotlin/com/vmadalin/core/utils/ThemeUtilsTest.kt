@@ -33,7 +33,7 @@ class ThemeUtilsTest : TestRobolectric() {
     val rule = ActivityScenarioRule(TestCompatActivity::class.java)
     private lateinit var scenario: ActivityScenario<TestCompatActivity>
 
-    private var themeUtils = ThemeUtils()
+    private var themeUtils = ThemeUtilsImpl()
 
     @Before
     fun setUp() {
