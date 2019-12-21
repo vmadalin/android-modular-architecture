@@ -54,8 +54,8 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures{
+        dataBinding = true
     }
 
     androidExtensions {

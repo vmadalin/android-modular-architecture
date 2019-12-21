@@ -99,8 +99,8 @@ android {
         BuildModules.Features.CHARACTERS_FAVORITES
     )
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures{
+        dataBinding = true
     }
 
     androidExtensions {

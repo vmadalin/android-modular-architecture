@@ -15,14 +15,14 @@
  */
 
 include(
-    BuildModules.APP,
-    BuildModules.CORE,
-    BuildModules.Features.HOME,
-    BuildModules.Features.CHARACTERS_LIST,
-    BuildModules.Features.CHARACTERS_FAVORITES,
-    BuildModules.Libraries.TEST_UTILS,
-    BuildModules.Commons.UI,
-    BuildModules.Commons.VIEWS
+    ":app",
+    ":core",
+    ":features:home",
+    ":features:characters_list",
+    ":features:characters_favorites",
+    ":libraries:test_utils",
+    ":commons:ui",
+    ":commons:views"
 )
 
 rootProject.buildFileName = "build.gradle.kts"

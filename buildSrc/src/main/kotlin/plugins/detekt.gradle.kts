@@ -24,7 +24,6 @@ apply<DetektPlugin>()
 configure<DetektExtension> {
     input = project.files("src/main/kotlin")
     config = files("$rootDir/.detekt/config.yml")
-    filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
     reports {
         xml {
             enabled = true
