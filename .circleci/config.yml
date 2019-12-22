@@ -48,7 +48,6 @@ jobs:
           path: build/dependencyUpdates
       - codecov/upload:
           flags: unittest
-          conf: .codecov.yml
       - save_cache:
           paths:
             - ~/.gradle
