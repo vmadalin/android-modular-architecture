@@ -27,7 +27,6 @@ import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.testImplementation
 import extensions.kapt
-import gradle.kotlin.dsl.accessors._8fbe50ab46e72ba67087bf0fa5fe6568.testImplementation
 
 plugins {
     id("com.android.dynamic-feature")
@@ -58,8 +57,8 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures{
+        dataBinding = true
     }
 
     androidExtensions {
