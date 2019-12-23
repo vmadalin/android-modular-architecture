@@ -19,14 +19,14 @@ long application lifecycle management.
 
 ## Table of Contents
 
-- [Development](https://github.com/VMadalin/kotlin-sample-app#development)
-- [Design](https://github.com/VMadalin/kotlin-sample-app#design)
-- [Architecture](https://github.com/VMadalin/kotlin-sample-app#architecture)
-- [Documentation](https://github.com/VMadalin/kotlin-sample-app#documentation)
-- [Tech-stack](https://github.com/VMadalin/kotlin-sample-app#tech-stack)
-- [Resources](https://github.com/VMadalin/kotlin-sample-app#resources)
-- [Contributions](https://github.com/VMadalin/kotlin-sample-app#contributions)
-- [License](https://github.com/VMadalin/kotlin-sample-app#license)
+-   [Development](https://github.com/VMadalin/kotlin-sample-app#development)
+-   [Design](https://github.com/VMadalin/kotlin-sample-app#design)
+-   [Architecture](https://github.com/VMadalin/kotlin-sample-app#architecture)
+-   [Documentation](https://github.com/VMadalin/kotlin-sample-app#documentation)
+-   [Tech-stack](https://github.com/VMadalin/kotlin-sample-app#tech-stack)
+-   [Resources](https://github.com/VMadalin/kotlin-sample-app#resources)
+-   [Contributions](https://github.com/VMadalin/kotlin-sample-app#contributions)
+-   [License](https://github.com/VMadalin/kotlin-sample-app#license)
 
 ## Development
 
@@ -36,12 +36,12 @@ First off, you require the latest Android Studio 3.5 (or newer) to be able to bu
 
 You need to supply API keys for the various services the app uses. That is currently Marvel and Fabric (Crashlytics). You can find information about how to gain access via these relevant links.
 
-- Marvel: https://developer.marvel.com/
-- Firebase: https://get.fabric.io/
+-   Marvel: https://developer.marvel.com/
+-   Firebase: https://get.fabric.io/
 
 When you obtain the keys, you can provide them to the app by putting the following in the `local.properties` project root file:
 
-```
+```properties
 #Marvel API KEYS
 marvel.key.public = <insert>
 marvel.key.private = <insert>
@@ -53,7 +53,7 @@ fabric.secret = <insert>
 
 Moreover, to sign your app for release you should generate an upload key and keystore following the [official documentation](https://developer.android.com/studio/publish/app-signing#sign-apk). Append the information used to generate it into `local.properties` project root file following the structure:
 
-```
+```properties
 #Signing Config
 signing.key.alias = <insert>
 signing.key.password = <insert>
@@ -65,16 +65,17 @@ signing.store.password = <insert>
 
 To maintain the style and quality of the code, are used the bellow static analysis tools. All of them use properly configuration and you find them in the project root directory `.{toolName}`.
 
-| Tools  | Config file | Check command | Fix command |
-|--------|------------:|---------------|-------------|
-| [detekt](https://github.com/arturbosch/detekt) | [/.detekt](https://github.com/VMadalin/kotlin-sample-app/tree/master/.detekt) | `./gradlew detekt` | - |
-| [ktlint](https://github.com/pinterest/ktlint) | - | `./gradlew ktlint` | `./gradlew ktlintFormat` |
-| [spotless](https://github.com/diffplug/spotless) | [/.spotless](https://github.com/VMadalin/kotlin-sample-app/tree/master/.spotless) | `./gradlew spotlessCheck` | `./gradlew spotlessApply`
-| [lint](https://developer.android.com/studio/write/lint) | [/.lint](https://github.com/VMadalin/kotlin-sample-app/tree/master/.lint) | `./gradlew lint` | - |
+| Tools                                                   | Config file                                                                       | Check command             | Fix command               |
+|---------------------------------------------------------|----------------------------------------------------------------------------------:|---------------------------|---------------------------|
+| [detekt](https://github.com/arturbosch/detekt)          | [/.detekt](https://github.com/VMadalin/kotlin-sample-app/tree/master/.detekt)     | `./gradlew detekt`        | -                         |
+| [ktlint](https://github.com/pinterest/ktlint)           | -                                                                                 | `./gradlew ktlint`        | `./gradlew ktlintFormat`  |
+| [spotless](https://github.com/diffplug/spotless)        | [/.spotless](https://github.com/VMadalin/kotlin-sample-app/tree/master/.spotless) | `./gradlew spotlessCheck` | `./gradlew spotlessApply` |
+| [lint](https://developer.android.com/studio/write/lint) | [/.lint](https://github.com/VMadalin/kotlin-sample-app/tree/master/.lint)         | `./gradlew lint`          | -                         |
 
 All these tools are integrated in [pre-commit git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), in order
 ensure that all static analysis and tests passes before you can commit your changes. To skip them for specific commit add this option at your git command:
-```
+
+```properties
 git commit --no-verify
 ```
 
@@ -84,19 +85,19 @@ The pre-commit git hooks have exactly the same checks as [CircleCI](https://circ
 
 App [support different screen sizes](https://developer.android.com/training/multiscreen/screensizes) and the content has been adapted to fit for mobile devices and tablets. To do that, it has been created a flexible layout using one or more of the following concepts:
 
-- [Use constraintLayout](https://developer.android.com/training/multiscreen/screensizes#ConstraintLayout)
-- [Avoid hard-coded layout sizes](https://developer.android.com/training/multiscreen/screensizes#TaskUseWrapMatchPar)
-- [Create alternative layouts](https://developer.android.com/training/multiscreen/screensizes#alternative-layouts)
-- [Use the smallest width qualifier](https://developer.android.com/training/multiscreen/screensizes#TaskUseSWQuali)
-- [Use the available width qualifier](https://developer.android.com/training/multiscreen/screensizes#available-width)
-- [Add orientation qualifiers](https://developer.android.com/training/multiscreen/screensizes#TaskUseOriQuali)
+-   [Use constraintLayout](https://developer.android.com/training/multiscreen/screensizes#ConstraintLayout)
+-   [Avoid hard-coded layout sizes](https://developer.android.com/training/multiscreen/screensizes#TaskUseWrapMatchPar)
+-   [Create alternative layouts](https://developer.android.com/training/multiscreen/screensizes#alternative-layouts)
+-   [Use the smallest width qualifier](https://developer.android.com/training/multiscreen/screensizes#TaskUseSWQuali)
+-   [Use the available width qualifier](https://developer.android.com/training/multiscreen/screensizes#available-width)
+-   [Add orientation qualifiers](https://developer.android.com/training/multiscreen/screensizes#TaskUseOriQuali)
 
 In terms of design has been followed recommendations [android material design](https://developer.android.com/guide/topics/ui/look-and-feel) comprehensive guide for visual, motion, and interaction design across platforms and devices. Granting the project in this way a great user experience (UX) and user interface (UI). For more info about UX best practices visit [link](https://developer.android.com/topic/google-play-instant/best-practices/apps).
 
 Moreover, has been implemented support for [dark theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) with the following benefits:
-- Can reduce power usage by a significant amount (depending on the device’s screen technology).
-- Improves visibility for users with low vision and those who are sensitive to bright light.
-- Makes it easier for anyone to use a device in a low-light environment.
+-   Can reduce power usage by a significant amount (depending on the device’s screen technology).
+-   Improves visibility for users with low vision and those who are sensitive to bright light.
+-   Makes it easier for anyone to use a device in a low-light environment.
 
 | Mode  | Characters list                                                          | Characters favorite                                                          | Character detail                                                          |
 |-------|--------------------------------------------------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
@@ -124,10 +125,10 @@ Modules are collection of source files and build settings that allow you to divi
 </p>
 
 The above graph shows the app modularisation:
--    `:app` depends on `:core` and indirectly depends on `:features` by dynamic-features.
--    `:features` modules depends on `:commons`, `:core`, `:libraries` and `:app`.
--    `:core` and `:commons` only depends for possible utils on `:libraries`.
--    `:libraries` don’t have any dependency.
+-   `:app` depends on `:core` and indirectly depends on `:features` by dynamic-features.
+-   `:features` modules depends on `:commons`, `:core`, `:libraries` and `:app`.
+-   `:core` and `:commons` only depends for possible utils on `:libraries`.
+-   `:libraries` don’t have any dependency.
 
 #### App module
 
@@ -161,12 +162,13 @@ The communication between the different layers follow the above diagram using th
 
 ### Build variants
 
-The application has different product flavours: `Dev`, `QA`, `Prod`. Each variant has a specific target environment and to make easier to distinguish them the app uses a specific icon colour for `debug` and `release` build variant with descriptive app name. In this case and given that it's a sample, all variants have the same Marvel API endpoint. But the idea is to have different environments target for Development and QA respectively, what doesn't affect the production environment. This is applicable to any tool, platform, service what is being used. For more information about build variant, check this [link](https://developer.android.com/studio/build/build-variants).
+The application has different product flavours: `Dev`, `QA`, `Prod`. Each variant has a specific target environment and to make easier to distinguish them the app uses a specific icon colour for `debug` and `release` build variant with descriptive app name. In this case and given that it's a sample, all variants have the same Marvel API endpoint.
+But the idea is to have different environments target for Development and QA respectively, what doesn't affect the production environment. This is applicable to any tool, platform, service what is being used. For more information about build variant, check this [link](https://developer.android.com/studio/build/build-variants).
 
-| Types  | DEV   | QA     | PROD   |
-|-------|:------:|:------:|:------:|
-| Debug | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
-| Release | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
+| Types   | DEV                                                                             | QA                                                                             | PROD                                                                         |
+|---------|:-------------------------------------------------------------------------------:|:------------------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
+| Debug   | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p> |
+| Release | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelDEV</p>  | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> MarvelQA</p>  | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br> Marvel</p>  |
 
 ## Documentation
 
@@ -282,16 +284,19 @@ All contributions are welcome!
 Please feel free to post questions, recommendations, ideas, bugs by create [new issue](https://github.com/VMadalin/kotlin-sample-app/issues/new) following the template or if you want create directly [new pull request](https://github.com/VMadalin/kotlin-sample-app/compare).
 
 ## License
-    Copyright 2019 vmadalin.com
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+```license
+Copyright 2019 vmadalin.com
 
-       http://www.apache.org/licenses/LICENSE-2.0
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

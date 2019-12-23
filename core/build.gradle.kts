@@ -43,7 +43,9 @@ android {
             it.buildConfigStringField("MARVEL_DATABASE_NAME", "characters-db")
             it.buildConfigIntField("MARVEL_DATABASE_VERSION", 1)
         } catch (ignored: Exception) {
-            throw InvalidUserDataException("You should define 'marvel.key.public' and 'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' to obtain them.")
+            throw InvalidUserDataException("You should define 'marvel.key.public' and " +
+                "'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' " +
+                "to obtain them.")
         }
     }
 }
