@@ -16,9 +16,9 @@
 
 package extensions
 
-import dependencies.Dependencies
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
+import extensions.exclude
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
@@ -103,11 +103,16 @@ fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.MOCK_WEB_SERVER)
 
     androidTestImplementation(TestAndroidDependencies.PLAY_CORE)
-    androidTestImplementation(TestAndroidDependencies.LEAKCANARY)
-    androidTestImplementation(TestAndroidDependencies.MOCKITO)
     androidTestImplementation(TestAndroidDependencies.ESPRESSO)
     androidTestImplementation(TestAndroidDependencies.RUNNER)
     androidTestImplementation(TestAndroidDependencies.RULES)
+    androidTestImplementation(TestAndroidDependencies.CORE)
     androidTestImplementation(TestAndroidDependencies.JUNIT)
     androidTestImplementation(TestAndroidDependencies.FRAGMENT_TEST)
+
+    // - Work around for https://github.com/mockk/mockk/issues/281
+    androidTestImplementation(TestAndroidDependencies.OBJENESIS)
+    androidTestImplementation(TestAndroidDependencies.MOCKK)?.let {
+        it.exclude(module = "objenesis")
+    }
 }

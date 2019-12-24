@@ -54,7 +54,6 @@ android {
 
         vectorDrawables.useSupportLibrary = BuildAndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
         testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
-        testInstrumentationRunnerArguments = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS
     }
 
     signingConfigs {
@@ -161,8 +160,6 @@ dependencies {
     implementation(Dependencies.CRASHLYTICS)
     implementation(Dependencies.PLAY_CORE)
     implementation(Dependencies.DAGGER)
-
-    debugImplementation(DebugDependencies.LEAKCANARY)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
 

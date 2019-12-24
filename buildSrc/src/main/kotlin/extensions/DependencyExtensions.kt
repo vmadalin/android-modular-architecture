@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-/**
- * Configuration of android build
- */
-object BuildAndroidConfig {
-    const val APPLICATION_ID = "com.vmadalin.android"
+package extensions
 
-    const val BUILD_TOOLS_VERSION = "29.0.0"
-    const val COMPILE_SDK_VERSION = 29
-    const val MIN_SDK_VERSION = 21
-    const val TARGET_SDK_VERSION = 29
+import org.gradle.api.artifacts.Dependency
+import org.gradle.api.artifacts.ModuleDependency
+import org.gradle.kotlin.dsl.exclude
 
-    const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0"
-
-    const val SUPPORT_LIBRARY_VECTOR_DRAWABLES = true
-
-    const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
+fun Dependency.exclude(group: String? = null, module: String? = null) {
+    if (this is ModuleDependency) {
+        exclude(
+            group = group,
+            module = module
+        )
+    }
 }
