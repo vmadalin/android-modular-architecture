@@ -18,12 +18,8 @@ import utils.createFabricProperties
 import dependencies.Dependencies
 import dependencies.DebugDependencies
 import dependencies.AnnotationProcessorsDependencies
-import extensions.addTestsDependencies
-import extensions.implementation
-import extensions.debugImplementation
 import extensions.getLocalProperty
 import extensions.buildConfigBooleanField
-import extensions.kapt
 import BuildType.Companion.DEBUG
 import BuildType.Companion.RELEASE
 
@@ -164,6 +160,4 @@ dependencies {
     implementation(Dependencies.DAGGER)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
-
-    addTestsDependencies()
 }

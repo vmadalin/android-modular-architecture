@@ -16,10 +16,6 @@
 
 import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
-import extensions.exclude
-import extensions.implementation
-import extensions.testImplementation
-import extensions.kapt
 
 plugins {
     id("commons.android-library")
@@ -40,8 +36,8 @@ dependencies {
     implementation(Dependencies.NAVIGATION_UI)
     implementation(Dependencies.PAGING)
 
-    implementation(Dependencies.COIL)?.let {
-        it.exclude(group = "androidx.appcompat")
+    implementation(Dependencies.COIL) {
+        exclude(group = "androidx.appcompat")
     }
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
