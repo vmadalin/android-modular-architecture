@@ -91,7 +91,6 @@ fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.MOCKITO)
     testImplementation(TestDependencies.MOCKK)
     testImplementation(TestDependencies.ASSERTJ)
-    testImplementation(TestDependencies.ROBOELECTRIC)
     testImplementation(TestDependencies.ROOM)
     testImplementation(TestDependencies.CORE)
     testImplementation(TestDependencies.ARCH_CORE)
@@ -109,9 +108,9 @@ fun DependencyHandler.addTestsDependencies() {
     androidTestImplementation(TestAndroidDependencies.CORE)
     androidTestImplementation(TestAndroidDependencies.JUNIT)
     androidTestImplementation(TestAndroidDependencies.FRAGMENT_TEST)
-
-    // - Work around for https://github.com/mockk/mockk/issues/281
     androidTestImplementation(TestAndroidDependencies.OBJENESIS)
+
+    // - Exclude module for https://github.com/mockk/mockk/issues/281
     androidTestImplementation(TestAndroidDependencies.MOCKK)?.let {
         it.exclude(module = "objenesis")
     }

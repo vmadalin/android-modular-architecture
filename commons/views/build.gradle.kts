@@ -17,6 +17,7 @@
 import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.implementation
+import extensions.testImplementation
 import extensions.kapt
 
 plugins {
@@ -32,4 +33,6 @@ dependencies {
     implementation(Dependencies.FRAGMENT_KTX)
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
+
+    testImplementation(project(BuildModules.Libraries.TEST_UTILS))
 }

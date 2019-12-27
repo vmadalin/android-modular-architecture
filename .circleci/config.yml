@@ -39,8 +39,11 @@ jobs:
           name: Run Unit Tests
           command: ./gradlew testDevDebugUnitTest
       - run:
+          name: Run UI Tests
+          command: ./gradlew connectedDevDebugAndroidTest
+      - run:
           name: Generate Code Coverage
-          command: ./gradlew jacocoTestReportDevDebug
+          command: ./gradlew combinedTestReportDevDebug
       - run:
           name: Generate Dependency Updates
           command: ./gradlew dependencyUpdates -Drevision=release

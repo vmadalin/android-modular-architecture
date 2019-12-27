@@ -27,6 +27,8 @@ import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.testImplementation
 import extensions.kapt
+import BuildType.Companion.DEBUG
+import BuildType.Companion.RELEASE
 
 plugins {
     id("com.android.dynamic-feature")
@@ -63,6 +65,16 @@ android {
 
     androidExtensions {
         isExperimental = true
+    }
+
+    buildTypes {
+        getByName(RELEASE) {
+            isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
+        }
+
+        getByName(DEBUG) {
+            isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
+        }
     }
 
     flavorDimensions(BuildProductDimensions.ENVIRONMENT)

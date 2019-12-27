@@ -19,6 +19,7 @@ import dependencies.TestDependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.implementation
 import extensions.kapt
+import extensions.exclude
 
 plugins {
     id("commons.android-library")
@@ -30,7 +31,6 @@ dependencies {
 
     implementation(TestDependencies.MOCKITO)
     implementation(TestDependencies.ASSERTJ)
-    implementation(TestDependencies.ROBOELECTRIC)
     implementation(TestDependencies.ROOM)
     implementation(TestDependencies.CORE)
     implementation(TestDependencies.ARCH_CORE)
@@ -40,6 +40,11 @@ dependencies {
     implementation(TestDependencies.FRAGMENT_TEST)
     implementation(TestDependencies.EXT)
     implementation(TestDependencies.MOCK_WEB_SERVER)
+
+    // - Exclude groups for https://github.com/robolectric/robolectric/issues/5235
+    implementation(TestDependencies.ROBOELECTRIC)?.let {
+        it.exclude(group = "org.apache.maven", module = "maven-ant-tasks")
+    }
 
     kapt(AnnotationProcessorsDependencies.AUTO_SERVICE)
 }

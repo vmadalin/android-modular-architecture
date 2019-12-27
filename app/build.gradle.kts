@@ -24,6 +24,8 @@ import extensions.debugImplementation
 import extensions.getLocalProperty
 import extensions.buildConfigBooleanField
 import extensions.kapt
+import BuildType.Companion.DEBUG
+import BuildType.Companion.RELEASE
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
@@ -57,7 +59,7 @@ android {
     }
 
     signingConfigs {
-        create(BuildType.RELEASE) {
+        create(RELEASE) {
             keyAlias = getLocalProperty("signing.key.alias")
             keyPassword = getLocalProperty("signing.key.password")
             storeFile = file(getLocalProperty("signing.store.file"))
@@ -66,7 +68,7 @@ android {
     }
 
     buildTypes {
-        getByName(BuildType.RELEASE) {
+        getByName(RELEASE) {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             signingConfig = signingConfigs.getByName(name)
 
@@ -75,7 +77,7 @@ android {
             buildConfigBooleanField("ENABLE_CRASHLYTICS", BuildTypeRelease.isCrashlyticsEnabled)
         }
 
-        getByName(BuildType.DEBUG) {
+        getByName(DEBUG) {
             applicationIdSuffix = BuildTypeDebug.applicationIdSuffix
             versionNameSuffix = BuildTypeDebug.versionNameSuffix
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled

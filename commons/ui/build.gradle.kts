@@ -16,7 +16,9 @@
 
 import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
+import extensions.exclude
 import extensions.implementation
+import extensions.testImplementation
 import extensions.kapt
 
 plugins {
@@ -37,7 +39,12 @@ dependencies {
     implementation(Dependencies.NAVIGATION_FRAGMENT)
     implementation(Dependencies.NAVIGATION_UI)
     implementation(Dependencies.PAGING)
-    implementation(Dependencies.COIL)
+
+    implementation(Dependencies.COIL)?.let {
+        it.exclude(group = "androidx.appcompat")
+    }
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
+
+    testImplementation(project(BuildModules.Libraries.TEST_UTILS))
 }
