@@ -45,6 +45,7 @@ object PluginsVersions {
     const val KTLINT = "0.36.0"
     const val SPOTLESS = "3.26.1"
     const val DETEKT = "1.2.2"
+    const val GRAPH_GENERATOR = "0.6.0-SNAPSHOT"
 }
 
 dependencies {
@@ -54,6 +55,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-allopen:${PluginsVersions.KOTLIN}")
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")
     implementation("com.vanniktech:gradle-android-junit-jacoco-plugin:${PluginsVersions.JACOCO}")
+    implementation("com.vanniktech:gradle-dependency-graph-generator-plugin:${PluginsVersions.GRAPH_GENERATOR}")
     implementation("io.fabric.tools:gradle:${PluginsVersions.FABRIC}")
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:${PluginsVersions.DOKKA}")
     implementation("com.pinterest:ktlint:${PluginsVersions.KTLINT}")

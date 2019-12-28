@@ -121,7 +121,7 @@ The architecture of the application is based, apply and strictly complies with e
 Modules are collection of source files and build settings that allow you to divide a project into discrete units of functionality. In this case apart from dividing by functionality/responsibility, existing the following dependence between them:
 
 <p align="center">
- <img src="screenshots/architecture/modules_diagram.png">
+ <img src="screenshots/architecture/diagram_communication_modules.png">
 </p>
 
 The above graph shows the app modularisation:
@@ -134,21 +134,44 @@ The above graph shows the app modularisation:
 
 The `:app` module is an [com.android.application](https://developer.android.com/studio/build/), which is needed to create the app bundle.  It is also responsible for initiating the [dependency graph](https://github.com/google/dagger), [play core](https://developer.android.com/reference/com/google/android/play/core/release-notes) and another project global libraries, differentiating especially between different app environments.
 
+<p align="center">
+ <img src="screenshots/architecture/diagram_dependency_app.png">
+</p>
+
 #### Core module
 
 The `:core` module is an [com.android.library](https://developer.android.com/studio/projects/android-library)  for serving network requests or accessing to the database. Providing the data source for the many features that require it.
+
+<p align="center">
+ <img src="screenshots/architecture/diagram_dependency_core.png">
+</p>
 
 #### Features modules
 
 The `:features` module are an [com.android.dynamic-feature](https://developer.android.com/studio/projects/dynamic-delivery) is essentially a gradle module which can be downloaded independently from the base application module. It can hold code and resources and include dependencies, just like any other gradle module.
 
+| features                                                                                 |
+|:----------------------------------------------------------------------------------------:|
+| <img src="screenshots/architecture/diagram_dependency_features_home.png">                |
+| <img src="screenshots/architecture/diagram_dependency_features_characters_list.png">     |
+| <img src="screenshots/architecture/diagram_dependency_features_characters_favorite.png"> |
+
 #### Commons modules
 
 The `:commons` modules are an [com.android.library](https://developer.android.com/studio/projects/android-library) only contains code and resources which are shared between feature modules. Reusing this way resources, layouts, views, and components in the different features modules, without the need to duplicate code.
 
+| ui                                                                     | views                                                                     |
+|:----------------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+| <img src="screenshots/architecture/diagram_dependency_commons_ui.png"> | <img src="screenshots/architecture/diagram_dependency_commons_views.png"> |
+
+
 #### Libraries modules
 
 The `:libraries` modules are an [com.android.library](https://developer.android.com/studio/projects/android-library), basically contains different utilities that can be used by the different modules.
+
+<p align="center">
+ <img src="screenshots/architecture/diagram_dependency_libraries_test_utils.png">
+</p>
 
 ### Architecture components
 
@@ -156,7 +179,7 @@ Ideally, ViewModels shouldn’t know anything about Android. This improves testa
 
 Passing a reference of the View (activity or fragment) to the ViewModel is a serious risk. Lets assume the ViewModel requests data from the network and the data comes back some time later. At that moment, the View reference might be destroyed or might be an old activity that is no longer visible, generating a memory leak and, possibly, a crash.
 
-<img src="screenshots/architecture/communication_diagram.png">
+<img src="screenshots/architecture/diagram_communication_layers.png">
 
 The communication between the different layers follow the above diagram using the reactive paradigm, observing changes on components without need of callbacks avoiding leaks and edge cases related with them.
 
