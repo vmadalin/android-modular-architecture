@@ -33,6 +33,7 @@ plugins {
     id(BuildPlugins.KOTLIN_ALLOPEN)
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.JACOCO)
+    id(BuildPlugins.GRAPH_GENERATOR)
     id(BuildPlugins.FABRIC)
 }
 
