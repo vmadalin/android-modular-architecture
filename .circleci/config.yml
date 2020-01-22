@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: ~/kotlin-sample-app
     docker:
-      - image: circleci/android:api-28
+      - image: circleci/android:api-29
     environment:
       GRADLE_OPTS: -Xmx4g -Dorg.gradle.daemon=false
       JVM_OPTS: -Xmx4g
