@@ -100,7 +100,9 @@ android {
         BuildModules.Features.CHARACTERS_FAVORITES
     )
 
-    buildFeatures.dataBinding = true
+    dataBinding {
+        isEnabled = true
+    }
 
     androidExtensions {
         isExperimental = true

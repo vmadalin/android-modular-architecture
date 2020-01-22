@@ -58,7 +58,9 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    buildFeatures.dataBinding = true
+    dataBinding {
+        isEnabled = true
+    }
 
     androidExtensions {
         isExperimental = true
