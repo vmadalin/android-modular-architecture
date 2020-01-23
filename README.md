@@ -32,7 +32,7 @@ long application lifecycle management.
 
 ### Environment setup
 
-First off, you require the latest Android Studio 3.5 (or newer) to be able to build the app.
+First off, you require the latest Android Studio 3.5.3 (or newer) to be able to build the app.
 
 You need to supply API keys for the various services the app uses. That is currently Marvel and Fabric (Crashlytics). You can find information about how to gain access via these relevant links.
 

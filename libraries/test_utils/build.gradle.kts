@@ -18,7 +18,6 @@ import dependencies.Dependencies
 import dependencies.TestDependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.implementation
-import extensions.kapt
 
 plugins {
     id("commons.android-library")
@@ -41,5 +40,5 @@ dependencies {
     implementation(TestDependencies.EXT)
     implementation(TestDependencies.MOCK_WEB_SERVER)
 
-    kapt(AnnotationProcessorsDependencies.AUTO_SERVICE)
+    annotationProcessor(AnnotationProcessorsDependencies.AUTO_SERVICE)
 }
