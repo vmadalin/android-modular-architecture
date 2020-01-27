@@ -219,7 +219,7 @@ This project takes advantage of many popular libraries, plugins and tools of the
 -   [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - managing background threads with simplified code and reducing needs for callbacks.
 -   [Dagger2](https://dagger.dev/) - dependency injector for replacement all FactoryFactory classes.
 -   [Retrofit](https://square.github.io/retrofit/) - type-safe HTTP client.
--   [Coil](https://github.com/bumptech/glide) - image loading library for Android backed by Kotlin Coroutines.
+-   [Coil](https://github.com/coil-kt/coil) - image loading library for Android backed by Kotlin Coroutines.
 -   [Moshi](https://github.com/square/moshi) - makes it easy to parse JSON into Kotlin objects.
 -   [Timber](https://github.com/JakeWharton/timber) - a logger with a small, extensible API which provides utility on top of Android's normal Log class.
 -   [Stetho](http://facebook.github.io/stetho/) - debug bridge for applications via Chrome Developer Tools.
