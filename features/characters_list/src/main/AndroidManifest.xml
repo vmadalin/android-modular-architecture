@@ -4,12 +4,12 @@
     package="com.vmadalin.dynamicfeatures.characterslist">
 
     <dist:module
-        dist:instant="true"
+        dist:instant="false"
         dist:title="@string/feature_characters_list">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>
-        <dist:fusing dist:include="false" />
+        <dist:fusing dist:include="true" />
     </dist:module>
 
     <application
