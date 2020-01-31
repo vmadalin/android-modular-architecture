@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.vmadalin.android">
 
-    <dist:module dist:instant="true" />
+    <dist:module dist:instant="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
