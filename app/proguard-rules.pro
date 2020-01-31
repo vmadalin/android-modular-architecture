@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# TODO: This is just a workaround, obfuscation temporarily disabled.  
+-keep class com.vmadalin.** { *; }
