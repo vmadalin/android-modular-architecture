@@ -4,12 +4,12 @@
     package="com.vmadalin.dynamicfeatures.home">
 
     <dist:module
-        dist:instant="true"
+        dist:instant="false"
         dist:title="@string/feature_home">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>
-        <dist:fusing dist:include="false" />
+        <dist:fusing dist:include="true" />
     </dist:module>
 
     <application
