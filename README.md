@@ -26,6 +26,7 @@ long application lifecycle management.
 -   [Tech-stack](https://github.com/VMadalin/kotlin-sample-app#tech-stack)
 -   [Resources](https://github.com/VMadalin/kotlin-sample-app#resources)
 -   [Contributions](https://github.com/VMadalin/kotlin-sample-app#contributions)
+-   [Authors](https://github.com/VMadalin/kotlin-sample-app#authors)
 -   [License](https://github.com/VMadalin/kotlin-sample-app#license)
 
 ## Development
@@ -305,6 +306,19 @@ Google Developers Codelabs provide a guided, tutorial, hands-on coding experienc
 
 All contributions are welcome!
 Please feel free to post questions, recommendations, ideas, bugs by create [new issue](https://github.com/VMadalin/kotlin-sample-app/issues/new) following the template or if you want create directly [new pull request](https://github.com/VMadalin/kotlin-sample-app/compare).
+
+## Authors
+
+<a href="https://twitter.com/MValceleanu" target="_blank">
+  <img src="https://avatars0.githubusercontent.com/u/18151158?s=400&u=bd6e5ddff1df0d632b93855da0300410854b806e&v=4" width="100" align="left" hspace="20">
+</a>
+
+**Madalin Valceleanu**
+
+[![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/vmadalin/)
+[![Twitter](https://img.shields.io/badge/-twitter-grey?logo=twitter)](https://twitter.com/MValceleanu)
+[![Medium](https://img.shields.io/badge/-medium-grey?logo=medium)](https://medium.com/@vmadalin)
+[![Web](https://img.shields.io/badge/-web-grey?logo=appveyor)](http://vmadalin.com/)
 
 ## License
 
