@@ -310,7 +310,7 @@ Please feel free to post questions, recommendations, ideas, bugs by create [new 
 ## Authors
 
 <a href="https://twitter.com/MValceleanu" target="_blank">
-  <img src="https://avatars0.githubusercontent.com/u/18151158?s=400&u=bd6e5ddff1df0d632b93855da0300410854b806e&v=4" width="100" align="left" hspace="20">
+  <img src="https://avatars0.githubusercontent.com/u/18151158?s=400&u=bd6e5ddff1df0d632b93855da0300410854b806e&v=4" width="70" align="left">
 </a>
 
 **Madalin Valceleanu**
