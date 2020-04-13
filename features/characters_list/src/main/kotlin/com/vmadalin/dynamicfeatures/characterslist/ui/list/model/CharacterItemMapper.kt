@@ -27,7 +27,7 @@ private const val IMAGE_URL_FORMAT = "%s.%s"
  *
  * @see Mapper
  */
-open class CharacterItemMapper : Mapper<BaseResponse<CharacterResponse>, List<CharacterItem>> {
+class CharacterItemMapper : Mapper<BaseResponse<CharacterResponse>, List<CharacterItem>> {
 
     /**
      * Transform network response to [CharacterItem].
