@@ -39,7 +39,7 @@ object PluginsVersions {
     const val GRADLE_VERSIONS = "0.27.0"
     const val KOTLIN = "1.3.61"
     const val NAVIGATION = "2.1.0"
-    const val JACOCO = "0.16.0-SNAPSHOT"
+    const val JACOCO = "0.16.0"
     const val FABRIC = "1.31.2"
     const val DOKKA = "0.10.0"
     const val KTLINT = "0.36.0"
