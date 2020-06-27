@@ -1,4 +1,4 @@
-## Kotlin Sample App
+## Android Components Architecture in a Modular Word
 [![CircleCI](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master.svg?style=shield)](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master)
 [![Codecov](https://codecov.io/gh/VMadalin/kotlin-sample-app/coverage.svg)](https://codecov.io/gh/VMadalin/kotlin-sample-app)
 [![Codacy](https://api.codacy.com/project/badge/Grade/5970b6648df0465588f9781ae6e3332e)](https://www.codacy.com/manual/VMadalin/kotlin-sample-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VMadalin/kotlin-sample-app&amp;utm_campaign=Badge_Grade)
@@ -10,7 +10,7 @@
 
 <img src="screenshots/demo/demo.gif" width="250" align="right" hspace="20">
 
-Kotlin Sample App is a sample project that presents modern, 2019 approach to [Android](https://www.android.com/) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
+Android Components Architecture in a Modular Word is a sample project that presents modern, 2020 approach to [Android](https://www.android.com/) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
 The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android
 application architecture that is modular, scalable, maintainable and testable. This application may look simple, but it
@@ -19,6 +19,7 @@ long application lifecycle management.
 
 ## Table of Contents
 
+-   [Mentions](https://github.com/VMadalin/kotlin-sample-app#mentions)
 -   [Development](https://github.com/VMadalin/kotlin-sample-app#development)
 -   [Design](https://github.com/VMadalin/kotlin-sample-app#design)
 -   [Architecture](https://github.com/VMadalin/kotlin-sample-app#architecture)
@@ -28,6 +29,19 @@ long application lifecycle management.
 -   [Contributions](https://github.com/VMadalin/kotlin-sample-app#contributions)
 -   [Authors](https://github.com/VMadalin/kotlin-sample-app#authors)
 -   [License](https://github.com/VMadalin/kotlin-sample-app#license)
+
+## Mentions
+
+The project received different mentions/reference from Android Developer Community:
+
+-   [Android Weekly](https://androidweekly.net/issues/issue-407) Newsletter that helps you to stay cutting-edge with your Android Development.
+-   [AndroidSweets](https://androidsweets.ongoodbits.com/2019/12/13/browsing-through-the-android-open-source-project-was-never-easier) Fresh news from Droid zone.
+-   [Android Awesome](https://github.com/JStumpp/awesome-android#code-examples) A curated list of awesome Android libraries and resources.
+-   [Droidcon](https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Android%20Components%20Architecture%20in%20a%20Modular%20Word) Blog posts from leading authorities and video archive from droidcons around the world.
+-   [DroidconKE](https://github.com/droidconKE/droidconKE2020App#referencesresources-1) The official DroidconKE 2020 conference App.
+-   [Github trending](https://github.motakasoft.com/trending/?d=2019-12-11&l=all) See what the GitHub community is most excited about today.
+-   [KotlinBy](https://github.com/KotlinBy/awesome-kotlin#projects-back--1) A curated list of awesome Kotlin related stuff.
+-   [Reddit](https://www.reddit.com/r/Kotlin/comments/ew30x4/github_vmadalinkotlinsampleapp_android_sample_app/?utm_source=share&utm_medium=web2x): Discussion about Kotlin, a statically typed programming language for the JVM, Android, JavaScript, and native.
 
 ## Development
 
@@ -198,7 +212,7 @@ But the idea is to have different environments target for Development and QA res
 
 The documentation is generated following [KDoc](https://kotlinlang.org/docs/reference/kotlin-doc.html) language (the equivalent of Java's [JavaDoc](https://en.wikipedia.org/wiki/Javadoc)) via documentation engine for Kotlin [Dokka](https://github.com/Kotlin/dokka).
 
-To consult it check this [link](https://vmadalin.github.io/kotlin-sample-app/) or open the project `/docs` directory.
+To consult it check this [link](https://vmadalin.github.io/android-modular-architecture/) or open the project `/docs` directory.
 
 ## Tech-stack
 
@@ -323,7 +337,7 @@ Please feel free to post questions, recommendations, ideas, bugs by create [new 
 ## License
 
 ```license
-Copyright 2019 vmadalin.com
+Copyright 2019-2020 vmadalin.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
