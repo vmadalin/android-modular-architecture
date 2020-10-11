@@ -41,7 +41,7 @@ object BuildDependenciesVersions {
     const val LEAKCANARY = "2.0"
     const val DATABINDING = "3.1.4"
     const val AUTO_SERVICE = "1.0-rc4"
-    const val JAXB = "2.3.3"
+    const val JAXB = "2.3.1"
 
     // Tests
     const val TEST = "1.2.0"
