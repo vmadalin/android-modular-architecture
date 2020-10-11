@@ -47,5 +47,5 @@ object Dependencies {
     const val MOSHI_KTX = "com.squareup.moshi:moshi-kotlin:${BuildDependenciesVersions.MOSHI}"
     const val COIL = "io.coil-kt:coil:${BuildDependenciesVersions.COIL}"
     const val PLAY_CORE = "com.google.android.play:core:${BuildDependenciesVersions.PLAY_CORE}"
-    const val JAXB = "org.glassfish.jaxb:jaxb-api:${BuildDependenciesVersions.JAXB}"
+    const val JAXB = "javax.xml.bind:jaxb-api:${BuildDependenciesVersions.JAXB}"
 }
