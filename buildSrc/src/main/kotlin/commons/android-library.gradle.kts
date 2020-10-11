@@ -101,6 +101,7 @@ dependencies {
     implementation(Dependencies.COROUTINES_ANDROID)
     implementation(Dependencies.DAGGER)
     implementation(Dependencies.TIMBER)
+    implementation(Dependencies.JAXB)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
 
