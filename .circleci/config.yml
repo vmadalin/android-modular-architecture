@@ -7,20 +7,14 @@ jobs:
   build:
     working_directory: ~/kotlin-sample-app
     docker:
-      - image: circleci/android:api-28
+      - image: circleci/android@sha256:b6646fdf7457f61825526e7bfce364d8e533da6ceb1cdb98e371e94348ecc834
     environment:
       GRADLE_OPTS: -Xmx4g -Dorg.gradle.daemon=false
       JVM_OPTS: -Xmx4g
     steps:
       - checkout
-      - run: echo "fabric.key=$FABRIC_KEY" >> local.properties
-      - run: echo "fabric.secret=$FABRIC_SECRET" >> local.properties
       - run: echo "marvel.key.public=$MARVEL_KEY_PUBLIC" >> local.properties
       - run: echo "marvel.key.private=$MARVEL_KEY_PRIVATE" >> local.properties
-      - run: echo "signing.key.alias=$SIGNING_KEY_ALIAS" >> local.properties
-      - run: echo "signing.key.password=$SIGNING_KEY_PASSWORD" >> local.properties
-      - run: echo "signing.store.file=$SIGNING_STORE_FILE" >> local.properties
-      - run: echo "signing.store.password=$SIGNING_STORE_PASSWORD" >> local.properties
       - restore_cache:
           key: gradle-{{ checksum "build.gradle.kts" }}
       - run:
@@ -31,7 +25,7 @@ jobs:
           command: ./gradlew ktlint
       - run:
           name: Run Lint
-          command: ./gradlew lintDevDebug
+          command: ./gradlew lintDevDebug --stacktrace
       - run:
           name: Run Spotless
           command: ./gradlew spotlessKotlinCheck
