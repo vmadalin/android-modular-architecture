@@ -25,7 +25,7 @@ jobs:
           command: ./gradlew ktlint
       - run:
           name: Run Lint
-          command: ./gradlew lintDevDebug
+          command: ./gradlew lintDevDebug --stacktrace
       - run:
           name: Run Spotless
           command: ./gradlew spotlessKotlinCheck
