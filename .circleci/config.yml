@@ -13,14 +13,8 @@ jobs:
       JVM_OPTS: -Xmx4g
     steps:
       - checkout
-      - run: echo "fabric.key=$FABRIC_KEY" >> local.properties
-      - run: echo "fabric.secret=$FABRIC_SECRET" >> local.properties
       - run: echo "marvel.key.public=$MARVEL_KEY_PUBLIC" >> local.properties
       - run: echo "marvel.key.private=$MARVEL_KEY_PRIVATE" >> local.properties
-      - run: echo "signing.key.alias=$SIGNING_KEY_ALIAS" >> local.properties
-      - run: echo "signing.key.password=$SIGNING_KEY_PASSWORD" >> local.properties
-      - run: echo "signing.store.file=$SIGNING_STORE_FILE" >> local.properties
-      - run: echo "signing.store.password=$SIGNING_STORE_PASSWORD" >> local.properties
       - restore_cache:
           key: gradle-{{ checksum "build.gradle.kts" }}
       - run:

@@ -62,7 +62,6 @@ dependencies {
     implementation(Dependencies.LOGGING)
     implementation(Dependencies.MOSHI)
     implementation(Dependencies.MOSHI_KTX)
-    implementation(Dependencies.CRASHLYTICS)
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
     kapt(AnnotationProcessorsDependencies.ROOM)

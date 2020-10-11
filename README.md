@@ -49,10 +49,7 @@ The project received different mentions/reference from Android Developer Communi
 
 First off, you require the latest Android Studio 3.5.3 (or newer) to be able to build the app.
 
-You need to supply API keys for the various services the app uses. That is currently Marvel and Fabric (Crashlytics). You can find information about how to gain access via these relevant links.
-
--   Marvel: https://developer.marvel.com/
--   Firebase: https://get.fabric.io/
+You need to supply keys for Marvel API. You can find information about how to gain access by using the [link](https://developer.marvel.com).
 
 When you obtain the keys, you can provide them to the app by putting the following in the `local.properties` project root file:
 
@@ -60,20 +57,6 @@ When you obtain the keys, you can provide them to the app by putting the followi
 #Marvel API KEYS
 marvel.key.public = <insert>
 marvel.key.private = <insert>
-
-#Fabric API KEYS
-fabric.key = <insert>
-fabric.secret = <insert>
-```
-
-Moreover, to sign your app for release you should generate an upload key and keystore following the [official documentation](https://developer.android.com/studio/publish/app-signing#sign-apk). Append the information used to generate it into `local.properties` project root file following the structure:
-
-```properties
-#Signing Config
-signing.key.alias = <insert>
-signing.key.password = <insert>
-signing.store.file = <insert>
-signing.store.password = <insert>
 ```
 
 ### Code style

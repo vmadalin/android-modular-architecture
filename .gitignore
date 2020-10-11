@@ -35,13 +35,7 @@ captures/
 
 # IntelliJ
 *.iml
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/gradle.xml
-.idea/assetWizardSettings.xml
-.idea/dictionaries
-.idea/libraries
-.idea/caches
+.idea/
 
 # Keystore files
 *.keystore
@@ -64,6 +58,3 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
-
-# Fabric
-Fabric.properties
