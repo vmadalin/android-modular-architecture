@@ -77,9 +77,11 @@ class CharactersFavoriteFragment :
         viewBinding.includeList.charactersFavoriteList.apply {
             adapter = viewAdapter
 
-            ItemTouchHelper(CharactersFavoriteTouchHelper {
-                viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])
-            }).attachToRecyclerView(this)
+            ItemTouchHelper(
+                CharactersFavoriteTouchHelper {
+                    viewModel.removeFavoriteCharacter(viewAdapter.currentList[it])
+                }
+            ).attachToRecyclerView(this)
         }
     }
 

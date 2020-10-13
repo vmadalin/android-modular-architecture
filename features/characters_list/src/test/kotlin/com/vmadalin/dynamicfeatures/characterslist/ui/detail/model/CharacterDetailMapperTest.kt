@@ -65,8 +65,8 @@ class CharacterDetailMapperTest {
                         name = "3-D Man",
                         description = "",
                         thumbnail = CharacterThumbnailResponse(
-                        path = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
-                        extension = "jpg"
+                            path = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
+                            extension = "jpg"
                         )
                     )
                 )

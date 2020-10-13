@@ -30,7 +30,8 @@ import dagger.Component
 @FeatureScope
 @Component(
     modules = [HomeModule::class],
-    dependencies = [CoreComponent::class])
+    dependencies = [CoreComponent::class]
+)
 interface HomeComponent {
 
     /**

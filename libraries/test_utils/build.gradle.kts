@@ -16,7 +16,6 @@
 
 import dependencies.Dependencies
 import dependencies.TestDependencies
-import dependencies.AnnotationProcessorsDependencies
 import extensions.implementation
 
 plugins {
@@ -39,6 +38,4 @@ dependencies {
     implementation(TestDependencies.FRAGMENT_TEST)
     implementation(TestDependencies.EXT)
     implementation(TestDependencies.MOCK_WEB_SERVER)
-
-    annotationProcessor(AnnotationProcessorsDependencies.AUTO_SERVICE)
 }
