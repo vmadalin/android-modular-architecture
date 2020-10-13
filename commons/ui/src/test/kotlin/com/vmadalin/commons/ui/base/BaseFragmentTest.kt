@@ -29,7 +29,7 @@ import com.nhaarman.mockitokotlin2.verify
 import com.vmadalin.libraries.testutils.TestCompatActivity
 import com.vmadalin.libraries.testutils.TestFragmentActivity
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
-import org.hamcrest.Matchers.instanceOf
+import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertThat
 import org.junit.Before

@@ -11,4 +11,5 @@
     <string name="character_detail_dialog_error_text">Error on obtain detail, please try later.</string>
     <string name="character_detail_added_to_favorite_message">Added to your favorite list</string>
     <string name="character_detail_image_content_description">Image of the selected character</string>
+    <string name="character_detail_floating_button_content_description">Add character to favorite</string>
 </resources>

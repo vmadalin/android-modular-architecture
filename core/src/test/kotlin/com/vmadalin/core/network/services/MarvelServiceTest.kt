@@ -26,7 +26,7 @@ import okhttp3.mockwebserver.MockWebServer
 import okio.buffer
 import okio.source
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.instanceOf
+import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

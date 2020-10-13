@@ -21,6 +21,7 @@ import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PageKeyedDataSource.LoadParams
+import com.vmadalin.core.annotations.OpenForTesting
 import com.vmadalin.core.network.NetworkState
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
@@ -39,6 +40,7 @@ const val PAGE_MAX_ELEMENTS = 50
  *
  * @see PageKeyedDataSource
  */
+@OpenForTesting
 class CharactersPageDataSource @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val repository: MarvelRepository,

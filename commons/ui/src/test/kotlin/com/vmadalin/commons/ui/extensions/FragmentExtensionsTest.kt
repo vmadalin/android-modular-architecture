@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.vmadalin.libraries.testutils.TestFragment
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
-import org.hamcrest.Matchers
+import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat
 import org.junit.Test
@@ -42,11 +42,11 @@ class FragmentExtensionsTest : TestRobolectric() {
                     expectedState
                 )
             }
-            assertThat(createdViewModel, Matchers.instanceOf(TestViewModel::class.java))
+            assertThat(createdViewModel, instanceOf(TestViewModel::class.java))
             assertEquals(expectedState, createdViewModel.state)
 
             val providedViewModel = ViewModelProvider(it).get(TestViewModel::class.java)
-            assertThat(providedViewModel, Matchers.instanceOf(TestViewModel::class.java))
+            assertThat(providedViewModel, instanceOf(TestViewModel::class.java))
             assertEquals(expectedState, providedViewModel.state)
         }
     }
@@ -64,12 +64,12 @@ class FragmentExtensionsTest : TestRobolectric() {
                         expectedState
                     )
                 }
-            assertThat(createdViewModel, Matchers.instanceOf(TestViewModel::class.java))
+            assertThat(createdViewModel, instanceOf(TestViewModel::class.java))
             assertEquals(expectedState, createdViewModel.state)
 
             val providedViewModel =
                 ViewModelProvider(it).get(identifierViewModel, TestViewModel::class.java)
-            assertThat(providedViewModel, Matchers.instanceOf(TestViewModel::class.java))
+            assertThat(providedViewModel, instanceOf(TestViewModel::class.java))
             assertEquals(expectedState, providedViewModel.state)
         }
     }
