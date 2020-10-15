@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vmadalin.commons.ui.recyclerview.RecyclerViewItemDecoration
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.CoreMatchers.instanceOf
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
 

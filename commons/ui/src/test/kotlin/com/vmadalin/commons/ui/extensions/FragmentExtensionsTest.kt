@@ -23,8 +23,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.vmadalin.libraries.testutils.TestFragment
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.CoreMatchers.instanceOf
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThat
 import org.junit.Test
 
 class FragmentExtensionsTest : TestRobolectric() {

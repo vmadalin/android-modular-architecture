@@ -21,7 +21,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import org.hamcrest.CoreMatchers.instanceOf
-import org.junit.Assert.assertThat
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
