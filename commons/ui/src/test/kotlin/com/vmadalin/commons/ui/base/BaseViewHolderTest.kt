@@ -16,16 +16,16 @@
 
 package com.vmadalin.commons.ui.base
 
-//import android.view.View
-//import androidx.databinding.ViewDataBinding
-//import io.mockk.MockKAnnotations
-//import io.mockk.every
-//import io.mockk.impl.annotations.MockK
-//import org.junit.Assert.assertEquals
-//import org.junit.Before
-//import org.junit.Test
+// import android.view.View
+// import androidx.databinding.ViewDataBinding
+// import io.mockk.MockKAnnotations
+// import io.mockk.every
+// import io.mockk.impl.annotations.MockK
+// import org.junit.Assert.assertEquals
+// import org.junit.Before
+// import org.junit.Test
 //
-//class BaseViewHolderTest {
+// class BaseViewHolderTest {
 //
 //    @MockK
 //    lateinit var binding: ViewDataBinding
@@ -50,4 +50,4 @@ package com.vmadalin.commons.ui.base
 //    inner class TestBaseViewHolder : BaseViewHolder<ViewDataBinding>(
 //        binding = binding
 //    )
-//}
+// }
