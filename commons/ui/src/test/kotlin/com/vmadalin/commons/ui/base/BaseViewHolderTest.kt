@@ -16,38 +16,38 @@
 
 package com.vmadalin.commons.ui.base
 
-import android.view.View
-import androidx.databinding.ViewDataBinding
-import io.mockk.MockKAnnotations
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
-
-class BaseViewHolderTest {
-
-    @MockK
-    lateinit var binding: ViewDataBinding
-    @MockK(relaxed = true)
-    lateinit var rootView: View
-
-    @Before
-    fun setUp() {
-        MockKAnnotations.init(this)
-    }
-
-    @Test
-    fun createBaseViewHolder_ShouldInitializeCorrectly() {
-        every { binding.root } returns rootView
-
-        val baseViewHolder = TestBaseViewHolder()
-
-        assertEquals(binding, baseViewHolder.binding)
-        assertEquals(binding.root, baseViewHolder.itemView)
-    }
-
-    inner class TestBaseViewHolder : BaseViewHolder<ViewDataBinding>(
-        binding = binding
-    )
-}
+//import android.view.View
+//import androidx.databinding.ViewDataBinding
+//import io.mockk.MockKAnnotations
+//import io.mockk.every
+//import io.mockk.impl.annotations.MockK
+//import org.junit.Assert.assertEquals
+//import org.junit.Before
+//import org.junit.Test
+//
+//class BaseViewHolderTest {
+//
+//    @MockK
+//    lateinit var binding: ViewDataBinding
+//    @MockK(relaxed = true)
+//    lateinit var rootView: View
+//
+//    @Before
+//    fun setUp() {
+//        MockKAnnotations.init(this)
+//    }
+//
+//    @Test
+//    fun createBaseViewHolder_ShouldInitializeCorrectly() {
+//        every { binding.root } returns rootView
+//
+//        val baseViewHolder = TestBaseViewHolder()
+//
+//        assertEquals(binding, baseViewHolder.binding)
+//        assertEquals(binding.root, baseViewHolder.itemView)
+//    }
+//
+//    inner class TestBaseViewHolder : BaseViewHolder<ViewDataBinding>(
+//        binding = binding
+//    )
+//}
