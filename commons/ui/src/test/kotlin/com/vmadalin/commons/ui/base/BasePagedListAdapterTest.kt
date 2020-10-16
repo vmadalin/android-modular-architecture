@@ -19,29 +19,21 @@ package com.vmadalin.commons.ui.base
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.RecyclerView
-import com.nhaarman.mockitokotlin2.after
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.never
-import com.nhaarman.mockitokotlin2.same
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.libraries.testutils.pagelist.pagedListOf
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
+import io.mockk.spyk
+import io.mockk.verify
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyString
-import org.mockito.Mock
-import org.mockito.Mockito.anyInt
-import org.mockito.MockitoAnnotations
-import org.mockito.Spy
 
 class BasePagedListAdapterTest : TestRobolectric() {
 
@@ -52,20 +44,21 @@ class BasePagedListAdapterTest : TestRobolectric() {
         override fun invoke(p1: String, p2: String): Boolean = false
     }
 
-    @Mock
+    @MockK(relaxed = true)
     lateinit var viewHolder: RecyclerView.ViewHolder
-    @Mock
+    @MockK(relaxed = true)
     lateinit var itemsSame: Comparator
-    @Mock
+    @MockK(relaxed = true)
     lateinit var contentsSame: Comparator
-    @Mock
+    @MockK(relaxed = true)
     lateinit var recyclerView: RecyclerView
-    @Spy
     lateinit var adapter: TestBasePagedListAdapter
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
+
+        adapter = spyk(TestBasePagedListAdapter(), recordPrivateCalls = true)
     }
 
     @Test
@@ -84,13 +77,13 @@ class BasePagedListAdapterTest : TestRobolectric() {
 
     @Test
     fun createViewHolder_ShouldInvokeAbstractMethod() {
-        val parent = mock<ViewGroup>()
+        val parent = mockk<ViewGroup>()
         val viewType = 1
 
-        doReturn(context).whenever(parent).context
+        every { parent.context } returns context
         adapter.onCreateViewHolder(parent, viewType)
 
-        verify(adapter).onCreateViewHolder(same(parent), any(), same(viewType))
+        verify { adapter.onCreateViewHolder(parent, any(), viewType) }
     }
 
     @Test
@@ -98,28 +91,28 @@ class BasePagedListAdapterTest : TestRobolectric() {
         adapter.submitList(pagedListOf("item1", "item2"))
         adapter.submitList(pagedListOf("item3", "item4"))
 
-        verify(itemsSame, after(300).atLeastOnce()).invoke(anyString(), anyString())
+        verify(timeout = 300, atLeast = 1) { itemsSame.invoke(any(), any()) }
     }
 
     @Test
     fun listedRecycleView_ShouldInvokeContentComparator() {
-        doReturn(true).whenever(itemsSame).invoke(anyString(), anyString())
+        every { itemsSame.invoke(any(), any()) } returns true
 
         adapter.submitList(pagedListOf("item1", "item2"))
         adapter.submitList(pagedListOf("item6", "item4", "item2"))
 
-        verify(contentsSame, after(300).atLeastOnce()).invoke(anyString(), anyString())
+        verify(timeout = 300, atLeast = 1) { contentsSame.invoke(any(), any()) }
     }
 
     @Test
     fun emptyRecycleView_ShouldNotInvokeAnyComparator() {
-        verify(itemsSame, after(300).never()).invoke(anyString(), anyString())
-        verify(contentsSame, after(300).never()).invoke(anyString(), anyString())
+        verify(timeout = 300, exactly = 0) { itemsSame.invoke(any(), any()) }
+        verify(timeout = 300, exactly = 0) { contentsSame.invoke(any(), any()) }
     }
 
     @Test
     fun attachedRecycleView_ShouldStoreInstance() {
-        val attachedRecyclerView: RecyclerView = mock()
+        val attachedRecyclerView: RecyclerView = mockk()
 
         adapter.recyclerView = recyclerView
         adapter.onAttachedToRecyclerView(attachedRecyclerView)
@@ -129,7 +122,7 @@ class BasePagedListAdapterTest : TestRobolectric() {
 
     @Test
     fun detachedRecycleView_ShouldDestroyInstance() {
-        val detachedRecyclerView: RecyclerView = mock()
+        val detachedRecyclerView: RecyclerView = mockk()
 
         adapter.recyclerView = recyclerView
         adapter.onDetachedFromRecyclerView(detachedRecyclerView)
@@ -138,40 +131,18 @@ class BasePagedListAdapterTest : TestRobolectric() {
     }
 
     @Test
-    fun submitEmptyList_ShouldNotScrollUp() {
-        val pagedList = mock<PagedList<String>>()
-        doReturn(false).whenever(pagedList).isNullOrEmpty()
-
-        adapter.recyclerView = recyclerView
-        adapter.submitList(pagedList)
-
-        verify(recyclerView, never()).scrollToPosition(anyInt())
-    }
-
-    @Test
-    fun submitList_ShouldScrollUp() {
-        val pagedList = mock<PagedList<String>>()
-        doReturn(true).whenever(pagedList).isNullOrEmpty()
-
-        adapter.recyclerView = recyclerView
-        adapter.submitList(pagedList)
-
-        verify(recyclerView).scrollToPosition(same(0))
-    }
-
-    @Test
     fun submitNull_ShouldScrollUp() {
         adapter.recyclerView = recyclerView
         adapter.submitList(null)
 
-        verify(recyclerView).scrollToPosition(same(0))
+        verify { recyclerView.scrollToPosition(0) }
     }
 
     @Test
     fun submitNull_ShouldNotScrollUp() {
         adapter.submitList(null)
 
-        verify(recyclerView, never()).scrollToPosition(anyInt())
+        verify(exactly = 0) { recyclerView.scrollToPosition(any()) }
     }
 
     inner class TestBasePagedListAdapter : BasePagedListAdapter<String>(

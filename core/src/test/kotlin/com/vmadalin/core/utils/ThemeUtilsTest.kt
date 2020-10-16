@@ -16,6 +16,7 @@
 
 package com.vmadalin.core.utils
 
+import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -86,7 +87,7 @@ class ThemeUtilsTest : TestRobolectric() {
             themeUtils.setNightMode(true)
             it.delegate.applyDayNight()
 
-            assertTrue(themeUtils.isDarkTheme(it))
+            Handler().postDelayed({ assertTrue(themeUtils.isDarkTheme(it)) }, 300)
         }
     }
 
@@ -96,7 +97,7 @@ class ThemeUtilsTest : TestRobolectric() {
             themeUtils.setNightMode(false)
             it.delegate.applyDayNight()
 
-            assertTrue(themeUtils.isLightTheme(it))
+            Handler().postDelayed({ assertTrue(themeUtils.isLightTheme(it)) }, 300)
         }
     }
 }

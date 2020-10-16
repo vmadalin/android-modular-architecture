@@ -47,7 +47,6 @@ object BuildDependenciesVersions {
     const val ARCH_CORE = "2.1.0"
     const val JUNIT = "4.13.1"
     const val ROBOELECTRIC = "4.4"
-    const val MOCKITO = "2.2.0"
     const val MOCKK = "1.10.2"
     const val ASSERTJ = "3.17.2"
     const val ESPRESSO = "3.3.0"

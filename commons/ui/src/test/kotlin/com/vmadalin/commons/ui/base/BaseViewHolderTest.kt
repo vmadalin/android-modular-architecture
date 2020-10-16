@@ -18,20 +18,28 @@ package com.vmadalin.commons.ui.base
 
 import android.view.View
 import androidx.databinding.ViewDataBinding
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 
 class BaseViewHolderTest {
 
-    private val binding: ViewDataBinding = mock()
-    private val rootView: View = mock()
+    @MockK
+    lateinit var binding: ViewDataBinding
+    @MockK(relaxed = true)
+    lateinit var rootView: View
+
+    @Before
+    fun setUp() {
+        MockKAnnotations.init(this)
+    }
 
     @Test
     fun createBaseViewHolder_ShouldInitializeCorrectly() {
-        doReturn(rootView).whenever(binding).root
+        every { binding.root } returns rootView
 
         val baseViewHolder = TestBaseViewHolder()
 
@@ -39,7 +47,7 @@ class BaseViewHolderTest {
         assertEquals(binding.root, baseViewHolder.itemView)
     }
 
-    inner class TestBaseViewHolder : com.vmadalin.commons.ui.base.BaseViewHolder<ViewDataBinding>(
+    inner class TestBaseViewHolder : BaseViewHolder<ViewDataBinding>(
         binding = binding
     )
 }

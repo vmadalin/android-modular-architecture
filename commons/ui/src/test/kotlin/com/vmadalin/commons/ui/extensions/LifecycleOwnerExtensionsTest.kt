@@ -20,17 +20,14 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.never
-import com.nhaarman.mockitokotlin2.times
 import com.vmadalin.libraries.testutils.lifecycle.TestLifecycleOwner
+import io.mockk.mockk
+import io.mockk.slot
+import io.mockk.verify
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.anyInt
-import org.mockito.Mockito.verify
 
 class LifecycleOwnerExtensionsTest {
 
@@ -48,55 +45,55 @@ class LifecycleOwnerExtensionsTest {
     fun observingMutableLiveData_WhenPostStringValue_ShouldTrigger() {
         val mutableLiveData = MutableLiveData<String>()
         val observerPostValue = "Event Value"
-        val observer = mock<(String) -> Unit>()
-        val observerCaptor = argumentCaptor<String>()
+        val observer = mockk<(String) -> Unit>(relaxed = true)
+        val observerCaptor = slot<String>()
 
         lifecycleOwner.observe(mutableLiveData, observer)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
     }
 
     @Test
     fun observingMutableLiveData_WhenPostMultipleIntValue_ShouldTriggerMultipleTimes() {
         val mutableLiveData = MutableLiveData<Int>()
         val observerPostValue = 3
-        val observer = mock<(Int) -> Unit>()
-        val observerCaptor = argumentCaptor<Int>()
+        val observer = mockk<(Int) -> Unit>(relaxed = true)
+        val observerCaptor = slot<Int>()
 
         lifecycleOwner.observe(mutableLiveData, observer)
         mutableLiveData.postValue(observerPostValue)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(2)).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify(exactly = 2) { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
 
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(3)).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify(exactly = 3) { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
     }
 
     @Test
     fun observingMutableLiveDat_WhenPostNullValue_ShouldNotTrigger() {
         val mutableLiveData = MutableLiveData<Int>()
-        val observer = mock<(Int) -> Unit>()
+        val observer = mockk<(Int) -> Unit>()
 
         lifecycleOwner.observe(mutableLiveData, observer)
         mutableLiveData.postValue(null)
 
-        verify(observer, never()).invoke(anyInt())
+        verify(exactly = 0) { observer.invoke(any()) }
     }
 
     @Test
     fun observingMutableLiveData_WithoutPostValue_ShouldNotTrigger() {
         val mutableLiveData = MutableLiveData<Int>()
-        val observer = mock<(Int) -> Unit>()
+        val observer = mockk<(Int) -> Unit>()
 
         lifecycleOwner.observe(mutableLiveData, observer)
 
-        verify(observer, never()).invoke(anyInt())
+        verify(exactly = 0) { observer.invoke(any()) }
     }
 
     @Test
@@ -104,14 +101,14 @@ class LifecycleOwnerExtensionsTest {
         val mutableLiveData = MutableLiveData<String>()
         val liveData: LiveData<String> = mutableLiveData
         val observerPostValue = "Event Value"
-        val observer = mock<(String) -> Unit>()
-        val observerCaptor = argumentCaptor<String>()
+        val observer = mockk<(String) -> Unit>(relaxed = true)
+        val observerCaptor = slot<String>()
 
         lifecycleOwner.observe(liveData, observer)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
     }
 
     @Test
@@ -119,42 +116,42 @@ class LifecycleOwnerExtensionsTest {
         val mutableLiveData = MutableLiveData<Int>()
         val liveData: LiveData<Int> = mutableLiveData
         val observerPostValue = 3
-        val observer = mock<(Int) -> Unit>()
-        val observerCaptor = argumentCaptor<Int>()
+        val observer = mockk<(Int) -> Unit>(relaxed = true)
+        val observerCaptor = slot<Int>()
 
         lifecycleOwner.observe(liveData, observer)
         mutableLiveData.postValue(observerPostValue)
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(2)).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify(exactly = 2) { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
 
         mutableLiveData.postValue(observerPostValue)
 
-        verify(observer, times(3)).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify(exactly = 3) { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
     }
 
     @Test
     fun observingLiveData_WhenPostNullValue_ShouldNotTrigger() {
         val mutableLiveData = MutableLiveData<Int>()
         val liveData: LiveData<Int> = mutableLiveData
-        val observer = mock<(Int) -> Unit>()
+        val observer = mockk<(Int) -> Unit>()
 
         lifecycleOwner.observe(liveData, observer)
         mutableLiveData.postValue(null)
 
-        verify(observer, never()).invoke(anyInt())
+        verify(exactly = 0) { observer.invoke(any()) }
     }
 
     @Test
     fun observingLiveData_WithoutPostValue_ShouldNotTrigger() {
         val mutableLiveData = MutableLiveData<Int>()
         val liveData: LiveData<Int> = mutableLiveData
-        val observer = mock<(Int) -> Unit>()
+        val observer = mockk<(Int) -> Unit>()
 
         lifecycleOwner.observe(liveData, observer)
 
-        verify(observer, never()).invoke(anyInt())
+        verify(exactly = 0) { observer.invoke(any()) }
     }
 }

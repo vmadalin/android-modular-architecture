@@ -16,15 +16,13 @@
 
 package com.vmadalin.core.di
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.core.BuildConfig
 import com.vmadalin.core.di.modules.NetworkModule
 import com.vmadalin.core.network.services.MarvelService
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.slot
+import io.mockk.verify
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -48,7 +46,7 @@ class NetworkModuleTest {
 
     @Test
     fun verifyProvidedHttpClient() {
-        val interceptor = mock<HttpLoggingInterceptor>()
+        val interceptor = mockk<HttpLoggingInterceptor>()
         val httpClient = networkModule.provideHttpClient(interceptor)
 
         assertEquals(1, httpClient.interceptors.size)
@@ -64,21 +62,21 @@ class NetworkModuleTest {
 
     @Test
     fun verifyProvidedMarvelService() {
-        val retrofit = mock<Retrofit>()
-        val marvelService = mock<MarvelService>()
-        val serviceClassCaptor = argumentCaptor<Class<*>>()
+        val retrofit = mockk<Retrofit>()
+        val marvelService = mockk<MarvelService>()
+        val serviceClassCaptor = slot<Class<*>>()
 
-        doReturn(marvelService).whenever(retrofit).create<MarvelService>(any())
+        every { retrofit.create<MarvelService>(any()) } returns marvelService
 
         networkModule.provideMarvelService(retrofit)
 
-        verify(retrofit).create(serviceClassCaptor.capture())
-        assertEquals(MarvelService::class.java, serviceClassCaptor.lastValue)
+        verify { retrofit.create(capture(serviceClassCaptor)) }
+        assertEquals(MarvelService::class.java, serviceClassCaptor.captured)
     }
 
     @Test
     fun verifyProvidedMarvelRepository() {
-        val marvelService = mock<MarvelService>()
+        val marvelService = mockk<MarvelService>()
         val marvelRepository = networkModule.provideMarvelRepository(marvelService)
 
         assertEquals(marvelService, marvelRepository.service)

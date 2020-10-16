@@ -16,27 +16,28 @@
 
 package com.vmadalin.core.database.charactersfavorite
 
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.verify
 import com.vmadalin.core.database.characterfavorite.CharacterFavorite
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteRepository
+import io.mockk.MockKAnnotations
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
+import io.mockk.slot
+import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
 class CharacterFavoriteRepositoryTest {
 
-    @Mock
+    @MockK(relaxed = true)
     lateinit var characterFavoriteDao: CharacterFavoriteDao
     lateinit var characterFavoriteRepository: CharacterFavoriteRepository
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
         characterFavoriteRepository = CharacterFavoriteRepository(characterFavoriteDao)
     }
 
@@ -44,7 +45,7 @@ class CharacterFavoriteRepositoryTest {
     fun getAllCharactersFavoriteLiveData_ShouldInvokeCorrectDaoMethod() {
         characterFavoriteRepository.getAllCharactersFavoriteLiveData()
 
-        verify(characterFavoriteDao).getAllCharactersFavoriteLiveData()
+        verify { characterFavoriteDao.getAllCharactersFavoriteLiveData() }
     }
 
     @Test
@@ -52,35 +53,39 @@ class CharacterFavoriteRepositoryTest {
         runBlocking {
             characterFavoriteRepository.getAllCharactersFavorite()
 
-            verify(characterFavoriteDao).getAllCharactersFavorite()
+            coVerify { characterFavoriteDao.getAllCharactersFavorite() }
         }
     }
 
     @Test
     fun getCharacterFavorite_ShouldInvokeCorrectDaoMethod() = runBlocking {
         val characterIdToFind = 1L
-        val characterIdCaptor = argumentCaptor<Long>()
+        val characterIdCaptor = slot<Long>()
         characterFavoriteRepository.getCharacterFavorite(characterIdToFind)
 
-        verify(characterFavoriteDao).getCharacterFavorite(characterIdCaptor.capture())
-        assertEquals(characterIdToFind, characterIdCaptor.lastValue)
+        coVerify {
+            characterFavoriteDao.getCharacterFavorite(capture(characterIdCaptor))
+        }
+        assertEquals(characterIdToFind, characterIdCaptor.captured)
     }
 
     @Test
     fun deleteAllCharactersFavorite_ShouldInvokeCorrectDaoMethod() = runBlocking {
         characterFavoriteRepository.deleteAllCharactersFavorite()
 
-        verify(characterFavoriteDao).deleteAllCharactersFavorite()
+        coVerify { characterFavoriteDao.deleteAllCharactersFavorite() }
     }
 
     @Test
     fun deleteCharacterFavoriteById_ShouldInvokeCorrectDaoMethod() = runBlocking {
         val characterIdToDelete = 1L
-        val characterIdCaptor = argumentCaptor<Long>()
+        val characterIdCaptor = slot<Long>()
         characterFavoriteRepository.deleteCharacterFavoriteById(characterIdToDelete)
 
-        verify(characterFavoriteDao).deleteCharacterFavoriteById(characterIdCaptor.capture())
-        assertEquals(characterIdToDelete, characterIdCaptor.lastValue)
+        coVerify {
+            characterFavoriteDao.deleteCharacterFavoriteById(capture(characterIdCaptor))
+        }
+        assertEquals(characterIdToDelete, characterIdCaptor.captured)
     }
 
     @Test
@@ -90,11 +95,13 @@ class CharacterFavoriteRepositoryTest {
             "A.I.M",
             "http://i.annihil.us/535fecbbb9784.jpg"
         )
-        val characterFavoriteCaptor = argumentCaptor<CharacterFavorite>()
+        val characterFavoriteCaptor = slot<CharacterFavorite>()
         characterFavoriteRepository.deleteCharacterFavorite(characterToDelete)
 
-        verify(characterFavoriteDao).deleteCharacterFavorite(characterFavoriteCaptor.capture())
-        assertEquals(characterToDelete, characterFavoriteCaptor.lastValue)
+        coVerify {
+            characterFavoriteDao.deleteCharacterFavorite(capture(characterFavoriteCaptor))
+        }
+        assertEquals(characterToDelete, characterFavoriteCaptor.captured)
     }
 
     @Test
@@ -104,11 +111,13 @@ class CharacterFavoriteRepositoryTest {
             CharacterFavorite(1, "A-Bomb (HAS)", "http://i.annihil.us/5232158de5b16.jpg"),
             CharacterFavorite(2, "A.I.M", "http://i.annihil.us/52602f21f29ec.jpg")
         )
-        val charactersInsertedCaptor = argumentCaptor<List<CharacterFavorite>>()
+        val charactersInsertedCaptor = slot<List<CharacterFavorite>>()
         characterFavoriteRepository.insertCharactersFavorites(charactersToInsert)
 
-        verify(characterFavoriteDao).insertCharactersFavorites(charactersInsertedCaptor.capture())
-        assertEquals(charactersToInsert, charactersInsertedCaptor.lastValue)
+        coVerify {
+            characterFavoriteDao.insertCharactersFavorites(capture(charactersInsertedCaptor))
+        }
+        assertEquals(charactersToInsert, charactersInsertedCaptor.captured)
     }
 
     @Test
@@ -118,14 +127,15 @@ class CharacterFavoriteRepositoryTest {
             "A.I.M",
             "http://i.annihil.us/535fecbbb9784.jpg"
         )
-        val characterInsertedCaptor = argumentCaptor<CharacterFavorite>()
+
+        val characterCaptor = slot<CharacterFavorite>()
         characterFavoriteRepository.insertCharacterFavorite(
             id = characterToInsert.id,
             name = characterToInsert.name,
             imageUrl = characterToInsert.imageUrl
         )
 
-        verify(characterFavoriteDao).insertCharacterFavorite(characterInsertedCaptor.capture())
-        assertEquals(characterToInsert, characterInsertedCaptor.lastValue)
+        coVerify { characterFavoriteDao.insertCharacterFavorite(capture(characterCaptor)) }
+        assertEquals(characterToInsert, characterCaptor.captured)
     }
 }

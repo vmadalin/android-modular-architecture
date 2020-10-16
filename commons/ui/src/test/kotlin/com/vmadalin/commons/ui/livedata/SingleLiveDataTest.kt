@@ -18,19 +18,15 @@ package com.vmadalin.commons.ui.livedata
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LifecycleOwner
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.times
 import com.vmadalin.commons.ui.extensions.observe
 import com.vmadalin.libraries.testutils.lifecycle.TestLifecycleOwner
+import io.mockk.mockk
+import io.mockk.slot
+import io.mockk.verify
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
-import org.mockito.Mockito.anyString
-import org.mockito.Mockito.never
-import org.mockito.Mockito.verify
 
 class SingleLiveDataTest {
 
@@ -46,66 +42,66 @@ class SingleLiveDataTest {
 
     @Test
     fun observingSingleLiveData_WhenPostStringValue_ShouldTriggerOneEvent() {
-        val singleLiveData = com.vmadalin.commons.ui.livedata.SingleLiveData<String>()
+        val singleLiveData = SingleLiveData<String>()
         val observerPostValue = "Event Value"
-        val observer = mock<(String) -> Unit>()
-        val observerCaptor = argumentCaptor<String>()
+        val observer = mockk<(String) -> Unit>(relaxed = true)
+        val observerCaptor = slot<String>()
 
         lifecycleOwner.observe(singleLiveData, observer)
         singleLiveData.postValue(observerPostValue)
 
-        verify(observer).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
     }
 
     @Test
     fun observingSingleLiveData_WhenPostMultipleIntValue_ShouldTriggerMultipleTimes() {
-        val singleLiveData = com.vmadalin.commons.ui.livedata.SingleLiveData<Int>()
+        val singleLiveData = SingleLiveData<Int>()
         val observerPostValue = 1
-        val observer = mock<(Int) -> Unit>()
-        val observerCaptor = argumentCaptor<Int>()
+        val observer = mockk<(Int) -> Unit>(relaxed = true)
+        val observerCaptor = slot<Int>()
 
         lifecycleOwner.observe(singleLiveData, observer)
         singleLiveData.postValue(observerPostValue)
         singleLiveData.postValue(observerPostValue)
 
-        verify(observer, times(2)).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify(exactly = 2) { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
 
         singleLiveData.postValue(observerPostValue)
 
-        Mockito.verify(observer, times(3)).invoke(observerCaptor.capture())
-        assertEquals(observerPostValue, observerCaptor.lastValue)
+        verify(exactly = 3) { observer.invoke(capture(observerCaptor)) }
+        assertEquals(observerPostValue, observerCaptor.captured)
     }
 
     @Test
     fun multipleObservingSingleLiveData_WhenPostIntValue_ShouldTriggerOnlyFirstObserver() {
-        val singleLiveData = com.vmadalin.commons.ui.livedata.SingleLiveData<String>()
+        val singleLiveData = SingleLiveData<String>()
         val observerPostValue = "Event Value"
-        val observer1 = mock<(String) -> Unit>()
-        val observer2 = mock<(String) -> Unit>()
-        val observer3 = mock<(String) -> Unit>()
-        val observer1Captor = argumentCaptor<String>()
+        val observer1 = mockk<(String) -> Unit>(relaxed = true)
+        val observer2 = mockk<(String) -> Unit>()
+        val observer3 = mockk<(String) -> Unit>()
+        val observer1Captor = slot<String>()
 
         lifecycleOwner.observe(singleLiveData, observer1)
         lifecycleOwner.observe(singleLiveData, observer2)
         lifecycleOwner.observe(singleLiveData, observer3)
         singleLiveData.postValue(observerPostValue)
 
-        verify(observer1).invoke(observer1Captor.capture())
-        verify(observer2, never()).invoke(anyString())
-        verify(observer3, never()).invoke(anyString())
+        verify { observer1.invoke(capture(observer1Captor)) }
+        verify(exactly = 0) { observer2.invoke(any()) }
+        verify(exactly = 0) { observer3.invoke(any()) }
 
-        assertEquals(observerPostValue, observer1Captor.lastValue)
+        assertEquals(observerPostValue, observer1Captor.captured)
     }
 
     @Test
     fun observingSingleLiveData_WithoutPostValue_ShouldNotTrigger() {
-        val singleLiveData = com.vmadalin.commons.ui.livedata.SingleLiveData<Int>()
-        val observer = mock<(Int) -> Unit>()
+        val singleLiveData = SingleLiveData<Int>()
+        val observer = mockk<(Int) -> Unit>()
 
         lifecycleOwner.observe(singleLiveData, observer)
 
-        verify(observer, never()).invoke(Mockito.anyInt())
+        verify(exactly = 0) { observer.invoke(any()) }
     }
 }

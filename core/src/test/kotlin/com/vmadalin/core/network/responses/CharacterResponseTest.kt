@@ -16,7 +16,7 @@
 
 package com.vmadalin.core.network.responses
 
-import com.nhaarman.mockitokotlin2.mock
+import io.mockk.mockk
 import org.junit.Assert
 import org.junit.Test
 
@@ -27,7 +27,7 @@ class CharacterResponseTest {
         val id = 131231L
         val name = "A.I.M"
         val description = "AIM is a terrorist organization bent on destroying the world."
-        val thumbnail: CharacterThumbnailResponse = mock()
+        val thumbnail: CharacterThumbnailResponse = mockk()
 
         val characterResponse = CharacterResponse(
             id = id,

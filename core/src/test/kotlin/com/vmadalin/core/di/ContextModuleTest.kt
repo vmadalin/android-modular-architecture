@@ -18,21 +18,21 @@ package com.vmadalin.core.di
 
 import android.app.Application
 import com.vmadalin.core.di.modules.ContextModule
+import io.mockk.MockKAnnotations
+import io.mockk.impl.annotations.MockK
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
 class ContextModuleTest {
 
-    @Mock
+    @MockK(relaxed = true)
     lateinit var application: Application
     private lateinit var contextModule: ContextModule
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
         contextModule = ContextModule(application)
     }
 
