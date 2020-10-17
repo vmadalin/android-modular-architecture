@@ -17,13 +17,12 @@
 package com.vmadalin.core.di
 
 import android.content.Context
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.core.database.MarvelDatabase
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.core.di.modules.DatabaseModule
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -40,7 +39,7 @@ class DatabaseModuleTest {
 
     @Test
     fun verifyProvidedMarvelDatabase() {
-        val context: Context = mock()
+        val context: Context = mockk()
         val marvelDatabase = databaseModule.provideMarvelDatabase(context)
 
         assertNotNull(marvelDatabase.characterFavoriteDao())
@@ -48,21 +47,21 @@ class DatabaseModuleTest {
 
     @Test
     fun verifyProvidedCharacterFavoriteDao() {
-        val marvelDatabase: MarvelDatabase = mock()
-        val characterFavoriteDao: CharacterFavoriteDao = mock()
+        val marvelDatabase: MarvelDatabase = mockk()
+        val characterFavoriteDao: CharacterFavoriteDao = mockk()
 
-        doReturn(characterFavoriteDao).whenever(marvelDatabase).characterFavoriteDao()
+        every { marvelDatabase.characterFavoriteDao() } returns characterFavoriteDao
 
         assertEquals(
             characterFavoriteDao,
             databaseModule.provideCharacterFavoriteDao(marvelDatabase)
         )
-        verify(marvelDatabase).characterFavoriteDao()
+        verify { marvelDatabase.characterFavoriteDao() }
     }
 
     @Test
     fun verifyProvidedCharacterFavoriteRepository() {
-        val characterFavoriteDao: CharacterFavoriteDao = mock()
+        val characterFavoriteDao: CharacterFavoriteDao = mockk()
         val repository = databaseModule.provideCharacterFavoriteRepository(characterFavoriteDao)
 
         assertEquals(characterFavoriteDao, repository.characterFavoriteDao)

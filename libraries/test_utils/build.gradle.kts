@@ -16,7 +16,6 @@
 
 import dependencies.Dependencies
 import dependencies.TestDependencies
-import dependencies.AnnotationProcessorsDependencies
 import extensions.implementation
 
 plugins {
@@ -27,7 +26,6 @@ dependencies {
     implementation(Dependencies.PAGING)
     implementation(Dependencies.NAVIGATION_UI)
 
-    implementation(TestDependencies.MOCKITO)
     implementation(TestDependencies.ASSERTJ)
     implementation(TestDependencies.ROBOELECTRIC)
     implementation(TestDependencies.ROOM)
@@ -39,6 +37,5 @@ dependencies {
     implementation(TestDependencies.FRAGMENT_TEST)
     implementation(TestDependencies.EXT)
     implementation(TestDependencies.MOCK_WEB_SERVER)
-
-    annotationProcessor(AnnotationProcessorsDependencies.AUTO_SERVICE)
+    implementation(TestDependencies.MOCKK)
 }

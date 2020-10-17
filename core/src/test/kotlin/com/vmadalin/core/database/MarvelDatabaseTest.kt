@@ -16,32 +16,31 @@
 
 package com.vmadalin.core.database
 
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
-import org.hamcrest.Matchers.instanceOf
-import org.junit.Assert.assertThat
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import org.hamcrest.CoreMatchers.instanceOf
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
 class MarvelDatabaseTest : TestRobolectric() {
 
-    @Mock
+    @MockK
     lateinit var marvelDatabase: MarvelDatabase
-    @Mock
+    @MockK
     lateinit var characterFavoriteDao: CharacterFavoriteDao
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
     }
 
     @Test
     fun obtainCharacterFavoriteDao() {
-        doReturn(characterFavoriteDao).whenever(marvelDatabase).characterFavoriteDao()
+        every { marvelDatabase.characterFavoriteDao() } returns characterFavoriteDao
 
         assertThat(
             marvelDatabase.characterFavoriteDao(),

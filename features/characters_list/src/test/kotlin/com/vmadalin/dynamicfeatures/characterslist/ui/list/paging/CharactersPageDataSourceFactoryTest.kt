@@ -18,77 +18,73 @@ package com.vmadalin.dynamicfeatures.characterslist.ui.list.paging
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.never
-import com.nhaarman.mockitokotlin2.same
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.SpyK
+import io.mockk.mockk
+import io.mockk.verify
 import javax.inject.Provider
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.InjectMocks
-import org.mockito.MockitoAnnotations
-import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
 class CharactersPageDataSourceFactoryTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Spy
-    lateinit var providerDataSource: Provider<CharactersPageDataSource>
-    @Spy
-    lateinit var sourceLiveData: MutableLiveData<CharactersPageDataSource>
-    @InjectMocks
+    @InjectMockKs(overrideValues = true)
     lateinit var dataSourceFactory: CharactersPageDataSourceFactory
+    @MockK(relaxed = true)
+    lateinit var providerDataSource: Provider<CharactersPageDataSource>
+    @SpyK
+    var sourceLiveData = MutableLiveData<CharactersPageDataSource>()
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
     }
 
     @Test
     fun initializeFactory_WithoutCreate_ShouldNotHaveDataSource() {
-        verify(dataSourceFactory.sourceLiveData, never())
+        verify(exactly = 0) { dataSourceFactory.sourceLiveData.value }
+
         assertNull(dataSourceFactory.sourceLiveData.value)
     }
 
     @Test
     fun initializeFactory_WithCreate_ShouldHaveDataSource() {
-        doReturn(
-            CharactersPageDataSource(mock(), mock(), mock())
-        ).whenever(providerDataSource).get()
+        every {
+            providerDataSource.get()
+        } returns CharactersPageDataSource(mockk(), mockk(), mockk())
 
         val dataSource = dataSourceFactory.create() as CharactersPageDataSource
 
-        verify(dataSourceFactory.sourceLiveData).postValue(same(dataSource))
+        verify { dataSourceFactory.sourceLiveData.postValue(dataSource) }
     }
 
     @Test
     fun refreshDataSource_ShouldInvalidateData() {
-        val dataSource = mock<CharactersPageDataSource>()
-        doReturn(dataSource).whenever(sourceLiveData).value
+        val dataSource = mockk<CharactersPageDataSource>(relaxed = true)
+        every { sourceLiveData.value } returns dataSource
 
         dataSourceFactory.refresh()
 
-        verify(dataSource).invalidate()
-        verify(dataSource, never()).retry()
+        verify { dataSource.invalidate() }
+        verify(exactly = 0) { dataSource.retry() }
     }
 
     @Test
     fun retryDataSource_ShouldRetryData() {
-        val dataSource = mock<CharactersPageDataSource>()
-        doReturn(dataSource).whenever(sourceLiveData).value
+        val dataSource = mockk<CharactersPageDataSource>(relaxed = true)
+        every { sourceLiveData.value } returns dataSource
 
         dataSourceFactory.retry()
 
-        verify(dataSource).retry()
-        verify(dataSource, never()).invalidate()
+        verify { dataSource.retry() }
+        verify(exactly = 0) { dataSource.invalidate() }
     }
 }

@@ -17,19 +17,19 @@
 package com.vmadalin.core.network.repositories
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.verify
 import com.vmadalin.core.BuildConfig
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.core.network.services.MarvelService
+import io.mockk.MockKAnnotations
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
+import io.mockk.slot
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 
 private const val API_PUBLIC_KEY = BuildConfig.MARVEL_API_KEY_PUBLIC
 
@@ -38,13 +38,13 @@ class MarvelRepositoryTest {
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
-    @Mock
+    @MockK(relaxed = true)
     lateinit var marvelService: MarvelService
     private lateinit var marvelRepository: MarvelRepository
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
         marvelRepository = MarvelRepository(marvelService)
     }
 
@@ -52,46 +52,56 @@ class MarvelRepositoryTest {
     fun getCharacters() = runBlocking {
         val charactersOffset = 0
         val charactersLimit = 20
-        val (apiKey, hash, timestamp, offset, limit) =
-            argumentCaptor<String, String, String, Int, Int>()
+        val apiKey = slot<String>()
+        val hash = slot<String>()
+        val timestamp = slot<String>()
+        val offset = slot<Int>()
+        val limit = slot<Int>()
 
         marvelRepository.getCharacters(
             offset = charactersOffset,
             limit = charactersLimit
         )
 
-        verify(marvelService).getCharacters(
-            apiKey = apiKey.capture(),
-            hash = hash.capture(),
-            timestamp = timestamp.capture(),
-            offset = offset.capture(),
-            limit = limit.capture()
-        )
+        coVerify {
+            marvelService.getCharacters(
+                apiKey = capture(apiKey),
+                hash = capture(hash),
+                timestamp = capture(timestamp),
+                offset = capture(offset),
+                limit = capture(limit)
+            )
+        }
 
-        assertEquals(API_PUBLIC_KEY, apiKey.lastValue)
-        assertEquals(charactersOffset, offset.lastValue)
-        assertEquals(charactersLimit, limit.lastValue)
-        assertNotNull(hash.lastValue)
-        assertNotNull(timestamp.lastValue)
+        assertEquals(API_PUBLIC_KEY, apiKey.captured)
+        assertEquals(charactersOffset, offset.captured)
+        assertEquals(charactersLimit, limit.captured)
+        assertNotNull(hash.captured)
+        assertNotNull(timestamp.captured)
     }
 
     @Test
     fun getCharacter() = runBlocking {
         val characterId = 3L
-        val (id, apiKey, hash, timestamp) = argumentCaptor<Long, String, String, String>()
+        val id = slot<Long>()
+        val apiKey = slot<String>()
+        val hash = slot<String>()
+        val timestamp = slot<String>()
 
         marvelRepository.getCharacter(characterId)
 
-        verify(marvelService).getCharacter(
-            id = id.capture(),
-            apiKey = apiKey.capture(),
-            hash = hash.capture(),
-            timestamp = timestamp.capture()
-        )
+        coVerify {
+            marvelService.getCharacter(
+                id = capture(id),
+                apiKey = capture(apiKey),
+                hash = capture(hash),
+                timestamp = capture(timestamp)
+            )
+        }
 
-        assertEquals(characterId, id.lastValue)
-        assertEquals(API_PUBLIC_KEY, apiKey.lastValue)
-        assertNotNull(hash.lastValue)
-        assertNotNull(timestamp.lastValue)
+        assertEquals(characterId, id.captured)
+        assertEquals(API_PUBLIC_KEY, apiKey.captured)
+        assertNotNull(hash.captured)
+        assertNotNull(timestamp.captured)
     }
 }

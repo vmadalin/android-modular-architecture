@@ -21,6 +21,7 @@ import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PageKeyedDataSource.LoadParams
+import com.vmadalin.core.annotations.OpenForTesting
 import com.vmadalin.core.network.NetworkState
 import com.vmadalin.core.network.repositiories.MarvelRepository
 import com.vmadalin.dynamicfeatures.characterslist.ui.list.model.CharacterItem
@@ -39,7 +40,8 @@ const val PAGE_MAX_ELEMENTS = 50
  *
  * @see PageKeyedDataSource
  */
-open class CharactersPageDataSource @Inject constructor(
+@OpenForTesting
+class CharactersPageDataSource @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val repository: MarvelRepository,
     @VisibleForTesting(otherwise = PRIVATE)
@@ -64,12 +66,14 @@ open class CharactersPageDataSource @Inject constructor(
         callback: LoadInitialCallback<Int, CharacterItem>
     ) {
         networkState.postValue(NetworkState.Loading())
-        scope.launch(CoroutineExceptionHandler { _, _ ->
-            retry = {
-                loadInitial(params, callback)
+        scope.launch(
+            CoroutineExceptionHandler { _, _ ->
+                retry = {
+                    loadInitial(params, callback)
+                }
+                networkState.postValue(NetworkState.Error())
             }
-            networkState.postValue(NetworkState.Error())
-        }) {
+        ) {
             val response = repository.getCharacters(
                 offset = PAGE_INIT_ELEMENTS,
                 limit = PAGE_MAX_ELEMENTS
@@ -93,12 +97,14 @@ open class CharactersPageDataSource @Inject constructor(
         callback: LoadCallback<Int, CharacterItem>
     ) {
         networkState.postValue(NetworkState.Loading(true))
-        scope.launch(CoroutineExceptionHandler { _, _ ->
-            retry = {
-                loadAfter(params, callback)
+        scope.launch(
+            CoroutineExceptionHandler { _, _ ->
+                retry = {
+                    loadAfter(params, callback)
+                }
+                networkState.postValue(NetworkState.Error(true))
             }
-            networkState.postValue(NetworkState.Error(true))
-        }) {
+        ) {
             val response = repository.getCharacters(
                 offset = params.key,
                 limit = PAGE_MAX_ELEMENTS

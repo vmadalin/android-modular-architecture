@@ -47,7 +47,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_image"
                 tools:text="Character name"
                 style="@style/TextAppearance.CardTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>

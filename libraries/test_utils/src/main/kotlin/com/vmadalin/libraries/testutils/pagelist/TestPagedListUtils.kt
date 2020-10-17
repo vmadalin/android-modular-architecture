@@ -16,15 +16,15 @@
 
 package com.vmadalin.libraries.testutils.pagelist
 
+import android.annotation.SuppressLint
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import androidx.room.RoomDatabase
 import androidx.room.RoomSQLiteQuery
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
 import com.vmadalin.libraries.testutils.datasource.TestLimitDataSource
 import com.vmadalin.libraries.testutils.livedata.getOrAwaitValue
+import io.mockk.mockk
 
 fun <T> pagedListOf(vararg elements: T, config: PagedList.Config? = null): PagedList<T>? {
     val defaultConfig = PagedList.Config.Builder()
@@ -41,11 +41,10 @@ fun <T> pagedListOf(vararg elements: T, config: PagedList.Config? = null): Paged
 
 private fun <T> createMockDataSourceFactory(itemList: List<T>): DataSource.Factory<Int, T> =
     object : DataSource.Factory<Int, T>() {
+        @SuppressLint("RestrictedApi")
         override fun create(): DataSource<Int, T> {
-            val mockQuery = mock<RoomSQLiteQuery>()
-            val mockDb = mock<RoomDatabase> {
-                on { invalidationTracker }.doReturn(mock())
-            }
+            val mockQuery = mockk<RoomSQLiteQuery>(relaxed = true)
+            val mockDb = mockk<RoomDatabase>(relaxed = true)
 
             return TestLimitDataSource(
                 db = mockDb,

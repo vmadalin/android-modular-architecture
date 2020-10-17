@@ -34,12 +34,14 @@ import javax.inject.Singleton
  * @see Component
  */
 @Singleton
-@Component(modules = [
-    ContextModule::class,
-    NetworkModule::class,
-    DatabaseModule::class,
-    UtilsModule::class
-])
+@Component(
+    modules = [
+        ContextModule::class,
+        NetworkModule::class,
+        DatabaseModule::class,
+        UtilsModule::class
+    ]
+)
 interface CoreComponent {
 
     /**

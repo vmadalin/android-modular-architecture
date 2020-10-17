@@ -16,7 +16,7 @@
 
 package com.vmadalin.core.network.responses
 
-import com.nhaarman.mockitokotlin2.mock
+import io.mockk.mockk
 import org.junit.Assert
 import org.junit.Test
 
@@ -27,7 +27,7 @@ class BaseResponseTest {
         val code = 200
         val status = "Ok"
         val message = "Ok"
-        val data: DataResponse<String> = mock()
+        val data: DataResponse<String> = mockk()
 
         val baseResponse = BaseResponse(
             code = code,

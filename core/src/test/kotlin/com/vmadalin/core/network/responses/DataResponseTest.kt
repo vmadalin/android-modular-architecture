@@ -16,7 +16,7 @@
 
 package com.vmadalin.core.network.responses
 
-import com.nhaarman.mockitokotlin2.mock
+import io.mockk.mockk
 import org.junit.Assert
 import org.junit.Test
 
@@ -28,7 +28,7 @@ class DataResponseTest {
         val limit = 50
         val total = 1000
         val count = 50
-        val results: List<String> = mock()
+        val results: List<String> = mockk()
 
         val dataResponse = DataResponse(
             offset = offset,

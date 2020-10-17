@@ -27,9 +27,9 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.verify
-import org.hamcrest.Matchers.instanceOf
+import org.hamcrest.CoreMatchers.instanceOf
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
 

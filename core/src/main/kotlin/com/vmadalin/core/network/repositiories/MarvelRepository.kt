@@ -48,7 +48,8 @@ class MarvelRepository(
             id = id,
             apiKey = API_PUBLIC_KEY,
             hash = generateApiHash(timestamp),
-            timestamp = timestamp)
+            timestamp = timestamp
+        )
     }
 
     /**
@@ -65,7 +66,8 @@ class MarvelRepository(
             hash = generateApiHash(timestamp),
             timestamp = timestamp,
             offset = offset,
-            limit = limit)
+            limit = limit
+        )
     }
 
     // ============================================================================================

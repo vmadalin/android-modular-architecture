@@ -88,7 +88,6 @@ fun DependencyHandler.androidTestImplementation(dependencyNotation: String): Dep
  */
 fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.JUNIT)
-    testImplementation(TestDependencies.MOCKITO)
     testImplementation(TestDependencies.MOCKK)
     testImplementation(TestDependencies.ASSERTJ)
     testImplementation(TestDependencies.ROBOELECTRIC)
@@ -104,7 +103,6 @@ fun DependencyHandler.addTestsDependencies() {
 
     androidTestImplementation(TestAndroidDependencies.PLAY_CORE)
     androidTestImplementation(TestAndroidDependencies.LEAKCANARY)
-    androidTestImplementation(TestAndroidDependencies.MOCKITO)
     androidTestImplementation(TestAndroidDependencies.ESPRESSO)
     androidTestImplementation(TestAndroidDependencies.RUNNER)
     androidTestImplementation(TestAndroidDependencies.RULES)

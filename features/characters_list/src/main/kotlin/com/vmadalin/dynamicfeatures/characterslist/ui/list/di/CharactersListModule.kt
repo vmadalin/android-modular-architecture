@@ -69,10 +69,10 @@ class CharactersListModule(
         repository: MarvelRepository,
         mapper: CharacterItemMapper
     ) = CharactersPageDataSource(
-            repository = repository,
-            scope = viewModel.viewModelScope,
-            mapper = mapper
-        )
+        repository = repository,
+        scope = viewModel.viewModelScope,
+        mapper = mapper
+    )
 
     /**
      * Create a provider method binding for [CharacterItemMapper].

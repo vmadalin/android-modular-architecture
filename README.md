@@ -3,8 +3,8 @@
 [![Codecov](https://codecov.io/gh/VMadalin/android-modular-architecture/coverage.svg)](https://codecov.io/gh/VMadalin/android-modular-architecture)
 [![Codacy](https://api.codacy.com/project/badge/Grade/5970b6648df0465588f9781ae6e3332e)](https://www.codacy.com/manual/VMadalin/kotlin-sample-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VMadalin/kotlin-sample-app&amp;utm_campaign=Badge_Grade)
 [![CodeStyle](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.61-blue.svg)](http://kotlinlang.org/)
-[![Gradle](https://img.shields.io/badge/gradle-6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.10-blue.svg)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-6.6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -47,7 +47,7 @@ The project received different mentions/reference from Android Developer Communi
 
 ### Environment setup
 
-First off, you require the latest Android Studio 3.5.3 (or newer) to be able to build the app.
+First off, you require the latest Android Studio 4.1.0 (or newer) to be able to build the app.
 
 You need to supply keys for Marvel API. You can find information about how to gain access by using the [link](https://developer.marvel.com).
 
@@ -229,7 +229,6 @@ This project takes advantage of many popular libraries, plugins and tools of the
 -   [Espresso](https://developer.android.com/training/testing/espresso) - to write concise, beautiful, and reliable Android UI tests
 -   [Robolectric](https://github.com/robolectric/robolectric) - industry-standard unit testing framework for Android.
 -   [JUnit](https://github.com/junit-team/junit4) - a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
--   [Mockito](https://github.com/nhaarman/mockito-kotlin) - most popular Mocking framework for unit tests written in Java.
 -   [Mockk](https://github.com/mockk/mockk) - provides DSL to mock behavior. Built from zero to fit Kotlin language.
 -   [AndroidX](https://github.com/android/android-test) - the androidx test library provides an extensive framework for testing Android apps.
 -   [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/src/main/kotlin/dependencies/TestDependencies.kt)

@@ -20,22 +20,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.recyclerview.widget.RecyclerView
-import com.nhaarman.mockitokotlin2.after
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.same
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
+import io.mockk.spyk
+import io.mockk.verify
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito.anyString
-import org.mockito.MockitoAnnotations
-import org.mockito.Spy
 import org.robolectric.shadows.ShadowLooper
 
 class BaseListAdapterTest : TestRobolectric() {
@@ -44,21 +39,22 @@ class BaseListAdapterTest : TestRobolectric() {
     val rule = InstantTaskExecutorRule()
 
     interface Comparator : (String, String) -> Boolean {
-        override fun invoke(p1: String, p2: String): Boolean = true
+        override fun invoke(p1: String, p2: String): Boolean = false
     }
 
-    @Mock
+    @MockK(relaxed = true)
     lateinit var viewHolder: RecyclerView.ViewHolder
-    @Mock
+    @MockK(relaxed = true)
     lateinit var itemsSame: Comparator
-    @Mock
+    @MockK(relaxed = true)
     lateinit var contentsSame: Comparator
-    @Spy
     lateinit var adapter: TestBaseListAdapter
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
+
+        adapter = spyk(TestBaseListAdapter())
     }
 
     @After
@@ -68,13 +64,13 @@ class BaseListAdapterTest : TestRobolectric() {
 
     @Test
     fun createViewHolder_ShouldInvokeAbstractMethod() {
-        val parent = mock<ViewGroup>()
+        val parent = mockk<ViewGroup>()
         val viewType = 1
 
-        doReturn(context).whenever(parent).context
+        every { parent.context } returns context
         adapter.onCreateViewHolder(parent, viewType)
 
-        verify(adapter).onCreateViewHolder(same(parent), any(), same(viewType))
+        verify { adapter.onCreateViewHolder(parent, any(), viewType) }
     }
 
     @Test
@@ -82,26 +78,26 @@ class BaseListAdapterTest : TestRobolectric() {
         adapter.submitList(listOf("item1", "item2"))
         adapter.submitList(listOf("item3", "item4"))
 
-        verify(itemsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
+        verify(timeout = 300, atLeast = 1) { itemsSame.invoke(any(), any()) }
     }
 
     @Test
     fun listedRecycleView_ShouldInvokeContentComparator() {
-        doReturn(true).whenever(itemsSame).invoke(anyString(), anyString())
+        every { itemsSame.invoke(any(), any()) } returns true
 
         adapter.submitList(listOf("item1", "item2"))
         adapter.submitList(listOf("item6", "item4", "item2"))
 
-        verify(contentsSame, after(100).atLeastOnce()).invoke(anyString(), anyString())
+        verify(timeout = 300, atLeast = 1) { contentsSame.invoke(any(), any()) }
     }
 
     @Test
     fun emptyRecycleView_ShouldNotInvokeAnyComparator() {
-        verify(itemsSame, after(100).never()).invoke(anyString(), anyString())
-        verify(contentsSame, after(100).never()).invoke(anyString(), anyString())
+        verify(timeout = 300, exactly = 0) { itemsSame.invoke(any(), any()) }
+        verify(timeout = 300, exactly = 0) { contentsSame.invoke(any(), any()) }
     }
 
-    inner class TestBaseListAdapter : com.vmadalin.commons.ui.base.BaseListAdapter<String>(
+    inner class TestBaseListAdapter : BaseListAdapter<String>(
         itemsSame = itemsSame,
         contentsSame = contentsSame
     ) {

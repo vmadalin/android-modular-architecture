@@ -25,12 +25,12 @@ import com.vmadalin.core.database.characterfavorite.CharacterFavoriteDao
 import com.vmadalin.libraries.testutils.livedata.getValue
 import com.vmadalin.libraries.testutils.robolectric.TestRobolectric
 import kotlinx.coroutines.runBlocking
-import org.hamcrest.Matchers.hasItem
-import org.hamcrest.Matchers.not
+import org.hamcrest.CoreMatchers.hasItem
+import org.hamcrest.CoreMatchers.not
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
-import org.junit.Assert.assertThat
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
