@@ -74,9 +74,10 @@ class NetworkModule {
      */
     @Singleton
     @Provides
-    fun provideRetrofitBuilder() =
+    fun provideRetrofitBuilder(client: OkHttpClient) =
         Retrofit.Builder()
             .baseUrl(BuildConfig.MARVEL_API_BASE_URL)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
