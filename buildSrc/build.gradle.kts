@@ -43,7 +43,7 @@ object PluginsVersions {
     const val KTLINT = "0.39.0"
     const val SPOTLESS = "5.6.1"
     const val DETEKT = "1.14.1"
-    const val GRAPH_GENERATOR = "0.6.0-SNAPSHOT"
+    const val GRAPH_GENERATOR = "0.6.0"
 }
 
 dependencies {
